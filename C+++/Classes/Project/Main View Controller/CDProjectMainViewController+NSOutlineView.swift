@@ -249,10 +249,12 @@ extension CDProjectMainViewController: NSOutlineViewDataSource, NSOutlineViewDel
     
     // MARK: - Create a New File
     
-    @IBAction func newFile(_ sender: Any?) {
+    @IBAction func newDocument(_ sender: Any?) {
+        
         let vc = NSStoryboard(name: "Project", bundle: nil).instantiateController(withIdentifier: "Project Choose File Type") as! CDProjectNewFileChooseTypeViewController
         vc.delegate = self
         self.presentAsSheet(vc)
+        
     }
     
     func newFileCreated(atPath path: String) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132.0.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132.0.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +60,7 @@
                                 <rect key="frame" x="18" y="46" width="415" height="190"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rFD-QZ-Kjd">
                                     <rect key="frame" x="0.0" y="0.0" width="415" height="190"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView selectable="YES" allowsEmptySelection="NO" id="K9f-dn-TfI">
                                             <rect key="frame" x="0.0" y="0.0" width="415" height="190"/>
@@ -157,7 +156,7 @@ Gw
                                                 <rect key="frame" x="0.0" y="0.0" width="254" height="525"/>
                                                 <clipView key="contentView" drawsBackground="NO" id="LI1-Ke-Tlh">
                                                     <rect key="frame" x="1" y="1" width="252" height="523"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="18" viewBased="YES" indentationPerLevel="13" outlineTableColumn="zNX-9v-Kaz" id="e4f-QB-miL">
                                                             <rect key="frame" x="0.0" y="0.0" width="252" height="523"/>
@@ -360,7 +359,7 @@ Gw
                                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="115"/>
                                                                                 <clipView key="contentView" drawsBackground="NO" id="S6x-jw-7ft">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="115"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                    <autoresizingMask key="autoresizingMask"/>
                                                                                     <subviews>
                                                                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="Far-nH-oyP">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="300" height="115"/>
@@ -484,7 +483,7 @@ Gw
                                                                 <rect key="frame" x="10" y="239" width="163" height="55"/>
                                                                 <clipView key="contentView" drawsBackground="NO" id="tAi-cX-LPm">
                                                                     <rect key="frame" x="1" y="1" width="161" height="53"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="cUl-Qm-3TU">
                                                                             <rect key="frame" x="0.0" y="0.0" width="161" height="53"/>
@@ -608,7 +607,7 @@ Gw
                         <menuItem title="New File" id="fjp-M2-VxI">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="newFile:" target="IWd-cJ-Eak" id="Rtf-de-E87"/>
+                                <action selector="newDocument:" target="IWd-cJ-Eak" id="Rtf-de-E87"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Add Exsisting File to Project" id="FIv-XI-U6u">
