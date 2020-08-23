@@ -66,7 +66,16 @@ class CDCreateProjectViewController: NSViewController {
         do {
             
             let data = try JSONEncoder().encode(project)
-            FileManager.default.createFile(atPath: directory.nsString.appendingPathComponent("\(projectName.nsString.appendingPathExtension("cpppproj")!)"), contents: data)
+            if let path = projectName.nsString.appendingPathExtension("cpppproj") {
+                
+                FileManager.default.createFile(atPath: directory.nsString.appendingPathComponent(path), contents: data)
+                
+            } else {
+                
+                self.showAlert("Error", "Project name invalid.")
+                return
+                
+            }
             
         } catch {
             
