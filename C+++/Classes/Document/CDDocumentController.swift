@@ -13,9 +13,8 @@ extension NSDocumentController {
     
     @IBAction func newProject(_ sender: Any?) {
         
-        (NSDocumentController.shared as! CDDocumentController)._defaultType = "C+++ Project"
-        self.newDocument(sender)
-        (NSDocumentController.shared as! CDDocumentController)._defaultType = "C++ Source"
+        let vc = CDCreateProjectViewController()
+        NSApp.mainWindow?.contentViewController?.presentAsSheet(vc)
         
     }
     
@@ -52,14 +51,7 @@ class CDDocumentController: NSDocumentController {
             document.contentViewController.mainTextView.document = document
             return
         }
-        if let document = self.currentDocument as? CDProjectDocument {
-            if document.fileURL == nil {
-                // document.close()
-                // return
-            } else {
-                FileManager.default.createFile(atPath: document.fileURL!.deletingLastPathComponent().appendingPathComponent("main.cpp").path, contents: "#include <cstdio>\nint main() {\n\treturn 0;\n}\n".data(using: .utf8), attributes: nil)
-            }
-        }
+        
     }
     
 }

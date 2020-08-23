@@ -12,6 +12,8 @@
 		1801DF6524D50CAA005CAD42 /* CDConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801DF6424D50CAA005CAD42 /* CDConsoleView.swift */; };
 		1802D04B24EF4FBD008C96BC /* CDProjectSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802D04A24EF4FBD008C96BC /* CDProjectSettingsView.swift */; };
 		1802D04D24EF52E5008C96BC /* CDProjectMainViewController+ProjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802D04C24EF52E5008C96BC /* CDProjectMainViewController+ProjectSettings.swift */; };
+		1802D05124EFF4D6008C96BC /* CDCreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802D04F24EFF4D6008C96BC /* CDCreateProjectViewController.swift */; };
+		1802D05224EFF4D6008C96BC /* CDCreateProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1802D05024EFF4D6008C96BC /* CDCreateProjectViewController.xib */; };
 		180480AE2448602700CD0A4D /* CDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180480AD2448602700CD0A4D /* CDSettings.swift */; };
 		1806FCBC24C08CF70081D7BA /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1806FCBB24C08CF70081D7BA /* String Extension.swift */; };
 		180A759524ED4AFF00F0E9BC /* CDProjectDocument+Compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180A759424ED4AFF00F0E9BC /* CDProjectDocument+Compile.swift */; };
@@ -234,6 +236,8 @@
 		1801DF6424D50CAA005CAD42 /* CDConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDConsoleView.swift; sourceTree = "<group>"; };
 		1802D04A24EF4FBD008C96BC /* CDProjectSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDProjectSettingsView.swift; sourceTree = "<group>"; };
 		1802D04C24EF52E5008C96BC /* CDProjectMainViewController+ProjectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProjectMainViewController+ProjectSettings.swift"; sourceTree = "<group>"; };
+		1802D04F24EFF4D6008C96BC /* CDCreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCreateProjectViewController.swift; sourceTree = "<group>"; };
+		1802D05024EFF4D6008C96BC /* CDCreateProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDCreateProjectViewController.xib; sourceTree = "<group>"; };
 		180480A824474A0700CD0A4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		180480AD2448602700CD0A4D /* CDSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSettings.swift; sourceTree = "<group>"; };
 		1806FCBB24C08CF70081D7BA /* String Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
@@ -459,6 +463,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1802D04E24EFF4B2008C96BC /* Create Project */ = {
+			isa = PBXGroup;
+			children = (
+				1802D04F24EFF4D6008C96BC /* CDCreateProjectViewController.swift */,
+				1802D05024EFF4D6008C96BC /* CDCreateProjectViewController.xib */,
+			);
+			path = "Create Project";
+			sourceTree = "<group>";
+		};
 		180A759724ED4B2400F0E9BC /* Project Document */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +888,7 @@
 			isa = PBXGroup;
 			children = (
 				1815A0D424E0E7E700D1B23C /* Project.storyboard */,
+				1802D04E24EFF4B2008C96BC /* Create Project */,
 				1868F15F24E912C70077FD8D /* New File */,
 				1868F15E24E912A00077FD8D /* Main View Controller */,
 			);
@@ -1014,6 +1028,7 @@
 				18A41B34242C765500AFC422 /* atelier-plateau-dark.min.css in Resources */,
 				18A41B1A242C765500AFC422 /* atelier-heath-dark.min.css in Resources */,
 				18B185742463B32400B579AD /* CDSnippetPopoperViewController.xib in Resources */,
+				1802D05224EFF4D6008C96BC /* CDCreateProjectViewController.xib in Resources */,
 				18A41B24242C765500AFC422 /* brown-paper.min.css in Resources */,
 				18A41AAD242C762100AFC422 /* highlight.min.js in Resources */,
 				1868F16524E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.xib in Resources */,
@@ -1142,6 +1157,7 @@
 				181F2BD124AC78C700C4B217 /* CKCursor+Private.m in Sources */,
 				18A41AA6242C75A600AFC422 /* CDHighlightrHTMLUtils.swift in Sources */,
 				1802D04B24EF4FBD008C96BC /* CDProjectSettingsView.swift in Sources */,
+				1802D05124EFF4D6008C96BC /* CDCreateProjectViewController.swift in Sources */,
 				183BE91324AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift in Sources */,
 				18E17EBB24A809D200392009 /* CDCodeCompletionViewController.swift in Sources */,
 				181F2BD924AC78C700C4B217 /* CKSourceLocation.m in Sources */,
