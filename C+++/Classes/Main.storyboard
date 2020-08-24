@@ -477,6 +477,25 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Project" id="CeC-cs-YKU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Project" id="ciY-WX-4aD">
+                                    <items>
+                                        <menuItem title="Show in Finder" id="POp-E0-2eH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showInFinder:" target="Ady-hI-5gd" id="qnf-t9-xNp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="az1-B5-0gB"/>
+                                        <menuItem title="Clean Build Folder" state="on" keyEquivalent="K" id="jSP-00-JXD">
+                                            <connections>
+                                                <action selector="cleanBuildFolder:" target="Ady-hI-5gd" id="7AN-Md-ZC8"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Run" id="v33-9z-u0i">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Run" id="nu4-Kq-FAj">
@@ -638,18 +657,10 @@
                                         <action selector="toggleCompileViewShown:" target="jGA-0Y-lOj" id="P44-z2-2MD"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A04A12BD-B043-4959-BCFF-471F60745B82" label="Stop" paletteLabel="Stop" tag="-1" image="Stop" id="csq-Gp-YZH">
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
-                                    <connections>
-                                        <action selector="stopRunnning:" target="6f7-a7-6o1" id="yEP-sq-rgG"/>
-                                    </connections>
-                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Qet-oC-g8p"/>
                                 <toolbarItem reference="eIb-XZ-6HS"/>
-                                <toolbarItem reference="csq-Gp-YZH"/>
                                 <toolbarItem reference="5Eg-DZ-en8"/>
                                 <toolbarItem reference="vjF-PO-DLw"/>
                                 <toolbarItem reference="5Eg-DZ-en8"/>
@@ -2137,175 +2148,6 @@ Gw
             </objects>
             <point key="canvasLocation" x="230" y="1004"/>
         </scene>
-        <!--Project View Controller-->
-        <scene sceneID="eAM-Sv-WeE">
-            <objects>
-                <viewController id="ivk-Yy-MWH" customClass="CDProjectViewController" customModule="C___" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="AgV-3N-XmO">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="280"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7fR-f4-kXV">
-                                <rect key="frame" x="13" y="241" width="452" height="28"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Project" id="gkp-Cd-6YW">
-                                    <font key="font" metaFont="systemBold" size="24"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfv-8i-KlI">
-                                <rect key="frame" x="17" y="30" width="446" height="172"/>
-                                <clipView key="contentView" drawsBackground="NO" id="vZB-wL-H0G">
-                                    <rect key="frame" x="0.0" y="0.0" width="446" height="172"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view id="8Vi-0v-adj" customClass="CDFlippedView" customModule="C___" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="446" height="172"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="SWq-gx-e3N" customClass="CDProjectTableView" customModule="C___" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="446" height="172"/>
-                                                </customView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="SWq-gx-e3N" firstAttribute="top" secondItem="8Vi-0v-adj" secondAttribute="top" id="CnK-T2-B6I"/>
-                                                <constraint firstItem="SWq-gx-e3N" firstAttribute="leading" secondItem="8Vi-0v-adj" secondAttribute="leading" id="Eoi-JH-OUq"/>
-                                                <constraint firstAttribute="trailing" secondItem="SWq-gx-e3N" secondAttribute="trailing" id="IMF-Eu-7wt"/>
-                                                <constraint firstAttribute="bottom" secondItem="SWq-gx-e3N" secondAttribute="bottom" id="x7i-79-eaS"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="SLE-zG-VJB">
-                                    <rect key="frame" x="-100" y="-100" width="429" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="bse-x7-XOG">
-                                    <rect key="frame" x="430" y="0.0" width="16" height="172"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mc7-Tc-NmA">
-                                <rect key="frame" x="144" y="211" width="282" height="21"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="zbh-SY-KH4">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-9H-a4o">
-                                <rect key="frame" x="15" y="213" width="123" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Compile Command:" id="xWs-At-HOY">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MQy-01-BSn">
-                                <rect key="frame" x="432" y="213" width="31" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="SJo-lR-fYi"/>
-                                </constraints>
-                                <buttonCell key="cell" type="inline" title="OK" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="AUd-0G-JHr">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="set:" target="ivk-Yy-MWH" id="ZK3-9a-sBc"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zM4-Vz-3a2">
-                                <rect key="frame" x="449" y="6" width="15" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="A1x-yM-t3o"/>
-                                    <constraint firstAttribute="width" constant="15" id="erX-4b-gT7"/>
-                                </constraints>
-                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="6gJ-ns-PJJ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="addFile:" target="ivk-Yy-MWH" id="4rb-KA-8DR"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="zM4-Vz-3a2" secondAttribute="bottom" constant="7" id="5VW-xZ-WwH"/>
-                            <constraint firstItem="mc7-Tc-NmA" firstAttribute="leading" secondItem="AgV-9H-a4o" secondAttribute="trailing" constant="8" symbolic="YES" id="9SL-be-92P"/>
-                            <constraint firstItem="7fR-f4-kXV" firstAttribute="top" secondItem="AgV-3N-XmO" secondAttribute="top" constant="11" id="Ahh-Wz-diN"/>
-                            <constraint firstItem="7fR-f4-kXV" firstAttribute="leading" secondItem="AgV-3N-XmO" secondAttribute="leading" constant="15" id="CkJ-QW-WOK"/>
-                            <constraint firstAttribute="trailing" secondItem="vfv-8i-KlI" secondAttribute="trailing" constant="17" id="ECG-1s-z3T"/>
-                            <constraint firstItem="mc7-Tc-NmA" firstAttribute="top" secondItem="7fR-f4-kXV" secondAttribute="bottom" constant="9" id="Izn-9R-3wB"/>
-                            <constraint firstAttribute="trailing" secondItem="7fR-f4-kXV" secondAttribute="trailing" constant="17" id="Urz-YL-2Gi"/>
-                            <constraint firstItem="mc7-Tc-NmA" firstAttribute="leading" secondItem="AgV-3N-XmO" secondAttribute="leading" constant="144" id="Xhh-C6-v9p"/>
-                            <constraint firstItem="vfv-8i-KlI" firstAttribute="top" secondItem="MQy-01-BSn" secondAttribute="bottom" constant="11" id="Yop-bX-tNk"/>
-                            <constraint firstItem="MQy-01-BSn" firstAttribute="top" secondItem="7fR-f4-kXV" secondAttribute="bottom" constant="12" id="bch-2T-5hF"/>
-                            <constraint firstItem="vfv-8i-KlI" firstAttribute="top" secondItem="mc7-Tc-NmA" secondAttribute="bottom" constant="9" id="ceX-o6-BO6"/>
-                            <constraint firstAttribute="trailing" secondItem="mc7-Tc-NmA" secondAttribute="trailing" constant="54" id="qKJ-BC-SIl"/>
-                            <constraint firstAttribute="trailing" secondItem="MQy-01-BSn" secondAttribute="trailing" constant="17" id="sEe-iF-EgA"/>
-                            <constraint firstItem="vfv-8i-KlI" firstAttribute="leading" secondItem="AgV-3N-XmO" secondAttribute="leading" constant="17" id="t6f-Ta-Fef"/>
-                            <constraint firstAttribute="bottom" secondItem="vfv-8i-KlI" secondAttribute="bottom" constant="30" id="uXt-8l-LSB"/>
-                            <constraint firstItem="AgV-9H-a4o" firstAttribute="baseline" secondItem="mc7-Tc-NmA" secondAttribute="baseline" constant="1" id="vze-Vb-YxG"/>
-                            <constraint firstAttribute="trailing" secondItem="zM4-Vz-3a2" secondAttribute="trailing" constant="16" id="ya8-nn-ijO"/>
-                            <constraint firstItem="MQy-01-BSn" firstAttribute="leading" secondItem="mc7-Tc-NmA" secondAttribute="trailing" constant="6" id="zwN-ks-Nde"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="SWq-gx-e3N" id="FPj-yK-eVP"/>
-                        <outlet property="textField" destination="mc7-Tc-NmA" id="9LN-e3-aA7"/>
-                    </connections>
-                </viewController>
-                <customObject id="G77-u6-IiC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-285" y="1784"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="du1-IZ-qyr">
-            <objects>
-                <windowController storyboardIdentifier="Project Window Controller" id="R3z-3v-C3k" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="uP8-Jg-bgR">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
-                        <toolbar key="toolbar" implicitIdentifier="E9FC96C3-6EA0-4727-9C4A-5007CEBC245F" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="p0K-Fk-nyC">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="UOD-96-t6Q"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="D3J-mw-IiK"/>
-                                <toolbarItem implicitItemIdentifier="69C3E7BE-45CE-4D06-B8F5-F3AB9B4552DB" label="Compile" paletteLabel="Compile" tag="-1" image="Run" id="cXt-2s-lTk">
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
-                                    <connections>
-                                        <action selector="compileProject:" target="ULU-hZ-lrQ" id="yie-31-omk"/>
-                                    </connections>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="97456251-8973-4C73-9902-B6D91C0E71EC" label="Save" paletteLabel="Save" tag="-1" image="NSMenuOnStateTemplate" id="eKC-k7-dAr">
-                                    <size key="minSize" width="32" height="35"/>
-                                    <size key="maxSize" width="32" height="35"/>
-                                    <connections>
-                                        <action selector="saveProject:" target="ULU-hZ-lrQ" id="Fvk-uO-wBQ"/>
-                                    </connections>
-                                </toolbarItem>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="D3J-mw-IiK"/>
-                                <toolbarItem reference="cXt-2s-lTk"/>
-                                <toolbarItem reference="eKC-k7-dAr"/>
-                            </defaultToolbarItems>
-                        </toolbar>
-                        <connections>
-                            <outlet property="delegate" destination="R3z-3v-C3k" id="uWC-hN-xti"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="ivk-Yy-MWH" kind="relationship" relationship="window.shadowedContentViewController" id="t8K-ca-6TS"/>
-                    </connections>
-                </windowController>
-                <customObject id="ULU-hZ-lrQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-784" y="1784"/>
-        </scene>
         <!--Launch View Controller-->
         <scene sceneID="tGs-wb-Y9q">
             <objects>
@@ -2819,7 +2661,6 @@ Gw
         <image name="NSAddTemplate" width="15" height="11"/>
         <image name="NSIconViewTemplate" width="16" height="12"/>
         <image name="NSListViewTemplate" width="17" height="10"/>
-        <image name="NSMenuOnStateTemplate" width="15" height="11"/>
         <image name="NSPathTemplate" width="20" height="10"/>
         <image name="NSQuickLookTemplate" width="20" height="11"/>
         <image name="NSTouchBarAddTemplate" width="15" height="11"/>
@@ -2838,7 +2679,6 @@ Gw
         <image name="Run" width="256" height="256"/>
         <image name="SaveFile" width="1200" height="1200"/>
         <image name="Settings" width="610" height="610"/>
-        <image name="Stop" width="300" height="300"/>
         <image name="Undo" width="510" height="510"/>
         <image name="Update" width="1160" height="1160"/>
         <namedColor name="BackgroundColor">

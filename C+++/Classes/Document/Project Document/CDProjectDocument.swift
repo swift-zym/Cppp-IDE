@@ -113,4 +113,17 @@ class CDProjectDocument: NSDocument {
         }
     }*/
     
+    @IBAction func cleanBuildFolder(_ sender: Any?) {
+        do {
+            try FileManager.default.removeItem(at: self.fileURL!.deletingLastPathComponent().appendingPathComponent("Build"))
+            self.contentViewController.showAlert("Clean Build Folder Finished.", "")
+        } catch {
+            self.contentViewController.showAlert("Error", "Unable to clean build folder.")
+        }
+    }
+    
+    @IBAction func showInFinder(_ sender: Any?) {
+        NSWorkspace.shared.selectFile(self.fileURL!.deletingLastPathComponent().path, inFileViewerRootedAtPath: "")
+    }
+    
 }
