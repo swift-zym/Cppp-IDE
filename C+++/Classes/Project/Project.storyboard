@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132.0.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17006"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132.0.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -41,6 +43,39 @@
                             <outlet property="delegate" destination="IBt-Yo-D03" id="SrO-dD-YQP"/>
                         </connections>
                     </window>
+                    <touchBar key="touchBar" id="HAS-M5-HyH">
+                        <touchBarItems>
+                            <touchBarItem id="DSd-cz-74C">
+                                <viewController key="viewController" id="yTF-Ej-QSN">
+                                    <button key="view" verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKM-ht-P5a">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Compile" bezelStyle="rounded" image="NSTouchBarPlayTemplate" imagePosition="leading" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QO7-y1-cXx">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="compile:" target="RVN-K9-tHC" id="iV6-qc-hsE"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="UcF-Lm-7oT"/>
+                            <touchBarItem id="Ipc-HN-EYZ">
+                                <viewController key="viewController" id="fDi-kl-nDI">
+                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LnS-ta-ucW">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                        <buttonCell key="cell" type="push" title="New File" bezelStyle="rounded" image="NSTouchBarAddTemplate" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E0F-dZ-BlB">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="newDocument:" target="RVN-K9-tHC" id="Ry7-Qh-nd0"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                        </touchBarItems>
+                    </touchBar>
                     <connections>
                         <segue destination="IWd-cJ-Eak" kind="relationship" relationship="window.shadowedContentViewController" id="qsr-Rl-Zqg"/>
                     </connections>
@@ -641,8 +676,10 @@ Gw
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="17" height="15"/>
+        <image name="NSTouchBarAddTemplate" width="15" height="11"/>
         <image name="NSTouchBarDeleteTemplate" width="15" height="15"/>
         <image name="NSTouchBarGetInfoTemplate" width="15" height="13"/>
+        <image name="NSTouchBarPlayTemplate" width="12" height="11"/>
         <image name="Run" width="256" height="256"/>
     </resources>
 </document>
