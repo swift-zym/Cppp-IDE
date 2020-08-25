@@ -57,7 +57,7 @@ class CDProjectMainViewController: NSViewController {
         contentVC.isOpeningInProjectViewController = true
         self.addChild(contentVC)
         
-        self.outlineView?.registerForDraggedTypes([.string])
+        self.outlineView?.registerForDraggedTypes([.string, .fileURL])
         
         self.projectSettingsView?.delegate = self
         
