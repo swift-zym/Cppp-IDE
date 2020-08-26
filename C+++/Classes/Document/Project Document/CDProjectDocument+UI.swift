@@ -39,7 +39,7 @@ extension CDProjectDocument {
                 // Try to open the document in a content view controller.
                 do {
                     
-                    self.contentViewController.contentVC.representedObject = try CDCodeDocument(contentsOf: URL(fileURLWithPath: document.path), ofType: "C++ Source")
+                    self.contentViewController.contentVC.representedObject = try CDCodeDocument(contentsOf: URL(fileURLWithPath: document.path), ofType: "C++ Source").content
                     
                     /*for view in self.contentViewController.fileView.subviews {
                         view.removeFromSuperview()

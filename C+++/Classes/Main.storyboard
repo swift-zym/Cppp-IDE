@@ -621,7 +621,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="120" y="80" width="1080" height="719"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
                         <value key="minSize" type="size" width="700" height="600"/>
                         <toolbar key="toolbar" implicitIdentifier="CB018D88-E93D-4CED-B9A7-FD4396751838" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="4Dk-sT-khY">
                             <allowedToolbarItems>
@@ -1810,9 +1810,9 @@ Gw
                                                         <rect key="frame" x="0.0" y="0.0" width="610" height="580"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="yLp-eY-fSk" customClass="CDCodeEditorScrollView" customModule="C___" customModuleProvider="target">
+                                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLp-eY-fSk" customClass="CDCodeEditorScrollView" customModule="C___" customModuleProvider="target">
                                                                 <rect key="frame" x="40" y="22" width="447" height="543"/>
-                                                                <clipView key="contentView" copiesOnScroll="NO" id="a6q-mG-7ce">
+                                                                <clipView key="contentView" id="a6q-mG-7ce">
                                                                     <rect key="frame" x="0.0" y="0.0" width="447" height="543"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
@@ -1825,7 +1825,7 @@ Gw
                                                                             <size key="maxSize" width="10000000" height="10000000"/>
                                                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                             <connections>
-                                                                                <binding destination="5gI-5U-AMq" name="value" keyPath="representedObject.content.contentString" id="yhe-lO-OPa">
+                                                                                <binding destination="5gI-5U-AMq" name="value" keyPath="representedObject.contentString" id="yBM-eB-Ury">
                                                                                     <dictionary key="options">
                                                                                         <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                                                                     </dictionary>

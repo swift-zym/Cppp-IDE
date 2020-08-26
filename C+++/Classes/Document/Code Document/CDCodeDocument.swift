@@ -63,7 +63,7 @@ class CDCodeDocument: NSDocument {
             // Set the view controller's represented object as your document.
             if let contentVC = windowController.contentViewController as? CDMainViewController {
                 
-                contentVC.representedObject = self
+                contentVC.representedObject = self.content
                 contentViewController = contentVC
                 contentVC.mainTextView?.didChangeText()
                 contentVC.mainTextView?.document = self

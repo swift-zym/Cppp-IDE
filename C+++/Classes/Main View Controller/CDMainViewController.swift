@@ -101,7 +101,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.consoleView.textView.font = menloFont(ofSize: 13.0)
         
         // initialize the scroll view and the minimap view.
-        self.scrollViewOfTextView.scroll(self.scrollViewOfTextView.contentView, to: NSMakePoint(0, 0))
+        // self.scrollViewOfTextView.scroll(self.scrollViewOfTextView.contentView, to: NSMakePoint(0, 0))
         
     }
     
@@ -183,7 +183,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     override func viewWillAppear() {
         super.viewWillAppear()
         if !self.isOpeningInProjectViewController {
-            self.representedObject = self.view.window?.windowController?.document as? CDCodeDocument
+            self.representedObject = (self.view.window?.windowController?.document as? CDCodeDocument)?.content
         }
     }
     
