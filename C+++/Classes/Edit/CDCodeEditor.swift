@@ -10,7 +10,7 @@ import Cocoa
 
 
 
-open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
+open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDHighlightDelegate {
     
     @IBOutlet weak var lineNumberView: CDCodeEditorLineNumberView!
     
@@ -324,10 +324,12 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
         
         let textStorage = CDHighlightrAttributedString(highlightr: (self.highlightr ?? CDHighlightr()!))
         textStorage.language = "C++"
+        textStorage.highlightDelegate = self
         self.layoutManager?.replaceTextStorage(textStorage)
         
     }
     
+    /*
     override init(frame: NSRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         
@@ -337,11 +339,15 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
         self.highlightr!.setTheme(to: CDSettings.shared.lightThemeName)
         self.highlightr!.theme.setCodeFont(CDSettings.shared.font)
         
-    }
+    }*/
     
     override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
+    }
+    
+    public func shouldHighlight(_ range: NSRange) -> Bool {
+        return self.allowsSyntaxHighlighting
     }
     
 }
