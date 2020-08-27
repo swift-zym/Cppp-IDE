@@ -35,7 +35,7 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
         
         super.didChangeText()
         
-        if self.allowsSyntaxHighlighting {
+       /* if self.allowsSyntaxHighlighting {
             
             let selectedRange = self.selectedRange
             
@@ -44,7 +44,7 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
             self.textStorage!.setAttributedString(highlightedCode!)
             self.setSelectedRange(selectedRange)
             
-        }
+        } */
         
         DispatchQueue.main.async {
             
@@ -321,6 +321,10 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
         
         self.highlightr!.setTheme(to: CDSettings.shared.lightThemeName)
         self.highlightr!.theme.setCodeFont(CDSettings.shared.font)
+        
+        let textStorage = CDHighlightrAttributedString(highlightr: (self.highlightr ?? CDHighlightr()!))
+        textStorage.language = "C++"
+        self.layoutManager?.replaceTextStorage(textStorage)
         
     }
     
