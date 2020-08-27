@@ -30,7 +30,7 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate {
     }
     
     
-    /// When the text changes, highlight the text.
+    
     open override func didChangeText() {
         
         super.didChangeText()
