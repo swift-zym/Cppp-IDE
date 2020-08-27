@@ -621,7 +621,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="120" y="80" width="1080" height="719"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
                         <value key="minSize" type="size" width="700" height="600"/>
                         <toolbar key="toolbar" implicitIdentifier="CB018D88-E93D-4CED-B9A7-FD4396751838" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="4Dk-sT-khY">
                             <allowedToolbarItems>
@@ -2071,15 +2071,127 @@ Gw
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
+                                                            <button toolTip="Run" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="syn-e4-EkF">
+                                                                <rect key="frame" x="123" y="114" width="16" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="bCn-zB-NH3"/>
+                                                                    <constraint firstAttribute="width" constant="16" id="sTK-SD-1fo"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Run" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="4Yv-YE-v7a">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="run:" target="M8q-ws-1g9" id="IXM-vA-VhN"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Step In" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mgi-RT-1Ow">
+                                                                <rect key="frame" x="153" y="112" width="16" height="26"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="mR3-eR-CLU"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="uQ9-Om-eiN"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="fkp-Ot-Vpk">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="stepIn:" target="M8q-ws-1g9" id="pVK-tB-G9K"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Step Out" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6PE-br-DvA">
+                                                                <rect key="frame" x="185" y="112" width="16" height="26"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="WqV-j5-Qxl"/>
+                                                                    <constraint firstAttribute="width" constant="16" id="jdq-UG-l6S"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSInvalidDataFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="5Pi-jI-fGR">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="stepOut:" target="M8q-ws-1g9" id="3EK-ls-Bvh"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Next" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qql-Vp-15s">
+                                                                <rect key="frame" x="218" y="113" width="16" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="ea5-YR-bn1"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="gjI-f3-3u0"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSGoForwardTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="54H-A8-qgd">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="next:" target="M8q-ws-1g9" id="bDJ-4r-Kj8"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Continue" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGh-6Y-eYY">
+                                                                <rect key="frame" x="250" y="113" width="16" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="Yn8-yW-G03"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="mdZ-Fc-IR7"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSGoForwardTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="5z0-yx-IKZ">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="continue:" target="M8q-ws-1g9" id="jMc-e9-bVS"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Finish Debugging" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oWa-sz-M3Q">
+                                                                <rect key="frame" x="282" y="114" width="16" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="FUG-f1-f98"/>
+                                                                    <constraint firstAttribute="width" constant="16" id="oPv-dr-bW6"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Stop" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="pOi-vW-0t2">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="quit:" target="M8q-ws-1g9" id="EEP-TV-ZmN"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="View Variables" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2qu-u9-tEl">
+                                                                <rect key="frame" x="313" y="113" width="16" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="hKQ-3m-YyU"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="vFm-Sz-KUR"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSQuickLookTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="WOm-qb-Cf2">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="frameVariable:" target="M8q-ws-1g9" id="t2k-3q-p0D"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="d64-8C-Dx7" secondAttribute="bottom" id="2RC-oW-b83"/>
+                                                            <constraint firstItem="6PE-br-DvA" firstAttribute="leading" secondItem="Mgi-RT-1Ow" secondAttribute="trailing" constant="16" id="3Li-Xs-Fcy"/>
                                                             <constraint firstItem="d64-8C-Dx7" firstAttribute="top" secondItem="axC-0G-AhU" secondAttribute="bottom" constant="6" id="71P-wM-gHh"/>
+                                                            <constraint firstItem="oWa-sz-M3Q" firstAttribute="leading" secondItem="SGh-6Y-eYY" secondAttribute="trailing" constant="16" id="9eG-Je-153"/>
+                                                            <constraint firstItem="SGh-6Y-eYY" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="BWc-fy-Xi1"/>
+                                                            <constraint firstItem="2qu-u9-tEl" firstAttribute="leading" secondItem="oWa-sz-M3Q" secondAttribute="trailing" constant="15" id="CEU-3E-Ak0"/>
+                                                            <constraint firstItem="qql-Vp-15s" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="Edp-lR-8dF"/>
                                                             <constraint firstItem="d64-8C-Dx7" firstAttribute="leading" secondItem="M8q-ws-1g9" secondAttribute="leading" id="Fak-VD-gfk"/>
                                                             <constraint firstItem="axC-0G-AhU" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="6" id="G00-dx-YRw"/>
+                                                            <constraint firstItem="2qu-u9-tEl" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="J74-ar-MF0"/>
+                                                            <constraint firstItem="oWa-sz-M3Q" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="Jvf-ch-qd6"/>
+                                                            <constraint firstItem="qql-Vp-15s" firstAttribute="leading" secondItem="6PE-br-DvA" secondAttribute="trailing" constant="17" id="OY7-kn-Kml"/>
+                                                            <constraint firstItem="syn-e4-EkF" firstAttribute="leading" secondItem="axC-0G-AhU" secondAttribute="trailing" constant="26" id="RHG-qn-ZAs"/>
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="SFg-5u-qUe"/>
+                                                            <constraint firstItem="SGh-6Y-eYY" firstAttribute="leading" secondItem="qql-Vp-15s" secondAttribute="trailing" constant="16" id="Yxh-eU-qrr"/>
                                                             <constraint firstAttribute="trailing" secondItem="d64-8C-Dx7" secondAttribute="trailing" id="dEC-L9-eIg"/>
+                                                            <constraint firstItem="6PE-br-DvA" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="nrM-AZ-uMj"/>
+                                                            <constraint firstItem="Mgi-RT-1Ow" firstAttribute="leading" secondItem="syn-e4-EkF" secondAttribute="trailing" constant="14" id="ps5-r1-Wor"/>
                                                             <constraint firstItem="axC-0G-AhU" firstAttribute="leading" secondItem="M8q-ws-1g9" secondAttribute="leading" constant="6" id="uRM-gi-HrO"/>
+                                                            <constraint firstItem="Mgi-RT-1Ow" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="xko-WW-YoB"/>
+                                                            <constraint firstItem="syn-e4-EkF" firstAttribute="top" secondItem="M8q-ws-1g9" secondAttribute="top" constant="3" id="zcu-ro-sgO"/>
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="textView" destination="XdU-QA-NPp" id="zbN-Tn-V4S"/>
@@ -2659,7 +2771,10 @@ Gw
         <image name="Cut" width="225" height="225"/>
         <image name="DuplicateFile" width="1120" height="1150"/>
         <image name="NSAddTemplate" width="15" height="11"/>
+        <image name="NSFollowLinkFreestandingTemplate" width="15" height="13"/>
+        <image name="NSGoForwardTemplate" width="11" height="12"/>
         <image name="NSIconViewTemplate" width="16" height="12"/>
+        <image name="NSInvalidDataFreestandingTemplate" width="15" height="13"/>
         <image name="NSListViewTemplate" width="17" height="10"/>
         <image name="NSPathTemplate" width="20" height="10"/>
         <image name="NSQuickLookTemplate" width="20" height="11"/>
@@ -2679,6 +2794,7 @@ Gw
         <image name="Run" width="256" height="256"/>
         <image name="SaveFile" width="1200" height="1200"/>
         <image name="Settings" width="610" height="610"/>
+        <image name="Stop" width="300" height="300"/>
         <image name="Undo" width="510" height="510"/>
         <image name="Update" width="1160" height="1160"/>
         <namedColor name="BackgroundColor">
