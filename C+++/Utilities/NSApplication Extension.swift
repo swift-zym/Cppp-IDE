@@ -32,7 +32,7 @@ extension NSApplication {
                 "Sorry, this is also a bug. Workaround: Create a input file at path \"/Users/{Your Username}/\" and execute the file. Then you will see the output file at the same directory."]
     
     @IBAction func showWebsite(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "https://23786.github.io/Cppp-IDE/")!)
+        NSWorkspace.shared.open(URL(string: "http://www.cpppide.ml/")!)
     }
     
     @IBAction func showGithub(_ sender: Any) {
