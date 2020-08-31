@@ -11,7 +11,7 @@ import Cocoa
 extension NSApplication {
     
     static var cpppHelp = ["Why does the app always crash?":
-                "If the application always crashes, please delete all files at path \"~/Library/C+++\" and restart the app. If the crash still happens, please create an issue at GitHub repo: \"https://github.com/23786/cppp-ide\".",
+                "If the application always crashes, please delete all files at path \"~/Library/C+++\" and restart the app. If the crash still happens, please create an issue at GitHub repo: \"https://github.com/23786/Cppp-IDE\".",
                 
                 "How to install C++ Compiler?":
                 "C++ Compiler is not included in the C+++ app. You need to install it.\nOpen \"Terminal\" and type g++, press enter. A dialog will appear. Follow the instructions and install the commane line tools. Or you can directly compile a file in C+++ and that dialog will appear too.\nIf you have already installed it or installed Xcode, you needn't install g++ again.",
@@ -44,7 +44,7 @@ extension NSApplication {
         if let window = self.keyWindow {
             window.contentViewController?.showAlert("Help", """
             1. Why does the app always crash?
-            If the application always crashes, please delete all files at path \"~/Library/C+++\" and restart the app. If the crash still happens, please create an issue at GitHub repo: \"https://github.com/23786/cppp-ide\".
+            If the application always crashes, please delete all files at path \"~/Library/C+++\" and restart the app. If the crash still happens, please create an issue at GitHub repo: \"https://github.com/23786/Cppp-IDE\".
             
             2. How to install C++ Compiler?
             C++ Compiler is not included in the C+++ app. You need to install it.
