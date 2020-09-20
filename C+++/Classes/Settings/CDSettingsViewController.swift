@@ -37,6 +37,7 @@ class CDSettingsViewController: NSViewController {
     @IBOutlet weak var showsCompletionList: NSButton!
     @IBOutlet weak var checksUpdate: NSButton!
     @IBOutlet weak var liveIssues: NSButton!
+    @IBOutlet weak var autoIndentation: NSButton!
     
     @IBOutlet weak var compiler: NSComboBox!
     @IBOutlet weak var arguments: NSTextField!
@@ -56,6 +57,7 @@ class CDSettingsViewController: NSViewController {
         settings.codeCompletion = self.showsCompletionList.state == .on
         settings.checkUpdateAfterLaunching = self.checksUpdate.state == .on
         settings.showLiveIssues = self.checksUpdate.state == .on
+        settings.autoIndentation = self.autoIndentation.state == .on
         
         let compileSettings = CDCompileSettings.shared!
         compileSettings.compiler = self.compiler.stringValue
@@ -133,6 +135,12 @@ class CDSettingsViewController: NSViewController {
             }
             
             if savedData.checkUpdateAfterLaunching {
+                self.checksUpdate.state = .on
+            } else {
+                self.checksUpdate.state = .off
+            }
+            
+            if savedData.autoIndentation {
                 self.checksUpdate.state = .on
             } else {
                 self.checksUpdate.state = .off

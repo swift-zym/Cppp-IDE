@@ -139,6 +139,10 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDH
             }
         }
         
+        guard CDSettings.shared.autoIndentation else {
+            return
+        }
+        
         let nsstring = NSString(string: self.string)
         let string = nsstring.substring(to: self.selectedRange.location)
         let l = string.challenge("{")

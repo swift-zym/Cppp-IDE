@@ -24,6 +24,7 @@ class CDSettings: NSObject, NSCoding {
     var codeCompletion: Bool!
     var checkUpdateAfterLaunching: Bool!
     var showLiveIssues: Bool!
+    var autoIndentation: Bool!
     
     static let settingsDidChangeNotification: NSNotification.Name = NSNotification.Name(rawValue: "CDSettingsDidChange")
     
@@ -46,13 +47,14 @@ class CDSettings: NSObject, NSCoding {
         static let codeCompletion = "CodeCompletion"
         static let checkUpdateAfterLaunching = "CheckUpdateAfterLaunching"
         static let showLiveIssues = "ShowLiveIssues"
+        static let autoIndentation = "AutoIndentation"
         
     }
     
     
     // MARK: - Initialization
     
-    init?(_ fontName: String? = "Courier", _ fontSize: Int? = 15, _ lightThemeName: String? = "Xcode", _ darkThemeName: String? = "Agate", _ autoComplete: Bool? = true, _ codeCompletion: Bool? = true, _ checkUpdateAfterLaunching: Bool? = true, _ showsLiveIssue: Bool? = true) {
+    init?(_ fontName: String? = "Courier", _ fontSize: Int? = 15, _ lightThemeName: String? = "Xcode", _ darkThemeName: String? = "Agate", _ autoComplete: Bool? = true, _ codeCompletion: Bool? = true, _ checkUpdateAfterLaunching: Bool? = true, _ showsLiveIssue: Bool? = true, _ autoIndentation: Bool? = true) {
         
         // Initialize stored properties.
         self.fontName = fontName ?? "Courier"
@@ -63,6 +65,7 @@ class CDSettings: NSObject, NSCoding {
         self.codeCompletion = codeCompletion ?? true
         self.checkUpdateAfterLaunching = checkUpdateAfterLaunching ?? true
         self.showLiveIssues = showsLiveIssue ?? true
+        self.autoIndentation = autoIndentation ?? true
         
     }
     
@@ -79,6 +82,7 @@ class CDSettings: NSObject, NSCoding {
         coder.encode(codeCompletion, forKey: PropertyKey.codeCompletion)
         coder.encode(checkUpdateAfterLaunching, forKey: PropertyKey.checkUpdateAfterLaunching)
         coder.encode(showLiveIssues, forKey: PropertyKey.showLiveIssues)
+        coder.encode(autoIndentation, forKey: PropertyKey.autoIndentation)
         
     }
     
@@ -92,8 +96,9 @@ class CDSettings: NSObject, NSCoding {
         let codeCompletion = coder.decodeObject(forKey: PropertyKey.codeCompletion) as? Bool
         let checksUpdate = coder.decodeObject(forKey: PropertyKey.checkUpdateAfterLaunching) as? Bool
         let liveIssues = coder.decodeObject(forKey: PropertyKey.showLiveIssues) as? Bool
+        let indentation = coder.decodeObject(forKey: PropertyKey.autoIndentation) as? Bool
         
-        self.init(name, size, light, dark, bool, codeCompletion, checksUpdate, liveIssues)
+        self.init(name, size, light, dark, bool, codeCompletion, checksUpdate, liveIssues, indentation)
         
     }
     
