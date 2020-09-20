@@ -40,11 +40,4 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
     }
     
-    @IBAction func toggleCompileViewShown(_ sender: Any?) {
-        
-        let vc = self.contentViewController as! CDMainViewController
-        vc.toggleCompileView(sender)
-        
-    }
-    
 }

@@ -42,7 +42,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var scrollViewOfTextView: CDCodeEditorScrollView!
     @IBOutlet weak var linesLabel: NSTextField!
     @IBOutlet weak var charactersLabel: NSTextField!
-    @IBOutlet weak var compileView: NSView!
     @IBOutlet weak var consoleView: CDConsoleView!
     @IBOutlet weak var leftView: NSView!
     @IBOutlet weak var bigSplitView: NSSplitView!
@@ -207,7 +206,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         self.leftView.isHidden = true
         self.rightConstraint.constant = 0.0
-        self.compileView.isHidden = true
         self.consoleView.isHidden = true
         
     }
@@ -225,16 +223,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
             self.consoleView.isHidden = false
         } else {
             self.consoleView.isHidden = true
-        }
-    }
-    
-    @IBAction func toggleCompileView(_ sender: Any?) {
-        if self.compileView.isHidden {
-            self.compileView.isHidden = false
-            self.rightConstraint.constant = 253.0
-        } else {
-            self.compileView.isHidden = true
-            self.rightConstraint.constant = 0.0
         }
     }
     
