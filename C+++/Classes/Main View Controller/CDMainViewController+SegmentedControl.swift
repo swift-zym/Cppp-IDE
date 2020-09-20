@@ -9,7 +9,7 @@
 import Cocoa
 
 extension CDMainViewController {
-    
+    /*
     @IBAction func didClickSegmentedControl(_ sender: NSSegmentedControl) {
         
         switch sender.selectedSegment {
@@ -41,5 +41,5 @@ extension CDMainViewController {
         }
         
     }
-    
+    */
 }

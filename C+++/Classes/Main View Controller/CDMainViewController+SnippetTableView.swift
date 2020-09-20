@@ -14,7 +14,7 @@ extension CDMainViewController : CDSnippetPopoverViewControllerDelegate {
         
         let vc = CDSnippetPopoperViewController()
         vc.setup(title: "Edit your title", image: NSImage(named: "Code")!, code: "Edit your code here.\nYou can also click the image to\n change the color of it.", isEditable: true)
-        vc.delegate_tableView = self.snippetAndDiagnositcsTableView
+        // vc.delegate_tableView = self.snippetAndDiagnositcsTableView
         vc.openInPopover(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
         
     }
@@ -25,7 +25,7 @@ extension CDMainViewController : CDSnippetPopoverViewControllerDelegate {
         self.mainTextView.insertText(code, replacementRange: self.mainTextView.selectedRange)
     }
     
-    
+    /*
     @IBAction func search(_ sender: NSButton) {
         
         switch sender.title {
@@ -63,5 +63,5 @@ extension CDMainViewController : CDSnippetPopoverViewControllerDelegate {
         }
         
     }
-    
+    */
 }

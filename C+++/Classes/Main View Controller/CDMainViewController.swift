@@ -117,10 +117,10 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
             
             self.linesLabel.stringValue = "\(lines) lines"
             self.charactersLabel.stringValue = "\(characters) characters"
-            if CDSettings.shared.showLiveIssues {
+           /* if CDSettings.shared.showLiveIssues {
                 self.updateDiagnostics()
             }
-            
+           */
             let dataOfView = self.mainTextView.dataWithPDF(inside: self.mainTextView.bounds)
             let imageOfView = NSImage(data: dataOfView)
             self.minimapView.imageView.image = imageOfView
@@ -140,16 +140,16 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
 
 // MARK: - Segmented Control
     
-    @IBOutlet weak var segmentedControl: NSSegmentedControl!
-    @IBOutlet weak var scrollViewOfTableView: NSScrollView!
-    @IBOutlet weak var snippetAndDiagnositcsTableView: CDSnippetTableView!
+    // @IBOutlet weak var segmentedControl: NSSegmentedControl!
+    // @IBOutlet weak var scrollViewOfTableView: NSScrollView!
+    // @IBOutlet weak var snippetAndDiagnositcsTableView: CDSnippetTableView!
     @IBOutlet weak var addSnippetButton: NSButton!
-    @IBOutlet weak var fileView: NSView!
+    // @IBOutlet weak var fileView: NSView!
     
    
     
 // MARK: - Snippet Table View
-    @IBOutlet weak var snippetSearchField: NSSearchField!
+    // @IBOutlet weak var snippetSearchField: NSSearchField!
    
     
     

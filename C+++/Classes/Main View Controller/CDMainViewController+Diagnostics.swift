@@ -29,7 +29,7 @@ extension CDMainViewController: CDDiagnosticsViewControllerDelegate {
         
     }
     
-    
+    /*
     func updateDiagnostics() {
         
         self.getDiagnostics()
@@ -64,7 +64,7 @@ extension CDMainViewController: CDDiagnosticsViewControllerDelegate {
         }
         
     }
-    
+    */
     private func getDiagnostics() {
         
         self.diagnostics = [CKDiagnostic]()
