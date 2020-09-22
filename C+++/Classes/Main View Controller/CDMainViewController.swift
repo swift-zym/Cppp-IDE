@@ -38,7 +38,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var mainTextView: CDCodeEditor!
     @IBOutlet weak var pathControl: NSPathControl!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var fakeBackground: NSTextField!
+    // @IBOutlet weak var fakeBackground: NSTextField!
     @IBOutlet weak var scrollViewOfTextView: CDCodeEditorScrollView!
     @IBOutlet weak var linesLabel: NSTextField!
     @IBOutlet weak var charactersLabel: NSTextField!
@@ -49,8 +49,10 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var lineNumberView: CDCodeEditorLineNumberView!
     @IBOutlet weak var minimapView: CDMinimapView!
     @IBOutlet weak var minimapViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftSidebarTableView: NSTableView!
     
     var observation: NSKeyValueObservation?
+    var snippetDataSource = CDSnippetTableViewDataSource()
     
     
     
@@ -99,6 +101,8 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         self.consoleView.textView.font = menloFont(ofSize: 13.0)
         
+        self.leftSidebarTableView.delegate = self.snippetDataSource
+        self.leftSidebarTableView.dataSource = self.snippetDataSource
         // initialize the scroll view and the minimap view.
         // self.scrollViewOfTextView.scroll(self.scrollViewOfTextView.contentView, to: NSMakePoint(0, 0))
         

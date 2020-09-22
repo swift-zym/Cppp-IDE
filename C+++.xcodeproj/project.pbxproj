@@ -193,6 +193,7 @@
 		18B3C790242836A500F4CA14 /* CDDocumentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3C78F242836A500F4CA14 /* CDDocumentContent.swift */; };
 		18B3C7942428378E00F4CA14 /* CDMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3C7932428378E00F4CA14 /* CDMainWindowController.swift */; };
 		18BC5CEE24D7AB240062DF2C /* CDConsoleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867F85224D6AF86007A0D5D /* CDConsoleTextView.swift */; };
+		18CDFAE1251780C900C3F05B /* CDSnippetTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */; };
 		18E17EBB24A809D200392009 /* CDCodeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E17EB924A809D200392009 /* CDCodeCompletionViewController.swift */; };
 		18E17EBC24A809D200392009 /* CDCodeCompletionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E17EBA24A809D200392009 /* CDCodeCompletionViewController.xib */; };
 		18E17F0E24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E17F0D24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift */; };
@@ -436,6 +437,7 @@
 		18B3C78B24282C2100F4CA14 /* Code_Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Code_Editor.entitlements; sourceTree = "<group>"; };
 		18B3C78F242836A500F4CA14 /* CDDocumentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDocumentContent.swift; sourceTree = "<group>"; };
 		18B3C7932428378E00F4CA14 /* CDMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainWindowController.swift; sourceTree = "<group>"; };
+		18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetTableViewDataSource.swift; sourceTree = "<group>"; };
 		18E17EB924A809D200392009 /* CDCodeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeCompletionViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		18E17EBA24A809D200392009 /* CDCodeCompletionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDCodeCompletionViewController.xib; sourceTree = "<group>"; };
 		18E17F0D24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeCompletionViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -571,8 +573,8 @@
 		183BF3C72428801C007AF6AC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				18E0B01C242C52650062049C /* Document */,
 				18B1859824699A2800B579AD /* Main.storyboard */,
+				18E0B01C242C52650062049C /* Document */,
 				18B1859524698AA400B579AD /* Main View Controller */,
 				18B1858324682FC300B579AD /* Debug */,
 				185CD64024CC607C00A9511B /* Search */,
@@ -839,6 +841,7 @@
 				183BE91824AEBD7B000F60A0 /* CDMainViewController+SettingsView.swift */,
 				183BE91624AEBD26000F60A0 /* CDMainViewController+Appearance.swift */,
 				183BE91424AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift */,
+				18CDFADF251780A400C3F05B /* Left Sidebar */,
 				183BE91224AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift */,
 				183BE91024AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift */,
 				1881D5F024D011DC0082F2C4 /* CDMainViewController+Search.swift */,
@@ -878,6 +881,14 @@
 				18B3C78B24282C2100F4CA14 /* Code_Editor.entitlements */,
 			);
 			path = "C+++";
+			sourceTree = "<group>";
+		};
+		18CDFADF251780A400C3F05B /* Left Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */,
+			);
+			path = "Left Sidebar";
 			sourceTree = "<group>";
 		};
 		18D4DD6B246A2C1A00B97F32 /* Project */ = {
@@ -1158,6 +1169,7 @@
 				18E17EBB24A809D200392009 /* CDCodeCompletionViewController.swift in Sources */,
 				181F2BD924AC78C700C4B217 /* CKSourceLocation.m in Sources */,
 				18E17F0E24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift in Sources */,
+				18CDFAE1251780C900C3F05B /* CDSnippetTableViewDataSource.swift in Sources */,
 				181F2BD524AC78C700C4B217 /* CKIndex.m in Sources */,
 				1827400C24A6343000AF3613 /* CDToolbarStateButton.swift in Sources */,
 				1868F16124E914C50077FD8D /* CDProjectNewFileChooseTypeViewController.swift in Sources */,
