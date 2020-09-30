@@ -8,7 +8,7 @@
 
 import Cocoa
 
-extension CDMainViewController : CDSnippetPopoverViewControllerDelegate {
+extension CDMainViewController/* : CDSnippetPopoverViewControllerDelegate*/ {
     
     @IBAction func addItem(_ sender: NSButton) {
         

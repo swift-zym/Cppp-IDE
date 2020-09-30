@@ -8,18 +8,6 @@
 
 import Cocoa
 
-
-@objc
-protocol CDSnippetPopoverViewControllerDelegate {
-    
-    @objc optional func popoverViewController(_ viewController: CDSnippetPopoperViewController, shouldAddToCode code: String)
-    @objc optional func popoverViewController(_ viewController: CDSnippetPopoperViewController, shouldRemoveItemWithTitle title: String)
-    @objc optional func popoverViewController(_ viewController: CDSnippetPopoperViewController, didSetImage image: NSImage)
-    @objc optional func popoverViewController(_ viewController: CDSnippetPopoperViewController, shouldAddItemWithTitle title: String, image: NSImage, code: String)
-    
-}
-
-
 class CDSnippetPopoperViewController: NSViewController {
     
     
@@ -36,15 +24,7 @@ class CDSnippetPopoperViewController: NSViewController {
     public var imageNameIndex: Int = 0
     private var popover: NSPopover!
     var isEditable: Bool = false
-    
-    /// The Table View.
-    var delegate_tableView: CDSnippetPopoverViewControllerDelegate!
-    /// The Table View Cell.
-    var delegate_tableViewCell: CDSnippetPopoverViewControllerDelegate!
-    /// The CDTextView.
-    var delegate_textView: CDSnippetPopoverViewControllerDelegate!
-    
-    
+    /*
     
     @IBAction func addToCode(_ sender: Any) {
         self.delegate_textView.popoverViewController?(self, shouldAddToCode: self.textView.string)
@@ -55,9 +35,9 @@ class CDSnippetPopoperViewController: NSViewController {
         self.delegate_tableView?.popoverViewController?(self, shouldRemoveItemWithTitle: self.titleLabel.stringValue)
         self.popover?.close()
     }
-    
+    */
     @objc func addItem() {
-        self.delegate_tableView?.popoverViewController?(self, shouldAddItemWithTitle: self.titleLabel.stringValue, image: self.imageView.image!, code: self.textView.string)
+        // self.delegate_tableView?.popoverViewController?(self, shouldAddItemWithTitle: self.titleLabel.stringValue, image: self.imageView.image!, code: self.textView.string)
         self.popover?.close()
     }
     
@@ -70,7 +50,7 @@ class CDSnippetPopoperViewController: NSViewController {
         imageNameIndex += 1
         imageNameIndex %= 5
         self.imageView.image = NSImage(named: imageNames[imageNameIndex])!
-        self.delegate_tableViewCell.popoverViewController?(self, didSetImage: self.imageView.image!)
+        // self.delegate_tableViewCell.popoverViewController?(self, didSetImage: self.imageView.image!)
         
     }
 
@@ -102,7 +82,7 @@ class CDSnippetPopoperViewController: NSViewController {
         self.textView.didChangeText()
         self.textView.isEditable = isEditable
         self.removeButton.target = self
-        self.removeButton.action = #selector(removeItem)
+        // self.removeButton.action = #selector(removeItem)
         
         if self.isEditable == true {
             

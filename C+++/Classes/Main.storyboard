@@ -1171,6 +1171,9 @@ Gw
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="changeSidebar:" target="5gI-5U-AMq" id="Jn6-vT-6VU"/>
+                                                </connections>
                                             </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzI-SZ-yvK">
                                                 <rect key="frame" x="183" y="650" width="24" height="30"/>
@@ -1287,6 +1290,9 @@ Gw
                                                                     </prototypeCellViews>
                                                                 </tableColumn>
                                                             </tableColumns>
+                                                            <connections>
+                                                                <action selector="tableViewClicked:" target="5gI-5U-AMq" id="rU5-yo-4kv"/>
+                                                            </connections>
                                                         </tableView>
                                                     </subviews>
                                                     <nil key="backgroundColor"/>

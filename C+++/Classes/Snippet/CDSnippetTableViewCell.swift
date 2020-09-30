@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CDSnippetTableViewCell: NSView, CDSnippetPopoverViewControllerDelegate {
+class CDSnippetTableViewCell: NSView/*, CDSnippetPopoverViewControllerDelegate*/ {
     
     // MARK: - Properties
     
@@ -60,8 +60,8 @@ class CDSnippetTableViewCell: NSView, CDSnippetPopoverViewControllerDelegate {
         
         let vc = CDSnippetPopoperViewController()
         vc.setup(title: self.title, image: self.titleLabel.image, code: self.code, isEditable: false)
-        vc.delegate_tableView = (self.superview) as! CDSnippetTableView
-        vc.delegate_textView = (((self.superview) as! CDSnippetTableView).superview?.superview?.window?.contentViewController) as! CDMainViewController
+        // vc.delegate_tableView = (self.superview) as! CDSnippetTableView
+        // vc.delegate_textView = (((self.superview) as! CDSnippetTableView).superview?.superview?.window?.contentViewController) as! CDMainViewController
         vc.openInPopover(relativeTo: self.frame, of: self, preferredEdge: .maxX)
         
     }

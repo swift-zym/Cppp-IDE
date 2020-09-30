@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class CDSnippetTableViewDataSource: NSObject, NSTableViewDelegate, NSTableViewDataSource {
+protocol CDLeftSidebarTableViewDelegate: NSTableViewDelegate {
+    func didClick(tableView: NSTableView)
+}
+
+class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
     
     override init() {
         super.init()
@@ -34,6 +38,15 @@ class CDSnippetTableViewDataSource: NSObject, NSTableViewDelegate, NSTableViewDa
             return view
         }
         return nil
+    }
+    
+    func didClick(tableView: NSTableView) {
+        
+        let vc = CDSnippetPopoperViewController()
+        let current = CDSnippetTableViewDataSource.savedSnippets[tableView.clickedRow]
+        vc.setup(title: current.title, image: current.titleLabel.image, code: current.code, isEditable: false)
+        vc.openInPopover(relativeTo: tableView.view(atColumn: 0, row: tableView.clickedRow, makeIfNecessary: true)!.bounds, of: tableView.view(atColumn: 0, row: tableView.clickedRow, makeIfNecessary: true)!, preferredEdge: .maxX)
+        
     }
     
 }

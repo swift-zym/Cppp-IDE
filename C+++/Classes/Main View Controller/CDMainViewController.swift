@@ -38,7 +38,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var mainTextView: CDCodeEditor!
     @IBOutlet weak var pathControl: NSPathControl!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
-    // @IBOutlet weak var fakeBackground: NSTextField!
     @IBOutlet weak var scrollViewOfTextView: CDCodeEditorScrollView!
     @IBOutlet weak var linesLabel: NSTextField!
     @IBOutlet weak var charactersLabel: NSTextField!
@@ -53,6 +52,14 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
     var observation: NSKeyValueObservation?
     var snippetDataSource = CDSnippetTableViewDataSource()
+    
+    var leftSidebarMode: LeftSidebarMode = .snippets
+    
+    enum LeftSidebarMode: Int {
+        case snippets = 0
+        case recentFiles = 1
+        case diagnostics = 2
+    }
     
     
     
@@ -106,6 +113,13 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         // initialize the scroll view and the minimap view.
         // self.scrollViewOfTextView.scroll(self.scrollViewOfTextView.contentView, to: NSMakePoint(0, 0))
         
+    }
+    
+    
+    @IBAction func tableViewClicked(_ sender: Any?) {
+        if let delegate = self.leftSidebarTableView.delegate as? CDLeftSidebarTableViewDelegate {
+            delegate.didClick(tableView: self.leftSidebarTableView)
+        }
     }
     
     

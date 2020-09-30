@@ -9,7 +9,7 @@
 import Cocoa
 import os.log
 
-class CDSnippetTableView: CDFlippedView, CDSnippetPopoverViewControllerDelegate {
+class CDSnippetTableView: CDFlippedView/*, CDSnippetPopoverViewControllerDelegate*/ {
     
     // MARK: - Properties
     
