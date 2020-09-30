@@ -77,7 +77,7 @@ class CDCppLexer: SKRegexLexer {
         
         generators.append(regexGenerator("\\.[A-Za-z_]+\\w*", tokenType: .identifier))
         
-        let keywords = "break case int short long auto catch class continue convenience default else enum false asm signed unsigned for func guard if in init inout internal NULL virtual char operator private public new const friend template inline union goto float double void register return this static struct switch throw true try typedef while extern sizeof".components(separatedBy: " ")
+        let keywords = "int float while private char catch import module export virtual operator sizeof dynamic_cast typedef const_cast const for static_cast union namespace unsigned long volatile static protected bool template mutable if public friend do goto auto void enum else break extern using asm case typeid short reinterpret_cast default double register explicit signed typename try this switch continue inline delete alignof constexpr decltype noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary atomic_bool atomic_char atomic_schar atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong atomic_ullong new throw return and or not".components(separatedBy: " ")
         
         generators.append(keywordGenerator(keywords, tokenType: .keyword))
         
