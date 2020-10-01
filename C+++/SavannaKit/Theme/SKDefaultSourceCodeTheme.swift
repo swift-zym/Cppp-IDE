@@ -46,6 +46,9 @@ public struct SKDefaultSourceCodeTheme: SKSourceCodeTheme {
 			
 		case .comment:
 			return Color(red: 69.0/255.0, green: 187.0/255.0, blue: 62.0/255.0, alpha: 1.0)
+            
+        case .preprocesscor:
+            return .orange
 			
 		case .editorPlaceholder:
 			return backgroundColor

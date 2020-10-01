@@ -20,7 +20,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     
     override func insertText(_ string: Any, replacementRange: NSRange) {
         super.insertText(string, replacementRange: replacementRange)
-        self.complete(self)
+        self.complete(nil)
     }
     
     override func completions(forPartialWordRange charRange: NSRange, indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
@@ -66,7 +66,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
                                     case CKCompletionChunkKindTypedText:
                                         typedText = _chunk.text
                                     case CKCompletionChunkKindPlaceholder:
-                                        otherTexts.append("{\(_chunk.text!)}")
+                                        otherTexts.append("<#\(_chunk.text!)#>")
                                     default:
                                         otherTexts.append(_chunk.text)
                                 }
