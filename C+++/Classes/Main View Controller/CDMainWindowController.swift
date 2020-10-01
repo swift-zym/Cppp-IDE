@@ -35,8 +35,8 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
         let vc = (self.contentViewController as! CDMainViewController)
         vc.enterSimpleMode(self)
-        vc.mainTextView.allowsCodeCompletion = false
-        vc.mainTextView.allowsSyntaxHighlighting = false
+        // vc.mainTextView.allowsCodeCompletion = false
+        // vc.mainTextView.allowsSyntaxHighlighting = false
         
     }
     

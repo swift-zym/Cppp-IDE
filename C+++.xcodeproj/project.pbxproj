@@ -102,6 +102,7 @@
 		1881D5F324D139B40082F2C4 /* Update.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1881D5F224D139B40082F2C4 /* Update.storyboard */; };
 		1881D5F524D13BFF0082F2C4 /* CDUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D5F424D13BFF0082F2C4 /* CDUpdateViewController.swift */; };
 		1895B51C24A716E60019580D /* CDFlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895B51B24A716E60019580D /* CDFlippedView.swift */; };
+		1899D9232525B8A200EE5780 /* SavannaKit+CodeCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */; };
 		18A41AA2242C756700AFC422 /* CDHighlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A41AA1242C756700AFC422 /* CDHighlightr.swift */; };
 		18A41AA4242C758B00AFC422 /* CDHighlightrTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A41AA3242C758B00AFC422 /* CDHighlightrTheme.swift */; };
 		18A41AA6242C75A600AFC422 /* CDHighlightrHTMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A41AA5242C75A600AFC422 /* CDHighlightrHTMLUtils.swift */; };
@@ -365,6 +366,7 @@
 		1881D5F224D139B40082F2C4 /* Update.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Update.storyboard; sourceTree = "<group>"; };
 		1881D5F424D13BFF0082F2C4 /* CDUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUpdateViewController.swift; sourceTree = "<group>"; };
 		1895B51B24A716E60019580D /* CDFlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFlippedView.swift; sourceTree = "<group>"; };
+		1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavannaKit+CodeCompletion.swift"; sourceTree = "<group>"; };
 		18A41AA1242C756700AFC422 /* CDHighlightr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDHighlightr.swift; sourceTree = "<group>"; };
 		18A41AA3242C758B00AFC422 /* CDHighlightrTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDHighlightrTheme.swift; sourceTree = "<group>"; };
 		18A41AA5242C75A600AFC422 /* CDHighlightrHTMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDHighlightrHTMLUtils.swift; sourceTree = "<group>"; };
@@ -470,7 +472,7 @@
 		18B1859824699A2800B579AD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18B3C77D24282C1F00F4CA14 /* C+++.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "C+++.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B3C77F24282C1F00F4CA14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18B3C78124282C1F00F4CA14 /* CDMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		18B3C78124282C1F00F4CA14 /* CDMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		18B3C78324282C1F00F4CA14 /* CDCodeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeDocument.swift; sourceTree = "<group>"; };
 		18B3C78524282C2100F4CA14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B3C78A24282C2100F4CA14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -704,6 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				183BF3C9242906B3007AF6AC /* CDCodeEditor.swift */,
+				1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */,
 				1849ED8E24DFCC55006DCDB4 /* CDCodeEditor Extension.swift */,
 				1801DF5E24D2DDC2005CAD42 /* CDCodeEditorLineNumberView.swift */,
 				1801DF6024D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift */,
@@ -1247,6 +1250,7 @@
 				18669BE324E7D20D00C9DEE2 /* CDProjectMainViewController+Dragging.swift in Sources */,
 				182B3D702524A83500515375 /* CDCppLexer.swift in Sources */,
 				182796FF24CE63A60058F429 /* CDSearchResult.swift in Sources */,
+				1899D9232525B8A200EE5780 /* SavannaKit+CodeCompletion.swift in Sources */,
 				181F2BD024AC78C700C4B217 /* CKToken+Private.m in Sources */,
 				182B3D642524A83500515375 /* SKSourceCodeTheme.swift in Sources */,
 				18CDFAE5251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift in Sources */,

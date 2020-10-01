@@ -21,7 +21,7 @@ let aqua = NSAppearance(named: .aqua)
 
 
 
-class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDelegate, NSSplitViewDelegate {
+class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDelegate, NSSplitViewDelegate, SKSyntaxTextViewDelegate {
     
     
     func setStatus(string: String) {
@@ -35,7 +35,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     var isOpeningInProjectViewController = false
     
     
-    @IBOutlet weak var mainTextView: CDCodeEditor!
+    @IBOutlet weak var mainTextView: SKSyntaxTextView!
     @IBOutlet weak var pathControl: NSPathControl!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewOfTextView: CDCodeEditorScrollView!
@@ -82,8 +82,18 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
 // MARK: - viewDidLoad()
     
+    let defaultTheme = SKDefaultSourceCodeTheme()
+    let lexer = CDCppLexer()
+    
+    func lexerForSource(_ source: String) -> SKLexer {
+        return self.lexer
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.mainTextView.theme = defaultTheme
+        self.mainTextView.delegate = self
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
        
@@ -99,12 +109,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(_:)), name: CDSettings.settingsDidChangeNotification, object: nil)
         
-        self.mainTextView.codeEditorDelegate = self
-        self.mainTextView.scrollView = self.scrollViewOfTextView
-            
-        // set the font of the text view
-        self.mainTextView.font = CDSettings.shared.font
-        self.mainTextView.highlightr?.theme.setCodeFont(CDSettings.shared.font)
+        // TODO: Set the theme and font of the code editor.
         
         self.consoleView.textView.font = menloFont(ofSize: 13.0)
         
@@ -128,7 +133,18 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
 // MARK: - Code Editor Delegate
     
+    func didChangeText(_ syntaxTextView: SKSyntaxTextView) {
+        self.linesLabel.stringValue = "\(syntaxTextView.textView.textStorage?.paragraphs.count ?? 0) lines"
+        self.charactersLabel.stringValue = "\(syntaxTextView.text.count) characters"
+        // save document
+        guard let document = self.document else {
+            return
+        }
+        document.content.contentString = self.mainTextView.text
+        
+    }
     
+    /*
     func codeEditorDidChangeText(lines: Int, characters: Int) {
         
         DispatchQueue.main.async {
@@ -148,7 +164,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         }
         
     }
-    
+    */
 
     
     
@@ -181,42 +197,17 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
 // MARK: - Document
     
-    override var representedObject: Any? {
-        didSet {
-            // Pass down the represented object to all of the child view controllers.
-            for child in children {
-                child.representedObject = representedObject
-            }
-        }
-    }
-
-    weak var document: CDCodeDocument? {
-        if let docRepresentedObject = representedObject as? CDCodeDocument {
-            return docRepresentedObject
-        }
-        return nil
-    }
+    weak var document: CDCodeDocument?
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        if !self.isOpeningInProjectViewController {
-            self.representedObject = (self.view.window?.windowController?.document as? CDCodeDocument)?.content
-        }
+        self.document = self.view.window?.windowController?.document as? CDCodeDocument
+        self.mainTextView.text = document?.content.contentString ?? ""
+        
     }
     
     
     
-    
-    
-// MARK: - NSTextViewDelegate
-
-    func textDidBeginEditing(_ notification: Notification) {
-        document?.objectDidBeginEditing(self)
-    }
-
-    func textDidEndEditing(_ notification: Notification) {
-        document?.objectDidEndEditing(self)
-    }
     
     
     

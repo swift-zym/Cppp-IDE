@@ -65,8 +65,6 @@ class CDCodeDocument: NSDocument {
                 
                 contentVC.representedObject = self.content
                 contentViewController = contentVC
-                contentVC.mainTextView?.didChangeText()
-                contentVC.mainTextView?.document = self
                 
                 if self.fileType == "Input File" || self.fileType == "Output File" {
                     windowController.disableCompiling()

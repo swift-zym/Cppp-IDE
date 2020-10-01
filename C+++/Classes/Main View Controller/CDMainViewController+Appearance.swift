@@ -13,14 +13,14 @@ extension CDMainViewController {
     func convertToLightMode() {
         
         // Change the text view's highlight theme to Light Mode.
-        self.mainTextView.highlightr?.setTheme(to: CDSettings.shared.lightThemeName)
+        // self.mainTextView.highlightr?.setTheme(to: CDSettings.shared.lightThemeName)
         
     }
     
     func convertToDarkMode() {
         
         // Change the text view's highlight theme to Dark Mode.
-        self.mainTextView.highlightr?.setTheme(to: CDSettings.shared.darkThemeName)
+        // self.mainTextView.highlightr?.setTheme(to: CDSettings.shared.darkThemeName)
         
     }
     
@@ -44,11 +44,7 @@ extension CDMainViewController {
                     
             }
             
-            // Change the font of the text view.
-            self.mainTextView.didChangeText()
-            self.mainTextView.highlightr?.theme.setCodeFont(CDSettings.shared.font)
-            self.mainTextView.font = CDSettings.shared.font
-            
+            // TODO: Switch between dark mode and light mode
         } else {
             
             if self.view.window != nil {

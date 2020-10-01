@@ -32,11 +32,11 @@ extension CDMainViewController: CDSearchViewControllerDelegate {
     func searchViewController(_ vc: CDSearchViewController, shouldSearchForWordInTextView word: String) {
         let control = NSControl()
         control.tag = 1
-        self.mainTextView?.performFindPanelAction(control)
+        self.mainTextView?.textView.performFindPanelAction(control)
     }
     
     func searchViewController(_ vc: CDSearchViewController, shouldInsertCodeSnippetWithCode code: String) {
-        self.mainTextView?.insertText(code, replacementRange: self.mainTextView.selectedRange)
+        self.mainTextView?.insertText(code)
     }
     
 }

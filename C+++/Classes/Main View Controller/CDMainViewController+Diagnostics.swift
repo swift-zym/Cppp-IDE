@@ -11,11 +11,11 @@ import Cocoa
 extension CDMainViewController: CDDiagnosticsViewControllerDelegate {
     
     func diagnosticsViewController(_ vc: CDDiagnosticsViewController, shouldReplaceRange range: NSRange, with string: String) {
-        self.mainTextView.replaceCharacters(in: range, with: string)
+        self.mainTextView.textView.replaceCharacters(in: range, with: string)
     }
     
     func stringInRange(range: NSRange) -> String {
-        return self.mainTextView.string.nsString.substring(with: range)
+        return self.mainTextView.textView.string.nsString.substring(with: range)
     }
     
     
@@ -68,7 +68,8 @@ extension CDMainViewController: CDDiagnosticsViewControllerDelegate {
     private func getDiagnostics() {
         
         self.diagnostics = [CKDiagnostic]()
-        for item in self.mainTextView.translationUnit.diagnostics! {
+        // TODO: Fix Diagnostic
+        /*for item in self.mainTextView.translationUnit.diagnostics! {
             
             if let diagnostic = item as? CKDiagnostic {
                 
@@ -80,7 +81,7 @@ extension CDMainViewController: CDDiagnosticsViewControllerDelegate {
                 
             }
             
-        }
+        }*/
         
     }
     

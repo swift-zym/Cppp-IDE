@@ -22,7 +22,7 @@ extension CDMainViewController/* : CDSnippetPopoverViewControllerDelegate*/ {
     
     // CDSnippetPopoverViewControllerDelegate
     func popoverViewController(_ viewController: CDSnippetPopoperViewController, shouldAddToCode code: String) {
-        self.mainTextView.insertText(code, replacementRange: self.mainTextView.selectedRange)
+        self.mainTextView.insertText(code)
     }
     
     /*

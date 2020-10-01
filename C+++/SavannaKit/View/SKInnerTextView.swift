@@ -19,6 +19,10 @@ class SKInnerTextView: TextView {
 	var theme: SKSyntaxColorTheme?
 	
 	var cachedParagraphs: [SKParagraph]?
+    
+    // Code Completion
+    var lastTimeCompletionResults = [CDCompletionResult]()
+    var codeCompletionViewController: CDCodeCompletionViewController!
 	
 	func invalidateCachedParagraphs() {
 		cachedParagraphs = nil

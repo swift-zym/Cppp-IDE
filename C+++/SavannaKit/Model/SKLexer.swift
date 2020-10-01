@@ -10,6 +10,6 @@ import Foundation
 
 public protocol SKLexer {
 	
-	func getSavannaTokens(input: String) -> [Token]
+	func getSavannaTokens(input: String) -> [SKToken]
 	
 }

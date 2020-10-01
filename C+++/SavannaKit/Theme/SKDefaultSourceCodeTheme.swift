@@ -20,11 +20,11 @@ public struct SKDefaultSourceCodeTheme: SKSourceCodeTheme {
 	
 	public let lineNumbersStyle: SKLineNumbersStyle? = SKLineNumbersStyle(font: Font(name: "Menlo", size: 16)!, textColor: lineNumbersColor)
 	
-	public let gutterStyle: SKGutterStyle = SKGutterStyle(backgroundColor: Color(red: 21/255.0, green: 22/255, blue: 31/255, alpha: 1.0), minimumWidth: 32)
+    public let gutterStyle: SKGutterStyle = SKGutterStyle(backgroundColor: .textBackgroundColor, minimumWidth: 40)
 	
 	public let font = Font(name: "Menlo", size: 15)!
 	
-	public let backgroundColor = Color(red: 31/255.0, green: 32/255, blue: 41/255, alpha: 1.0)
+    public let backgroundColor = NSColor.textBackgroundColor
 	
 	public func color(for syntaxColorType: SKSourceCodeTokenType) -> Color {
 		

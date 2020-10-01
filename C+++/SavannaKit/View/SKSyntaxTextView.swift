@@ -6,14 +6,7 @@
 //  Copyright © 2017 Silver Fox. All rights reserved.
 //
 
-import Foundation
-import CoreGraphics
-
-#if os(macOS)
-	import AppKit
-#else
-	import UIKit
-#endif
+import Cocoa
 
 public protocol SKSyntaxTextViewDelegate: class {
 	
@@ -46,7 +39,6 @@ struct SKThemeInfo {
 	
 }
 
-@IBDesignable
 open class SKSyntaxTextView: View {
 
 	var previousSelectedRange: NSRange?
@@ -66,29 +58,8 @@ open class SKSyntaxTextView: View {
 	}
 	
 	var ignoreSelectionChange = false
-	
-	#if os(macOS)
-	
+    
 	let wrapperView = SKTextViewWrapperView()
-
-	#endif
-	
-	#if os(iOS)
-
-	public var contentInset: UIEdgeInsets = .zero {
-		didSet {
-			textView.contentInset = contentInset
-			textView.scrollIndicatorInsets = contentInset
-		}
-	}
-	
-	open override var tintColor: UIColor! {
-		didSet {
-
-		}
-	}
-	
-	#else
 	
 	public var tintColor: NSColor! {
 		set {
@@ -98,8 +69,6 @@ open class SKSyntaxTextView: View {
 			return textView.tintColor
 		}
 	}
-	
-	#endif
     
     public override init(frame: CGRect) {
         textView = SKSyntaxTextView.createInnerTextView()
@@ -116,144 +85,83 @@ open class SKSyntaxTextView: View {
     private static func createInnerTextView() -> SKInnerTextView {
         let textStorage = NSTextStorage()
         let layoutManager = SKSyntaxTextViewLayoutManager()
-		#if os(macOS)
+        
         let containerSize = CGSize(width: 0, height: CGFloat.greatestFiniteMagnitude)
-		#endif
-		
-		#if os(iOS)
-		let containerSize = CGSize(width: 0, height: 0)
-		#endif
 		
         let textContainer = NSTextContainer(size: containerSize)
         
         textContainer.widthTracksTextView = true
 		
-		#if os(iOS)
-		textContainer.heightTracksTextView = true
-		#endif
         layoutManager.addTextContainer(textContainer)
         textStorage.addLayoutManager(layoutManager)
         
         return SKInnerTextView(frame: .zero, textContainer: textContainer)
     }
 
-	#if os(macOS)
-
-		public let scrollView = NSScrollView()
-
-	#endif
+    public let scrollView = NSScrollView()
 	
 	private func setup() {
 	
 		textView.gutterWidth = 20
-		
-		#if os(iOS)
-			
-			textView.translatesAutoresizingMaskIntoConstraints = false
-			
-		#endif
-		
-		#if os(macOS)
+    
+        wrapperView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.backgroundColor = .clear
+        scrollView.drawsBackground = false
+        
+        scrollView.contentView.backgroundColor = .clear
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
-			wrapperView.translatesAutoresizingMaskIntoConstraints = false
-			
-			scrollView.backgroundColor = .clear
-			scrollView.drawsBackground = false
-			
-			scrollView.contentView.backgroundColor = .clear
-			
-			scrollView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(scrollView)
+        
+        addSubview(wrapperView)
 
-			addSubview(scrollView)
-			
-			addSubview(wrapperView)
-
-			
-			scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-			scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-			scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-			scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-			
-			wrapperView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-			wrapperView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-			wrapperView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-			wrapperView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-			
-			
-			scrollView.borderType = .noBorder
-			scrollView.hasVerticalScroller = true
-			scrollView.hasHorizontalScroller = false
-			scrollView.scrollerKnobStyle = .light
-			
-			scrollView.documentView = textView
-			
-			scrollView.contentView.postsBoundsChangedNotifications = true
-			
-			NotificationCenter.default.addObserver(self, selector: #selector(didScroll(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
-			
-			textView.minSize = NSSize(width: 0.0, height: self.bounds.height)
-			textView.maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-			textView.isVerticallyResizable = true
-			textView.isHorizontallyResizable = false
-			textView.autoresizingMask = [.width, .height]
-			textView.isEditable = true
-			textView.isAutomaticQuoteSubstitutionEnabled = false
-			textView.allowsUndo = true
-			
-			textView.textContainer?.containerSize = NSSize(width: self.bounds.width, height: .greatestFiniteMagnitude)
-			textView.textContainer?.widthTracksTextView = true
-			
-//			textView.layerContentsRedrawPolicy = .beforeViewResize
-			
-			wrapperView.textView = textView
-			
-		#else
-			
-			self.addSubview(textView)
-			textView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-			textView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-			textView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-			textView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-		
-			self.contentMode = .redraw
-			textView.contentMode = .topLeft
-		
-			textViewSelectedRangeObserver = contentTextView.observe(\UITextView.selectedTextRange) { [weak self] (textView, value) in
-			
-				if let `self` = self {
-					self.delegate?.didChangeSelectedRange(self, selectedRange: self.contentTextView.selectedRange)
-				}
-
-			}
-			
-		#endif
-		
+        
+        scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        
+        wrapperView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        wrapperView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        wrapperView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        wrapperView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        
+        
+        scrollView.borderType = .noBorder
+        scrollView.hasVerticalScroller = true
+        scrollView.hasHorizontalScroller = false
+        scrollView.scrollerKnobStyle = .light
+        
+        scrollView.documentView = textView
+        
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didScroll(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
+        
+        textView.minSize = NSSize(width: 0.0, height: self.bounds.height)
+        textView.maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+        textView.isVerticallyResizable = true
+        textView.isHorizontallyResizable = false
+        textView.autoresizingMask = [.width, .height]
+        textView.isEditable = true
+        textView.isAutomaticQuoteSubstitutionEnabled = false
+        textView.allowsUndo = true
+        
+        textView.textContainer?.containerSize = NSSize(width: self.bounds.width, height: .greatestFiniteMagnitude)
+        textView.textContainer?.widthTracksTextView = true
+        
+//		textView.layerContentsRedrawPolicy = .beforeViewResize
+        
+        wrapperView.textView = textView
+    
 		textView.innerDelegate = self
 		textView.delegate = self
 		
 		textView.text = ""
 
-		#if os(iOS)
-
-		textView.autocapitalizationType = .none
-		textView.keyboardType = .default
-		textView.autocorrectionType = .no
-		textView.spellCheckingType = .no
-			
-		if #available(iOS 11.0, *) {
-			textView.smartQuotesType = .no
-			textView.smartInsertDeleteType = .no
-		}
-			
-		textView.keyboardAppearance = .dark
-
-		self.clipsToBounds = true
-		
-		#endif
-
 	}
-	
-	#if os(macOS)
 	
 	open override func viewDidMoveToSuperview() {
 		super.viewDidMoveToSuperview()
@@ -266,17 +174,7 @@ open class SKSyntaxTextView: View {
 		
 	}
 
-	#endif
-
 	// MARK: -
-	
-	#if os(iOS)
-
-	override open var isFirstResponder: Bool {
-		return textView.isFirstResponder
-	}
-	
-	#endif
 	
 	@IBInspectable
 	public var text: String {
@@ -352,12 +250,7 @@ open class SKSyntaxTextView: View {
 			return
 		}
 		
-		let textStorage: NSTextStorage
-		
-        textStorage = textView.textStorage!
-		
-		
-//		self.backgroundColor = theme.backgroundColor
+		let textStorage = textView.textStorage!
 		
 		let tokens: [SKToken]
 		
