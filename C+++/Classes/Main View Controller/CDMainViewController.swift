@@ -129,8 +129,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     }
     
     func didScroll(to point: NSPoint) {
-        self.lineNumberView.draw()
-        self.lineNumberView.enclosingScrollView?.scroll(self.lineNumberView.enclosingScrollView!.contentView, to: point /*NSMakePoint(point.x, self.lineNumberView.enclosingScrollView!.bounds.height - point.y)*/ )
+        self.lineNumberView.enclosingScrollView?.scroll(self.lineNumberView.enclosingScrollView!.contentView, to: point)
     }
     
     
@@ -140,6 +139,11 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
 // MARK: - Code Editor Delegate
     
     func didChangeText(_ syntaxTextView: SKSyntaxTextView) {
+        
+        DispatchQueue.main.async {
+            self.lineNumberView.draw()
+        }
+        
         self.linesLabel.stringValue = "\(syntaxTextView.textView.textStorage?.paragraphs.count ?? 0) lines"
         self.charactersLabel.stringValue = "\(syntaxTextView.text.count) characters"
         

@@ -153,6 +153,7 @@ class SKSyntaxTextView: View {
         textView.isEditable = true
         textView.isAutomaticQuoteSubstitutionEnabled = false
         textView.allowsUndo = true
+        textView.usesFindBar = true
         
         textView.textContainer?.containerSize = NSSize(width: self.bounds.width, height: .greatestFiniteMagnitude)
         textView.textContainer?.widthTracksTextView = true
