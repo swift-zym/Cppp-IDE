@@ -8,14 +8,12 @@
 
 import Cocoa
 
-
-
-open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDHighlightDelegate {
+class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDHighlightDelegate {
     
     @IBOutlet weak var lineNumberView: CDCodeEditorLineNumberView!
     
     let highlightr = CDHighlightr()
-    var scrollView: CDCodeEditorScrollView!
+    var scrollView: CDScrollView!
     var codeEditorDelegate: CDCodeEditorDelegate!
     weak var document: CDCodeDocument!
     var codeAttributedString: CDHighlightrAttributedString!
@@ -48,7 +46,7 @@ open class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDH
         
         DispatchQueue.main.async {
             
-            self.lineNumberView?.draw(self.lineRects)
+            self.lineNumberView?.draw()
             
             /*if CDSettings.shared.codeCompletion {
                 self.complete(self)

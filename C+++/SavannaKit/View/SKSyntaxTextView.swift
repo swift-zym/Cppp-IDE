@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public protocol SKSyntaxTextViewDelegate: class {
+protocol SKSyntaxTextViewDelegate: class {
 	
 	func didChangeText(_ syntaxTextView: SKSyntaxTextView)
 
@@ -17,16 +17,22 @@ public protocol SKSyntaxTextViewDelegate: class {
 	func textViewDidBeginEditing(_ syntaxTextView: SKSyntaxTextView)
 	
 	func lexerForSource(_ source: String) -> SKLexer
+    
+    func didScroll(to: NSPoint)
 	
 }
 
 // Provide default empty implementations of methods that are optional.
-public extension SKSyntaxTextViewDelegate {
+extension SKSyntaxTextViewDelegate {
+    
     func didChangeText(_ syntaxTextView: SKSyntaxTextView) { }
 	
     func didChangeSelectedRange(_ syntaxTextView: SKSyntaxTextView, selectedRange: NSRange) { }
 	
     func textViewDidBeginEditing(_ syntaxTextView: SKSyntaxTextView) { }
+    
+    func didScroll(_ syntaxTextView: SKSyntaxTextView) { }
+    
 }
 
 struct SKThemeInfo {
@@ -39,7 +45,7 @@ struct SKThemeInfo {
 	
 }
 
-open class SKSyntaxTextView: View {
+class SKSyntaxTextView: View {
 
 	var previousSelectedRange: NSRange?
 	
@@ -98,16 +104,15 @@ open class SKSyntaxTextView: View {
         return SKInnerTextView(frame: .zero, textContainer: textContainer)
     }
 
-    public let scrollView = NSScrollView()
+    let scrollView = CDScrollView()
 	
 	private func setup() {
-	
-		textView.gutterWidth = 20
     
         wrapperView.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.backgroundColor = .clear
         scrollView.drawsBackground = false
+        scrollView.scrollDelegate = self
         
         scrollView.contentView.backgroundColor = .clear
         
@@ -171,6 +176,7 @@ open class SKSyntaxTextView: View {
 	@objc func didScroll(_ notification: Notification) {
 		
 		wrapperView.setNeedsDisplay(wrapperView.bounds)
+        self.delegate?.didScroll(self)
 		
 	}
 
@@ -403,4 +409,12 @@ open class SKSyntaxTextView: View {
 		
 	}
 	
+}
+
+extension SKSyntaxTextView: CDScrollViewDelegate {
+    
+    func scrollViewDidScroll(to point: NSPoint) {
+        self.delegate?.didScroll(to: point)
+    }
+    
 }

@@ -67,9 +67,7 @@
 		182B3D732524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B3D572524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift */; };
 		182B3D742524A83500515375 /* SKInnerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B3D582524A83500515375 /* SKInnerTextView.swift */; };
 		182B3D752524A83500515375 /* SKTextViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B3D592524A83500515375 /* SKTextViewWrapperView.swift */; };
-		182B3D762524A83500515375 /* SKLineNumberLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B3D5A2524A83500515375 /* SKLineNumberLayoutManager.swift */; };
 		182B3D772524A83500515375 /* SKSyntaxTextViewLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B3D5B2524A83500515375 /* SKSyntaxTextViewLayoutManager.swift */; };
-		182B3D782524A83500515375 /* Paragraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B3D5C2524A83500515375 /* Paragraphs.swift */; };
 		183BE91124AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91024AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift */; };
 		183BE91324AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91224AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift */; };
 		183BE91524AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91424AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift */; };
@@ -103,6 +101,7 @@
 		1881D5F524D13BFF0082F2C4 /* CDUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881D5F424D13BFF0082F2C4 /* CDUpdateViewController.swift */; };
 		1895B51C24A716E60019580D /* CDFlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895B51B24A716E60019580D /* CDFlippedView.swift */; };
 		1899D9232525B8A200EE5780 /* SavannaKit+CodeCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */; };
+		1899D9252526B4EF00EE5780 /* CDMainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D9242526B4EF00EE5780 /* CDMainWindow.swift */; };
 		18A41AA2242C756700AFC422 /* CDHighlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A41AA1242C756700AFC422 /* CDHighlightr.swift */; };
 		18A41AA4242C758B00AFC422 /* CDHighlightrTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A41AA3242C758B00AFC422 /* CDHighlightrTheme.swift */; };
 		18A41AA6242C75A600AFC422 /* CDHighlightrHTMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A41AA5242C75A600AFC422 /* CDHighlightrHTMLUtils.swift */; };
@@ -329,9 +328,7 @@
 		182B3D572524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSyntaxTextView+TextViewDelegate.swift"; sourceTree = "<group>"; };
 		182B3D582524A83500515375 /* SKInnerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKInnerTextView.swift; sourceTree = "<group>"; };
 		182B3D592524A83500515375 /* SKTextViewWrapperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTextViewWrapperView.swift; sourceTree = "<group>"; };
-		182B3D5A2524A83500515375 /* SKLineNumberLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLineNumberLayoutManager.swift; sourceTree = "<group>"; };
 		182B3D5B2524A83500515375 /* SKSyntaxTextViewLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSyntaxTextViewLayoutManager.swift; sourceTree = "<group>"; };
-		182B3D5C2524A83500515375 /* Paragraphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paragraphs.swift; sourceTree = "<group>"; };
 		183BE91024AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+Diagnostics.swift"; sourceTree = "<group>"; };
 		183BE91224AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+SnippetTableView.swift"; sourceTree = "<group>"; };
 		183BE91424AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+SegmentedControl.swift"; sourceTree = "<group>"; };
@@ -367,6 +364,7 @@
 		1881D5F424D13BFF0082F2C4 /* CDUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUpdateViewController.swift; sourceTree = "<group>"; };
 		1895B51B24A716E60019580D /* CDFlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFlippedView.swift; sourceTree = "<group>"; };
 		1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavannaKit+CodeCompletion.swift"; sourceTree = "<group>"; };
+		1899D9242526B4EF00EE5780 /* CDMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainWindow.swift; sourceTree = "<group>"; };
 		18A41AA1242C756700AFC422 /* CDHighlightr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDHighlightr.swift; sourceTree = "<group>"; };
 		18A41AA3242C758B00AFC422 /* CDHighlightrTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDHighlightrTheme.swift; sourceTree = "<group>"; };
 		18A41AA5242C75A600AFC422 /* CDHighlightrHTMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDHighlightrHTMLUtils.swift; sourceTree = "<group>"; };
@@ -646,9 +644,7 @@
 				182B3D572524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift */,
 				182B3D582524A83500515375 /* SKInnerTextView.swift */,
 				182B3D592524A83500515375 /* SKTextViewWrapperView.swift */,
-				182B3D5A2524A83500515375 /* SKLineNumberLayoutManager.swift */,
 				182B3D5B2524A83500515375 /* SKSyntaxTextViewLayoutManager.swift */,
-				182B3D5C2524A83500515375 /* Paragraphs.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -947,6 +943,7 @@
 			children = (
 				181B4F8924DC38FE000F3ED7 /* Minimap */,
 				18B3C7932428378E00F4CA14 /* CDMainWindowController.swift */,
+				1899D9242526B4EF00EE5780 /* CDMainWindow.swift */,
 				1827400B24A6343000AF3613 /* CDToolbarStateButton.swift */,
 				18B3C78124282C1F00F4CA14 /* CDMainViewController.swift */,
 				183BE91824AEBD7B000F60A0 /* CDMainViewController+SettingsView.swift */,
@@ -1252,6 +1249,7 @@
 				182796FF24CE63A60058F429 /* CDSearchResult.swift in Sources */,
 				1899D9232525B8A200EE5780 /* SavannaKit+CodeCompletion.swift in Sources */,
 				181F2BD024AC78C700C4B217 /* CKToken+Private.m in Sources */,
+				1899D9252526B4EF00EE5780 /* CDMainWindow.swift in Sources */,
 				182B3D642524A83500515375 /* SKSourceCodeTheme.swift in Sources */,
 				18CDFAE5251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift in Sources */,
 				1801DF6524D50CAA005CAD42 /* CDConsoleView.swift in Sources */,
@@ -1280,7 +1278,6 @@
 				1815A0DB24E15BEA00D1B23C /* CDProject.swift in Sources */,
 				182B3D6D2524A83500515375 /* SKRegexLexer.swift in Sources */,
 				18A41AAA242C75DE00AFC422 /* CDHighlightrAttributedString.swift in Sources */,
-				182B3D782524A83500515375 /* Paragraphs.swift in Sources */,
 				183BF3CA242906B3007AF6AC /* CDCodeEditor.swift in Sources */,
 				185CD64224CC639500A9511B /* CDSearchViewController.swift in Sources */,
 				181F2BD824AC78C700C4B217 /* CKDiagnostic.m in Sources */,
@@ -1332,7 +1329,6 @@
 				18FC05482487B9F600F33CE2 /* CDTestPointView.swift in Sources */,
 				18B3C78024282C1F00F4CA14 /* AppDelegate.swift in Sources */,
 				18B3C78424282C1F00F4CA14 /* CDCodeDocument.swift in Sources */,
-				182B3D762524A83500515375 /* SKLineNumberLayoutManager.swift in Sources */,
 				18B3C790242836A500F4CA14 /* CDDocumentContent.swift in Sources */,
 				184D5734247EA97500C5AA27 /* NSApplication Extension.swift in Sources */,
 				1849ED8F24DFCC55006DCDB4 /* CDCodeEditor Extension.swift in Sources */,

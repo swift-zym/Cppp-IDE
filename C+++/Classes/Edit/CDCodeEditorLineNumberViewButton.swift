@@ -31,7 +31,7 @@ class CDCodeEditorLineNumberViewButton: NSButton {
         if self.isBreakpoint == true {
             self.isBreakpoint = false
             superview.debugLines.remove(at: superview.debugLines.firstIndex(of: self.title.nsString.integerValue) ?? 0)
-            superview.draw(superview.codeEditor.lineRects)
+            superview.draw()
             return
         }
         self.isBreakpoint = true

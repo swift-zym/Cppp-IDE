@@ -32,9 +32,7 @@ extension SKSyntaxTextView {
 	func updateSelectedRange(_ range: NSRange) {
 		textView.selectedRange = range
 		
-		#if os(macOS)		
 		self.textView.scrollRangeToVisible(range)
-		#endif
 		
 		self.delegate?.didChangeSelectedRange(self, selectedRange: range)
 	}

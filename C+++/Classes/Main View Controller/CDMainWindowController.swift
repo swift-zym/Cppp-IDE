@@ -15,11 +15,6 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        /*
-        if #available(OSX 10.14, *) {
-            self.window?.appearance = darkAqua
-        }*/
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,8 +30,6 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
         let vc = (self.contentViewController as! CDMainViewController)
         vc.enterSimpleMode(self)
-        // vc.mainTextView.allowsCodeCompletion = false
-        // vc.mainTextView.allowsSyntaxHighlighting = false
         
     }
     

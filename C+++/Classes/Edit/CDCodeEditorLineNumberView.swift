@@ -10,22 +10,42 @@ import Cocoa
 
 class CDCodeEditorLineNumberView: CDFlippedView {
     
-    @IBOutlet weak var codeEditor: CDCodeEditor!
+    init(frame frameRect: NSRect, textView: NSTextView) {
+        super.init(frame: frameRect)
+        self.textView = textView
+    }
+    
+    var textView: NSTextView!
     var buttonsArray = [CDCodeEditorLineNumberViewButton]()
     var debugLines = [Int]()
     var shouldReloadAfterChangingFrame: Bool = true
+    
+    private var textViewLineRects: [NSRect] {
+        
+        var array = [CGRect]()
+        var location = 0
+        for line in self.textView.string.components(separatedBy: .newlines) {
+            let rect = self.textView.layoutManager!.boundingRect(forGlyphRange: NSMakeRange(location, 0), in: self.textView.textContainer!)
+            if rect != NSMakeRect(0, 0, 0, 0) {
+                array.append(rect)
+            }
+            location += line.count + 1
+        }
+        return array
+        
+    }
     
     override var frame: NSRect {
         didSet {
             DispatchQueue.main.async {
                 if self.shouldReloadAfterChangingFrame && oldValue != self.frame {
-                    self.draw(self.codeEditor.lineRects)
+                    self.draw()
                 }
             }
         }
     }
     
-    func draw(_ array: [NSRect]) {
+    func draw() {
         
         var lineNumber = 0
         for view in self.subviews {
@@ -34,7 +54,9 @@ class CDCodeEditorLineNumberView: CDFlippedView {
         
         self.buttonsArray = [CDCodeEditorLineNumberViewButton]()
         
-        for item in array {
+        let rects = self.textViewLineRects
+        for item in rects {
+            
             let button = CDCodeEditorLineNumberViewButton(frame: NSMakeRect(2.0, item.origin.y, 34.0, item.height))
             button.isBordered = false
             button.font = NSFont(name: CDSettings.shared.fontName, size: CGFloat(CDSettings.shared.fontSize) * 0.92)
@@ -53,8 +75,8 @@ class CDCodeEditorLineNumberView: CDFlippedView {
         }
         
         self.shouldReloadAfterChangingFrame = false
-        self.frame.size.height = (array.last?.origin.y ?? 0) + (array.last?.height ?? 0)
-        self.superview?.frame.size.height = (array.last?.origin.y ?? 0) + (array.last?.height ?? 0)
+        self.frame.size.height = (rects.last?.origin.y ?? 0) + (rects.last?.height ?? 0)
+        self.superview?.frame.size.height = (rects.last?.origin.y ?? 0) + (rects.last?.height ?? 0)
         self.shouldReloadAfterChangingFrame = true
         
     }

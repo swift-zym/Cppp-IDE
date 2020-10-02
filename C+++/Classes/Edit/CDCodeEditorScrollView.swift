@@ -1,5 +1,5 @@
 //
-//  CDCodeEditorScrollView.swift
+//  CDScrollView.swift
 //  C+++
 //
 //  Created by apple on 2020/4/21.
@@ -8,23 +8,18 @@
 
 import Cocoa
 
-class CDCodeEditorScrollView: NSScrollView {
+@objc protocol CDScrollViewDelegate {
+    @objc optional func scrollViewDidScroll(to: NSPoint)
+}
+
+class CDScrollView: NSScrollView {
     
-    @IBOutlet weak var bindedScrollView: CDCodeEditorScrollView!
-    @IBOutlet weak var bindedMinimapView: CDMinimapView?
+    var scrollDelegate: CDScrollViewDelegate?
     
     override func scroll(_ clipView: NSClipView, to point: NSPoint) {
         super.scroll(clipView, to: point)
         
-        bindedScrollView?.superScroll(bindedScrollView.contentView, to: point)
-        bindedScrollView?.reflectScrolledClipView(bindedScrollView.contentView)
-        bindedMinimapView?.codeEditorScrollViewDidScrollToPoint(point: point)
-        
-    }
-    
-    func superScroll(_ clipView: NSClipView, to point: NSPoint) {
-        
-        super.scroll(clipView, to: point)
+        self.scrollDelegate?.scrollViewDidScroll?(to: point)
         
     }
     

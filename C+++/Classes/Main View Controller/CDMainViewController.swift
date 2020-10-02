@@ -38,7 +38,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var mainTextView: SKSyntaxTextView!
     @IBOutlet weak var pathControl: NSPathControl!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewOfTextView: CDCodeEditorScrollView!
+    @IBOutlet weak var scrollViewOfTextView: CDScrollView!
     @IBOutlet weak var linesLabel: NSTextField!
     @IBOutlet weak var charactersLabel: NSTextField!
     @IBOutlet weak var consoleView: CDConsoleView!
@@ -94,6 +94,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         self.mainTextView.theme = defaultTheme
         self.mainTextView.delegate = self
+        self.lineNumberView.textView = self.mainTextView.textView
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
        
@@ -127,6 +128,11 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         }
     }
     
+    func didScroll(to point: NSPoint) {
+        self.lineNumberView.draw()
+        self.lineNumberView.enclosingScrollView?.scroll(self.lineNumberView.enclosingScrollView!.contentView, to: point /*NSMakePoint(point.x, self.lineNumberView.enclosingScrollView!.bounds.height - point.y)*/ )
+    }
+    
     
     
     
@@ -136,6 +142,17 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     func didChangeText(_ syntaxTextView: SKSyntaxTextView) {
         self.linesLabel.stringValue = "\(syntaxTextView.textView.textStorage?.paragraphs.count ?? 0) lines"
         self.charactersLabel.stringValue = "\(syntaxTextView.text.count) characters"
+        
+        // minimap
+        DispatchQueue.main.async {
+            let dataOfView = self.mainTextView.textView.dataWithPDF(inside: self.mainTextView.textView.bounds)
+            let imageOfView = NSImage(data: dataOfView)
+            self.minimapView.imageView.image = imageOfView
+            self.minimapView.imageView.sizeToFit()
+        }
+        // self.minimapView.frame.size.height =  imageOfView!.size.height / (imageOfView!.size.width / self.minimapView.imageView.frame.width)
+        // self.minimapView.imageView.frame.size.height =  imageOfView!.size.height / (imageOfView!.size.width / self.minimapView.imageView.frame.width)
+        
         // save document
         guard let document = self.document else {
             return
