@@ -52,6 +52,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
     var observation: NSKeyValueObservation?
     var snippetDataSource = CDSnippetTableViewDataSource()
+    var recentFilesDataSource = CDRecentFilesTableViewDataSource()
     
     var leftSidebarMode: LeftSidebarMode = .snippets
     

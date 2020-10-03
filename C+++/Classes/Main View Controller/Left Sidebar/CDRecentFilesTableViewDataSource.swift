@@ -8,14 +8,24 @@
 
 import Cocoa
 
+class CDRecentFilesTableCellView: NSTableCellView {
+    
+    @IBOutlet weak var pathLabel: NSTextField?
+    
+}
+
 class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 51.0
+    }
     
     override init() {
         super.init()
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return NSDocumentController.shared.recentDocumentURLs.count
+        return self.recentFiles().count
     }
     
     func recentFiles() -> [URL] {
@@ -23,9 +33,11 @@ class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("File"), owner: self) as? NSTableCellView {
-            view.imageView?.image = CDSnippetTableViewDataSource.savedSnippets[row].image
-            view.textField?.stringValue = CDSnippetTableViewDataSource.savedSnippets[row].title
+        if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("File"), owner: self) as? CDRecentFilesTableCellView {
+            view.imageView?.image = NSWorkspace.shared.icon(forFile: self.recentFiles()[row].path)
+            view.textField?.stringValue = self.recentFiles()[row].lastPathComponent
+            view.pathLabel?.stringValue = self.recentFiles()[row].path
+            view.rowSizeStyle = .custom
             return view
         }
         return nil

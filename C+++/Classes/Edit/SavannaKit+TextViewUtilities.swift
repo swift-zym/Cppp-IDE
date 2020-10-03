@@ -1,5 +1,5 @@
 //
-//  CDCodeEditor Extension.swift
+//  SavannaKit+TextViewUtilities.swift
 //  C+++
 //
 //  Created by 23786 on 2020/8/9.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-extension CDCodeEditor {
+extension SKInnerTextView {
     
     @IBAction func biggerFont(_ sender: Any?) {
         
@@ -42,7 +42,6 @@ extension CDCodeEditor {
             lineRange.location += line.count + 1
         }
         self.setSelectedRange(range)
-        self.didChangeText()
         
     }
     
@@ -62,7 +61,6 @@ extension CDCodeEditor {
             lineRange.location += line.count + 1
         }
         self.setSelectedRange(range)
-        self.didChangeText()
         
     }
     
@@ -86,7 +84,6 @@ extension CDCodeEditor {
             lineRange.location += line.count + 1
         }
         self.setSelectedRange(range)
-        self.didChangeText()
         
     }
     

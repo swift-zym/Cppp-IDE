@@ -22,8 +22,8 @@ extension CDMainViewController {
                 
             case .diagnostics:
                 self.leftSidebarMode = .recentFiles
-                self.leftSidebarTableView.dataSource = nil
-                self.leftSidebarTableView.delegate = nil
+                self.leftSidebarTableView.dataSource = self.recentFilesDataSource
+                self.leftSidebarTableView.delegate = self.recentFilesDataSource
                 sender.image = #imageLiteral(resourceName: "Debug")
                 
             case .recentFiles:

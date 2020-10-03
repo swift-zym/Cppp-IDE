@@ -14,6 +14,10 @@ protocol CDLeftSidebarTableViewDelegate: NSTableViewDelegate {
 
 class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
     
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 41.0
+    }
+    
     override init() {
         super.init()
     }
@@ -35,6 +39,7 @@ class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NS
         if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("Snippet"), owner: self) as? NSTableCellView {
             view.imageView?.image = CDSnippetTableViewDataSource.savedSnippets[row].image
             view.textField?.stringValue = CDSnippetTableViewDataSource.savedSnippets[row].title
+            view.rowSizeStyle = .custom
             return view
         }
         return nil
