@@ -20,7 +20,23 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     
     override func insertText(_ string: Any, replacementRange: NSRange) {
         super.insertText(string, replacementRange: replacementRange)
-        self.complete(nil)
+        
+        if let string = string as? String {
+            
+            switch string {
+                case "(": super.insertText(")", replacementRange: replacementRange)
+                case "[": super.insertText("]", replacementRange: replacementRange)
+                case "{": super.insertText("}", replacementRange: replacementRange)
+                case "\"": super.insertText("\"", replacementRange: replacementRange)
+                case "'": super.insertText("'", replacementRange: replacementRange)
+                default:
+                    self.complete(nil)
+                    return
+            }
+            self.setSelectedRange(NSMakeRange(self.selectedRange.location - 1, 0))
+            
+        }
+        
     }
     
     override func completions(forPartialWordRange charRange: NSRange, indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
@@ -32,7 +48,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
         var completionResults = [CDCompletionResult]()
         
         let substring = self.string.nsString.substring(with: charRange)
-        if substring == "" || !(substring.first ?? "\0").isLetter {
+        if substring == "" || !(substring.first ?? "\0").isLetter && (substring.first ?? "\0") != "_" {
             return [String]()
         }
         
