@@ -21,7 +21,7 @@ let aqua = NSAppearance(named: .aqua)
 
 
 
-class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDelegate, NSSplitViewDelegate, SKSyntaxTextViewDelegate {
+class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDelegate, NSSplitViewDelegate, SKSyntaxTextViewDelegate, CDScrollViewDelegate {
     
     
     func setStatus(string: String) {
@@ -38,7 +38,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var mainTextView: SKSyntaxTextView!
     @IBOutlet weak var pathControl: NSPathControl!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewOfTextView: CDScrollView!
     @IBOutlet weak var linesLabel: NSTextField!
     @IBOutlet weak var charactersLabel: NSTextField!
     @IBOutlet weak var consoleView: CDConsoleView!
@@ -96,6 +95,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.mainTextView.theme = defaultTheme
         self.mainTextView.delegate = self
         self.lineNumberView.textView = self.mainTextView.textView
+        self.minimapView.scrollView = self.mainTextView.scrollView
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
        
@@ -118,7 +118,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.leftSidebarTableView.delegate = self.snippetDataSource
         self.leftSidebarTableView.dataSource = self.snippetDataSource
         // initialize the scroll view and the minimap view.
-        // self.scrollViewOfTextView.scroll(self.scrollViewOfTextView.contentView, to: NSMakePoint(0, 0))
+        self.mainTextView.scrollView.scroll(self.mainTextView.scrollView.contentView, to: NSMakePoint(0, 0))
         
     }
     
@@ -131,6 +131,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
     func didScroll(to point: NSPoint) {
         self.lineNumberView.enclosingScrollView?.scroll(self.lineNumberView.enclosingScrollView!.contentView, to: point)
+        self.minimapView.scrollViewDidScrollToPoint(point: point)
     }
     
     
@@ -151,12 +152,11 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         // minimap
         DispatchQueue.main.async {
             let dataOfView = self.mainTextView.textView.dataWithPDF(inside: self.mainTextView.textView.bounds)
-            let imageOfView = NSImage(data: dataOfView)
+            let imageOfView = NSImage(data: dataOfView)!
             self.minimapView.imageView.image = imageOfView
-            self.minimapView.imageView.sizeToFit()
+            self.minimapView.frame.size.height = imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
+            self.minimapView.imageView.frame.size.height =  imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
         }
-        // self.minimapView.frame.size.height =  imageOfView!.size.height / (imageOfView!.size.width / self.minimapView.imageView.frame.width)
-        // self.minimapView.imageView.frame.size.height =  imageOfView!.size.height / (imageOfView!.size.width / self.minimapView.imageView.frame.width)
         
         // save document
         guard let document = self.document else {
@@ -165,50 +165,16 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         document.content.contentString = self.mainTextView.text
         
     }
-    
-    /*
-    func codeEditorDidChangeText(lines: Int, characters: Int) {
-        
-        DispatchQueue.main.async {
-            
-            self.linesLabel.stringValue = "\(lines) lines"
-            self.charactersLabel.stringValue = "\(characters) characters"
-           /* if CDSettings.shared.showLiveIssues {
-                self.updateDiagnostics()
-            }
-           */
-            let dataOfView = self.mainTextView.dataWithPDF(inside: self.mainTextView.bounds)
-            let imageOfView = NSImage(data: dataOfView)
-            self.minimapView.imageView.image = imageOfView
-            self.minimapView.frame.size.height =  imageOfView!.size.height / (imageOfView!.size.width / self.minimapView.imageView.frame.width)
-            self.minimapView.imageView.frame.size.height =  imageOfView!.size.height / (imageOfView!.size.width / self.minimapView.imageView.frame.width)
-            
-        }
-        
-    }
-    */
 
-    
-    
-    
-    
-    
-
-// MARK: - Segmented Control
-    
-    // @IBOutlet weak var segmentedControl: NSSegmentedControl!
-    // @IBOutlet weak var scrollViewOfTableView: NSScrollView!
-    // @IBOutlet weak var snippetAndDiagnositcsTableView: CDSnippetTableView!
     @IBOutlet weak var addSnippetButton: NSButton!
-    // @IBOutlet weak var fileView: NSView!
+    
+    
+    
+    func scrollViewDidScroll(to point: NSPoint) {
+        self.mainTextView.scrollView.scroll(self.mainTextView.scrollView.contentView, to: point)
+    }
     
    
-    
-// MARK: - Snippet Table View
-    // @IBOutlet weak var snippetSearchField: NSSearchField!
-   
-    
-    
     
 // MARK: - Diagnostics
     var diagnostics = [CKDiagnostic]()

@@ -69,12 +69,13 @@ class CDCppLexer: SKRegexLexer {
         var generators = [TokenGenerator?]()
         
         generators.append(regexGenerator("\\b[A-Z][a-zA-Z]+\\b", tokenType: .identifier))
+    
+        generators.append(regexGenerator("\\b(0b[01']+)", tokenType: .number))
+        generators.append(regexGenerator("(-?)\\b([\\d']+(\\.[\\d']*)?|\\.[\\d']+)(u|U|l|L|ul|UL|f|F|b|B)", tokenType: .number))
+        generators.append(regexGenerator("(-?)(\\b0[xX][a-fA-F0-9']+|(\\b[\\d']+(\\.[\\d']*)?|\\.[\\d']+)([eE][-+]?[\\d']+)?)", tokenType: .number))
         
-        // Functions
-        
-        generators.append(regexGenerator("(?<=(\\s|\\[|,|:))(\\d|\\.|_)+", tokenType: .number))
-        
-        generators.append(regexGenerator("\\.[A-Za-z_]+\\w*", tokenType: .identifier))
+        generators.append(regexGenerator("(?<=\\.)[A-Za-z_]+\\w*", tokenType: .identifier))
+        generators.append(regexGenerator("(?<=->)[A-Za-z_]+\\w*", tokenType: .identifier))
         
         generators.append(regexGenerator("^\\s*#.*", options: [.anchorsMatchLines], tokenType: .preprocesscor))
         
