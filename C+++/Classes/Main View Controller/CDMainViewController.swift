@@ -47,11 +47,12 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var lineNumberView: CDCodeEditorLineNumberView!
     @IBOutlet weak var minimapView: CDMinimapView!
     @IBOutlet weak var minimapViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sidebarTitleLabel: NSTextField!
     @IBOutlet weak var leftSidebarTableView: NSTableView!
     
     var observation: NSKeyValueObservation?
-    var snippetDataSource = CDSnippetTableViewDataSource()
-    var recentFilesDataSource = CDRecentFilesTableViewDataSource()
+    lazy var snippetDataSource = CDSnippetTableViewDataSource()
+    lazy var recentFilesDataSource = CDRecentFilesTableViewDataSource()
     
     var leftSidebarMode: LeftSidebarMode = .snippets
     
@@ -96,6 +97,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.mainTextView.delegate = self
         self.lineNumberView.textView = self.mainTextView.textView
         self.minimapView.scrollView = self.mainTextView.scrollView
+        self.sidebarTitleLabel.stringValue = "Snippets"
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
        

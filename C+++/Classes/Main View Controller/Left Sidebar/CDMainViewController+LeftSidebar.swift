@@ -15,18 +15,21 @@ extension CDMainViewController {
         switch self.leftSidebarMode {
             
             case .snippets:
+                self.sidebarTitleLabel.stringValue = "Diagnostics"
                 self.leftSidebarMode = .diagnostics
                 self.leftSidebarTableView.dataSource = nil
                 self.leftSidebarTableView.delegate = nil
                 sender.image = #imageLiteral(resourceName: "warning")
                 
             case .diagnostics:
+                self.sidebarTitleLabel.stringValue = "Recent"
                 self.leftSidebarMode = .recentFiles
                 self.leftSidebarTableView.dataSource = self.recentFilesDataSource
                 self.leftSidebarTableView.delegate = self.recentFilesDataSource
                 sender.image = #imageLiteral(resourceName: "Debug")
                 
             case .recentFiles:
+                self.sidebarTitleLabel.stringValue = "Snippets"
                 self.leftSidebarMode = .snippets
                 self.leftSidebarTableView.dataSource = self.snippetDataSource
                 self.leftSidebarTableView.delegate = self.snippetDataSource

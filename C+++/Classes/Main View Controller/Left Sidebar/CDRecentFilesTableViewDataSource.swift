@@ -36,7 +36,7 @@ class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate
         if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("File"), owner: self) as? CDRecentFilesTableCellView {
             view.imageView?.image = NSWorkspace.shared.icon(forFile: self.recentFiles()[row].path)
             view.textField?.stringValue = self.recentFiles()[row].lastPathComponent
-            view.pathLabel?.stringValue = self.recentFiles()[row].path
+            view.pathLabel?.stringValue = self.recentFiles()[row].deletingLastPathComponent().path
             view.rowSizeStyle = .custom
             return view
         }
