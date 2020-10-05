@@ -11,13 +11,13 @@ import Cocoa
 extension CDCodeDocument {
     
     @discardableResult
-    func compileFile(alsoRuns: Bool = true, arguments: String = CDCompileSettings.shared.arguments) -> (result: String, didSuccess: Bool) {
+    func compileFile(alsoRuns: Bool = true, arguments: String = CDCompileSettings.shared.arguments) -> (log: String, result: [CDCompileError], didSuccess: Bool) {
         
         self.endDebugging()
         
         if self.fileURL == nil {
             self.contentViewController?.showAlert("Error", "You haven't saved your file yet. You must save your file before compiling it.")
-            return (result: "", didSuccess: false)
+            return (log: "", result: [], didSuccess: false)
         }
         
         let nsString = self.fileURL!.path.nsString
@@ -64,7 +64,7 @@ extension CDCodeDocument {
             
         }
         
-        result = result.replacingOccurrences(of: self.fileURL!.lastPathComponent + ":", with: "")
+        // result = result.replacingOccurrences(of: self.fileURL!.lastPathComponent + ":", with: "")
         
         if didSuccess {
             sendUserNotification(title: "Compile Succeed", subtitle: "\(self.fileURL!.lastPathComponent)")
@@ -79,8 +79,10 @@ extension CDCodeDocument {
         }
         
         self.contentViewController?.consoleView?.textView?.string = result
+        
+        let errors = parseCompileResult(result: result)
             
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             
             for i in result.components(separatedBy: "\n") {
                 if i.first == nil {
@@ -96,9 +98,9 @@ extension CDCodeDocument {
                 }
             }
             
-        }
+        }*/
         
-        return (result: result, didSuccess: didSuccess)
+        return (log: result, result: errors, didSuccess: didSuccess)
         
     }
     
@@ -126,6 +128,87 @@ extension CDCodeDocument {
     @IBAction func compileWithoutRunning(_ sender: Any?) {
         
         self.compileFile(alsoRuns: false)
+        
+    }
+    
+    private func parseCompileResult(result: String) -> [CDCompileError] {
+        
+        func parseLine(line l: String) -> CDCompileError? {
+            // g++ output format:
+            // [file]:[line]:[column]: [errorType]: [message]
+            
+            var line = l // mutable copy
+            let new = CDCompileError()
+            
+            // Parse file
+            let firstIndex = line.firstIndex(of: ":")
+            guard firstIndex != nil else {
+                return nil
+            }
+            new.file = String(line[..<firstIndex!])
+            line.removeSubrange(...firstIndex!)
+            
+            // Parse line number
+            let secondIndex = line.firstIndex(of: ":")
+            guard secondIndex != nil else {
+                return nil
+            }
+            let str = String(line[..<secondIndex!])
+            guard let lineNumber = Int(str) else {
+                return nil
+            }
+            new.line = lineNumber
+            line.removeSubrange(...secondIndex!)
+            
+            // Parse column number
+            let thirdIndex = line.firstIndex(of: ":")
+            guard secondIndex != nil else {
+                return nil
+            }
+            let str2 = String(line[..<thirdIndex!])
+            guard let columnNumber = Int(str2) else {
+                return nil
+            }
+            new.column = columnNumber
+            line.removeSubrange(...thirdIndex!)
+            line.remove(at: line.startIndex) // space
+            
+            // Parse error type
+            let fourthIndex = line.firstIndex(of: ":")
+            guard fourthIndex != nil else {
+                return nil
+            }
+            let str3 = String(line[..<fourthIndex!])
+            switch str3 {
+                case "error":
+                    new.type = .error
+                case "fatal error":
+                    new.type = .fatalError
+                case "warning":
+                    new.type = .warning
+                case "note":
+                    new.type = .note
+                default:
+                    new.type = .unknown
+            }
+            line.removeSubrange(...fourthIndex!)
+            line.remove(at: line.startIndex)
+            
+            new.message = line
+            
+            return new
+            
+        }
+        
+        var res = [CDCompileError]()
+        for line in result.components(separatedBy: .newlines) {
+            
+            if let error = parseLine(line: line) {
+                res.append(error)
+            }
+            
+        }
+        return res
         
     }
     
