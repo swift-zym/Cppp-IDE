@@ -67,8 +67,6 @@ class CDCppLexer: SKRegexLexer {
     lazy var generators: [TokenGenerator] = {
         
         var generators = [TokenGenerator?]()
-        
-        generators.append(regexGenerator("\\b[A-Z][a-zA-Z]+\\b", tokenType: .identifier))
     
         generators.append(regexGenerator("\\b(0b[01']+)", tokenType: .number))
         generators.append(regexGenerator("(-?)\\b([\\d']+(\\.[\\d']*)?|\\.[\\d']+)(u|U|l|L|ul|UL|f|F|b|B)", tokenType: .number))
@@ -91,7 +89,7 @@ class CDCppLexer: SKRegexLexer {
         generators.append(regexGenerator("//(.*)", tokenType: .comment))
         
         // Block comment
-        generators.append(regexGenerator("(/\\*)(.*)(\\*/)", options: [.dotMatchesLineSeparators], tokenType: .comment))
+        generators.append(regexGenerator("(/\\*)(.*?)(\\*/)", options: [.dotMatchesLineSeparators], tokenType: .comment))
 
         // Single-line string literal
         generators.append(regexGenerator("\".*?\"", tokenType: .string))
