@@ -28,14 +28,14 @@ extension CDCodeDocument {
         self.contentViewController?.consoleView?.textView?.string = "Begin Debugging\n\nBegin Compiling: \(res.result)\n\n\n\nLLDB Process Launched\n\n\n"
         
         debugTask = Process()
-        debugTask.launchPath = "/bin/bash"
-        debugTask.arguments = ["-c", "lldb \"\(self.fileURL!.path.nsString.deletingPathExtension)\""]
+        debugTask?.launchPath = "/bin/bash"
+        debugTask?.arguments = ["-c", "lldb \"\(self.fileURL!.path.nsString.deletingPathExtension)\""]
         self.contentViewController.setStatus(string: "Preparing for Debugging...")
         
         let pipe = Pipe()
         self.debugInputPipe = Pipe()
-        debugTask.standardOutput = pipe
-        debugTask.standardInput = debugInputPipe
+        debugTask?.standardOutput = pipe
+        debugTask?.standardInput = debugInputPipe
         let outHandle = pipe.fileHandleForReading
         
         outHandle.readabilityHandler = { pipe in
@@ -52,7 +52,7 @@ extension CDCodeDocument {
             
         }
         
-        debugTask.launch()
+        debugTask?.launch()
         
         self.contentViewController.setStatus(string: "Setting Breakpoint...")
         
@@ -65,7 +65,7 @@ extension CDCodeDocument {
     }
     
     func sendInputToDebugger(message: String) {
-        if debugTask.isRunning {
+        if debugTask?.isRunning ?? false {
             self.debugInputPipe?.fileHandleForWriting.write((message + "\n").data(using: .utf8)!)
             if message.trimmingCharacters(in: .whitespacesAndNewlines) == "q" || message.trimmingCharacters(in: .whitespacesAndNewlines) == "quit" {
                 self.contentViewController.setStatus(string: "\(self.fileURL?.lastPathComponent ?? "C+++") | Finished Debugging")

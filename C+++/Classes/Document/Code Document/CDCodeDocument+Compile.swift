@@ -11,13 +11,13 @@ import Cocoa
 extension CDCodeDocument {
     
     @discardableResult
-    func compileFile(alsoRuns: Bool = true, arguments: String = CDCompileSettings.shared.arguments) -> (log: String, result: [CDCompileError], didSuccess: Bool) {
+    func compileFile(alsoRuns: Bool = true, arguments: String = CDCompileSettings.shared.arguments) -> (log: String, result: CDCompileResult?, didSuccess: Bool) {
         
         self.endDebugging()
         
         if self.fileURL == nil {
             self.contentViewController?.showAlert("Error", "You haven't saved your file yet. You must save your file before compiling it.")
-            return (log: "", result: [], didSuccess: false)
+            return (log: "", result: nil, didSuccess: false)
         }
         
         let nsString = self.fileURL!.path.nsString
@@ -80,7 +80,7 @@ extension CDCodeDocument {
         
         self.contentViewController?.consoleView?.textView?.string = result
         
-        let errors = parseCompileResult(result: result)
+        let res = parseCompileResult(result: result)
             
         /*DispatchQueue.main.async {
             
@@ -100,7 +100,7 @@ extension CDCodeDocument {
             
         }*/
         
-        return (log: result, result: errors, didSuccess: didSuccess)
+        return (log: result, result: res, didSuccess: didSuccess)
         
     }
     
@@ -109,7 +109,9 @@ extension CDCodeDocument {
     
     @IBAction func compileFile(_ sender: Any?) {
         
-        self.compileFile(alsoRuns: true)
+        let res = self.compileFile(alsoRuns: true)
+        self.latestCompileResult = res.result
+        self.contentViewController?.consoleView?.tableView?.dataSource = self.latestCompileResult!
         
     }
     
@@ -131,7 +133,7 @@ extension CDCodeDocument {
         
     }
     
-    private func parseCompileResult(result: String) -> [CDCompileError] {
+    private func parseCompileResult(result: String) -> CDCompileResult {
         
         func parseLine(line l: String) -> CDCompileError? {
             // g++ output format:
@@ -162,7 +164,7 @@ extension CDCodeDocument {
             
             // Parse column number
             let thirdIndex = line.firstIndex(of: ":")
-            guard secondIndex != nil else {
+            guard thirdIndex != nil else {
                 return nil
             }
             let str2 = String(line[..<thirdIndex!])
@@ -208,7 +210,10 @@ extension CDCodeDocument {
             }
             
         }
-        return res
+        let new = CDCompileResult()
+        new.errors = res
+        new.calculateErrorAndWarningCount()
+        return new
         
     }
     

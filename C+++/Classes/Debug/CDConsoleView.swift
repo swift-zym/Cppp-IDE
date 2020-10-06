@@ -12,6 +12,7 @@ class CDConsoleView: NSView, CDConsoleTextViewDelegate {
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var textView: CDConsoleTextView!
+    @IBOutlet weak var tableView: NSTableView!
     
     private func sendInput(_ string: String) {
         (self.window?.windowController?.document as! CDCodeDocument).sendInputToDebugger(message: string)

@@ -29,7 +29,6 @@ class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NS
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        print("numberOfRows: \(CDSnippetTableViewDataSource.savedSnippets.count)")
         tableView.delegate = self
         return CDSnippetTableViewDataSource.savedSnippets.count
     }

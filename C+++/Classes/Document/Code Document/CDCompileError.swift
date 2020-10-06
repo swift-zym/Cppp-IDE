@@ -22,6 +22,24 @@ class CDCompileError: NSObject {
         case warning = 2
         case note = 3
         case unknown = 4
+        
+        var image: NSImage {
+            switch self {
+                case .error, .fatalError:
+                    return #imageLiteral(resourceName: "error")
+                case .warning:
+                    return #imageLiteral(resourceName: "warning")
+                case .note:
+                    return #imageLiteral(resourceName: "note")
+                default:
+                    return #imageLiteral(resourceName: "Help")
+            }
+        }
+        
+    }
+    
+    var image: NSImage {
+        return self.type.image 
     }
 
 }

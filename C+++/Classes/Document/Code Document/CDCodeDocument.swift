@@ -14,11 +14,13 @@ class CDCodeDocument: NSDocument {
     var contentViewController: CDMainViewController!
     
     // MARK: - Debug
-    var debugTask: Process!
-    var debugInputPipe: Pipe!
+    var debugTask: Process?
+    var debugInputPipe: Pipe?
     
     // MARK: - Run
-    var runTask: Process!
+    var runTask: Process?
+    
+    var latestCompileResult: CDCompileResult?
     
     override init() {
         super.init()
@@ -136,11 +138,11 @@ class CDCodeDocument: NSDocument {
     }
     
     @IBAction func stopCurrentRunningProcess(_ sender: Any?) {
-        if debugTask.isRunning {
+        if debugTask?.isRunning ?? false {
             endDebugging()
         }
-        if runTask.isRunning {
-            runTask.terminate()
+        if runTask?.isRunning ?? false {
+            runTask?.terminate()
         }
     }
     
