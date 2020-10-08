@@ -1,3 +1,7 @@
+
+# Note: Version 2.2 is being developed, but because it is a large update, so developing takes a lot of time. The new version may not be released until November or December 2020. But the version 2.1 is not recommended. 
+# So if you want to use C+++, the best choice is to wait until the version 2.2 is released.
+
 #  C+++ IDE 2.1 for macOS
 
 [![2-1-0-Welcome.png](https://i.postimg.cc/t44BQKT8/2-1-0-Welcome.png)](https://postimg.cc/w7nXDbDk)
