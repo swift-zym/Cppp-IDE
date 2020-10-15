@@ -61,39 +61,11 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
             
             if results != nil {
                 
-                var returnType: String!
-                var typedText = ""
-                var otherTexts = [String]()
-                var type: CDCompletionResult.ResultType = .other
-                
                 for result in results! {
+                    
                     if let _result = result as? CKCompletionResult {
                         
-                        type = CDCompletionResult.ResultType.resultType(forCKCursorKind: _result.cursorKind)
-                        
-                        otherTexts = [String]()
-                        
-                        for chunk in _result.chunks {
-                            if let _chunk = chunk as? CKCompletionChunk {
-                                
-                                switch _chunk.kind {
-                                    case CKCompletionChunkKindResultType:
-                                        returnType = _chunk.text
-                                    case CKCompletionChunkKindTypedText:
-                                        typedText = _chunk.text
-                                    case CKCompletionChunkKindPlaceholder:
-                                        otherTexts.append("<#\(_chunk.text!)#>")
-                                    default:
-                                        otherTexts.append(_chunk.text)
-                                }
-                                
-                                
-                            }
-                            
-                        }
-                        
-                        let completionResult = CDCompletionResult(returnType: returnType, typedText: typedText, otherTexts: otherTexts)
-                        completionResult.type = type
+                        let completionResult = CDCompletionResult(clangKitCompletionResult: _result)
                         completionResults.append(completionResult)
                         
                     }

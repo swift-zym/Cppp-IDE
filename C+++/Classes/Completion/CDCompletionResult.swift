@@ -47,30 +47,20 @@ class CDCompletionResult: NSObject {
         
     }
     
-    init(returnType: String?, typedText: String, otherTexts: [String]) {
-        super.init()
-        
-        self.returnType = returnType
-        self.typedText = typedText
-        self.otherTexts = otherTexts
-        
-    }
-    
-    var returnType: String!
-    var typedText = ""
-    var otherTexts = [String]()
+    private(set) var returnType: String?
+    private(set) var typedText = ""
+    private(set) var otherTexts = [String]()
     
     var hasReturnType: Bool {
         return returnType != nil
     }
     
-    var textForDisplay: String {
-        return self.typedText + self.otherTexts.joined()
-    }
+    private(set) var textForDisplay = ""
     
     var attributedString: NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: self.textForDisplay, attributes: [.font: NSFont(name: CDSettings.shared.fontName ?? "Menlo", size: 14.0)!])
+        let attributedString = NSMutableAttributedString(string: self.textForDisplay, attributes: [.font: NSFont(name: CDSettings.shared.fontName ?? "Menlo", size: 12.0)!])
         for i in self.matchedRanges {
+            print(i)
             attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: i)
         }
         return attributedString
@@ -94,6 +84,39 @@ class CDCompletionResult: NSObject {
     
     var completionString: String {
         return self.typedText + self.otherTexts.joined(separator: "")
+    }
+    
+    init(clangKitCompletionResult _result: CKCompletionResult) {
+        super.init()
+        
+        type = CDCompletionResult.ResultType.resultType(forCKCursorKind: _result.cursorKind)
+        
+        otherTexts = [String]()
+        
+        for chunk in _result.chunks {
+            
+            if let _chunk = chunk as? CKCompletionChunk {
+                
+                switch _chunk.kind {
+                    case CKCompletionChunkKindResultType:
+                        returnType = _chunk.text
+                    case CKCompletionChunkKindTypedText:
+                        typedText = _chunk.text
+                    case CKCompletionChunkKindPlaceholder:
+                        otherTexts.append("<#\(_chunk.text!)#>")
+                        textForDisplay.append(_chunk.text)
+                    default:
+                        otherTexts.append(_chunk.text)
+                        textForDisplay.append(_chunk.text)
+                }
+                
+            }
+            
+        }
+        
+        textForDisplay = typedText + textForDisplay
+        print("init end, textForDisplay = \(textForDisplay)")
+        
     }
         
 }
