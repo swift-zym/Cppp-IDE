@@ -1,0 +1,185 @@
+//
+//  CDDebugger.swift
+//  C+++
+//
+//  Created by 23786 on 2020/10/7.
+//  Copyright © 2020 Zhu Yixuan. All rights reserved.
+//
+
+import Cocoa
+
+class CDDebugger: NSObject {
+    
+    private var filePath: String = ""
+    private var debugTask: Process?
+    private var pipe: Pipe?
+    var delegate: CDDebuggerDelegate?
+    private(set) var watchVars: [CDDebugWatchVar] = [ CDDebugWatchVar(name: "a") ]
+    private var watchVarIndex = 0
+    
+    init(filePath: String) {
+        super.init()
+        self.filePath = filePath
+    }
+    
+    func begin() {
+        
+        self.end()
+        
+        let url = URL(string: self.filePath.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)!
+        let res = CDCodeDocument.compileFile(fileURL: url, alsoRuns: false, arguments: "-g")
+        if !(res.result?.succeed ?? false) {
+            self.delegate?.compileFailed()
+            return
+        }
+        
+        debugTask = Process()
+        debugTask?.launchPath = "/bin/bash"
+        debugTask?.arguments = ["-c", "lldb \"\(self.filePath.nsString.deletingPathExtension)\""]
+        
+        let pipe = Pipe()
+        self.pipe = Pipe()
+        debugTask?.standardOutput = pipe
+        debugTask?.standardInput = self.pipe
+        let outHandle = pipe.fileHandleForReading
+        
+        outHandle.readabilityHandler = { pipe in
+            
+            if let data = String(data: pipe.availableData, encoding: .utf8) {
+                if data != "" {
+                    DispatchQueue.main.sync {
+                        self.received(input: data)
+                        self.delegate?.received(text: data, from: self)
+                    }
+                }
+            } else {
+                Swift.print("Error decoding data: \(pipe.availableData)")
+            }
+            
+        }
+        
+        debugTask?.launch()
+        
+        /*
+         for bp in <#breakpoints#> {
+            self.sendCommand(command: "breakpoint set --line \(<#breakpoint.line#>)")
+         }
+         */
+        
+        var index = 1
+        for v in self.watchVars {
+            self.sendCommand(command: "display \(v.name)")
+            self.watchVars[index - 1].index = index
+            index += 1
+        }
+        // self.sendCommand(command: "run")
+        
+    }
+    
+    func end() {
+        
+        debugTask?.terminate()
+        
+    }
+    
+    private func received(input: String) {
+        
+        let trimmed = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        func parseWatchVar(input: String) {
+            
+            var str = input // mutable copy
+            // Delete "- Hook "
+            str.removeSubrange( ..<str.index(str.startIndex, offsetBy: 6) )
+            guard let spaceIndex = str.firstIndex(of: " ") else {
+                return
+            }
+            let hookNumberStr = str[ ..<spaceIndex ]
+            guard let hookNumber = Int(hookNumberStr) else {
+                return
+            }
+            let newVal = input.components(separatedBy: .newlines)[1]
+            self.delegate?.watchVarRefreshed(varIndex: hookNumber, newValue: newVal)
+            self.watchVars.first(where: { (item) in
+                return item.index == hookNumber
+            })?.value = newVal
+            
+        }
+        
+        func parseCurrentLineNumber(input: String) {
+            
+            for line in input.components(separatedBy: .newlines) {
+                // -> [Line Number] [Code]
+                if line.hasPrefix("->") {
+                    var l = line // mutable copy
+                    l.removeSubrange( ..<l.index(l.startIndex, offsetBy: 4) )
+                    guard let spaceIndex = l.firstIndex(of: " ") else {
+                        continue
+                    }
+                    let lineNumberStr = l[ ..<spaceIndex ]
+                    guard let lineNumber = Int(lineNumberStr) else {
+                        continue
+                    }
+                    self.delegate?.currentLineMoved(to: lineNumber)
+                    break
+                }
+            }
+            
+        }
+        
+        if trimmed.hasPrefix("- Hook ") { // - Hook [number] (expr -- [Expression])
+            parseWatchVar(input: trimmed)
+        } else if trimmed.hasPrefix("Process ") { // Process [number] stopped.
+            parseCurrentLineNumber(input: trimmed)
+        }
+        
+        
+    }
+    
+    func sendCommand(command: String) {
+        self.pipe?.fileHandleForWriting.write( (command + "\n").data(using: .utf8)! )
+    }
+    
+    func addWatchVar(variableName name: String) {
+        
+        let n = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        for v in self.watchVars {
+            if v.name == n {
+                return
+            }
+        }
+        
+        watchVarIndex += 1
+        
+        if self.debugTask?.isRunning ?? false {
+            
+            self.watchVars.append( CDDebugWatchVar(name: n, index: watchVarIndex) )
+            self.sendCommand(command: "display \(n)")
+            
+        } else {
+            
+            self.watchVars.append( CDDebugWatchVar(name: n) )
+            
+        }
+        
+    }
+    
+    func removeWatchVar(variableName name: String) {
+        
+        let n = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        var index = 0
+        
+        for v in self.watchVars {
+            if v.name == n {
+                break
+            }
+            index += 1
+        }
+        
+        self.watchVars.remove(at: index)
+        self.sendCommand(command: "undisplay \(self.watchVars[index].index ?? -1)")
+        
+    }
+    
+}

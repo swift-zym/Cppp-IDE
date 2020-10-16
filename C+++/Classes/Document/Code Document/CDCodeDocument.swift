@@ -16,6 +16,7 @@ class CDCodeDocument: NSDocument {
     // MARK: - Debug
     var debugTask: Process?
     var debugInputPipe: Pipe?
+    var debugger: CDDebugger?
     
     // MARK: - Run
     var runTask: Process?

@@ -30,6 +30,10 @@ class CDCompileResult: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         }
     }
     
+    var succeed: Bool {
+        return self.errorCount == 0
+    }
+    
     // Table View Data Source
     
     func numberOfRows(in tableView: NSTableView) -> Int {

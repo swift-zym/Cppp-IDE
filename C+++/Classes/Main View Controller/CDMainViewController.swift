@@ -40,7 +40,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
     @IBOutlet weak var linesLabel: NSTextField!
     @IBOutlet weak var charactersLabel: NSTextField!
-    @IBOutlet weak var consoleView: CDConsoleView!
+    @IBOutlet weak var consoleView: CDCompileResultAndDebugView!
     @IBOutlet weak var leftView: NSView!
     @IBOutlet weak var bigSplitView: NSSplitView!
     @IBOutlet weak var smallSplitView: NSSplitView!
@@ -115,7 +115,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         // TODO: Set the theme and font of the code editor.
         
-        self.consoleView.textView.font = menloFont(ofSize: 13.0)
+        self.consoleView.logView.font = menloFont(ofSize: 13.0)
         
         self.leftSidebarTableView.delegate = self.snippetDataSource
         self.leftSidebarTableView.dataSource = self.snippetDataSource
@@ -153,11 +153,15 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         // minimap
         DispatchQueue.main.async {
+            
             let dataOfView = self.mainTextView.textView.dataWithPDF(inside: self.mainTextView.textView.bounds)
             let imageOfView = NSImage(data: dataOfView)!
             self.minimapView.imageView.image = imageOfView
-            self.minimapView.frame.size.height = imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
-            self.minimapView.imageView.frame.size.height =  imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
+            if self.minimapView.imageView.frame.width != 0 && imageOfView.size.width != 0 {
+                self.minimapView.frame.size.height = imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
+                self.minimapView.imageView.frame.size.height =  imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
+            }
+            
         }
         
         // save document

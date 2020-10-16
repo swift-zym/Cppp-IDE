@@ -343,7 +343,7 @@
         ( unsigned int )column,
         _unsavedFile,
         ( _unsavedFile == NULL ) ? 0 : 1,
-        clang_defaultCodeCompleteOptions()
+        CXCodeComplete_IncludeMacros | CXCodeComplete_IncludeBriefComments | CXCodeComplete_IncludeCodePatterns | CXCodeComplete_IncludeCompletionsWithFixIts
     );
     
     if( results == NULL )

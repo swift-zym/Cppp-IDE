@@ -233,9 +233,9 @@ class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDHighli
                             
                         }
                         
-                        let completionResult = CDCompletionResult(returnType: returnType, typedText: typedText, otherTexts: otherTexts)
-                        completionResult.type = type
-                        completionResults.append(completionResult)
+                       // let completionResult = CDCompletionResult(returnType: returnType, typedText: typedText, otherTexts: otherTexts)
+                       // completionResult.type = type
+                       // completionResults.append(completionResult)
                         
                     }
                     

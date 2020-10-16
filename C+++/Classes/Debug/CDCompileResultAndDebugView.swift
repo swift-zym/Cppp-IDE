@@ -8,29 +8,37 @@
 
 import Cocoa
 
-class CDCompileResultAndConsoleView: NSView, CDConsoleTextViewDelegate {
+class CDCompileResultAndDebugView: NSView {
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var errorCountLabel: NSTextField!
+    @IBOutlet weak var errorImageLabel: NSImageView!
     @IBOutlet weak var warningCountLabel: NSTextField!
+    @IBOutlet weak var warningImageView: NSImageView!
+    
+    @IBOutlet weak var logView: NSTextView!
+    @IBOutlet weak var compileResultTableView: NSTableView!
+    
+    @IBOutlet weak var debugSplitView: NSSplitView!
+    @IBOutlet weak var watchVarsTableView: NSTableView!
+    @IBOutlet weak var debugConsoleView: NSTextView!
+    @IBOutlet weak var debugCommandInputField: NSTextField!
+    
     var compileResult: CDCompileResult? {
         didSet {
-            self.tableView.dataSource = self.compileResult
+            self.compileResultTableView.dataSource = self.compileResult
             self.errorCountLabel.stringValue = "\(self.compileResult?.errorCount ?? 0)"
             self.warningCountLabel.stringValue = "\(self.compileResult?.warningCount ?? 0)"
-            self.titleLabel.stringValue = self.compileResult?.succeed ?? false ? "Compile Succeed" : "Compile Failed"
         }
     }
     
-    @IBOutlet weak var textView: CDConsoleTextView!
-    @IBOutlet weak var tableView: NSTableView!
-    
-    private func sendInput(_ string: String) {
-        (self.window?.windowController?.document as! CDCodeDocument).sendInputToDebugger(message: string)
+    @IBAction func sendCommand(_ sender: Any?) {
+        self.sendInput(self.debugCommandInputField.stringValue)
     }
     
-    func consoleTextViewWillInsertNewLine(_ consoleTextView: CDConsoleTextView, lastLineText: String) {
-        self.sendInput(lastLineText)
+
+    private func sendInput(_ string: String) {
+        (self.window?.windowController?.document as! CDCodeDocument).sendInputToDebugger(message: string)
     }
     
     @IBAction func run(_ sender: Any?) {
@@ -59,6 +67,12 @@ class CDCompileResultAndConsoleView: NSView, CDConsoleTextViewDelegate {
     
     @IBAction func frameVariable(_ sender: Any?) {
         self.sendInput("frame variable")
+    }
+    
+    @IBAction func addWatchVar(_ sender: Any?) {
+        CDGetInput(title: "Watch Var Name:", placeholder: "i") { input in
+            (self.window?.windowController?.document as! CDCodeDocument).debugger?.addWatchVar(variableName: input)
+        }
     }
     
 }
