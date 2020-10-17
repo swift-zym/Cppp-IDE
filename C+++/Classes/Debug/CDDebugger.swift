@@ -16,6 +16,33 @@ class CDDebugger: NSObject {
     var delegate: CDDebuggerDelegate?
     private(set) var watchVars: [CDDebugWatchVar] = [ CDDebugWatchVar(name: "a") ]
     private var watchVarIndex = 0
+    private var breakpoints: Set< CDDebuggerBreakpoint > = []
+    private var breakpointMaxIndex = 1
+    
+    func addBreakpoint(line: Int) {
+        
+        self.breakpoints.insert( CDDebuggerBreakpoint(line: line, index: breakpointMaxIndex) )
+        breakpointMaxIndex += 1
+        
+        if self.debugTask?.isRunning ?? false {
+            self.sendCommand(command: "breakpoint set --line \(line)")
+        }
+        
+        breakpointMaxIndex += 1
+        
+    }
+    
+    func removeBreakpoint(line: Int) {
+        
+        let index = self.breakpoints[self.breakpoints.firstIndex(of: CDDebuggerBreakpoint(line: line, index: -1))!].index
+        
+        self.breakpoints.remove( CDDebuggerBreakpoint(line: line, index: -1) )
+        
+        if self.debugTask?.isRunning ?? false {
+            self.sendCommand(command: "breakpoint delete \(index)")
+        }
+        
+    }
     
     init(filePath: String) {
         super.init()
@@ -60,11 +87,9 @@ class CDDebugger: NSObject {
         
         debugTask?.launch()
         
-        /*
-         for bp in <#breakpoints#> {
-            self.sendCommand(command: "breakpoint set --line \(<#breakpoint.line#>)")
-         }
-         */
+        for bp in self.breakpoints {
+            self.sendCommand(command: "breakpoint set --line \(bp)")
+        }
         
         var index = 1
         for v in self.watchVars {
@@ -72,6 +97,7 @@ class CDDebugger: NSObject {
             self.watchVars[index - 1].index = index
             index += 1
         }
+        
         // self.sendCommand(command: "run")
         
     }

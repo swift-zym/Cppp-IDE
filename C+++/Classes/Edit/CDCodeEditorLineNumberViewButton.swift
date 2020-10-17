@@ -22,11 +22,16 @@ class CDCodeEditorLineNumberViewButton: NSButton {
         
     }
     
+    func markAsNoteLine() {
+        self.drawBackground(color: .systemGray)
+    }
+    
     func markAsErrorLine() {
         self.drawBackground(color: .systemRed)
     }
     
     func markAsBreakpointLine() {
+        
         let superview = self.superview! as! CDCodeEditorLineNumberView
         if self.isBreakpoint == true {
             self.isBreakpoint = false
@@ -38,7 +43,9 @@ class CDCodeEditorLineNumberViewButton: NSButton {
         self.drawBackground(color: .systemBlue)
         if self.superview != nil {
             superview.debugLines.append(self.title.nsString.integerValue)
+            (self.window?.contentViewController as! CDMainViewController).document?.debugger?.addBreakpoint(line: self.title.nsString.integerValue)
         }
+        
     }
     
     func markAsWarningLine() {

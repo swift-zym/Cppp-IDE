@@ -73,6 +73,23 @@ extension CDCodeDocument {
         }
         
         let res = CDCodeDocument.compileFile(fileURL: self.fileURL!, alsoRuns: true)
+        
+        if res.result != nil {
+            for error in res.result!.errors {
+                guard error.file == self.fileURL?.lastPathComponent else {
+                    continue
+                }
+                switch error.type {
+                    case .error, .fatalError:
+                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsErrorLine()
+                    case .warning:
+                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsWarningLine()
+                    case .note, .unknown:
+                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsNoteLine()
+                }
+            }
+        }
+        
         self.contentViewController?.consoleView?.compileResult = res.result
         self.contentViewController?.consoleView?.logView?.string = res.log
         
@@ -98,6 +115,20 @@ extension CDCodeDocument {
         }
         
         let res = CDCodeDocument.compileFile(fileURL: self.fileURL!, alsoRuns: false)
+        
+        if res.result != nil {
+            for error in res.result!.errors {
+                switch error.type {
+                    case .error, .fatalError:
+                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsErrorLine()
+                    case .warning:
+                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsWarningLine()
+                    case .note, .unknown:
+                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].backgroundColor = .systemGray
+                }
+            }
+        }
+        
         self.contentViewController?.consoleView?.compileResult = res.result
         self.contentViewController?.consoleView?.logView?.string = res.log
         
