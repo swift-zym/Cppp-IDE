@@ -23,7 +23,7 @@ extension CDCodeDocument: CDDebuggerDelegate {
     }
     
     func currentLineMoved(to line: Int) {
-        self.contentViewController.lineNumberView.buttonsArray[line - 1].backgroundColor = .green
+        self.contentViewController.lineNumberView.markLineAsCurrentDebuggingLine(line: line - 1)
     }
     
     

@@ -72,6 +72,7 @@ class CDCompileResultAndDebugView: NSView {
     @IBAction func addWatchVar(_ sender: Any?) {
         CDGetInput(title: "Watch Var Name:", placeholder: "i") { input in
             (self.window?.windowController?.document as! CDCodeDocument).debugger?.addWatchVar(variableName: input)
+            self.watchVarsTableView.reloadData()
         }
     }
     

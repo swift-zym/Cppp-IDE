@@ -16,9 +16,15 @@ class CDCodeEditorLineNumberView: CDFlippedView {
     }
     
     var textView: NSTextView!
-    var buttonsArray = [CDCodeEditorLineNumberViewButton]()
-    var debugLines = [Int]()
+    private(set) var buttonsArray = [CDCodeEditorLineNumberViewButton]()
+    var debugLines: Set<Int> = []
+    var debugCurrentLine: Int?
     var shouldReloadAfterChangingFrame: Bool = true
+    
+    func markLineAsCurrentDebuggingLine(line: Int) {
+        self.debugCurrentLine = line
+        self.buttonsArray[line].markAsDebugCurrentLine()
+    }
     
     private var textViewLineRects: [NSRect] {
         
@@ -69,9 +75,12 @@ class CDCodeEditorLineNumberView: CDFlippedView {
             self.addSubview(button)
             if self.debugLines.contains(lineNumber) {
                 button.markAsBreakpointLine()
-                self.debugLines.remove(at: self.debugLines.firstIndex(of: lineNumber)!)
+            }
+            if self.debugCurrentLine ?? -1 == lineNumber {
+                button.markAsDebugCurrentLine()
             }
             self.buttonsArray.append(button)
+            
         }
         
         self.shouldReloadAfterChangingFrame = false

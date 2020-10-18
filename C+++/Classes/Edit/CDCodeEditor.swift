@@ -131,9 +131,10 @@ class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDHighli
         DispatchQueue.main.async {
             let line = self.string.lineNumber(at: self.selectedRange.location) ?? -1
             for i in 0 ..< self.lineNumberView.debugLines.count {
-                if self.lineNumberView.debugLines[i] >= line {
-                    self.lineNumberView.debugLines[i] += 1
-                }
+                // if self.lineNumberView.debugLines[i] >= line {
+                    
+                    // self.lineNumberView.debugLines[i] += 1
+                // }
             }
         }
         
@@ -167,9 +168,9 @@ class CDCodeEditor: NSTextView, CDCodeCompletionViewControllerDelegate, CDHighli
             let line = self.string.lineNumber(at: self.selectedRange.location) ?? -1
             let count = string.challenge("\n")
             for i in 0 ..< self.lineNumberView.debugLines.count {
-                if self.lineNumberView.debugLines[i] >= line + count {
-                    self.lineNumberView.debugLines[i] -= count
-                }
+                // if self.lineNumberView.debugLines[i] >= line + count {
+                    // self.lineNumberView.debugLines[i] -= count
+                // }
             }
         }
         

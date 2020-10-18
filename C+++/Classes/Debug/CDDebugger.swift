@@ -116,12 +116,15 @@ class CDDebugger: NSObject {
             
             var str = input // mutable copy
             // Delete "- Hook "
-            str.removeSubrange( ..<str.index(str.startIndex, offsetBy: 6) )
+            str.removeSubrange( ..<str.index(str.startIndex, offsetBy: 7) )
             guard let spaceIndex = str.firstIndex(of: " ") else {
                 return
             }
             let hookNumberStr = str[ ..<spaceIndex ]
             guard let hookNumber = Int(hookNumberStr) else {
+                return
+            }
+            guard input.components(separatedBy: .newlines).count >= 2 else {
                 return
             }
             let newVal = input.components(separatedBy: .newlines)[1]
@@ -138,7 +141,7 @@ class CDDebugger: NSObject {
                 // -> [Line Number] [Code]
                 if line.hasPrefix("->") {
                     var l = line // mutable copy
-                    l.removeSubrange( ..<l.index(l.startIndex, offsetBy: 4) )
+                    l.removeSubrange( ..<l.index(l.startIndex, offsetBy: 3) )
                     guard let spaceIndex = l.firstIndex(of: " ") else {
                         continue
                     }
@@ -152,6 +155,8 @@ class CDDebugger: NSObject {
             }
             
         }
+        print("PREFIX: \"\(trimmed.prefix(10))\"")
+        
         
         if trimmed.hasPrefix("- Hook ") { // - Hook [number] (expr -- [Expression])
             parseWatchVar(input: trimmed)
