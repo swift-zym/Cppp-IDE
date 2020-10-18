@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132.0.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132.0.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -42,9 +42,9 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zfa-Tt-4bk">
-                    <rect key="frame" x="67" y="13" width="108" height="32"/>
+                    <rect key="frame" x="120" y="13" width="109" height="32"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="94" id="83P-oe-OR7"/>
+                        <constraint firstAttribute="width" constant="95" id="83P-oe-OR7"/>
                         <constraint firstAttribute="height" constant="20" id="ptt-u3-3Vj"/>
                     </constraints>
                     <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Yk-o1-QZv">
@@ -58,16 +58,34 @@ DQ
                         <action selector="end:" target="-2" id="NUo-C8-vP2"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="48U-on-mxw">
+                    <rect key="frame" x="13" y="13" width="109" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="95" id="gLb-IA-sIP"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kyg-lC-LbO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="dismissController:" target="-2" id="S41-eT-PJV"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Zfa-Tt-4bk" secondAttribute="bottom" constant="20" id="36w-5M-o4s"/>
                 <constraint firstItem="aqQ-cD-2rR" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="25" id="E33-jp-nPA"/>
                 <constraint firstAttribute="trailing" secondItem="Mn6-Di-S4w" secondAttribute="trailing" constant="17" id="Lej-RI-Ycg"/>
                 <constraint firstItem="aqQ-cD-2rR" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="17" id="N9C-RI-R4W"/>
+                <constraint firstAttribute="bottom" secondItem="48U-on-mxw" secondAttribute="bottom" constant="20" id="bY4-hy-hOj"/>
                 <constraint firstItem="Mn6-Di-S4w" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="17" id="muE-jF-zSr"/>
-                <constraint firstItem="Zfa-Tt-4bk" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="o49-sa-fjt"/>
+                <constraint firstItem="Zfa-Tt-4bk" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="53.5" id="o49-sa-fjt"/>
                 <constraint firstItem="Mn6-Di-S4w" firstAttribute="top" secondItem="aqQ-cD-2rR" secondAttribute="bottom" constant="16" id="pia-zQ-hRP"/>
                 <constraint firstAttribute="trailing" secondItem="aqQ-cD-2rR" secondAttribute="trailing" constant="17" id="sV8-dh-8r5"/>
+                <constraint firstItem="48U-on-mxw" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-53.5" id="sgw-Zs-BQP"/>
             </constraints>
             <point key="canvasLocation" x="-268" y="63.5"/>
         </customView>
