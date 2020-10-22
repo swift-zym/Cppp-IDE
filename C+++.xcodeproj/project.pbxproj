@@ -698,6 +698,7 @@
 			isa = PBXGroup;
 			children = (
 				18B1859824699A2800B579AD /* Main.storyboard */,
+				185A503D2541BCB100A2FE80 /* Luogu */,
 				18E0B01C242C52650062049C /* Document */,
 				18B1859524698AA400B579AD /* Main View Controller */,
 				18B1858324682FC300B579AD /* Debug */,
@@ -754,6 +755,13 @@
 				18541B152445905F000EB4CB /* CDSettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		185A503D2541BCB100A2FE80 /* Luogu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Luogu;
 			sourceTree = "<group>";
 		};
 		185CD64024CC607C00A9511B /* Search */ = {
