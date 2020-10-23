@@ -82,6 +82,9 @@
 		184FE40524D5817D0093CC2B /* CDCodeDocument+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FE40424D5817D0093CC2B /* CDCodeDocument+Debug.swift */; };
 		1853803C24E27A8C00C13AD1 /* CDProjectMainViewController+NSOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853803B24E27A8C00C13AD1 /* CDProjectMainViewController+NSOutlineView.swift */; };
 		18541B162445905F000EB4CB /* CDSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18541B152445905F000EB4CB /* CDSettingsViewController.swift */; };
+		185A5054254240BF00A2FE80 /* LuoguAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A5053254240BF00A2FE80 /* LuoguAPIs.swift */; };
+		185A505725431D6A00A2FE80 /* CDLuoguLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A505525431D6A00A2FE80 /* CDLuoguLoginViewController.swift */; };
+		185A505825431D6A00A2FE80 /* CDLuoguLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185A505625431D6A00A2FE80 /* CDLuoguLoginViewController.xib */; };
 		185CD64224CC639500A9511B /* CDSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CD64124CC639500A9511B /* CDSearchViewController.swift */; };
 		185CD64424CC642E00A9511B /* CDSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185CD64324CC642D00A9511B /* CDSearchViewController.xib */; };
 		1860EC3324839A8B0066DE64 /* CDDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860EC3224839A8B0066DE64 /* CDDocumentController.swift */; };
@@ -351,6 +354,9 @@
 		184FE40424D5817D0093CC2B /* CDCodeDocument+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDCodeDocument+Debug.swift"; sourceTree = "<group>"; };
 		1853803B24E27A8C00C13AD1 /* CDProjectMainViewController+NSOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProjectMainViewController+NSOutlineView.swift"; sourceTree = "<group>"; };
 		18541B152445905F000EB4CB /* CDSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSettingsViewController.swift; sourceTree = "<group>"; };
+		185A5053254240BF00A2FE80 /* LuoguAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuoguAPIs.swift; sourceTree = "<group>"; };
+		185A505525431D6A00A2FE80 /* CDLuoguLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLuoguLoginViewController.swift; sourceTree = "<group>"; };
+		185A505625431D6A00A2FE80 /* CDLuoguLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDLuoguLoginViewController.xib; sourceTree = "<group>"; };
 		185CD64124CC639500A9511B /* CDSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDSearchViewController.swift; sourceTree = "<group>"; };
 		185CD64324CC642D00A9511B /* CDSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CDSearchViewController.xib; sourceTree = "<group>"; };
 		1860EC3224839A8B0066DE64 /* CDDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDocumentController.swift; sourceTree = "<group>"; };
@@ -760,6 +766,9 @@
 		185A503D2541BCB100A2FE80 /* Luogu */ = {
 			isa = PBXGroup;
 			children = (
+				185A5053254240BF00A2FE80 /* LuoguAPIs.swift */,
+				185A505525431D6A00A2FE80 /* CDLuoguLoginViewController.swift */,
+				185A505625431D6A00A2FE80 /* CDLuoguLoginViewController.xib */,
 			);
 			path = Luogu;
 			sourceTree = "<group>";
@@ -1165,6 +1174,7 @@
 				18A41B28242C765500AFC422 /* arta.min.css in Resources */,
 				18A41B58242C765500AFC422 /* atom-one-dark.min.css in Resources */,
 				18A41B57242C765500AFC422 /* atelier-plateau-light.min.css in Resources */,
+				185A505825431D6A00A2FE80 /* CDLuoguLoginViewController.xib in Resources */,
 				18A41B4E242C765500AFC422 /* qtcreator_light.min.css in Resources */,
 				1872603524AF4FE8004C69B2 /* CDDiagnosticsViewController.xib in Resources */,
 				18A41B0C242C765500AFC422 /* atelier-savanna-light.min.css in Resources */,
@@ -1252,6 +1262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185A5054254240BF00A2FE80 /* LuoguAPIs.swift in Sources */,
 				182B3D622524A83500515375 /* NSMutableAttributedString+Tokens.swift in Sources */,
 				182B3D5F2524A83500515375 /* String+Range.swift in Sources */,
 				181F2B9724AB490300C4B217 /* C+++-Bridging-Header.h in Sources */,
@@ -1279,6 +1290,7 @@
 				18669BE324E7D20D00C9DEE2 /* CDProjectMainViewController+Dragging.swift in Sources */,
 				182B3D702524A83500515375 /* CDCppLexer.swift in Sources */,
 				182796FF24CE63A60058F429 /* CDSearchResult.swift in Sources */,
+				185A505725431D6A00A2FE80 /* CDLuoguLoginViewController.swift in Sources */,
 				1899D9232525B8A200EE5780 /* SavannaKit+CodeCompletion.swift in Sources */,
 				181F2BD024AC78C700C4B217 /* CKToken+Private.m in Sources */,
 				1899D9252526B4EF00EE5780 /* CDMainWindow.swift in Sources */,
