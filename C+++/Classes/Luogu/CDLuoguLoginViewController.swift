@@ -20,17 +20,24 @@ class CDLuoguLoginViewController: NSViewController {
             username: self.usernameTextField.stringValue,
             password: self.passwordTextField.stringValue,
             captcha: self.captchaTextField.stringValue
-        )
+        ) { (result, string) in
+            DispatchQueue.main.async {
+                self.showAlert(string, "")
+            }
+        }
     }
     
     @IBAction func changeCaptcha(_ sender: Any?) {
-        self.captchaImageButton?.image = LuoguAPIs.getCaptchaImage()
+        LuoguAPIs.getCaptchaImage {
+            (image) in
+            self.captchaImageButton.image = image
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        self.captchaImageButton?.image = LuoguAPIs.getCaptchaImage()
+        changeCaptcha(nil)
     }
     
 }

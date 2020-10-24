@@ -132,5 +132,36 @@ extension String {
         }
         return (string: resultString, range: range)
     }
+    
+    
+    func findAllIndex(_ string:String) -> [NSRange] {
+        var ranges: [NSRange] = []
+        if string.elementsEqual("") {
+            return ranges
+        }
+        let zero = self.startIndex
+        let target = Array(string)
+        let total = Array(self)
+        
+        let lenght = string.count
+        var startPoint = 0
+        
+        while total.count >= startPoint + string.count {
+            if total[startPoint] == target[0] {
+                let startIndex = self.index(zero, offsetBy: startPoint)
+                let endIndex = self.index(startIndex, offsetBy: lenght)
+                let child = self[startIndex..<endIndex]
+                if child.elementsEqual(string) {
+                    ranges.append(NSRange(location: startPoint, length: lenght))
+                    startPoint += lenght
+                } else {
+                    startPoint += 1
+                }
+            } else {
+                startPoint += 1
+            }
+        }
+        return ranges
+    }
 
 }

@@ -5,38 +5,68 @@
 //  Created by 23786 on 2020/10/23.
 //  Copyright © 2020 Zhu Yixuan. All rights reserved.
 //
+//  Reference Materials:
+//  - @sjx233 Luogu API Docs: https://github.com/sjx233/luogu-api-docs
+//  - @swift-zym luogu-ios: https://github.com/swift-zym/luogu-ios
+//
 
 import Cocoa
 
 class LuoguAPIs: NSObject {
     
     class func getCSRFToken() {
-
+        
         let session = URLSession(configuration: .default)
         let url = "https://www.luogu.com.cn/"
         let urlRequest = URLRequest(url: URL(string: url)!)
-        let task = session.dataTask(with: urlRequest) {(data, response, error) in
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
             
-            if data == nil {
+            guard data != nil else {
                 return
             }
-            let html = String.init(data: data!, encoding: .utf8)!
-            
-            let index = html.firstIndexOf("<meta name=\"csrf-token\" content=\"")
-            let str = html[ html.index(html.startIndex, offsetBy: index + "<meta name=\"csrf-token\" content=\"".count)... ]
-            let token = str[ ..<str.firstIndex(of: "=")! ]
+            let html = String(data: data!, encoding: .utf8)!
+            let tmp=html.findAllIndex("<meta name=\"csrf-token\" content=\"")[0]
+            var i = tmp.location + tmp.length
+            var token = ""
+            while true {
+                token += html[
+                    html.index(html.startIndex, offsetBy: i)...html.index(html.startIndex, offsetBy: i)
+                ]
+                if html[html.index(html.startIndex, offsetBy: i)] == "="{
+                    break
+                }
+                i += 1
+            }
             UserDefaults.standard.set(token, forKey: "csrf-token")
-            
+
         }
         task.resume()
 
     }
     
-    class func getCaptchaImage() -> NSImage? {
-        return NSImage(contentsOf: URL(string: "https://www.luogu.com.cn/api/verify/captcha")!)
+    class func getCaptchaImage(_ completionHandler: @escaping (NSImage?) -> (Void)) {
+        
+        let session = URLSession(configuration: .default)
+        let url = "https://www.luogu.com.cn/api/verify/captcha"
+        let urlRequest = URLRequest(url: URL(string: url)!)
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            do {
+                guard data != nil else {
+                    return
+                }
+                DispatchQueue.main.sync {
+                    completionHandler(NSImage(data: data!))
+                }
+            }
+        }
+        
+        task.resume()
+        
     }
     
-    class func login(username: String, password: String, captcha: String) {
+    class func login(username: String, password: String, captcha: String, result: @escaping (Bool, String) -> (Void) ) {
         
         let session = URLSession(configuration: .default)
         
@@ -46,44 +76,45 @@ class LuoguAPIs: NSObject {
         request.setValue(UserDefaults.standard.string(forKey: "csrf-token")!, forHTTPHeaderField: "X-CSRF-Token")
         request.httpMethod = "POST"
         request.setValue("https://www.luogu.com.cn/auth/login", forHTTPHeaderField: "Referer")
-        let postString = "{\"username\": \"\(username)\",\"password\": \"\(password)\",\"captcha\": \"\(captcha)\"}"
+        let postString = "{\"username\": \"\(username.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)\",\"password\": \"\(password.addingPercentEncoding(withAllowedCharacters: .urlPasswordAllowed)!)\",\"captcha\": \"\(captcha.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)\"}"
+        print(postString)
         request.httpBody = postString.data(using: .utf8)
         
         let task = session.dataTask(with: request) { (data, response, error) in
             if data == nil {
-                DispatchQueue.main.async {
-                    
-                }
+                result(false, "Please check your internet connection.")
                 return
             }
             do {
-                let dicArr = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                do {
-                    let r = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    print(r)
-                } catch {
-                    return
-                }
+                let dicArr = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: AnyObject]
+                print(dicArr)
                 
-                if dicArr["status"] != nil{
+                if dicArr["status"] != nil {
+                    print("status isn't nil")
                     let code = dicArr["status"] as! Int
+                    print(code)
                     if code != 200 {
-                        DispatchQueue.main.async {
-                        }
+                        result(false, dicArr["errorMessage"] as! String)
                         return
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    
-                }
+                result(true, "Login Succeed.")
+                UserDefaults.standard.setValue(username, forKey: "LuoguUserName")
+                UserDefaults.standard.setValue(password, forKey: "LuoguPassword")
                
             } catch {
+                result(false, "Received invalid data from luogu.com.cn.")
                 return
             }
             
         }
         task.resume()
+        
+    }
+    
+    class func submit(code: String, for: String) {
+        
     }
     
 }
