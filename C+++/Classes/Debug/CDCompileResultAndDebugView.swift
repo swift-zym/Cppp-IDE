@@ -34,6 +34,7 @@ class CDCompileResultAndDebugView: NSView {
     
     @IBAction func sendCommand(_ sender: Any?) {
         self.sendInput(self.debugCommandInputField.stringValue)
+        self.debugCommandInputField.stringValue = ""
     }
     
 

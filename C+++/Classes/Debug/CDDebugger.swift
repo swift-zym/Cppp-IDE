@@ -13,6 +13,7 @@ class CDDebugger: NSObject {
     private var filePath: String = ""
     private var debugTask: Process?
     private var pipe: Pipe?
+    private var errorPipe: Pipe?
     var delegate: CDDebuggerDelegate?
     private(set) var watchVars: [CDDebugWatchVar] = [ CDDebugWatchVar(name: "a") ]
     private var watchVarIndex = 0
@@ -67,6 +68,7 @@ class CDDebugger: NSObject {
         let pipe = Pipe()
         self.pipe = Pipe()
         debugTask?.standardOutput = pipe
+        debugTask?.standardError = pipe
         debugTask?.standardInput = self.pipe
         let outHandle = pipe.fileHandleForReading
         
@@ -155,7 +157,6 @@ class CDDebugger: NSObject {
             }
             
         }
-        print("PREFIX: \"\(trimmed.prefix(10))\"")
         
         
         if trimmed.hasPrefix("- Hook ") { // - Hook [number] (expr -- [Expression])
