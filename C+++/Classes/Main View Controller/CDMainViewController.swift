@@ -13,7 +13,6 @@ func menloFont(ofSize size: CGFloat) -> NSFont {
 }
 
 
-
 @available(OSX 10.14, *)
 let darkAqua = NSAppearance(named: .darkAqua)
 let aqua = NSAppearance(named: .aqua)
@@ -98,6 +97,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.lineNumberView.textView = self.mainTextView.textView
         self.minimapView.scrollView = self.mainTextView.scrollView
         self.sidebarTitleLabel.stringValue = "Snippets"
+        self.consoleView.debugConsoleView.font = menloFont(ofSize: 12.0)
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
        
@@ -136,6 +136,21 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.minimapView.scrollViewDidScrollToPoint(point: point)
     }
     
+// MARK: - Remote Judge
+    
+    @IBAction func showRemoteJudgePanel(_ sender: Any?) {
+        
+        if UserDefaults.standard.value(forKey: "LuoguUserName") != nil && UserDefaults.standard.value(forKey: "LuoguPassword") != nil {
+            let vc = CDLuoguSubmitViewController()
+            vc.code = self.mainTextView.text
+            self.presentAsSheet(vc)
+        } else {
+            self.showAlert("Please login to Luogu first.", "")
+            let vc = CDLuoguLoginViewController()
+            self.presentAsSheet(vc)
+        }
+        
+    }
     
     
     
