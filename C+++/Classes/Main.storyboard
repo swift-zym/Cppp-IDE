@@ -1189,6 +1189,9 @@ Gw
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="showSearchView:" target="5gI-5U-AMq" id="4SX-yi-9Y8"/>
+                                                </connections>
                                             </button>
                                             <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T0f-gA-vKa">
                                                 <rect key="frame" x="33" y="654" width="150" height="19"/>
@@ -1853,7 +1856,7 @@ Gw
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="bevel" title="Next" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2RJ-hp-mHJ">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="next:" target="M8q-ws-1g9" id="Lto-22-4Nf"/>
@@ -1864,7 +1867,7 @@ Gw
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="bevel" title="Run" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z3L-E2-LXv">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="run:" target="M8q-ws-1g9" id="IiR-la-F2j"/>
@@ -1875,7 +1878,7 @@ Gw
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="bevel" title="Step In" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zxJ-hY-uJ4">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="stepIn:" target="M8q-ws-1g9" id="nrr-nR-0nu"/>
@@ -1886,7 +1889,7 @@ Gw
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="bevel" title="Step Out" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rEi-X7-kzO">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="stepOut:" target="M8q-ws-1g9" id="Y8s-xH-XVX"/>
@@ -1897,7 +1900,7 @@ Gw
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="bevel" title="Continue" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="POE-xa-pZb">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="continue:" target="M8q-ws-1g9" id="cL2-nH-nPD"/>
@@ -1917,7 +1920,7 @@ Gw
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="bevel" title="End" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZWu-IK-sVP">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="quit:" target="M8q-ws-1g9" id="ZBW-Xq-6MC"/>
@@ -2070,6 +2073,20 @@ Gw
                                     <action selector="testFile:" target="2Tp-Fl-jBw" id="xaw-sS-aLS"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Szv-Eb-S4e">
+                                <rect key="frame" x="921" y="527" width="46" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="ihY-wg-sH7"/>
+                                    <constraint firstAttribute="height" constant="37" id="ngg-61-CHB"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Submit" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="k6D-Uc-VIS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="16"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showRemoteJudgePanel:" target="5gI-5U-AMq" id="HMl-pY-Xtv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bPD-tD-pcw" secondAttribute="trailing" constant="5" id="3Vv-La-1S9"/>
@@ -2078,8 +2095,11 @@ Gw
                             <constraint firstItem="KlK-fG-wwa" firstAttribute="top" secondItem="Plg-HC-3SL" secondAttribute="bottom" constant="10" id="QpB-IB-Hqg"/>
                             <constraint firstAttribute="bottom" secondItem="LB2-Rd-Bhv" secondAttribute="bottom" id="VbL-7W-Lgv"/>
                             <constraint firstAttribute="trailing" secondItem="KlK-fG-wwa" secondAttribute="trailing" constant="5" id="VfR-MN-Uhm"/>
+                            <constraint firstItem="Szv-Eb-S4e" firstAttribute="top" secondItem="bPD-tD-pcw" secondAttribute="bottom" constant="10" id="ZDJ-Ub-NBC"/>
                             <constraint firstItem="LB2-Rd-Bhv" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" id="dc7-1I-gOw"/>
+                            <constraint firstAttribute="trailing" secondItem="Szv-Eb-S4e" secondAttribute="trailing" constant="5" id="eRO-15-qSM"/>
                             <constraint firstAttribute="trailing" secondItem="LB2-Rd-Bhv" secondAttribute="trailing" constant="55" id="fNW-CT-dK4"/>
+                            <constraint firstItem="Szv-Eb-S4e" firstAttribute="leading" secondItem="LB2-Rd-Bhv" secondAttribute="trailing" constant="4" id="ku4-AA-LrH"/>
                             <constraint firstItem="bPD-tD-pcw" firstAttribute="top" secondItem="KlK-fG-wwa" secondAttribute="bottom" constant="10" id="nQI-Ql-VLA"/>
                             <constraint firstAttribute="trailing" secondItem="Plg-HC-3SL" secondAttribute="trailing" constant="5" id="piM-K1-Tkb"/>
                         </constraints>
@@ -2102,30 +2122,6 @@ Gw
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <button verticalHuggingPriority="750" id="usE-3l-GN3">
-                    <rect key="frame" x="0.0" y="0.0" width="81" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Next" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QUa-fh-Rru">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" id="gwu-I9-9oU">
-                    <rect key="frame" x="0.0" y="0.0" width="81" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Next" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MXm-qX-YpJ">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" id="K2J-nO-JPK">
-                    <rect key="frame" x="0.0" y="0.0" width="81" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Next" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RT9-y0-O3f">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
             </objects>
             <point key="canvasLocation" x="76" y="986"/>
         </scene>
@@ -2650,6 +2646,7 @@ Gw
         <image name="NewFile" width="1320" height="1320"/>
         <image name="Run" width="256" height="256"/>
         <image name="Settings" width="610" height="610"/>
+        <image name="Submit" width="512" height="512"/>
         <image name="Test" width="1300" height="1300"/>
         <image name="error" width="256" height="256"/>
         <image name="warning" width="256" height="256"/>

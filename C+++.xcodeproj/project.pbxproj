@@ -85,6 +85,8 @@
 		185A5054254240BF00A2FE80 /* LuoguAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A5053254240BF00A2FE80 /* LuoguAPIs.swift */; };
 		185A505725431D6A00A2FE80 /* CDLuoguLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A505525431D6A00A2FE80 /* CDLuoguLoginViewController.swift */; };
 		185A505825431D6A00A2FE80 /* CDLuoguLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185A505625431D6A00A2FE80 /* CDLuoguLoginViewController.xib */; };
+		185C184B254422DD00D99CF0 /* CDLuoguSubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C1849254422DD00D99CF0 /* CDLuoguSubmitViewController.swift */; };
+		185C184C254422DD00D99CF0 /* CDLuoguSubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185C184A254422DD00D99CF0 /* CDLuoguSubmitViewController.xib */; };
 		185CD64224CC639500A9511B /* CDSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CD64124CC639500A9511B /* CDSearchViewController.swift */; };
 		185CD64424CC642E00A9511B /* CDSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185CD64324CC642D00A9511B /* CDSearchViewController.xib */; };
 		1860EC3324839A8B0066DE64 /* CDDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860EC3224839A8B0066DE64 /* CDDocumentController.swift */; };
@@ -357,6 +359,8 @@
 		185A5053254240BF00A2FE80 /* LuoguAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuoguAPIs.swift; sourceTree = "<group>"; };
 		185A505525431D6A00A2FE80 /* CDLuoguLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLuoguLoginViewController.swift; sourceTree = "<group>"; };
 		185A505625431D6A00A2FE80 /* CDLuoguLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDLuoguLoginViewController.xib; sourceTree = "<group>"; };
+		185C1849254422DD00D99CF0 /* CDLuoguSubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLuoguSubmitViewController.swift; sourceTree = "<group>"; };
+		185C184A254422DD00D99CF0 /* CDLuoguSubmitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDLuoguSubmitViewController.xib; sourceTree = "<group>"; };
 		185CD64124CC639500A9511B /* CDSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDSearchViewController.swift; sourceTree = "<group>"; };
 		185CD64324CC642D00A9511B /* CDSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CDSearchViewController.xib; sourceTree = "<group>"; };
 		1860EC3224839A8B0066DE64 /* CDDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDocumentController.swift; sourceTree = "<group>"; };
@@ -769,6 +773,8 @@
 				185A5053254240BF00A2FE80 /* LuoguAPIs.swift */,
 				185A505525431D6A00A2FE80 /* CDLuoguLoginViewController.swift */,
 				185A505625431D6A00A2FE80 /* CDLuoguLoginViewController.xib */,
+				185C1849254422DD00D99CF0 /* CDLuoguSubmitViewController.swift */,
+				185C184A254422DD00D99CF0 /* CDLuoguSubmitViewController.xib */,
 			);
 			path = Luogu;
 			sourceTree = "<group>";
@@ -1155,6 +1161,7 @@
 				18A41B32242C765500AFC422 /* tomorrow-night-blue.min.css in Resources */,
 				18A41B11242C765500AFC422 /* nord.min.css in Resources */,
 				18A41B0D242C765500AFC422 /* atelier-sulphurpool-dark.min.css in Resources */,
+				185C184C254422DD00D99CF0 /* CDLuoguSubmitViewController.xib in Resources */,
 				18A41B37242C765500AFC422 /* lightfair.min.css in Resources */,
 				18A41B26242C765500AFC422 /* xcode.min.css in Resources */,
 				18A41B51242C765500AFC422 /* androidstudio.min.css in Resources */,
@@ -1283,6 +1290,7 @@
 				1806FCBC24C08CF70081D7BA /* String Extension.swift in Sources */,
 				1868EBD7244AF934005467B2 /* CDCodeEditorDelegate.swift in Sources */,
 				1860EC3324839A8B0066DE64 /* CDDocumentController.swift in Sources */,
+				185C184B254422DD00D99CF0 /* CDLuoguSubmitViewController.swift in Sources */,
 				18B3C78224282C1F00F4CA14 /* CDMainViewController.swift in Sources */,
 				182B3D6C2524A83500515375 /* SKToken.swift in Sources */,
 				1881D5EF24D007C20082F2C4 /* CDSearchViewControllerDelegate.swift in Sources */,

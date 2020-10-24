@@ -113,7 +113,47 @@ class LuoguAPIs: NSObject {
         
     }
     
-    class func submit(code: String, for: String) {
+    class func submit(code: String, for problem: String, enableO2: Int, result: @escaping (Int, String) -> (Void) ) {
+        
+        let session = URLSession(configuration: .default)
+        
+        let url = "https://www.luogu.com.cn/fe/api/problem/submit/\(problem.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? "")"
+        var request = URLRequest(url: URL(string: url)!)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(UserDefaults.standard.string(forKey: "csrf-token")!, forHTTPHeaderField: "X-CSRF-Token")
+        request.httpMethod = "POST"
+        request.setValue("https://www.luogu.com.cn/", forHTTPHeaderField: "Referer")
+        let postString = "{\"code\": \"\(code.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "\n", with: "\\n").replacingOccurrences(of: "\t", with: "\\t"))\", \"enableO2\": \"\(enableO2)\"}"
+        print(postString)
+        request.httpBody = postString.data(using: .utf8)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if data == nil {
+                result(-1, "Please check your internet connection.")
+                return
+            }
+            do {
+                let dicArr = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: AnyObject]
+                print(dicArr)
+                
+                if dicArr["status"] != nil {
+                    print("status isn't nil")
+                    let code = dicArr["status"] as! Int
+                    if code != 200 {
+                        result(-1, "Error occurred. Code = \(code). Error = \(dicArr["errorMessage"] as! String)")
+                        return
+                    }
+                }
+                
+                result(dicArr["rid"] as! Int, "Login Succeed.")
+               
+            } catch {
+                result(-1, "Received invalid data from luogu.com.cn.")
+                return
+            }
+            
+        }
+        task.resume()
         
     }
     

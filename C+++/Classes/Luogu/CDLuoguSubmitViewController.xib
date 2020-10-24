@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CDLuoguSubmitViewController" customModule="C___" customModuleProvider="target">
+            <connections>
+                <outlet property="enableO2" destination="g8t-CZ-1gt" id="uUg-x7-0MA"/>
+                <outlet property="pidTextField" destination="iyc-yj-4zM" id="tgt-m7-qtc"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="256"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4uJ-9n-aD3">
+                    <rect key="frame" x="18" y="195" width="223" height="41"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Submit Code" id="eKS-ar-4A8">
+                        <font key="font" metaFont="systemHeavy" size="35"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="53m-Oj-pJo">
+                    <rect key="frame" x="18" y="161" width="265" height="17"/>
+                    <textFieldCell key="cell" title="Submit your code to online judge Luogu." id="wR9-oM-E5e">
+                        <font key="font" metaFont="system" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YiS-gc-drj">
+                    <rect key="frame" x="13" y="13" width="94" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="COv-3o-TjU"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Submit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tnd-Bg-cB3">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="submit:" target="-2" id="H37-d5-XRs"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="edA-eu-HhP">
+                    <rect key="frame" x="18" y="135" width="71" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Problem ID" id="tvz-VK-vv4">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iyc-yj-4zM">
+                    <rect key="frame" x="95" y="132" width="157" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="157" id="FrH-P4-7Vy"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Example: P1001" drawsBackground="YES" id="7yT-U7-yF6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g8t-CZ-1gt">
+                    <rect key="frame" x="18" y="106" width="89" height="18"/>
+                    <buttonCell key="cell" type="check" title="Enable O2" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JgR-AQ-ALw">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1uY-MI-4Py">
+                    <rect key="frame" x="18" y="82" width="141" height="18"/>
+                    <buttonCell key="cell" type="check" title="Language: Inferred" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="un8-8y-mQf">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf1-tB-546">
+                    <rect key="frame" x="103" y="13" width="94" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="QM4-kU-zTm"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b0Z-7h-9gR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="dismissController:" target="-2" id="KAl-qu-wgb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="53m-Oj-pJo" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="43O-hA-YN7"/>
+                <constraint firstItem="edA-eu-HhP" firstAttribute="top" secondItem="53m-Oj-pJo" secondAttribute="bottom" constant="10" id="AjF-M3-ebw"/>
+                <constraint firstAttribute="bottom" secondItem="YiS-gc-drj" secondAttribute="bottom" constant="20" symbolic="YES" id="CDD-ig-plt"/>
+                <constraint firstItem="YiS-gc-drj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="FjN-wS-h9d"/>
+                <constraint firstItem="g8t-CZ-1gt" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="Q2L-qw-C4P"/>
+                <constraint firstItem="4uJ-9n-aD3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="TJj-eP-BYb"/>
+                <constraint firstItem="edA-eu-HhP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="Z7i-KY-UZ6"/>
+                <constraint firstItem="1uY-MI-4Py" firstAttribute="top" secondItem="g8t-CZ-1gt" secondAttribute="bottom" constant="8" id="ZLe-Y4-h1e"/>
+                <constraint firstItem="1uY-MI-4Py" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="aIc-kb-pyL"/>
+                <constraint firstAttribute="bottom" secondItem="gf1-tB-546" secondAttribute="bottom" constant="20" symbolic="YES" id="cNj-wR-V69"/>
+                <constraint firstItem="iyc-yj-4zM" firstAttribute="top" secondItem="53m-Oj-pJo" secondAttribute="bottom" constant="8" symbolic="YES" id="cpU-dD-SYo"/>
+                <constraint firstItem="4uJ-9n-aD3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="me9-On-u0x"/>
+                <constraint firstItem="gf1-tB-546" firstAttribute="leading" secondItem="YiS-gc-drj" secondAttribute="trailing" constant="10" id="ogJ-YI-Vw9"/>
+                <constraint firstItem="iyc-yj-4zM" firstAttribute="leading" secondItem="edA-eu-HhP" secondAttribute="trailing" constant="8" symbolic="YES" id="rNB-NS-NmZ"/>
+                <constraint firstItem="g8t-CZ-1gt" firstAttribute="top" secondItem="iyc-yj-4zM" secondAttribute="bottom" constant="9" id="wb2-UC-s6s"/>
+                <constraint firstItem="53m-Oj-pJo" firstAttribute="top" secondItem="4uJ-9n-aD3" secondAttribute="bottom" constant="17" id="xek-4r-QAe"/>
+            </constraints>
+            <point key="canvasLocation" x="-231.5" y="113"/>
+        </customView>
+    </objects>
+</document>
