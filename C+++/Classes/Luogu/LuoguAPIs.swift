@@ -32,6 +32,10 @@ class LuoguAPIs: NSObject {
 
     }
     
+    class func getCaptchaImage() -> NSImage? {
+        return NSImage(contentsOf: URL(string: "https://www.luogu.com.cn/api/verify/captcha")!)
+    }
+    
     class func login(username: String, password: String, captcha: String) {
         
         let session = URLSession(configuration: .default)
