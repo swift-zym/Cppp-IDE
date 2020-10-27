@@ -1489,7 +1489,7 @@ Gw
                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="vGI-3r-Mbu" customClass="SKSyntaxTextView" customModule="C___" customModuleProvider="target">
                                                                 <rect key="frame" x="46" y="22" width="528" height="518"/>
                                                             </customView>
-                                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-8l-v7n">
+                                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-8l-v7n" customClass="CDScrollView" customModule="C___" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="22" width="46" height="518"/>
                                                                 <clipView key="contentView" id="qX4-wV-paH">
                                                                     <rect key="frame" x="0.0" y="0.0" width="46" height="518"/>
@@ -1527,6 +1527,7 @@ Gw
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="RCh-2s-VX0" secondAttribute="trailing" id="37q-NE-Gqv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vGI-3r-Mbu" secondAttribute="trailing" constant="125" id="JKq-2T-gLN"/>
                                                             <constraint firstItem="J1l-QZ-aWd" firstAttribute="leading" secondItem="rcv-TM-aRa" secondAttribute="leading" id="JwN-NN-aMf"/>
                                                             <constraint firstItem="vGI-3r-Mbu" firstAttribute="top" secondItem="J1l-QZ-aWd" secondAttribute="bottom" id="L2L-YJ-dyX"/>
                                                             <constraint firstItem="RCh-2s-VX0" firstAttribute="top" secondItem="OgG-8l-v7n" secondAttribute="bottom" id="MWE-S5-yhT"/>
@@ -2111,10 +2112,12 @@ Gw
                         <outlet property="consoleView" destination="M8q-ws-1g9" id="8eO-sM-vWK"/>
                         <outlet property="leftSidebarTableView" destination="Fks-kw-vs8" id="4t9-p6-07t"/>
                         <outlet property="leftView" destination="Qyo-s2-8ZO" id="VT5-js-cmi"/>
+                        <outlet property="lineNumberScrollView" destination="OgG-8l-v7n" id="iRh-5n-hwb"/>
                         <outlet property="lineNumberView" destination="TKg-F7-Lpz" id="H55-he-tmo"/>
                         <outlet property="linesLabel" destination="42g-tY-n4q" id="vAG-yT-KLn"/>
                         <outlet property="mainTextView" destination="vGI-3r-Mbu" id="cOk-bp-FVt"/>
                         <outlet property="minimapView" destination="Lo4-51-TBQ" id="Cmc-8L-v2F"/>
+                        <outlet property="minimapViewConstraint" destination="JKq-2T-gLN" id="L6D-1z-MeF"/>
                         <outlet property="pathControl" destination="Fh1-ZV-B2L" id="De9-Vs-V5G"/>
                         <outlet property="rightConstraint" destination="fNW-CT-dK4" id="wop-M0-Toi"/>
                         <outlet property="sidebarTitleLabel" destination="T0f-gA-vKa" id="TK4-7V-NIq"/>

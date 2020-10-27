@@ -44,6 +44,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBOutlet weak var bigSplitView: NSSplitView!
     @IBOutlet weak var smallSplitView: NSSplitView!
     @IBOutlet weak var lineNumberView: CDCodeEditorLineNumberView!
+    @IBOutlet weak var lineNumberScrollView: CDScrollView!
     @IBOutlet weak var minimapView: CDMinimapView!
     @IBOutlet weak var minimapViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var sidebarTitleLabel: NSTextField!
