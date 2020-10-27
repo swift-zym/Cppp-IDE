@@ -74,6 +74,7 @@ class CDCppLexer: SKRegexLexer {
         
         generators.append(regexGenerator("(?<=\\.)[A-Za-z_]+\\w*", tokenType: .identifier))
         generators.append(regexGenerator("(?<=->)[A-Za-z_]+\\w*", tokenType: .identifier))
+        generators.append(regexGenerator("(?<=::)[A-Za-z_]+\\w*", tokenType: .identifier))
         
         generators.append(regexGenerator("^\\s*#.*", options: [.anchorsMatchLines], tokenType: .preprocesscor))
         
