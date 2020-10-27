@@ -44,7 +44,7 @@ class CDCodeEditorLineNumberView: CDFlippedView {
     override var frame: NSRect {
         didSet {
             DispatchQueue.main.async {
-                if self.shouldReloadAfterChangingFrame && oldValue != self.frame {
+                if self.shouldReloadAfterChangingFrame && oldValue.size != self.frame.size {
                     self.draw()
                 }
             }
