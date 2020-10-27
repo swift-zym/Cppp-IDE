@@ -68,6 +68,8 @@ class LuoguAPIs: NSObject {
     
     class func login(username: String, password: String, captcha: String, result: @escaping (Bool, String) -> (Void) ) {
         
+        // LuoguAPIs.getCSRFToken()
+        
         let session = URLSession(configuration: .default)
         
         let url = "https://www.luogu.com.cn/api/auth/userPassLogin"
@@ -140,18 +142,84 @@ class LuoguAPIs: NSObject {
                     print("status isn't nil")
                     let code = dicArr["status"] as! Int
                     if code != 200 {
-                        result(-1, "Error occurred. Code = \(code). Error = \(dicArr["errorMessage"] as! String)")
+                        result(-1, "Code = \(code). Error = \(dicArr["errorMessage"] as! String)")
                         return
                     }
                 }
                 
-                result(dicArr["rid"] as! Int, "Login Succeed.")
+                result(dicArr["rid"] as! Int, "Submit Succeed.")
                
             } catch {
                 result(-1, "Received invalid data from luogu.com.cn.")
                 return
             }
             
+        }
+        task.resume()
+        
+    }
+    
+    class func viewRecord(rid: Int, result: @escaping (Bool, String, Dictionary<String, AnyObject>?) -> (Void) ) {
+        
+        let session = URLSession(configuration: .default)
+        let url = URL(string: "https://www.luogu.com.cn/record/\(rid)?_contentOnly=1")!
+        let request = URLRequest(url: url)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if data == nil {
+                result(false, "Please check your internet connection.", nil)
+                return
+            }
+            do {
+                let dicArr = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: AnyObject]
+                print(dicArr)
+                
+                if dicArr["status"] != nil {
+                    print("status isn't nil")
+                    let code = dicArr["status"] as! Int
+                    if code != 200 {
+                        result(false, "Code = \(code). Error = \(dicArr["errorMessage"] as! String)", nil)
+                        return
+                    }
+                }
+                
+                result(true, "", dicArr)
+               
+            } catch {
+                result(false, "Received invalid data from luogu.com.cn.", nil)
+                return
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
+    class func logout() {
+        
+        let session = URLSession(configuration: .default)
+        let url = "https://www.luogu.com.cn/api/auth/logout"
+        var request = URLRequest(url: URL(string: url)!)
+        request.setValue(UserDefaults.standard.string(forKey: "csrf-token")!, forHTTPHeaderField: "X-CSRF-Token")
+        request.httpMethod = "POST"
+        request.setValue("https://www.luogu.com.cn/auth/logout", forHTTPHeaderField: "Referer")
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            print("request finish")
+            if data == nil {
+                return
+            }
+            do {
+                let dicArr = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                if dicArr["status"] != nil {
+                    let code = dicArr["status"] as! Int
+                    if code != 200 {
+                        return
+                    }
+                }
+            } catch {
+                return
+            }
         }
         task.resume()
         

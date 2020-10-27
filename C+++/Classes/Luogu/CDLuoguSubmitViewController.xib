@@ -51,6 +51,22 @@ DQ
                         <action selector="submit:" target="-2" id="H37-d5-XRs"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf1-tB-546">
+                    <rect key="frame" x="103" y="13" width="94" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="QM4-kU-zTm"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b0Z-7h-9gR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="dismissController:" target="-2" id="KAl-qu-wgb"/>
+                    </connections>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="edA-eu-HhP">
                     <rect key="frame" x="18" y="135" width="71" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Problem ID" id="tvz-VK-vv4">
@@ -84,12 +100,12 @@ DQ
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf1-tB-546">
-                    <rect key="frame" x="103" y="13" width="94" height="32"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l3d-ZX-daG">
+                    <rect key="frame" x="208" y="13" width="94" height="32"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="QM4-kU-zTm"/>
+                        <constraint firstAttribute="width" constant="80" id="Fte-xe-d6U"/>
                     </constraints>
-                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b0Z-7h-9gR">
+                    <buttonCell key="cell" type="push" title="Logout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u6x-qZ-6W1">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                         <string key="keyEquivalent" base64-UTF8="YES">
@@ -97,12 +113,13 @@ Gw
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="dismissController:" target="-2" id="KAl-qu-wgb"/>
+                        <action selector="logout:" target="-2" id="cYj-CC-cvn"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="53m-Oj-pJo" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="43O-hA-YN7"/>
+                <constraint firstAttribute="trailing" secondItem="l3d-ZX-daG" secondAttribute="trailing" constant="20" id="558-uV-Ujp"/>
                 <constraint firstItem="edA-eu-HhP" firstAttribute="top" secondItem="53m-Oj-pJo" secondAttribute="bottom" constant="10" id="AjF-M3-ebw"/>
                 <constraint firstAttribute="bottom" secondItem="YiS-gc-drj" secondAttribute="bottom" constant="20" symbolic="YES" id="CDD-ig-plt"/>
                 <constraint firstItem="YiS-gc-drj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="FjN-wS-h9d"/>
@@ -113,6 +130,7 @@ Gw
                 <constraint firstItem="1uY-MI-4Py" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="aIc-kb-pyL"/>
                 <constraint firstAttribute="bottom" secondItem="gf1-tB-546" secondAttribute="bottom" constant="20" symbolic="YES" id="cNj-wR-V69"/>
                 <constraint firstItem="iyc-yj-4zM" firstAttribute="top" secondItem="53m-Oj-pJo" secondAttribute="bottom" constant="8" symbolic="YES" id="cpU-dD-SYo"/>
+                <constraint firstAttribute="bottom" secondItem="l3d-ZX-daG" secondAttribute="bottom" constant="20" id="lAC-b8-Z5n"/>
                 <constraint firstItem="4uJ-9n-aD3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="me9-On-u0x"/>
                 <constraint firstItem="gf1-tB-546" firstAttribute="leading" secondItem="YiS-gc-drj" secondAttribute="trailing" constant="10" id="ogJ-YI-Vw9"/>
                 <constraint firstItem="iyc-yj-4zM" firstAttribute="leading" secondItem="edA-eu-HhP" secondAttribute="trailing" constant="8" symbolic="YES" id="rNB-NS-NmZ"/>

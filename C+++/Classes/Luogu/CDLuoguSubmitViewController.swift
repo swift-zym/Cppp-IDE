@@ -21,8 +21,21 @@ class CDLuoguSubmitViewController: NSViewController {
             enableO2: (self.enableO2.state == .on ? 1 : 0)
         ) {
             (rid, message) in
-            print("rid: \(rid)")
+            if rid == -1 {
+                self.showAlert("Error Occurred.", message)
+            } else {
+                let vc = CDLuoguRecordViewer()
+                vc.rid = rid
+                self.presentAsSheet(vc)
+            }
         }
+    }
+    
+    @IBAction func logout(_ sender: Any?) {
+        LuoguAPIs.logout()
+        UserDefaults.standard.set("", forKey: "LuoguUserName")
+        UserDefaults.standard.set("", forKey: "LuoguPassword")
+        self.dismiss(self)
     }
 
     override func viewDidLoad() {

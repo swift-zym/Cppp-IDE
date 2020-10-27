@@ -34,6 +34,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
                     return
             }
             self.setSelectedRange(NSMakeRange(self.selectedRange.location - 1, 0))
+            self.showFindIndicator(for: NSMakeRange(self.selectedRange.location, 1))
             
         }
         

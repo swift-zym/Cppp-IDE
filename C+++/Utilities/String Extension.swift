@@ -10,8 +10,31 @@ import Cocoa
 
 extension String {
     
+    subscript (i: Int) -> Character {
+        guard i < self.count else {
+            return " "
+        }
+        return self[ self.index(startIndex, offsetBy: i) ]
+    }
+    
+    subscript (bounds: Range<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[start ... end]
+    }
+    
     var nsString: NSString {
         return NSString(string: self)
+    }
+    
+    func findPositionOf(substring: String, backwards: Bool = false) -> Int {
+        var pos = -1
+        if let range = range(of:substring, options: backwards ? .backwards : .literal ) {
+            if !range.isEmpty {
+                pos = self.distance(from: startIndex, to: range.lowerBound)
+            }
+        }
+        return pos
     }
     
     /// Count how many times a character appears in a string.

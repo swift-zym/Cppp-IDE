@@ -94,6 +94,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         
         self.mainTextView.theme = defaultTheme
         self.mainTextView.delegate = self
+        self.mainTextView.textView.delegate = self
         self.lineNumberView.textView = self.mainTextView.textView
         self.minimapView.scrollView = self.mainTextView.scrollView
         self.sidebarTitleLabel.stringValue = "Snippets"
@@ -193,6 +194,41 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
     func scrollViewDidScroll(to point: NSPoint) {
         self.mainTextView.scrollView.scroll(self.mainTextView.scrollView.contentView, to: point)
+    }
+    
+    
+    func textViewDidChangeSelection(_ notification: Notification) {
+        
+        let range = self.mainTextView.textView.selectedRange
+        let str = self.mainTextView.textView.string
+        let left = str[range.location - 1]
+        let right = str[range.location]
+        
+        for c in [left, right] {
+            switch c {
+                case "}":
+                    let loc = str.nsString.substring(to: range.location - 1).findPositionOf(substring: "{", backwards: true)
+                    self.mainTextView.textView.showFindIndicator(for: NSMakeRange(loc, 1))
+                case ")":
+                    let loc = str.nsString.substring(to: range.location - 1).findPositionOf(substring: "(", backwards: true)
+                    self.mainTextView.textView.showFindIndicator(for: NSMakeRange(loc, 1))
+                case "]":
+                    let loc = str.nsString.substring(to: range.location - 1).findPositionOf(substring: "[", backwards: true)
+                    self.mainTextView.textView.showFindIndicator(for: NSMakeRange(loc, 1))
+                case "{":
+                    let loc = str.nsString.substring(from: range.location).findPositionOf(substring: "}", backwards: false)
+                    self.mainTextView.textView.showFindIndicator(for: NSMakeRange(loc + range.location, 1))
+                case "(":
+                    let loc = str.nsString.substring(from: range.location).findPositionOf(substring: ")", backwards: false)
+                    self.mainTextView.textView.showFindIndicator(for: NSMakeRange(loc + range.location, 1))
+                case "[":
+                    let loc = str.nsString.substring(from: range.location).findPositionOf(substring: "]", backwards: false)
+                    self.mainTextView.textView.showFindIndicator(for: NSMakeRange(loc + range.location, 1))
+                default:
+                    break
+            }
+        }
+        
     }
     
    
