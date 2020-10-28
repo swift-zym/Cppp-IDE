@@ -11,7 +11,7 @@ import Cocoa
 extension String {
     
     subscript (i: Int) -> Character {
-        guard i < self.count else {
+        guard i < self.count && i >= 0 else {
             return " "
         }
         return self[ self.index(startIndex, offsetBy: i) ]

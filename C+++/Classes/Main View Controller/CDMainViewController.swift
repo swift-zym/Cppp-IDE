@@ -63,6 +63,15 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     }
     
     
+    func textView(_ textView: NSTextView, willDisplayToolTip tooltip: String, forCharacterAt characterIndex: Int) -> String? {
+        let location = CKSourceLocation(translationUnit: self.mainTextView.textView.translationUnit, line: Int32(textView.string.lineNumber(at: characterIndex)!), col: Int32(textView.string.columnNumber(at: characterIndex)))
+        let cursor = CKCursor(location: location, translationUnit: self.mainTextView.textView.translationUnit)
+        if cursor?.kindSpelling != nil && cursor?.displayName != nil {
+            return (cursor?.kindSpelling)! + ": " + (cursor?.displayName)!
+        }
+        return nil
+    }
+    
     
     
     
@@ -161,6 +170,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     
     func didChangeText(_ syntaxTextView: SKSyntaxTextView) {
         
+        syntaxTextView.textView.textStorage?.addAttribute(.toolTip, value: true, range: NSMakeRange(0, syntaxTextView.text.count))
         DispatchQueue.main.async {
             self.lineNumberView.draw()
         }

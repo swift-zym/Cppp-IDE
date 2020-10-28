@@ -2,6 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "../clang-c/Index.h"
+#import "CKTranslationUnit.h"
 
 /*!
  * @class           CKSourceLocation
@@ -61,5 +62,7 @@
  * @return          The source location object
  */
 - ( id )initWithPointerData1: ( const void * )ptrData1 pointerData2: ( const void * )ptrData2 intData: ( unsigned int )intData;
+
+- ( id )initWithTranslationUnit: ( CKTranslationUnit* )unit line: ( int )line col: ( int )col;
 
 @end

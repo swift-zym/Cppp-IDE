@@ -48,6 +48,27 @@
     return self;
 }
 
+- ( id )initWithTranslationUnit: ( CKTranslationUnit* )unit line: ( int )line col: ( int )col {
+    
+    if( (self = [self init]) ) {
+    
+        CXSourceLocation    location = clang_getLocation([unit cxTranslationUnit], [unit cxFile], line, col);
+        _ptrData1   = location.ptr_data[0];
+        _ptrData2   = location.ptr_data[1];
+        _intData    = location.int_data;
+        
+        CXString fileName = clang_getFileName( [unit cxFile] );
+        if( clang_getCString( fileName ) != NULL )
+        {
+            _fileName = [ [ NSString alloc ] initWithCString: clang_getCString( fileName ) encoding: NSUTF8StringEncoding ];
+        }
+        
+    }
+    
+    return self;
+    
+}
+
 - ( void )dealloc
 {
     [ _fileName release ];
