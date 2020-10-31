@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CDSnippetPopoperViewController: NSViewController {
+class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate {
     
     
     // MARK: - Properties
@@ -16,7 +16,7 @@ class CDSnippetPopoperViewController: NSViewController {
     let imageNames = ["Code", "YellowCode", "GreenCode", "PurpleCode", "BlueCode"]
     
     @IBOutlet weak var titleLabel: NSTextField!
-    @IBOutlet weak var textView: CDCodeEditor!
+    @IBOutlet weak var textView: SKSyntaxTextView!
     @IBOutlet weak var imageView: NSButton!
     @IBOutlet weak var addToCodeButton: NSButton!
     @IBOutlet weak var removeButton: NSButton!
@@ -24,6 +24,13 @@ class CDSnippetPopoperViewController: NSViewController {
     public var imageNameIndex: Int = 0
     private var popover: NSPopover!
     var isEditable: Bool = false
+    
+    lazy var theme = SKDefaultSourceCodeTheme()
+    lazy var lexer = CDCppLexer()
+    
+    func lexerForSource(_ source: String) -> SKLexer {
+        return self.lexer
+    }
     /*
     
     @IBAction func addToCode(_ sender: Any) {
@@ -65,22 +72,13 @@ class CDSnippetPopoperViewController: NSViewController {
         
         self.loadView()
         self.titleLabel.stringValue = title
-        self.textView.string = code
+        self.textView.theme = self.theme
+        self.textView.delegate = self
+        self.textView.text = code
         self.imageView.image = image
         self.isEditable = isEditable
         
-        if #available(OSX 10.14, *) {
-            self.view.appearance = darkAqua
-            self.view.wantsLayer = true
-            self.view.layer?.backgroundColor = NSColor(srgbRed: 0.2, green: 0.2, blue: 0.2, alpha: 1.0).cgColor
-            self.textView.highlightr?.setTheme(to: CDSettings.shared.darkThemeName)
-        } else {
-            self.view.appearance = aqua
-            self.textView.highlightr?.setTheme(to: CDSettings.shared.lightThemeName)
-        }
-        
-        self.textView.didChangeText()
-        self.textView.isEditable = isEditable
+        self.textView.textView.isEditable = isEditable
         self.removeButton.target = self
         // self.removeButton.action = #selector(removeItem)
         

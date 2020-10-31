@@ -20,7 +20,7 @@ let aqua = NSAppearance(named: .aqua)
 
 
 
-class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDelegate, NSSplitViewDelegate, SKSyntaxTextViewDelegate, CDScrollViewDelegate {
+class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDelegate, SKSyntaxTextViewDelegate, CDScrollViewDelegate {
     
     
     func setStatus(string: String) {

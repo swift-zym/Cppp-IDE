@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132.0.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132.0.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,7 +11,7 @@
                 <outlet property="addToCodeButton" destination="MlQ-AU-NIG" id="jSi-EN-BTR"/>
                 <outlet property="imageView" destination="nkU-dH-6NV" id="Cod-ol-F5e"/>
                 <outlet property="removeButton" destination="sFI-0I-EwQ" id="KOM-hc-1pE"/>
-                <outlet property="textView" destination="non-4j-3VK" id="d0V-9y-moG"/>
+                <outlet property="textView" destination="heX-fl-BNu" id="Fpp-zb-IxP"/>
                 <outlet property="titleLabel" destination="vfl-J8-3TD" id="wuw-Sv-BbC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -31,55 +31,19 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="GDw-U4-1Cm">
-                    <rect key="frame" x="11" y="52" width="276" height="175"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="iiF-WS-9yr">
-                        <rect key="frame" x="0.0" y="0.0" width="276" height="175"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" allowsUndo="YES" smartInsertDelete="YES" id="non-4j-3VK" customClass="CDCodeEditor" customModule="C___" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="276" height="175"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="276" height="175"/>
-                                <size key="maxSize" width="10000000" height="10000000"/>
-                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="zji-Wv-ouG">
-                        <rect key="frame" x="-100" y="-100" width="225" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="JRh-w8-BL8">
-                        <rect key="frame" x="261" y="0.0" width="15" height="175"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MlQ-AU-NIG">
-                    <rect key="frame" x="5" y="7" width="114" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Add to code" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uvw-T4-kEX">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="addToCode:" target="-2" id="aCD-0P-njN"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFI-0I-EwQ">
-                    <rect key="frame" x="204" y="7" width="89" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nZy-dL-d2V">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sFI-0I-EwQ">
+                    <rect key="frame" x="11" y="18" width="65" height="23"/>
+                    <buttonCell key="cell" type="roundTextured" title="Remove" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nZy-dL-d2V">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkU-dH-6NV">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="nkU-dH-6NV">
                     <rect key="frame" x="-4" y="234" width="50" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="15O-jp-JgO"/>
+                        <constraint firstAttribute="width" constant="50" id="UAc-Jd-0Vc"/>
+                    </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Code" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="R6w-Rh-sJs">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -88,7 +52,33 @@
                         <action selector="changeImage:" target="-2" id="XyA-gs-50x"/>
                     </connections>
                 </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="heX-fl-BNu" customClass="SKSyntaxTextView" customModule="C___" customModuleProvider="target">
+                    <rect key="frame" x="12" y="53" width="275" height="179"/>
+                </customView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MlQ-AU-NIG">
+                    <rect key="frame" x="198" y="18" width="90" height="23"/>
+                    <buttonCell key="cell" type="roundTextured" title="Add to code" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uvw-T4-kEX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addToCode:" target="-2" id="aCD-0P-njN"/>
+                    </connections>
+                </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="heX-fl-BNu" firstAttribute="top" secondItem="nkU-dH-6NV" secondAttribute="bottom" constant="2" id="Alx-Rz-BZo"/>
+                <constraint firstItem="MlQ-AU-NIG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="199" id="Bp9-tI-PNH"/>
+                <constraint firstAttribute="bottom" secondItem="sFI-0I-EwQ" secondAttribute="bottom" constant="20" id="DtT-Zc-aEK"/>
+                <constraint firstAttribute="trailing" secondItem="heX-fl-BNu" secondAttribute="trailing" constant="11" id="JEY-8H-JdH"/>
+                <constraint firstItem="heX-fl-BNu" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="12" id="L40-v9-tmK"/>
+                <constraint firstAttribute="trailing" secondItem="sFI-0I-EwQ" secondAttribute="trailing" constant="223" id="UVx-U9-7bn"/>
+                <constraint firstItem="sFI-0I-EwQ" firstAttribute="top" secondItem="heX-fl-BNu" secondAttribute="bottom" constant="13" id="Wd0-LA-bal"/>
+                <constraint firstItem="nkU-dH-6NV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="-4" id="bo5-EY-lww"/>
+                <constraint firstItem="nkU-dH-6NV" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="eHL-al-0JI"/>
+                <constraint firstItem="MlQ-AU-NIG" firstAttribute="top" secondItem="heX-fl-BNu" secondAttribute="bottom" constant="13" id="hIj-Pl-6GB"/>
+                <constraint firstAttribute="bottom" secondItem="MlQ-AU-NIG" secondAttribute="bottom" constant="20" id="pFv-xU-wjl"/>
+            </constraints>
             <point key="canvasLocation" x="48" y="157"/>
         </customView>
     </objects>
