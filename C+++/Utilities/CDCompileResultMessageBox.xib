@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CDCompileResultMessageBox" customModule="C___" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="qJc-M4-DbU" id="Kyi-Nh-ptG"/>
+                <outlet property="label" destination="w07-Kc-eQO" id="piu-cY-yhk"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w07-Kc-eQO">
+                    <rect key="frame" x="18" y="22" width="144" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Ps1-BK-UnO"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Compile Succeed" id="Y9O-Je-TxY">
+                        <font key="font" metaFont="systemLight" size="18"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qJc-M4-DbU">
+                    <rect key="frame" x="40" y="58" width="100" height="104"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="WhC-8u-o3O"/>
+                        <constraint firstAttribute="width" constant="100" id="hlx-0d-TCc"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSMenuOnStateTemplate" id="dg0-5x-8TU"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qJc-M4-DbU" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="04R-1F-nDY"/>
+                <constraint firstAttribute="trailing" secondItem="w07-Kc-eQO" secondAttribute="trailing" constant="20" symbolic="YES" id="3Fr-6a-3vM"/>
+                <constraint firstItem="qJc-M4-DbU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="40" id="NzC-hB-H2h"/>
+                <constraint firstItem="w07-Kc-eQO" firstAttribute="top" secondItem="qJc-M4-DbU" secondAttribute="bottom" constant="17" id="P7p-yL-iPy"/>
+                <constraint firstItem="w07-Kc-eQO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="SrA-vV-Ouz"/>
+                <constraint firstAttribute="trailing" secondItem="qJc-M4-DbU" secondAttribute="trailing" constant="40" id="arE-BV-puA"/>
+                <constraint firstAttribute="bottom" secondItem="w07-Kc-eQO" secondAttribute="bottom" constant="22" id="l2W-GY-cqd"/>
+            </constraints>
+            <point key="canvasLocation" x="-367" y="77"/>
+        </visualEffectView>
+    </objects>
+    <resources>
+        <image name="NSMenuOnStateTemplate" width="14" height="13"/>
+    </resources>
+</document>

@@ -54,8 +54,10 @@ extension CDCodeDocument {
         }*/
         
         if alsoRuns && res.succeed {
-            let process = processForShellCommand(command: "cd \"\(path)\"\n" + "open \(out)")
-            process.launch()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.10) {
+                let process = processForShellCommand(command: "cd \"\(path)\"\n" + "open \(out)")
+                process.launch()
+            }
         }
         
         return (log: result, result: res)
@@ -92,6 +94,10 @@ extension CDCodeDocument {
         
         self.contentViewController?.consoleView?.compileResult = res.result
         self.contentViewController?.consoleView?.logView?.string = res.log
+        
+        let vc = CDCompileResultMessageBox()
+        vc.isSuccess = (res.result?.succeed) ?? false
+        self.contentViewController?.presentAsSheet(vc)
         
     }
     
@@ -131,6 +137,11 @@ extension CDCodeDocument {
         
         self.contentViewController?.consoleView?.compileResult = res.result
         self.contentViewController?.consoleView?.logView?.string = res.log
+        
+        
+        let vc = CDCompileResultMessageBox()
+        vc.isSuccess = (res.result?.succeed) ?? false
+        self.contentViewController?.presentAsSheet(vc)
         
     }
     
