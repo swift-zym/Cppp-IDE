@@ -26,10 +26,16 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     
     func disableCompiling() {
         
-        self.window?.toolbar?.isVisible = false
-        
         let vc = (self.contentViewController as! CDMainViewController)
         vc.enterSimpleMode(self)
+        vc.rightConstraint.constant = 0.0
+        
+    }
+    
+    @IBAction func toggleLeftSidebar(_ sender: Any?) {
+        
+        let vc = (self.contentViewController as! CDMainViewController)
+        vc.toggleLeftSidebar(sender)
         
     }
     

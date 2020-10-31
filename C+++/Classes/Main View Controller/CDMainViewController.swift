@@ -146,24 +146,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
         self.minimapView.scrollViewDidScrollToPoint(point: point)
     }
     
-// MARK: - Remote Judge
-    
-    @IBAction func showRemoteJudgePanel(_ sender: Any?) {
-        
-        if UserDefaults.standard.value(forKey: "LuoguUserName") != nil && UserDefaults.standard.value(forKey: "LuoguPassword") != nil {
-            let vc = CDLuoguSubmitViewController()
-            vc.code = self.mainTextView.text
-            self.presentAsSheet(vc)
-        } else {
-            self.showAlert("Please login to Luogu first.", "")
-            let vc = CDLuoguLoginViewController()
-            self.presentAsSheet(vc)
-        }
-        
-    }
-    
-    
-    
     
 // MARK: - Code Editor Delegate
     
@@ -234,7 +216,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, CDCodeEditorDe
     @IBAction func enterSimpleMode(_ sender: Any?) {
         
         self.leftView.isHidden = true
-        self.rightConstraint.constant = 0.0
         self.consoleView.isHidden = true
         
     }

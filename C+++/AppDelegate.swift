@@ -15,7 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        LuoguAPIs.getCSRFToken()
         if CDSettings.shared == nil || CDCompileSettings.shared == nil {
             initDefaultData()
         }

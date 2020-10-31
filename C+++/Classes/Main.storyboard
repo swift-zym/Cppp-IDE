@@ -638,6 +638,11 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="0AC95F4A-6B13-442E-A9C6-EF6BDE99779C" label="Sidebar" paletteLabel="Sidebar" tag="-1" image="HideLeftSidebar" sizingBehavior="auto" id="5eO-Mm-A5s">
+                                    <connections>
+                                        <action selector="toggleLeftSidebar:" target="jGA-0Y-lOj" id="v9G-1f-DgO"/>
+                                    </connections>
+                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="9CA5C0D7-B7C7-442A-8D29-916F2C3B20C7" label="Run" paletteLabel="Run" tag="-1" image="Run" id="Qet-oC-g8p">
                                     <size key="minSize" width="32" height="32"/>
                                     <size key="maxSize" width="32" height="32"/>
@@ -647,6 +652,7 @@
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="5eO-Mm-A5s"/>
                                 <toolbarItem reference="5Eg-DZ-en8"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -1144,6 +1150,59 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="972" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Plg-HC-3SL">
+                                <rect key="frame" x="921" y="668" width="46" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="6H5-Yq-yBe"/>
+                                    <constraint firstAttribute="height" constant="37" id="zHG-Gq-NRR"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Run" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="XdQ-lT-0bJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="16"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="compileFile:" target="2Tp-Fl-jBw" id="Mdi-Ed-JY1"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlK-fG-wwa">
+                                <rect key="frame" x="921" y="621" width="46" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="3lt-sS-X2h"/>
+                                    <constraint firstAttribute="height" constant="37" id="97x-zb-t02"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Debug" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="iey-YB-DD9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="16"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="beginDebugging:" target="2Tp-Fl-jBw" id="SU4-Wh-1od"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-tD-pcw">
+                                <rect key="frame" x="921" y="574" width="46" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="r4f-jH-H6c"/>
+                                    <constraint firstAttribute="width" constant="46" id="zH1-D9-gkk"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Test" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xAw-Ba-y1H">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="16"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testFile:" target="2Tp-Fl-jBw" id="xaw-sS-aLS"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Szv-Eb-S4e">
+                                <rect key="frame" x="921" y="527" width="46" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="ihY-wg-sH7"/>
+                                    <constraint firstAttribute="height" constant="37" id="ngg-61-CHB"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Submit" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="k6D-Uc-VIS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="16"/>
+                                </buttonCell>
+                            </button>
                             <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LB2-Rd-Bhv">
                                 <rect key="frame" x="0.0" y="0.0" width="917" height="720"/>
                                 <subviews>
@@ -1524,9 +1583,25 @@ Gw
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </scroller>
                                                             </scrollView>
+                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EqW-A4-DAu">
+                                                                <rect key="frame" x="673" y="547.5" width="18.5" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="86J-Hb-O3E"/>
+                                                                    <constraint firstAttribute="width" constant="18" id="A8t-hC-hMk"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSEnterFullScreenTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="71n-ch-UvI">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="enterSimpleMode:" target="5gI-5U-AMq" id="1on-rJ-Q2W"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="RCh-2s-VX0" secondAttribute="trailing" id="37q-NE-Gqv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="EqW-A4-DAu" secondAttribute="trailing" constant="8" id="9ib-1E-IZF"/>
+                                                            <constraint firstItem="EqW-A4-DAu" firstAttribute="top" secondItem="rcv-TM-aRa" secondAttribute="top" constant="12" id="EFs-P9-eei"/>
                                                             <constraint firstAttribute="trailing" secondItem="vGI-3r-Mbu" secondAttribute="trailing" constant="125" id="JKq-2T-gLN"/>
                                                             <constraint firstItem="J1l-QZ-aWd" firstAttribute="leading" secondItem="rcv-TM-aRa" secondAttribute="leading" id="JwN-NN-aMf"/>
                                                             <constraint firstItem="vGI-3r-Mbu" firstAttribute="top" secondItem="J1l-QZ-aWd" secondAttribute="bottom" id="L2L-YJ-dyX"/>
@@ -2032,62 +2107,6 @@ Gw
                                     <outlet property="delegate" destination="5gI-5U-AMq" id="fbY-Jj-Se0"/>
                                 </connections>
                             </splitView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Plg-HC-3SL">
-                                <rect key="frame" x="921" y="668" width="46" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="6H5-Yq-yBe"/>
-                                    <constraint firstAttribute="height" constant="37" id="zHG-Gq-NRR"/>
-                                </constraints>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Run" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="XdQ-lT-0bJ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="16"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="compileFile:" target="2Tp-Fl-jBw" id="Mdi-Ed-JY1"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlK-fG-wwa">
-                                <rect key="frame" x="921" y="621" width="46" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="3lt-sS-X2h"/>
-                                    <constraint firstAttribute="height" constant="37" id="97x-zb-t02"/>
-                                </constraints>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Debug" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="iey-YB-DD9">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="16"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="beginDebugging:" target="2Tp-Fl-jBw" id="SU4-Wh-1od"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-tD-pcw">
-                                <rect key="frame" x="921" y="574" width="46" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="r4f-jH-H6c"/>
-                                    <constraint firstAttribute="width" constant="46" id="zH1-D9-gkk"/>
-                                </constraints>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Test" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xAw-Ba-y1H">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="16"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="testFile:" target="2Tp-Fl-jBw" id="xaw-sS-aLS"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Szv-Eb-S4e">
-                                <rect key="frame" x="921" y="527" width="46" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="ihY-wg-sH7"/>
-                                    <constraint firstAttribute="height" constant="37" id="ngg-61-CHB"/>
-                                </constraints>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Submit" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="k6D-Uc-VIS">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="16"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="showRemoteJudgePanel:" target="5gI-5U-AMq" id="HMl-pY-Xtv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bPD-tD-pcw" secondAttribute="trailing" constant="5" id="3Vv-La-1S9"/>
@@ -2636,7 +2655,9 @@ Gw
         <image name="AppIcon" width="128" height="128"/>
         <image name="Code" width="160" height="170"/>
         <image name="Debug" width="1100" height="1100"/>
+        <image name="HideLeftSidebar" width="256" height="256"/>
         <image name="NSAddTemplate" width="14" height="13"/>
+        <image name="NSEnterFullScreenTemplate" width="16" height="15"/>
         <image name="NSListViewTemplate" width="16" height="12"/>
         <image name="NSTouchBarAddTemplate" width="14" height="13"/>
         <image name="NSTouchBarFolderCopyToTemplate" width="19" height="15"/>
