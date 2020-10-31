@@ -31,7 +31,7 @@ extension SKSyntaxTextViewDelegate {
 	
     func textViewDidBeginEditing(_ syntaxTextView: SKSyntaxTextView) { }
     
-    func didScroll(_ syntaxTextView: SKSyntaxTextView) { }
+    func didScroll(to: NSPoint) { }
     
 }
 
@@ -143,8 +143,6 @@ class SKSyntaxTextView: View {
         
         scrollView.contentView.postsBoundsChangedNotifications = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didScroll(_:)), name: NSView.boundsDidChangeNotification, object: scrollView.contentView)
-        
         textView.minSize = NSSize(width: 0.0, height: self.bounds.height)
         textView.maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         textView.isVerticallyResizable = true
@@ -172,13 +170,6 @@ class SKSyntaxTextView: View {
 	open override func viewDidMoveToSuperview() {
 		super.viewDidMoveToSuperview()
 	
-	}
-	
-	@objc func didScroll(_ notification: Notification) {
-		
-		wrapperView.setNeedsDisplay(wrapperView.bounds)
-        self.delegate?.didScroll(self)
-		
 	}
 
 	// MARK: -

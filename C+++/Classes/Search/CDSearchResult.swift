@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CDSearchResult: NSObject {
+class CDSearchResult: NSObject, SKSyntaxTextViewDelegate {
     
     public init(snippet: CDSnippetTableViewCell) {
         super.init()
@@ -125,33 +125,23 @@ class CDSearchResult: NSObject {
     var value: Any!
     var image: NSImage!
     
+    lazy var defaultTheme = SKDefaultSourceCodeTheme()
+    lazy var lexer = CDCppLexer()
+    
+    func lexerForSource(_ source: String) -> SKLexer {
+        return self.lexer
+    }
+    
     func loadResultDetailInView(view: NSView, isDarkMode: Bool = false) {
         
         switch self.type {
+            
             case .snippet:
-                
-                let codeEditor = CDCodeEditor(frame: view.bounds)
-                codeEditor.string = self.value as! String
-                codeEditor.drawsBackground = false
-                if isDarkMode {
-                    codeEditor.highlightr?.setTheme(to: CDSettings.shared.darkThemeName)
-                } else {
-                    codeEditor.highlightr?.setTheme(to: CDSettings.shared.lightThemeName)
-                }
-                codeEditor.didChangeText()
-                codeEditor.isEditable = false
-                codeEditor.maxSize = NSMakeSize(10000000, 10000000)
-                codeEditor.isVerticallyResizable = true
-                codeEditor.isHorizontallyResizable = true
-                
-                let scrollView = NSScrollView(frame: view.bounds)
-                scrollView.hasVerticalScroller = true
-                scrollView.hasHorizontalScroller = true
-                scrollView.drawsBackground = false
-                scrollView.documentView = codeEditor
-                
-                
-                view.addSubview(scrollView)
+                let textView = SKSyntaxTextView(frame: view.bounds)
+                textView.text = self.value as! String
+                textView.delegate = self
+                textView.theme = self.defaultTheme
+                view.addSubview(textView)
             
             case .recentFiles:
                 let imageView = NSImageView(frame: view.bounds)
