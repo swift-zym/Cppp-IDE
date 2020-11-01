@@ -44,9 +44,29 @@ class CDDocumentController: NSDocumentController {
     }
     
     override func newDocument(_ sender: Any?) {
-        super.newDocument(sender)
-        
-        self.currentDocument?.save(self)
+        // super.newDocument(sender)
+        let panel = NSSavePanel()
+        panel.allowedFileTypes = ["cpp", "c", "cxx", "c++", "h", "hpp", "h++", "hxx", "in", "out", "txt", "ans"] //["C++ Source", "C Source", "Input File", "Output File", "C++ Header"]
+        panel.message = "Choose a location to save your file."
+        let response = panel.runModal()
+        if response == .OK {
+            if let url = panel.url {
+                FileManager.default.createFile(atPath: url.path, contents: """
+                    #include <cstdio>
+                    int main() {
+                        
+                        return 0;
+                    }
+                    """.data(using: .utf8))
+                self.openDocument(withContentsOf: url, display: true) {
+                    (document, success, error) in
+                    if !success || error != nil {
+                        NSLog("Something went wrong when creating a file. \(error?.localizedDescription ?? "")")
+                    }
+                }
+            }
+        }
+        // self.currentDocument?.save(self)
         
     }
     
