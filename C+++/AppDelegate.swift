@@ -17,9 +17,18 @@ var GlobalMainWindowController: CDMainWindowController!
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let documentController = CDDocumentController()
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        
+        GlobalMainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "Document Window Controller") as? CDMainWindowController
+        
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        
+        
         if CDSettings.shared == nil || CDCompileSettings.shared == nil {
             initDefaultData()
         }
@@ -37,8 +46,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateNow
     }
     
+    /*
     func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
         return false
     }
+    */
     
 }

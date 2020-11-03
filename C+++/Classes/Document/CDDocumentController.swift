@@ -59,7 +59,9 @@ class CDDocumentController: NSDocumentController {
     
     override func openUntitledDocumentAndDisplay(_ displayDocument: Bool) throws -> NSDocument {
         let doc = try super.openUntitledDocumentAndDisplay(displayDocument)
-        GlobalMainWindowController.addDocument(doc as! CDCodeDocument)
+        if displayDocument {
+            GlobalMainWindowController.addDocument(doc as! CDCodeDocument)
+        }
         return doc
     }
     
