@@ -1,6 +1,10 @@
+## Note: Version 3.0 is being developed, but because it is a large update, so developing takes a lot of time. The new version will not be released until **macOS 11.0 Big Sur** is released. But **do not install version 2.1**, it is really unstable.
 
-# Note: Version 2.2 is being developed, but because it is a large update, so developing takes a lot of time. The new version may not be released until November or December 2020. But the version 2.1 is not recommended. 
-# So if you want to use C+++, the best choice is to wait until the version 2.2 is released.
+## So if you want to use C+++, the best choice is to **wait** until the version 3.0 is released.
+
+The website of this project is at [http://www.cpppide.ml](http://www.cpppide.ml).
+
+----
 
 #  C+++ IDE 2.1 for macOS
 
