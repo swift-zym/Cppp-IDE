@@ -2286,9 +2286,9 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lcp-zT-dkC">
-                                        <rect key="frame" x="145" y="182" width="136" height="16"/>
+                                        <rect key="frame" x="145" y="182" width="83" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Version 2.1.1 (208211)" id="ndz-OK-YpO">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Version 3.0.0" id="ndz-OK-YpO">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
