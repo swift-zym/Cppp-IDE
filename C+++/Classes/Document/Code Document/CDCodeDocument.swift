@@ -54,7 +54,9 @@ class CDCodeDocument: NSDocument {
     
     override func makeWindowControllers() {
         
-        launchViewController.view.window?.close()
+        self.addWindowController(GlobalMainWindowController)
+        /*
+        globalLaunchViewController.view.window?.close()
         
         // Returns the storyboard that contains your document window.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
@@ -66,8 +68,10 @@ class CDCodeDocument: NSDocument {
             // Set the view controller's represented object as your document.
             if let contentVC = windowController.contentViewController as? CDMainViewController {
                 
-                contentVC.representedObject = self.content
-                contentViewController = contentVC
+                // contentVC.representedObject = self.content
+                contentVC.mainTextView.document = self
+                contentVC.documentFolder = self.fileURL?.deletingLastPathComponent()
+                self.contentViewController = contentVC
                 
                 if self.fileType == "Input File" || self.fileType == "Output File" {
                     windowController.disableCompiling()
@@ -76,7 +80,7 @@ class CDCodeDocument: NSDocument {
             }
             
         }
-        
+        */
     }
     
     

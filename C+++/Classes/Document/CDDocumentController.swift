@@ -43,9 +43,30 @@ class CDDocumentController: NSDocumentController {
         return _defaultType
     }
     
+    override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
+        
+        super.openDocument(withContentsOf: url, display: displayDocument) {
+            (document, success, error) in
+            guard document != nil || !displayDocument else {
+                GlobalMainWindowController.contentViewController?.showAlert("Error", error?.localizedDescription ?? "")
+                return
+            }
+            GlobalMainWindowController.addDocument(document! as! CDCodeDocument)
+            completionHandler(document, success, error)
+        }
+        
+    }
+    
+    override func openUntitledDocumentAndDisplay(_ displayDocument: Bool) throws -> NSDocument {
+        print("openUntitled global=\(GlobalMainWindowController)")
+        let doc = try super.openUntitledDocumentAndDisplay(displayDocument)
+        GlobalMainWindowController.addDocument(doc as! CDCodeDocument)
+        return doc
+    }
+    
     override func newDocument(_ sender: Any?) {
-        // super.newDocument(sender)
-        let panel = NSSavePanel()
+        super.newDocument(sender)
+       /* let panel = NSSavePanel()
         panel.allowedFileTypes = ["cpp", "c", "cxx", "c++", "h", "hpp", "h++", "hxx", "in", "out", "txt", "ans"] //["C++ Source", "C Source", "Input File", "Output File", "C++ Header"]
         panel.message = "Choose a location to save your file."
         let response = panel.runModal()
@@ -67,7 +88,7 @@ class CDDocumentController: NSDocumentController {
             }
         }
         // self.currentDocument?.save(self)
-        
+        */
     }
     
 }

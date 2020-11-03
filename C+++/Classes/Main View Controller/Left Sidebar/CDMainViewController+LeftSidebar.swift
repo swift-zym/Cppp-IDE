@@ -14,6 +14,13 @@ extension CDMainViewController {
         
         switch self.leftSidebarMode {
             
+            case .openFiles:
+                self.sidebarTitleLabel.stringValue = "Snippets"
+                self.leftSidebarMode = .snippets
+                self.leftSidebarTableView.dataSource = self.snippetDataSource
+                self.leftSidebarTableView.delegate = self.snippetDataSource
+                sender.image = #imageLiteral(resourceName: "success")
+            
             case .snippets:
                 self.sidebarTitleLabel.stringValue = "Diagnostics"
                 self.leftSidebarMode = .diagnostics
@@ -29,11 +36,11 @@ extension CDMainViewController {
                 sender.image = #imageLiteral(resourceName: "Debug")
                 
             case .recentFiles:
-                self.sidebarTitleLabel.stringValue = "Snippets"
-                self.leftSidebarMode = .snippets
-                self.leftSidebarTableView.dataSource = self.snippetDataSource
-                self.leftSidebarTableView.delegate = self.snippetDataSource
-                sender.image = #imageLiteral(resourceName: "Code")
+                self.sidebarTitleLabel.stringValue = "Files"
+                self.leftSidebarMode = .openFiles
+                self.leftSidebarTableView.dataSource = self.filesDataSource
+                self.leftSidebarTableView.delegate = self.filesDataSource
+                sender.image = #imageLiteral(resourceName: "DuplicateFile")
             
         }
         

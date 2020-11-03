@@ -8,8 +8,6 @@
 
 import Cocoa
 
-var launchViewController: CDLaunchViewController!
-
 class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -96,7 +94,7 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
         super.viewDidLoad()
         
         welcomeButtonClicked(nil)
-        launchViewController = self
+        GlobalLaunchViewController = self
         
     }
     

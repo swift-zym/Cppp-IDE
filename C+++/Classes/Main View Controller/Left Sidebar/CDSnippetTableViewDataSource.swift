@@ -15,7 +15,7 @@ protocol CDLeftSidebarTableViewDelegate: NSTableViewDelegate {
 class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 41.0
+        return 35.0
     }
     
     override init() {

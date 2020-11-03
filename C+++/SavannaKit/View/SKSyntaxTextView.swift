@@ -52,6 +52,8 @@ class SKSyntaxTextView: View {
 	private var textViewSelectedRangeObserver: NSKeyValueObservation?
 
 	let textView: SKInnerTextView
+    
+    var document: CDCodeDocument?
 	
 	public var contentTextView: TextView {
 		return textView

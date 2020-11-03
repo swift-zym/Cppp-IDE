@@ -6,7 +6,12 @@
 //  Copyright © 2020 Zhu Yixuan. All rights reserved.
 //
 
-import Cocoa 
+import Cocoa
+
+// MARK: - Global Variables
+
+var GlobalLaunchViewController: CDLaunchViewController!
+var GlobalMainWindowController: CDMainWindowController!
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -30,6 +35,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         return .terminateNow
+    }
+    
+    func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
+        return false
     }
     
 }

@@ -32,6 +32,12 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     /// - if it is false, the appearance is aqua.
     var isDarkMode: Bool = true
     var isOpeningInProjectViewController = false
+    /*var documentFolder: URL? {
+        didSet {
+            self.filesDataSource = CDFilesTableViewDataSource(directoryPath: documentFolder?.path ?? "", viewController: self)
+            self.leftSidebarTableView?.reloadData()
+        }
+    }*/
     
     
     @IBOutlet weak var mainTextView: SKSyntaxTextView!
@@ -53,13 +59,17 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     var observation: NSKeyValueObservation?
     lazy var snippetDataSource = CDSnippetTableViewDataSource()
     lazy var recentFilesDataSource = CDRecentFilesTableViewDataSource()
+    lazy var filesDataSource = CDFilesTableViewDataSource()
     
-    var leftSidebarMode: LeftSidebarMode = .snippets
+    var leftSidebarMode: LeftSidebarMode = .openFiles
+    
+    // var documents: [String : CDCodeDocument] = [ : ]
     
     enum LeftSidebarMode: Int {
-        case snippets = 0
-        case recentFiles = 1
-        case diagnostics = 2
+        case openFiles = 0
+        case snippets = 1
+        case recentFiles = 2
+        case diagnostics = 3
     }
 
     
@@ -97,7 +107,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         self.mainTextView.delegate = self
         self.lineNumberView.textView = self.mainTextView.textView
         self.minimapView.scrollView = self.mainTextView.scrollView
-        self.sidebarTitleLabel.stringValue = "Snippets"
+        self.sidebarTitleLabel.stringValue = "Files"
         self.consoleView.debugConsoleView.font = menloFont(ofSize: 12.0)
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
@@ -118,8 +128,8 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         
         self.consoleView.logView.font = menloFont(ofSize: 13.0)
         
-        self.leftSidebarTableView.delegate = self.snippetDataSource
-        self.leftSidebarTableView.dataSource = self.snippetDataSource
+        self.leftSidebarTableView.delegate = self.filesDataSource
+        self.leftSidebarTableView.dataSource = self.filesDataSource
         // initialize the scroll view and the minimap view.
         self.mainTextView.scrollView.scroll(self.mainTextView.scrollView.contentView, to: NSMakePoint(0, 0))
         
@@ -163,12 +173,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
             
         }
         
-        // save document
-        guard let document = self.document else {
-            return
-        }
-        document.content.contentString = self.mainTextView.text
-        
     }
 
     @IBOutlet weak var addSnippetButton: NSButton!
@@ -190,12 +194,12 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     
 // MARK: - Document
     
-    weak var document: CDCodeDocument?
+    // weak var document: CDCodeDocument?
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.document = self.view.window?.windowController?.document as? CDCodeDocument
-        self.mainTextView.text = document?.content.contentString ?? ""
+        self.mainTextView.document = self.view.window?.windowController?.document as? CDCodeDocument
+        self.mainTextView.text = self.mainTextView.document?.content.contentString ?? ""
         
     }
     

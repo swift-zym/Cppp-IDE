@@ -43,7 +43,7 @@ class CDCodeEditorLineNumberViewButton: NSButton {
         self.drawBackground(color: .systemBlue)
         if self.superview != nil {
             superview.debugLines.insert(self.title.nsString.integerValue)
-            (self.window?.contentViewController as! CDMainViewController).document?.debugger?.addBreakpoint(line: self.title.nsString.integerValue)
+            (self.window?.contentViewController as! CDMainViewController).mainTextView.document?.debugger?.addBreakpoint(line: self.title.nsString.integerValue)
         }
         
     }

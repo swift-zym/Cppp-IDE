@@ -51,7 +51,7 @@ class CDProjectDocument: NSDocument {
     
     override func makeWindowControllers() {
         
-        launchViewController.view.window?.close()
+        GlobalLaunchViewController.view.window?.close()
         
         let storyboard = NSStoryboard(name: "Project", bundle: nil)
         if let windowController = storyboard.instantiateController(withIdentifier: "Project Window Controller") as? NSWindowController {

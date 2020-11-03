@@ -12,6 +12,41 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     
     @objc dynamic var statusString = "C+++ | Ready"
     
+    var documents: [CDCodeDocument] = []
+    
+    var mainViewController: CDMainViewController {
+        return (self.contentViewController as! CDMainViewController)
+    }
+    
+    func addDocument(_ document: CDCodeDocument) {
+        
+        if documents.contains(document) {
+            return
+        }
+        
+        self.documents.append(document)
+        self.mainViewController.mainTextView.setDocument(newDocument: document)
+        self.document = document
+        
+        if self.mainViewController.leftSidebarMode == .openFiles {
+            self.mainViewController.leftSidebarTableView.reloadData()
+        }
+        
+    }
+    
+    func setCurrentDocument(index: Int) {
+        
+        guard index >= 0 && index < self.documents.count else{
+            return
+        }
+        self.document?.removeWindowController(self)
+        let document = self.documents[index]
+        document.addWindowController(self)
+        self.mainViewController.mainTextView.setDocument(newDocument: document)
+        self.document = document
+        
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
@@ -21,6 +56,7 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         super.init(coder: aDecoder)
         
         self.shouldCascadeWindows = true
+        GlobalMainWindowController = self
         
     }
     

@@ -17,7 +17,7 @@ class CDRecentFilesTableCellView: NSTableCellView {
 class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 51.0
+        return 45.0
     }
     
     override init() {
@@ -33,7 +33,7 @@ class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("File"), owner: self) as? CDRecentFilesTableCellView {
+        if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("RecentFile"), owner: self) as? CDRecentFilesTableCellView {
             view.imageView?.image = NSWorkspace.shared.icon(forFile: self.recentFiles()[row].path)
             view.textField?.stringValue = self.recentFiles()[row].lastPathComponent
             view.pathLabel?.stringValue = self.recentFiles()[row].deletingLastPathComponent().path
