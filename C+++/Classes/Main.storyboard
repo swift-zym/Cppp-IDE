@@ -1267,19 +1267,19 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="40" horizontalPageScroll="10" verticalLineScroll="40" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brN-Ab-DOp">
-                                                <rect key="frame" x="9" y="28" width="198" height="657"/>
+                                                <rect key="frame" x="0.0" y="28" width="217" height="657"/>
                                                 <clipView key="contentView" drawsBackground="NO" id="NIJ-8Q-Dhz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="198" height="657"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="217" height="657"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="inset" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" typeSelect="NO" rowHeight="35" rowSizeStyle="automatic" viewBased="YES" id="Fks-kw-vs8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="198" height="657"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="657"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <size key="intercellSpacing" width="0.0" height="5"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn width="166" minWidth="40" maxWidth="1000" id="uGi-zt-xe0">
+                                                                <tableColumn width="185" minWidth="40" maxWidth="1000" id="uGi-zt-xe0">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -1292,11 +1292,11 @@ Gw
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
                                                                         <tableCellView identifier="RecentFile" id="kfW-Mm-jUT" customClass="CDRecentFilesTableCellView" customModule="C___" customModuleProvider="target">
-                                                                            <rect key="frame" x="10" y="2" width="178" height="51"/>
+                                                                            <rect key="frame" x="10" y="2" width="197" height="51"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9Oy-aN-6TP">
-                                                                                    <rect key="frame" x="37" y="30" width="140" height="16"/>
+                                                                                    <rect key="frame" x="37" y="30" width="159" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="File Name" id="wqf-zY-onf">
                                                                                         <font key="font" metaFont="systemMedium" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1312,7 +1312,7 @@ Gw
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NewFile" id="WSp-SW-KQm"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ANY-b0-rAb">
-                                                                                    <rect key="frame" x="37" y="10" width="140" height="15"/>
+                                                                                    <rect key="frame" x="37" y="10" width="159" height="15"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingHead" title="Path" id="OxS-ZI-sm4">
                                                                                         <font key="font" metaFont="cellTitle"/>
                                                                                         <color key="textColor" name="LineNumberColor"/>
@@ -1337,11 +1337,11 @@ Gw
                                                                             </connections>
                                                                         </tableCellView>
                                                                         <tableCellView identifier="Snippet" id="l9h-Xv-E9p">
-                                                                            <rect key="frame" x="10" y="58" width="178" height="35"/>
+                                                                            <rect key="frame" x="10" y="58" width="197" height="35"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XJK-Zo-0vV">
-                                                                                    <rect key="frame" x="44" y="10" width="134" height="16"/>
+                                                                                    <rect key="frame" x="44" y="10" width="153" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Code Snippet Title" id="G9h-NB-U7y">
                                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1372,7 +1372,7 @@ Gw
                                                                             </connections>
                                                                         </tableCellView>
                                                                         <tableCellView identifier="File" id="Js5-M3-ua6">
-                                                                            <rect key="frame" x="10" y="98" width="178" height="28"/>
+                                                                            <rect key="frame" x="10" y="98" width="197" height="28"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XQe-S2-O4R">
@@ -1384,7 +1384,7 @@ Gw
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="yQO-Wl-580"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pkI-6R-JqZ">
-                                                                                    <rect key="frame" x="27" y="6" width="150" height="16"/>
+                                                                                    <rect key="frame" x="27" y="6" width="169" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="File Name" id="omX-Ph-5Vb">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1407,11 +1407,11 @@ Gw
                                                                             </connections>
                                                                         </tableCellView>
                                                                         <tableCellView identifier="Diagnostics" id="hJM-HB-9u9">
-                                                                            <rect key="frame" x="10" y="131" width="178" height="35"/>
+                                                                            <rect key="frame" x="10" y="131" width="197" height="35"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-e9-tcc">
-                                                                                    <rect key="frame" x="40" y="10" width="138" height="16"/>
+                                                                                    <rect key="frame" x="40" y="10" width="157" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Diagnostics" id="0Fv-9h-JOx">
                                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1476,8 +1476,8 @@ Gw
                                             <constraint firstItem="gzI-SZ-yvK" firstAttribute="top" secondItem="Qyo-s2-8ZO" secondAttribute="top" constant="43" id="oMl-rZ-yU0"/>
                                             <constraint firstItem="brN-Ab-DOp" firstAttribute="top" secondItem="xz8-bC-xC1" secondAttribute="bottom" constant="17" id="tme-6P-xb2"/>
                                             <constraint firstAttribute="trailing" secondItem="gzI-SZ-yvK" secondAttribute="trailing" constant="10" id="vbp-1o-TZJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="brN-Ab-DOp" secondAttribute="trailing" constant="10" id="y4W-Pr-co1"/>
-                                            <constraint firstItem="brN-Ab-DOp" firstAttribute="leading" secondItem="Qyo-s2-8ZO" secondAttribute="leading" constant="9" id="zTt-CM-Qbx"/>
+                                            <constraint firstAttribute="trailing" secondItem="brN-Ab-DOp" secondAttribute="trailing" id="y4W-Pr-co1"/>
+                                            <constraint firstItem="brN-Ab-DOp" firstAttribute="leading" secondItem="Qyo-s2-8ZO" secondAttribute="leading" id="zTt-CM-Qbx"/>
                                         </constraints>
                                     </visualEffectView>
                                     <customView id="Cwa-V7-gw1">
