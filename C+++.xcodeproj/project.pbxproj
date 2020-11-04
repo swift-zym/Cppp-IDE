@@ -215,6 +215,8 @@
 		18B3C790242836A500F4CA14 /* CDDocumentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3C78F242836A500F4CA14 /* CDDocumentContent.swift */; };
 		18B3C7942428378E00F4CA14 /* CDMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3C7932428378E00F4CA14 /* CDMainWindowController.swift */; };
 		18B4C28F2550C134003C6E3B /* SavannaKit+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4C28E2550C134003C6E3B /* SavannaKit+File.swift */; };
+		18B4C3682552AE94003C6E3B /* SwiftTermMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */; };
+		18B4C3692552AE95003C6E3B /* SwiftTermMac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18CAC8D0252B052F00B60F37 /* CDCompileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8CF252B052F00B60F37 /* CDCompileError.swift */; };
 		18CAC8D2252C0D9900B60F37 /* CDCompileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8D1252C0D9900B60F37 /* CDCompileResult.swift */; };
 		18CAC8D4252D9CE400B60F37 /* CDDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8D3252D9CE400B60F37 /* CDDebugger.swift */; };
@@ -254,6 +256,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				18B4C3692552AE95003C6E3B /* SwiftTermMac.framework in Embed Frameworks */,
 				181F2B9B24AB558500C4B217 /* libclang.dylib in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -485,10 +488,11 @@
 		18B3C78324282C1F00F4CA14 /* CDCodeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeDocument.swift; sourceTree = "<group>"; };
 		18B3C78524282C2100F4CA14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B3C78A24282C2100F4CA14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18B3C78B24282C2100F4CA14 /* Code_Editor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Code_Editor.entitlements; sourceTree = "<group>"; };
+		18B3C78B24282C2100F4CA14 /* C+++.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "C+++.entitlements"; sourceTree = "<group>"; };
 		18B3C78F242836A500F4CA14 /* CDDocumentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDocumentContent.swift; sourceTree = "<group>"; };
 		18B3C7932428378E00F4CA14 /* CDMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainWindowController.swift; sourceTree = "<group>"; };
 		18B4C28E2550C134003C6E3B /* SavannaKit+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavannaKit+File.swift"; sourceTree = "<group>"; };
+		18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftTermMac.framework; sourceTree = "<group>"; };
 		18CAC8CF252B052F00B60F37 /* CDCompileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompileError.swift; sourceTree = "<group>"; };
 		18CAC8D1252C0D9900B60F37 /* CDCompileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompileResult.swift; sourceTree = "<group>"; };
 		18CAC8D3252D9CE400B60F37 /* CDDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDebugger.swift; sourceTree = "<group>"; };
@@ -516,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B4C3682552AE94003C6E3B /* SwiftTermMac.framework in Frameworks */,
 				181F2B9A24AB557D00C4B217 /* libclang.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +584,7 @@
 		181F2B9824AB557D00C4B217 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */,
 				181F2B9924AB557D00C4B217 /* libclang.dylib */,
 			);
 			name = Frameworks;
@@ -1013,7 +1019,7 @@
 				182B3D022524A70500515375 /* SavannaKit */,
 				18B3C78524282C2100F4CA14 /* Assets.xcassets */,
 				18B3C78A24282C2100F4CA14 /* Info.plist */,
-				18B3C78B24282C2100F4CA14 /* Code_Editor.entitlements */,
+				18B3C78B24282C2100F4CA14 /* C+++.entitlements */,
 			);
 			path = "C+++";
 			sourceTree = "<group>";
@@ -1496,8 +1502,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "C+++/Code_Editor.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = "C+++/C+++.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3.0;
@@ -1531,8 +1537,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "C+++/Code_Editor.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = "C+++/C+++.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3.0;

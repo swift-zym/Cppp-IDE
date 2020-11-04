@@ -1,0 +1,11 @@
+framework module SwiftTermMac {
+  umbrella header "SwiftTermMac.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftTermMac.Swift {
+    header "SwiftTermMac-Swift.h"
+    requires objc
+}
