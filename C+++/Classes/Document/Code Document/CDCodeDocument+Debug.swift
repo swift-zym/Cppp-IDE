@@ -15,7 +15,7 @@ extension CDCodeDocument: CDDebuggerDelegate {
     }
     
     func received(text: String, from: CDDebugger) {
-        self.contentViewController.consoleView.debugConsoleView.string += text
+        // self.contentViewController.consoleView.debugConsoleView.string += text
     }
     
     func watchVarRefreshed(varIndex: Int, newValue: String) {
@@ -33,11 +33,14 @@ extension CDCodeDocument: CDDebuggerDelegate {
             self.contentViewController?.showAlert("Error", "You haven't saved your file yet. You must save your file before debugging it.")
             return
         }
-        
+        /*
         self.debugger = CDDebugger(filePath: self.fileURL!.path)
         self.debugger?.delegate = self
         self.contentViewController.consoleView.watchVarsTableView.dataSource = self.debugger
         self.debugger?.begin()
+        */
+        
+        self.contentViewController.consoleView.processView.startProcess(args: ["-c", "lldb \"\(self.fileURL!.deletingPathExtension().path)\""])
         
     }
     

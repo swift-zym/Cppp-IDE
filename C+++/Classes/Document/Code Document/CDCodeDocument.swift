@@ -55,6 +55,7 @@ class CDCodeDocument: NSDocument {
     override func makeWindowControllers() {
         
         self.addWindowController(GlobalMainWindowController)
+        self.contentViewController = GlobalMainWindowController.contentViewController as? CDMainViewController
         /*
         globalLaunchViewController.view.window?.close()
         

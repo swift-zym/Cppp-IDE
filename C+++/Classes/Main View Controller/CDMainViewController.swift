@@ -108,7 +108,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         self.lineNumberView.textView = self.mainTextView.textView
         self.minimapView.scrollView = self.mainTextView.scrollView
         self.sidebarTitleLabel.stringValue = "Files"
-        self.consoleView.debugConsoleView.font = menloFont(ofSize: 12.0)
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
        

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftTermMac
 
 class CDCompileResultAndDebugView: NSView {
     
@@ -15,14 +16,13 @@ class CDCompileResultAndDebugView: NSView {
     @IBOutlet weak var errorImageLabel: NSImageView!
     @IBOutlet weak var warningCountLabel: NSTextField!
     @IBOutlet weak var warningImageView: NSImageView!
+    @IBOutlet weak var processView: LocalProcessTerminalView!
     
     @IBOutlet weak var logView: NSTextView!
     @IBOutlet weak var compileResultTableView: NSTableView!
     
     @IBOutlet weak var debugSplitView: NSSplitView!
     @IBOutlet weak var watchVarsTableView: NSTableView!
-    @IBOutlet weak var debugConsoleView: NSTextView!
-    @IBOutlet weak var debugCommandInputField: NSTextField!
     
     var compileResult: CDCompileResult? {
         didSet {
@@ -30,11 +30,6 @@ class CDCompileResultAndDebugView: NSView {
             self.errorCountLabel.stringValue = "\(self.compileResult?.errorCount ?? 0)"
             self.warningCountLabel.stringValue = "\(self.compileResult?.warningCount ?? 0)"
         }
-    }
-    
-    @IBAction func sendCommand(_ sender: Any?) {
-        self.sendInput(self.debugCommandInputField.stringValue)
-        self.debugCommandInputField.stringValue = ""
     }
     
 
