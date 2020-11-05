@@ -23,6 +23,12 @@ class CDCodeDocument: NSDocument {
     
     var latestCompileResult: CDCompileResult?
     
+    override var fileURL: URL? {
+        didSet {
+            self.contentViewController.leftSidebarTableView.reloadData()
+        }
+    }
+    
     override init() {
         super.init()
         // Add your subclass-specific initialization here.
