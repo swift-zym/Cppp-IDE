@@ -87,4 +87,17 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
     }
     
+    override func showWindow(_ sender: Any?) {
+        super.showWindow(sender)
+        
+        GlobalLaunchViewController.view.window?.close()
+        
+    }
+    
+    override func close() {
+        
+        GlobalLaunchViewController.view.window?.windowController?.showWindow(nil)
+        
+    }
+    
 }
