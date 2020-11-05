@@ -30,6 +30,7 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
         if self.mainViewController.leftSidebarMode == .openFiles {
             self.mainViewController.leftSidebarTableView.reloadData()
+            self.mainViewController.leftSidebarTableView.selectRowIndexes([self.mainViewController.leftSidebarTableView.numberOfRows - 1], byExtendingSelection: false)
         }
         
     }
@@ -49,6 +50,8 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        
+        self.window?.delegate = self
         
     }
     
@@ -72,6 +75,15 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
         let vc = (self.contentViewController as! CDMainViewController)
         vc.toggleLeftSidebar(sender)
+        
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        
+        self.documents.forEach() { doc in
+            doc.close()
+        }
+        self.documents = []
         
     }
     
