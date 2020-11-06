@@ -48,6 +48,29 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
     }
     
+    @objc func closeSelectedDocument() {
+        
+        let vc = self.contentViewController as! CDMainViewController
+        let row = vc.leftSidebarTableView.clickedRow
+        guard row >= 0 else {
+            return
+        }
+        
+        let doc = self.documents[row]
+        let isCurrent = (doc == self.document! as! CDCodeDocument)
+        doc.close()
+        self.documents.remove(at: row)
+        
+        if isCurrent {
+            vc.leftSidebarTableView.reloadData()
+        }
+        
+        if self.documents.count == 0 {
+            self.close()
+        }
+        
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         

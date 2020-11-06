@@ -10,36 +10,20 @@ import Cocoa
 
 class CDFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
     
+    var menu: NSMenu? {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Close", action: #selector(CDMainWindowController.closeSelectedDocument), keyEquivalent: ""))
+        return menu
+    }
+    
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 28.0
+        return 25.0
     }
     
     override init() {
         super.init()
     }
     
-    /*private func getAllFilePath(_ dirPath: String) -> [String] {
-        var filePaths = [String]()
-        do {
-            let array = try FileManager.default.contentsOfDirectory(atPath: dirPath)
-            for fileName in array {
-                var isDir: ObjCBool = true
-                let fullPath = "\(dirPath)/\(fileName)"
-                if FileManager.default.fileExists(atPath: fullPath, isDirectory: &isDir) {
-                    if !isDir.boolValue {
-                        if ["c", "cpp", "cxx", "c++", "h", "hpp", "h++", "hxx", "in", "out", "txt", "md", "markdown", "ans"].contains(fullPath.nsString.pathExtension) {
-                            filePaths.append(fullPath)
-                        }
-                    }
-                }
-            }
-            
-        } catch let error as NSError {
-            print("get file path error: \(error)")
-        }
-        return filePaths
-    }
-    */
     func numberOfRows(in tableView: NSTableView) -> Int {
         return GlobalMainWindowController.documents.count
     }

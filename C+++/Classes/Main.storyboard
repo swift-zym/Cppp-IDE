@@ -1372,7 +1372,7 @@ Gw
                                                                             </connections>
                                                                         </tableCellView>
                                                                         <tableCellView identifier="File" id="Js5-M3-ua6">
-                                                                            <rect key="frame" x="10" y="98" width="197" height="28"/>
+                                                                            <rect key="frame" x="10" y="98" width="197" height="25"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XQe-S2-O4R">
@@ -1384,7 +1384,7 @@ Gw
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="yQO-Wl-580"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pkI-6R-JqZ">
-                                                                                    <rect key="frame" x="27" y="6" width="169" height="16"/>
+                                                                                    <rect key="frame" x="27" y="1" width="169" height="21"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="File Name" id="omX-Ph-5Vb">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1396,9 +1396,9 @@ Gw
                                                                                 <constraint firstItem="XQe-S2-O4R" firstAttribute="leading" secondItem="Js5-M3-ua6" secondAttribute="leading" constant="5" id="57p-JA-qvA"/>
                                                                                 <constraint firstItem="pkI-6R-JqZ" firstAttribute="leading" secondItem="XQe-S2-O4R" secondAttribute="trailing" constant="6" id="Fg7-0Z-Rjh"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="pkI-6R-JqZ" secondAttribute="trailing" constant="3" id="Khj-bb-g7Q"/>
-                                                                                <constraint firstItem="XQe-S2-O4R" firstAttribute="top" secondItem="Js5-M3-ua6" secondAttribute="top" constant="5" id="QMy-AR-o3E"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="pkI-6R-JqZ" secondAttribute="bottom" constant="6" id="fZJ-w3-qzQ"/>
-                                                                                <constraint firstItem="pkI-6R-JqZ" firstAttribute="top" secondItem="Js5-M3-ua6" secondAttribute="top" constant="6" id="mXk-l2-kuP"/>
+                                                                                <constraint firstItem="XQe-S2-O4R" firstAttribute="top" secondItem="Js5-M3-ua6" secondAttribute="top" constant="2" id="QMy-AR-o3E"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="pkI-6R-JqZ" secondAttribute="bottom" constant="1" id="fZJ-w3-qzQ"/>
+                                                                                <constraint firstItem="pkI-6R-JqZ" firstAttribute="top" secondItem="Js5-M3-ua6" secondAttribute="top" constant="3" id="mXk-l2-kuP"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="XQe-S2-O4R" secondAttribute="bottom" constant="5" id="pac-n0-fLR"/>
                                                                             </constraints>
                                                                             <connections>
@@ -1407,7 +1407,7 @@ Gw
                                                                             </connections>
                                                                         </tableCellView>
                                                                         <tableCellView identifier="Diagnostics" id="hJM-HB-9u9">
-                                                                            <rect key="frame" x="10" y="131" width="197" height="35"/>
+                                                                            <rect key="frame" x="10" y="128" width="197" height="35"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-e9-tcc">
@@ -2244,7 +2244,7 @@ Gw
                                             </subviews>
                                             <nil key="backgroundColor"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.14285714285714285" horizontal="YES" id="Zf4-jC-F7I">
+                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Zf4-jC-F7I">
                                             <rect key="frame" x="0.0" y="239" width="180" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>

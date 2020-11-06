@@ -129,6 +129,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         
         self.leftSidebarTableView.delegate = self.filesDataSource
         self.leftSidebarTableView.dataSource = self.filesDataSource
+        self.leftSidebarTableView.menu = self.filesDataSource.menu
         // initialize the scroll view and the minimap view.
         self.mainTextView.scrollView.scroll(self.mainTextView.scrollView.contentView, to: NSMakePoint(0, 0))
         

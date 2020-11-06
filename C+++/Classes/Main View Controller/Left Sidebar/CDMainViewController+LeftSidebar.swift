@@ -44,6 +44,8 @@ extension CDMainViewController {
             
         }
         
+        self.leftSidebarTableView.menu = (self.leftSidebarTableView.dataSource as? CDLeftSidebarTableViewDelegate)?.menu
+        
     }
     
 }

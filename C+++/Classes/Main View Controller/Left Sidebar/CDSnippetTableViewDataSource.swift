@@ -9,10 +9,23 @@
 import Cocoa
 
 protocol CDLeftSidebarTableViewDelegate: NSTableViewDelegate {
+    
     func didClick(tableView: NSTableView)
+    var menu: NSMenu? { get }
+    
 }
 
 class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
+    
+    var menu: NSMenu? {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Remove", action: nil, keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Move Up", action: nil, keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Move Down", action: nil, keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Add...", action: nil, keyEquivalent: ""))
+        return menu
+    }
+    
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 35.0

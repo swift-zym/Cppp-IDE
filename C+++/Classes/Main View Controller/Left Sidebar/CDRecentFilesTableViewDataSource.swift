@@ -16,6 +16,10 @@ class CDRecentFilesTableCellView: NSTableCellView {
 
 class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTableViewDataSource {
     
+    var menu: NSMenu? {
+        return nil
+    }
+    
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 45.0
     }
