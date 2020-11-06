@@ -2238,7 +2238,7 @@ Gw
                                                         </tableColumn>
                                                     </tableColumns>
                                                     <connections>
-                                                        <action trigger="doubleAction" selector="tableViewClicked:" target="S31-UQ-a5H" id="znh-K4-hae"/>
+                                                        <action selector="tableViewClicked:" target="S31-UQ-a5H" id="Ycf-uT-Xqh"/>
                                                     </connections>
                                                 </tableView>
                                             </subviews>

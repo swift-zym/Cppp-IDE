@@ -8,31 +8,13 @@
 
 import Cocoa
 
-class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
-    
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        switch tableColumn?.title {
-            case "":
-                return NSWorkspace.shared.icon(forFile: NSDocumentController.shared.recentDocumentURLs[row].path)
-                
-            case "File":
-                return NSDocumentController.shared.recentDocumentURLs[row].lastPathComponent
-                
-            default: return nil
-        }
-    }
-    
+class CDLaunchViewController: NSViewController {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        print(NSDocumentController.shared.recentDocumentURLs.count)
         return NSDocumentController.shared.recentDocumentURLs.count
     }
     
     @IBOutlet weak var titleLabel: NSTextField!
-    
-    @IBOutlet weak var newFileView: NSView!
-    @IBOutlet weak var openFileView: NSView!
-    @IBOutlet weak var newProjectView: NSView!
     @IBOutlet weak var recentFilesTableView: NSTableView!
     
     lazy var recentFilesDataSource = CDRecentFilesTableViewDataSource()
@@ -40,6 +22,13 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBAction func tableViewClicked(_ sender: Any?) {
         
         NSWorkspace.shared.open(NSDocumentController.shared.recentDocumentURLs[self.recentFilesTableView.selectedRow])
+        
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        self.recentFilesTableView.reloadData()
         
     }
     
@@ -58,10 +47,10 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBAction func showSettingsView(_ sender: Any?) {
         
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-            if let viewController =
-                storyboard.instantiateController(
-                     withIdentifier: NSStoryboard.SceneIdentifier("CDSettingsViewController")) as? CDSettingsViewController {
-                self.presentAsSheet(viewController)
+        if let viewController =
+            storyboard.instantiateController(
+                 withIdentifier: NSStoryboard.SceneIdentifier("CDSettingsViewController")) as? CDSettingsViewController {
+            self.presentAsSheet(viewController)
         }
         
     }
