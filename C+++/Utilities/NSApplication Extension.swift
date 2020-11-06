@@ -70,16 +70,4 @@ extension NSApplication {
         
     }
     
-    @IBAction func about(_ sender: Any) {
-        
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        if let windowController =
-            storyboard.instantiateController(
-                withIdentifier: NSStoryboard.SceneIdentifier("Launch View Controller")) as? NSWindowController {
-            (windowController.contentViewController as! CDLaunchViewController).aboutButtonClicked(self)
-            windowController.showWindow(self)
-        }
-        
-    }
-    
 }

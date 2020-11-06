@@ -24,12 +24,10 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     
     func numberOfRows(in tableView: NSTableView) -> Int {
+        print(NSDocumentController.shared.recentDocumentURLs.count)
         return NSDocumentController.shared.recentDocumentURLs.count
     }
     
-    @IBOutlet weak var welcomeButton: NSButton!
-    @IBOutlet weak var aboutButton: NSButton!
-    @IBOutlet weak var recentFilesButton: NSButton!
     @IBOutlet weak var titleLabel: NSTextField!
     
     @IBOutlet weak var newFileView: NSView!
@@ -37,52 +35,7 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBOutlet weak var newProjectView: NSView!
     @IBOutlet weak var recentFilesTableView: NSTableView!
     
-    @IBOutlet weak var aboutView: NSView!
-    
-    @IBAction func welcomeButtonClicked(_ sender: Any?) {
-        
-        welcomeButton.isBordered = true
-        recentFilesTableView.enclosingScrollView?.isHidden = true
-        recentFilesButton.isBordered = false
-        aboutButton.isBordered = false
-        titleLabel.stringValue = "Welcome to C+++"
-        newFileView.isHidden = false
-        openFileView.isHidden = false
-        newProjectView.isHidden = false
-        aboutView.isHidden = true
-        setButtonWidth()
-        
-    }
-    
-    @IBAction func aboutButtonClicked(_ sender: Any?) {
-        
-        welcomeButton.isBordered = false
-        recentFilesTableView.enclosingScrollView?.isHidden = true
-        recentFilesButton.isBordered = false
-        aboutButton.isBordered = true
-        titleLabel.stringValue = "About C+++"
-        newFileView.isHidden = true
-        openFileView.isHidden = true
-        newProjectView.isHidden = true
-        aboutView.isHidden = false
-        setButtonWidth()
-        
-    }
-    
-    @IBAction func recentFilesButtonClicked(_ sender: Any?) {
-        
-        recentFilesTableView.enclosingScrollView?.isHidden = false
-        recentFilesButton.isBordered = true
-        welcomeButton.isBordered = false
-        aboutButton.isBordered = false
-        titleLabel.stringValue = "Recent Files"
-        newFileView.isHidden = true
-        openFileView.isHidden = true
-        newProjectView.isHidden = true
-        aboutView.isHidden = true
-        setButtonWidth()
-        
-    }
+    lazy var recentFilesDataSource = CDRecentFilesTableViewDataSource()
     
     @IBAction func tableViewClicked(_ sender: Any?) {
         
@@ -93,9 +46,13 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeButtonClicked(nil)
         GlobalLaunchViewController = self
         
+    }
+    
+    override func awakeFromNib() {
+        self.recentFilesTableView.delegate = self.recentFilesDataSource
+        self.recentFilesTableView.dataSource = self.recentFilesDataSource
     }
     
     @IBAction func showSettingsView(_ sender: Any?) {
@@ -107,12 +64,6 @@ class CDLaunchViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 self.presentAsSheet(viewController)
         }
         
-    }
-    
-    private func setButtonWidth() {
-        self.aboutButton.frame = NSMakeRect(8, 160, 140, 40)
-        self.welcomeButton.frame = NSMakeRect(8, 236, 140, 40)
-        self.recentFilesButton.frame = NSMakeRect(8, 198, 140, 40)
     }
     
 }

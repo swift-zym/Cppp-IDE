@@ -25,7 +25,7 @@ class CDCodeDocument: NSDocument {
     
     override var fileURL: URL? {
         didSet {
-            self.contentViewController.leftSidebarTableView.reloadData()
+            self.contentViewController?.leftSidebarTableView?.reloadData()
         }
     }
     
