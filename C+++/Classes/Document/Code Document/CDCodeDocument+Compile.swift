@@ -11,7 +11,7 @@ import Cocoa
 extension CDCodeDocument {
     
     @discardableResult
-    class func compileFile(fileURL: URL, alsoRuns: Bool = true, arguments: String = CDCompileSettings.shared.arguments, postsNotification: Bool = true) -> (log: String, result: CDCompileResult?) {
+    class func compileFile(fileURL: URL, alsoRuns: Bool = true, arguments: String = CDSettings.compileArguments, postsNotification: Bool = true) -> (log: String, result: CDCompileResult?) {
         
         let nsString = fileURL.path.nsString
         
@@ -24,7 +24,7 @@ extension CDCodeDocument {
         let out = "\"" + nsString.lastPathComponent.nsString.deletingPathExtension + "\""
         
         // The compile command
-        let command = "cd \"\(path)\"\n" + "\(CDCompileSettings.shared.compiler ?? "g++") \(arguments) \(_fileURL) -o \(out)"
+        let command = "cd \"\(path)\"\n" + "\(CDSettings.compiler) \(arguments) \(_fileURL) -o \(out)"
         
         // Compile
         let compileResult = runShellCommand(command)

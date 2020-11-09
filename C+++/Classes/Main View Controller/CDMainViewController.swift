@@ -121,7 +121,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
             
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(_:)), name: CDSettings.settingsDidChangeNotification, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(_:)), name: CDSettings.settingsDidChangeNotification, object: nil)
         
         // TODO: Set the theme and font of the code editor.
         

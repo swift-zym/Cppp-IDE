@@ -56,7 +56,7 @@ class CDCodeCompletionViewController: NSViewController, NSTableViewDataSource, N
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.cell?.font = CDSettings.shared.font
+        tableView.cell?.font = CDSettings.font
         
     }
 
@@ -64,7 +64,7 @@ class CDCodeCompletionViewController: NSViewController, NSTableViewDataSource, N
         super.viewDidLoad()
         // Do view setup here.
         self.tableView?.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-        self.tableView?.cell?.font = CDSettings.shared.font
+        self.tableView?.cell?.font = CDSettings.font
         
     }
     

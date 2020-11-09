@@ -9,114 +9,134 @@
 import Cocoa
 import NotificationCenter
 
-class CDSettings: NSObject, NSCoding {
+class CDSettings: NSObject {
     
-    // MARK: - Properties
-    
-    // Introduced in v1.0.1
-    var fontName: String!
-    var fontSize: Int!
-    var lightThemeName: String!
-    var darkThemeName: String!
-    var autoComplete: Bool!
-    
-    // Introduced in v2.1.1
-    var codeCompletion: Bool!
-    var checkUpdateAfterLaunching: Bool!
-    var showLiveIssues: Bool!
-    var autoIndentation: Bool!
-    
-    static let settingsDidChangeNotification: NSNotification.Name = NSNotification.Name(rawValue: "CDSettingsDidChange")
-    
-    
-    
-    // MARK: - Archiving Paths
-    
-    static let documentsDirectory = FileManager().urls(for: .libraryDirectory, in: .userDomainMask).first!
-    static let archiveURL = documentsDirectory.appendingPathComponent("C+++").appendingPathComponent("Settings")
-    
-    // MARK: - Types
-    
-    struct PropertyKey {
-        
-        static let fontName = "FontName"
-        static let fontSize = "FontSize"
-        static let lightThemeName = "LightThemeName"
-        static let darkThemeName = "DarkThemeName"
-        static let autoComplete = "AutoComplete"
-        static let codeCompletion = "CodeCompletion"
-        static let checkUpdateAfterLaunching = "CheckUpdateAfterLaunching"
-        static let showLiveIssues = "ShowLiveIssues"
-        static let autoIndentation = "AutoIndentation"
-        
-    }
-    
-    
-    // MARK: - Initialization
-    
-    init?(_ fontName: String? = "Courier", _ fontSize: Int? = 15, _ lightThemeName: String? = "Xcode", _ darkThemeName: String? = "Agate", _ autoComplete: Bool? = true, _ codeCompletion: Bool? = true, _ checkUpdateAfterLaunching: Bool? = true, _ showsLiveIssue: Bool? = true, _ autoIndentation: Bool? = true) {
-        
-        // Initialize stored properties.
-        self.fontName = fontName ?? "Courier"
-        self.fontSize = fontSize ?? 15
-        self.lightThemeName = lightThemeName ?? "Xcode"
-        self.darkThemeName = darkThemeName ?? "Agate"
-        self.autoComplete = autoComplete ?? true
-        self.codeCompletion = codeCompletion ?? true
-        self.checkUpdateAfterLaunching = checkUpdateAfterLaunching ?? true
-        self.showLiveIssues = showsLiveIssue ?? true
-        self.autoIndentation = autoIndentation ?? true
-        
-    }
-    
-    
-    // MARK: - NSCoding
-    
-    func encode(with coder: NSCoder) {
-        
-        coder.encode(fontName, forKey: PropertyKey.fontName)
-        coder.encode(fontSize, forKey: PropertyKey.fontSize)
-        coder.encode(lightThemeName, forKey: PropertyKey.lightThemeName)
-        coder.encode(darkThemeName, forKey: PropertyKey.darkThemeName)
-        coder.encode(autoComplete, forKey: PropertyKey.autoComplete)
-        coder.encode(codeCompletion, forKey: PropertyKey.codeCompletion)
-        coder.encode(checkUpdateAfterLaunching, forKey: PropertyKey.checkUpdateAfterLaunching)
-        coder.encode(showLiveIssues, forKey: PropertyKey.showLiveIssues)
-        coder.encode(autoIndentation, forKey: PropertyKey.autoIndentation)
-        
-    }
-    
-    required convenience init?(coder: NSCoder) {
-        
-        let name = coder.decodeObject(forKey: PropertyKey.fontName) as? String
-        let size = coder.decodeObject(forKey: PropertyKey.fontSize) as? Int
-        let light = coder.decodeObject(forKey: PropertyKey.lightThemeName) as? String
-        let dark = coder.decodeObject(forKey: PropertyKey.darkThemeName) as? String
-        let bool = coder.decodeObject(forKey: PropertyKey.autoComplete) as? Bool
-        let codeCompletion = coder.decodeObject(forKey: PropertyKey.codeCompletion) as? Bool
-        let checksUpdate = coder.decodeObject(forKey: PropertyKey.checkUpdateAfterLaunching) as? Bool
-        let liveIssues = coder.decodeObject(forKey: PropertyKey.showLiveIssues) as? Bool
-        let indentation = coder.decodeObject(forKey: PropertyKey.autoIndentation) as? Bool
-        
-        self.init(name, size, light, dark, bool, codeCompletion, checksUpdate, liveIssues, indentation)
-        
-    }
-    
-    var font: NSFont {
-        
-        return NSFont(name: self.fontName, size: CGFloat(self.fontSize))!
-        
-    }
-    
-    class var shared: CDSettings! {
+    static var fontName: String {
         get {
-            return NSKeyedUnarchiver.unarchiveObject(withFile: CDSettings.archiveURL.path) as? CDSettings
+            return UserDefaults.standard.string(forKey: "fontName") ?? "Menlo"
         }
         set {
-            NSKeyedArchiver.archiveRootObject(newValue!, toFile: CDSettings.archiveURL.path)
-            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotification, object: nil)
+            UserDefaults.standard.setValue(newValue, forKey: "fontName")
         }
     }
     
+    static var fontSize: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "fontSize")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "fontSize")
+        }
+    }
+    
+    static var autoComplete: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "autoComplete")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "autoComplete")
+        }
+    }
+    
+    static var codeCompletion: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "codeCompletion")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "codeCompletion")
+        }
+    }
+    
+    static var showLiveIssues: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "liveIssues")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "liveIssues")
+        }
+    }
+    
+    static var checksUpdateAfterLaunching: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "checksUpdate")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "checksUpdate")
+        }
+    }
+    
+    static var displaysTooltipOfCode: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "codeTooltip")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "codeTooltip")
+        }
+    }
+    
+    static var compiler: String {
+        get {
+            return UserDefaults.standard.string(forKey: "compiler") ?? "g++"
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "compiler")
+        }
+    }
+    
+    static var compileArguments: String {
+        get {
+            return UserDefaults.standard.string(forKey: "compileArguments") ?? ""
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "compileArguments")
+        }
+    }
+    
+    static var lightTheme: CDCodeEditorTheme {
+        get {
+            return CDCodeEditorTheme(from: UserDefaults.standard.dictionary(forKey: "lightTheme") ?? [ : ])
+        }
+        set {
+            UserDefaults.standard.setValue(newValue.dictionaryData, forKey: "lightTheme")
+        }
+    }
+    
+    static var darkTheme: CDCodeEditorTheme {
+        get {
+            return CDCodeEditorTheme(from: UserDefaults.standard.dictionary(forKey: "darkTheme") ?? [ : ])
+        }
+        set {
+            UserDefaults.standard.setValue(newValue.dictionaryData, forKey: "darkTheme")
+        }
+    }
+    
+    class func setDefault() {
+        
+        UserDefaults.standard.setValue("Menlo", forKey: "fontName")
+        UserDefaults.standard.setValue(15, forKey: "fontSize")
+        UserDefaults.standard.setValue(true, forKey: "autoComplete")
+        UserDefaults.standard.setValue(true, forKey: "codeCompletion")
+        UserDefaults.standard.setValue(true, forKey: "liveIssues")
+        UserDefaults.standard.setValue(true, forKey: "checksUpdate")
+        UserDefaults.standard.setValue("g++", forKey: "compiler")
+        UserDefaults.standard.setValue("", forKey: "compileArguments")
+        UserDefaults.standard.setValue("", forKey: "codeTooltip")
+        print(CDCodeEditorTheme().dictionaryData)
+        UserDefaults.standard.setValue(CDCodeEditorTheme().dictionaryData, forKey: "lightTheme")
+        UserDefaults.standard.setValue(CDCodeEditorTheme().dictionaryData, forKey: "darkTheme")
+        
+    }
+    
+    static var isInitialized: Bool {
+        return UserDefaults.standard.string(forKey: "fontName") != nil
+    }
+    
+    static var font: NSFont {
+        return NSFont(name: CDSettings.fontName, size: CGFloat(CDSettings.fontSize))!
+    }
+    
+    static func font(ofSize size: CGFloat) -> NSFont {
+        return NSFont(name: CDSettings.fontName, size: size)!
+    }
     
 }

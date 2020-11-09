@@ -28,7 +28,7 @@
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
-                                                <action selector="showSettingsView:" target="Ady-hI-5gd" id="gen-Wf-CPT"/>
+                                                <action selector="showPreferences:" target="Ady-hI-5gd" id="fbv-ON-42g"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Check for Updates..." id="yxB-EH-3vZ">
@@ -365,11 +365,6 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showSearchView:" target="Ady-hI-5gd" id="aIV-B1-cVK"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Preferences..." keyEquivalent="," id="b6Q-78-g31">
-                                            <connections>
-                                                <action selector="showSettingsView:" target="Ady-hI-5gd" id="zto-xB-hOq"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Change App Appearance" keyEquivalent="D" id="cGV-RK-5VK">

@@ -65,7 +65,7 @@ class CDCodeEditorLineNumberView: CDFlippedView {
             
             let button = CDCodeEditorLineNumberViewButton(frame: NSMakeRect(2.0, item.origin.y, 34.0, item.height))
             button.isBordered = false
-            button.font = NSFont(name: CDSettings.shared.fontName, size: CGFloat(CDSettings.shared.fontSize) * 0.92)
+            button.font = NSFont(name: CDSettings.fontName, size: CGFloat(CDSettings.fontSize) * 0.92)
             button.target = self
             button.action = #selector(buttonClicked(_:))
             lineNumber += 1

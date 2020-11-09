@@ -42,7 +42,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     
     override func completions(forPartialWordRange charRange: NSRange, indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
         
-        if !CDSettings.shared.autoComplete {
+        if !CDSettings.autoComplete {
             return [String]()
         }
        

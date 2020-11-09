@@ -38,11 +38,6 @@ public struct SKGutterStyle {
 
 public protocol SKSyntaxColorTheme {
 	
-	/// Nil hides line numbers.
-	var lineNumbersStyle: SKLineNumbersStyle? { get }
-	
-	var gutterStyle: SKGutterStyle { get }
-	
 	var font: Font { get }
 	
 	var backgroundColor: Color { get }
@@ -50,4 +45,5 @@ public protocol SKSyntaxColorTheme {
 	func globalAttributes() -> [NSAttributedString.Key: Any]
 
 	func attributes(for token: SKToken) -> [NSAttributedString.Key: Any]
+    
 }

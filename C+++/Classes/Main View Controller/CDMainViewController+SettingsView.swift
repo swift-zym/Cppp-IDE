@@ -27,14 +27,14 @@ extension CDMainViewController/* : CDSettingsViewDelegate*/ {
         // Theme
         switch isDarkMode {
             case false:
-                self.mainTextView.highlightr?.setTheme(to: CDSettings.shared.darkThemeName)
+                self.mainTextView.highlightr?.setTheme(to: CDSettings.darkThemeName)
             case true:
-                self.mainTextView.highlightr?.setTheme(to: CDSettings.shared.lightThemeName)
+                self.mainTextView.highlightr?.setTheme(to: CDSettings.lightThemeName)
         }
         
         // Font
-        self.mainTextView.highlightr?.theme.setCodeFont(CDSettings.shared.font)
-        self.mainTextView.font = CDSettings.shared.font
+        self.mainTextView.highlightr?.theme.setCodeFont(CDSettings.font)
+        self.mainTextView.font = CDSettings.font
         self.mainTextView.didChangeText()
         
         // In case of errors

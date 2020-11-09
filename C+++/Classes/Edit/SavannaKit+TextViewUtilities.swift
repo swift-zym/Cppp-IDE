@@ -9,23 +9,23 @@
 import Cocoa
 
 extension SKInnerTextView {
-    
+    /*
     @IBAction func biggerFont(_ sender: Any?) {
         
-        let settings = CDSettings.shared
+        let settings = CDSettings
         settings?.fontSize += 1
-        CDSettings.shared = settings
+        CDSettings = settings
         
     }
     
     @IBAction func smallerFont(_ sender: Any?) {
         
-        let settings = CDSettings.shared
+        let settings = CDSettings
         settings?.fontSize -= 1
-        CDSettings.shared = settings
+        CDSettings = settings
         
     }
-    
+    */
     @IBAction func changeSelectionToComment(_ sender: Any?) {
         
         var range = self.selectedRange

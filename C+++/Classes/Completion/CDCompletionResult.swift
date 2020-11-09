@@ -58,7 +58,7 @@ class CDCompletionResult: NSObject {
     private(set) var textForDisplay = ""
     
     var attributedString: NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: self.textForDisplay, attributes: [.font: NSFont(name: CDSettings.shared.fontName ?? "Menlo", size: 12.0)!])
+        let attributedString = NSMutableAttributedString(string: self.textForDisplay, attributes: [.font: NSFont(name: CDSettings.fontName , size: 12.0)!])
         for i in self.matchedRanges {
             attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: i)
         }

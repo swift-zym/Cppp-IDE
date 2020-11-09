@@ -70,4 +70,15 @@ extension NSApplication {
         
     }
     
+    @IBAction func showPreferences(_ sender: Any?) {
+        
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("Preferences"), bundle: nil)
+        if let windowController =
+            storyboard.instantiateController(
+                 withIdentifier: NSStoryboard.SceneIdentifier("Preferences")) as? NSWindowController {
+            windowController.showWindow(sender)
+        }
+        
+    }
+    
 }

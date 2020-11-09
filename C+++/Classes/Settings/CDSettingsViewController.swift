@@ -9,7 +9,7 @@
 import Cocoa
 
 public func initDefaultData() {
-
+    /*
     do {
         try FileManager().createDirectory(at: FileManager().urls(for: .libraryDirectory, in: .userDomainMask).first!.appendingPathComponent("C+++"), withIntermediateDirectories: true, attributes: nil)
     } catch {
@@ -17,9 +17,9 @@ public func initDefaultData() {
     }
     
     // Create the default data.
-    CDSettings.shared = CDSettings("Courier", 15, "Xcode", "Agate", true, true, true, true)!
+    CDSettings = CDSettings("Courier", 15, "Xcode", "Agate", true, true, true, true)!
     CDCompileSettings.shared = CDCompileSettings("g++", "")!
-    
+    */
 }
 
 /*@objc protocol CDSettingsViewDelegate {
@@ -47,8 +47,8 @@ class CDSettingsViewController: NSViewController {
     
     
     @IBAction func save(_ sender: NSButton) {
-        
-        let settings = CDSettings.shared!
+        /*
+        let settings = CDSettings!
         settings.fontName = self.fontname.titleOfSelectedItem ?? "Courier"
         settings.fontSize = Int(self.size.stringValue) ?? 15
         settings.darkThemeName = self.dark.titleOfSelectedItem ?? "Agate"
@@ -63,9 +63,9 @@ class CDSettingsViewController: NSViewController {
         compileSettings.compiler = self.compiler.stringValue
         compileSettings.arguments = self.arguments.stringValue
         
-        CDSettings.shared = settings
+        CDSettings = settings
         CDCompileSettings.shared = compileSettings
-        
+        */
         // self.delegate?.settingsViewControllerDidSet()
         
         self.dismiss(self)
@@ -76,7 +76,7 @@ class CDSettingsViewController: NSViewController {
     
     @IBAction func chooseAnotherFont(_ sender: Any?) {
         
-        NSFontPanel.shared.setPanelFont(CDSettings.shared.font, isMultiple: false)
+        NSFontPanel.shared.setPanelFont(CDSettings.font, isMultiple: false)
         NSFontManager.shared.target = self
         NSFontManager.shared.action = #selector(changeFont(_:))
         NSFontManager.shared.orderFrontFontPanel(self)
@@ -85,7 +85,7 @@ class CDSettingsViewController: NSViewController {
     
     @objc func changeFont(_ sender: Any?) {
         
-        let font = CDSettings.shared.font
+        let font = CDSettings.font
         let convertedFont = NSFontPanel.shared.convert(font)
         self.fontname.setTitle(convertedFont.fontName )
         self.size.stringValue = "\(Int(convertedFont.pointSize))"
@@ -108,8 +108,8 @@ class CDSettingsViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let savedData = CDSettings.shared {
+        /*
+        if let savedData = CDSettings {
             
             self.fontname.setTitle(savedData.fontName)
             self.size.stringValue = "\(savedData.fontSize ?? 15)"
@@ -154,7 +154,7 @@ class CDSettingsViewController: NSViewController {
             self.arguments.stringValue = savedCompileSettingsData.arguments
             
         }
-        
+        */
     }
     
 }
