@@ -93,7 +93,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     
 // MARK: - viewDidLoad()
     
-    let defaultTheme = SKDefaultSourceCodeTheme()
+    var currentTheme = CDCodeEditorTheme(isDarkMode: false)
     let lexer = CDCppLexer()
     
     func lexerForSource(_ source: String) -> SKLexer {
@@ -103,7 +103,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mainTextView.theme = defaultTheme
         self.mainTextView.delegate = self
         self.lineNumberView.textView = self.mainTextView.textView
         self.minimapView.scrollView = self.mainTextView.scrollView

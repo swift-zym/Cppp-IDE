@@ -10,7 +10,7 @@ import Cocoa
 
 class CDThemePreferencesView: NSView, NSTableViewDataSource {
     
-    private(set) var theme = CDCodeEditorTheme()
+    private(set) var theme = CDCodeEditorTheme(isDarkMode: false)
     /// False if it is light appearance, true if it is dark appearance.
     private(set) var mode = false
     
@@ -59,6 +59,16 @@ class CDThemePreferencesView: NSView, NSTableViewDataSource {
         self.clickedIndex = self.tableView.clickedRow
         NSColorPanel.shared.setTarget(self)
         NSColorPanel.shared.setAction(#selector(colorDidChange))
+        switch self.clickedIndex {
+            case 0: NSColorPanel.shared.color = self.theme.codeColor
+            case 1: NSColorPanel.shared.color = self.theme.keywordColor
+            case 2: NSColorPanel.shared.color = self.theme.commentColor
+            case 3: NSColorPanel.shared.color = self.theme.numberColor
+            case 4: NSColorPanel.shared.color = self.theme.identifierColor
+            case 5: NSColorPanel.shared.color = self.theme.preprocessorColor
+            case 6: NSColorPanel.shared.color = self.theme.stringColor
+            default: break
+        }
         NSColorPanel.shared.makeKeyAndOrderFront(nil)
     }
     
@@ -80,6 +90,7 @@ class CDThemePreferencesView: NSView, NSTableViewDataSource {
         } else {
             CDSettings.lightTheme = self.theme
         }
+        self.tableView.reloadData()
         
     }
     

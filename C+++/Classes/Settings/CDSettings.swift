@@ -121,9 +121,9 @@ class CDSettings: NSObject {
         UserDefaults.standard.setValue("g++", forKey: "compiler")
         UserDefaults.standard.setValue("", forKey: "compileArguments")
         UserDefaults.standard.setValue("", forKey: "codeTooltip")
-        print(CDCodeEditorTheme().dictionaryData)
-        UserDefaults.standard.setValue(CDCodeEditorTheme().dictionaryData, forKey: "lightTheme")
-        UserDefaults.standard.setValue(CDCodeEditorTheme().dictionaryData, forKey: "darkTheme")
+        
+        UserDefaults.standard.setValue(CDCodeEditorTheme(isDarkMode: false).dictionaryData, forKey: "lightTheme")
+        UserDefaults.standard.setValue(CDCodeEditorTheme(isDarkMode: true).dictionaryData, forKey: "darkTheme")
         
     }
     

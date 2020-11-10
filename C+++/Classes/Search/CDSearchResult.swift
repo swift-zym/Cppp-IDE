@@ -125,7 +125,7 @@ class CDSearchResult: NSObject, SKSyntaxTextViewDelegate {
     var value: Any!
     var image: NSImage!
     
-    lazy var defaultTheme = SKDefaultSourceCodeTheme()
+    var theme = CDCodeEditorTheme(isDarkMode: false)
     lazy var lexer = CDCppLexer()
     
     func lexerForSource(_ source: String) -> SKLexer {
@@ -140,7 +140,8 @@ class CDSearchResult: NSObject, SKSyntaxTextViewDelegate {
                 let textView = SKSyntaxTextView(frame: view.bounds)
                 textView.text = self.value as! String
                 textView.delegate = self
-                textView.theme = self.defaultTheme
+                self.theme = isDarkMode ? CDSettings.darkTheme : CDSettings.lightTheme
+                textView.theme = self.theme
                 view.addSubview(textView)
             
             case .recentFiles:

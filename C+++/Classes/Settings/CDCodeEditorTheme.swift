@@ -10,8 +10,14 @@ import Cocoa
 
 class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
     
-    override init() {
-        super.init()
+    init(isDarkMode: Bool) {
+        if isDarkMode {
+            self.codeColor = .white
+            self.keywordColor = NSColor(red: 167/255, green: 210/255, blue: 1, alpha: 1.0)
+        } else {
+            self.codeColor = .black
+            self.keywordColor = NSColor(red: 28/255, green: 171/255, blue: 1, alpha: 1.0)
+        }
     }
     
     var font: NSFont {
@@ -22,10 +28,10 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
     
     var codeColor = NSColor.textColor
     var commentColor = NSColor(red: 69.0/255.0, green: 187.0/255.0, blue: 62.0/255.0, alpha: 1.0)
-    var numberColor = NSColor(red: 116/255, green: 109/255, blue: 176/255, alpha: 1.0)
-    var stringColor = NSColor(red: 211/255, green: 35/255, blue: 46/255, alpha: 1.0)
-    var identifierColor = NSColor(red: 20/255, green: 156/255, blue: 146/255, alpha: 1.0)
-    var keywordColor = NSColor(red: 215/255, green: 0, blue: 143/255, alpha: 1.0)
+    var numberColor = NSColor(red: 208/255, green: 190/255, blue: 105/255, alpha: 1.0)
+    var stringColor = NSColor(red: 237/255, green: 101/255, blue: 90/255, alpha: 1.0)
+    var identifierColor = NSColor(red: 177/255, green: 111/255, blue: 253/255, alpha: 1.0)
+    var keywordColor = NSColor(red: 100/255, green: 196/255, blue: 250/255, alpha: 1.0)
     var preprocessorColor = NSColor.orange
     
     public func color(for syntaxColorType: SKSourceCodeTokenType) -> Color {
@@ -60,7 +66,6 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
     
     var dictionaryData: Dictionary<String, String> {
         return [
-            "backgroundColor": self.backgroundColor.hexString,
             "codeColor": self.codeColor.hexString,
             "numberColor": self.numberColor.hexString,
             "stringColor": self.stringColor.hexString,
@@ -74,7 +79,6 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
     init(from dictionary: Dictionary<String, Any>) {
         
         let dict = dictionary as! Dictionary<String, String>
-        self.backgroundColor = NSColor(hexString: dict["backgroundColor"]!)
         self.codeColor = NSColor(hexString: dict["codeColor"]!)
         self.numberColor = NSColor(hexString: dict["numberColor"]!)
         self.stringColor = NSColor(hexString: dict["stringColor"]!)

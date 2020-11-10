@@ -90,14 +90,14 @@
                                         </textFieldCell>
                                     </textField>
                                     <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCG-JB-Fkz">
-                                        <rect key="frame" x="13" y="86" width="198" height="168"/>
+                                        <rect key="frame" x="13" y="20" width="198" height="234"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" focusRingType="none" drawsBackground="NO" id="q2u-6C-cbb">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="168"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="234"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" id="VxD-cW-FUL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="218" height="168"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="218" height="234"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="17" height="5"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -133,20 +133,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAX-P7-7Hm">
-                                        <rect key="frame" x="14" y="52" width="38" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </colorWell>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CjN-To-vuo">
-                                        <rect key="frame" x="58" y="52" width="113" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Background Color" id="Zbl-2p-iQH">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="QtA-no-90i" secondAttribute="trailing" id="9WN-xr-U25"/>
@@ -157,7 +143,6 @@
                                     <constraint firstItem="QtA-no-90i" firstAttribute="top" secondItem="iPG-Ve-vDl" secondAttribute="top" id="tM9-Sz-6bR"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="backgroundColorWell" destination="fAX-P7-7Hm" id="HAE-lH-Y3l"/>
                                     <outlet property="tableView" destination="VxD-cW-FUL" id="TS8-DO-1xc"/>
                                 </connections>
                             </customView>
@@ -170,7 +155,7 @@
                                         <textFieldCell key="cell" lineBreakMode="clipping" drawsBackground="YES" id="gPP-2S-ybT">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3gr-TW-p1Q">
@@ -183,14 +168,14 @@
                                         </textFieldCell>
                                     </textField>
                                     <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubM-we-4xS">
-                                        <rect key="frame" x="13" y="86" width="198" height="168"/>
+                                        <rect key="frame" x="13" y="20" width="198" height="234"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" focusRingType="none" drawsBackground="NO" id="c36-4Z-16N">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="168"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="234"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" viewBased="YES" id="9WR-MA-3Kw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="218" height="168"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="218" height="234"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="17" height="5"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -226,27 +211,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkA-kj-hdK">
-                                        <rect key="frame" x="14" y="52" width="38" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </colorWell>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1E-xA-9hU">
-                                        <rect key="frame" x="58" y="52" width="113" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Background Color" id="Ob4-Q7-IXK">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="O9x-yK-GW8"/>
                                     <constraint firstAttribute="width" constant="225" id="gGq-ou-Yq3"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="backgroundColorWell" destination="RkA-kj-hdK" id="XZF-rH-O6v"/>
                                     <outlet property="tableView" destination="9WR-MA-3Kw" id="DSa-MX-sN5"/>
                                 </connections>
                             </customView>
