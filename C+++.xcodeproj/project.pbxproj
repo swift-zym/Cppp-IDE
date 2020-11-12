@@ -129,6 +129,8 @@
 		18B4C3692552AE95003C6E3B /* SwiftTermMac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18C5C7552557E27300C78FC0 /* NSColor Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C7542557E27300C78FC0 /* NSColor Extension.swift */; };
 		18C5C7572557EA5100C78FC0 /* CDThemePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C7562557EA5100C78FC0 /* CDThemePreferencesViewController.swift */; };
+		18C5C75A255D5EA200C78FC0 /* CDRunProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C758255D5EA200C78FC0 /* CDRunProcessViewController.swift */; };
+		18C5C75B255D5EA200C78FC0 /* CDRunProcessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5C759255D5EA200C78FC0 /* CDRunProcessViewController.xib */; };
 		18CAC8D0252B052F00B60F37 /* CDCompileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8CF252B052F00B60F37 /* CDCompileError.swift */; };
 		18CAC8D2252C0D9900B60F37 /* CDCompileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8D1252C0D9900B60F37 /* CDCompileResult.swift */; };
 		18CAC8D4252D9CE400B60F37 /* CDDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8D3252D9CE400B60F37 /* CDDebugger.swift */; };
@@ -317,6 +319,8 @@
 		18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftTermMac.framework; sourceTree = "<group>"; };
 		18C5C7542557E27300C78FC0 /* NSColor Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor Extension.swift"; sourceTree = "<group>"; };
 		18C5C7562557EA5100C78FC0 /* CDThemePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDThemePreferencesViewController.swift; sourceTree = "<group>"; };
+		18C5C758255D5EA200C78FC0 /* CDRunProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDRunProcessViewController.swift; sourceTree = "<group>"; };
+		18C5C759255D5EA200C78FC0 /* CDRunProcessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDRunProcessViewController.xib; sourceTree = "<group>"; };
 		18CAC8CF252B052F00B60F37 /* CDCompileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompileError.swift; sourceTree = "<group>"; };
 		18CAC8D1252C0D9900B60F37 /* CDCompileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompileResult.swift; sourceTree = "<group>"; };
 		18CAC8D3252D9CE400B60F37 /* CDDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDebugger.swift; sourceTree = "<group>"; };
@@ -519,6 +523,8 @@
 			children = (
 				18B3C78324282C1F00F4CA14 /* CDCodeDocument.swift */,
 				184FE40224D5608F0093CC2B /* CDCodeDocument+Compile.swift */,
+				18C5C758255D5EA200C78FC0 /* CDRunProcessViewController.swift */,
+				18C5C759255D5EA200C78FC0 /* CDRunProcessViewController.xib */,
 				18CAC8CF252B052F00B60F37 /* CDCompileError.swift */,
 				18CAC8D1252C0D9900B60F37 /* CDCompileResult.swift */,
 				18B4C28E2550C134003C6E3B /* SavannaKit+File.swift */,
@@ -860,6 +866,7 @@
 				18B185742463B32400B579AD /* CDSnippetPopoperViewController.xib in Resources */,
 				1802D05224EFF4D6008C96BC /* CDCreateProjectViewController.xib in Resources */,
 				1868F16524E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.xib in Resources */,
+				18C5C75B255D5EA200C78FC0 /* CDRunProcessViewController.xib in Resources */,
 				18B1859924699A2800B579AD /* Main.storyboard in Resources */,
 				18E17EBC24A809D200392009 /* CDCodeCompletionViewController.xib in Resources */,
 				183908B32548533D00313605 /* CDCompileResultMessageBox.xib in Resources */,
@@ -966,6 +973,7 @@
 				18CAC8D4252D9CE400B60F37 /* CDDebugger.swift in Sources */,
 				18B4C28F2550C134003C6E3B /* SavannaKit+File.swift in Sources */,
 				18541B162445905F000EB4CB /* CDSettingsViewController.swift in Sources */,
+				18C5C75A255D5EA200C78FC0 /* CDRunProcessViewController.swift in Sources */,
 				182B3D662524A83500515375 /* SKDefaultSourceCodeTheme.swift in Sources */,
 				181236A62557B8170058004D /* CDGeneralPreferencesViewController.swift in Sources */,
 				181F2BDB24AC78C700C4B217 /* CKFixIt.m in Sources */,

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CDRunProcessViewController" customModule="C___" customModuleProvider="target">
+            <connections>
+                <outlet property="terminalView" destination="2yT-hn-hAl" id="86u-PD-LUb"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="2yT-hn-hAl" customClass="LocalProcessTerminalView" customModule="SwiftTermMac">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="2yT-hn-hAl" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="JMo-lh-KXd"/>
+                <constraint firstAttribute="bottom" secondItem="2yT-hn-hAl" secondAttribute="bottom" id="eBH-RZ-SHo"/>
+                <constraint firstAttribute="trailing" secondItem="2yT-hn-hAl" secondAttribute="trailing" id="uxd-tZ-tn8"/>
+                <constraint firstItem="2yT-hn-hAl" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="x4m-lj-kxg"/>
+            </constraints>
+            <point key="canvasLocation" x="-149" y="120"/>
+        </customView>
+    </objects>
+</document>
