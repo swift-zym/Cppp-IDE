@@ -44,11 +44,16 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         let document = self.documents[index]
         document.addWindowController(self)
         self.mainViewController.mainTextView.setDocument(newDocument: document)
+        if self.mainViewController.leftSidebarMode == .openFiles {
+            self.mainViewController.leftSidebarTableView.selectRowIndexes([index], byExtendingSelection: false)
+        }
         self.document = document
         
     }
     
     @objc func closeSelectedDocument() {
+        
+        print(self.documents)
         
         let vc = self.contentViewController as! CDMainViewController
         let row = vc.leftSidebarTableView.clickedRow
@@ -56,18 +61,17 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
             return
         }
         
-        let doc = self.documents[row]
-        let isCurrent = (doc == self.document! as! CDCodeDocument)
-        doc.close()
         self.documents.remove(at: row)
-        
-        if isCurrent {
-            vc.leftSidebarTableView.reloadData()
-        }
+        vc.leftSidebarTableView.reloadData()
         
         if self.documents.count == 0 {
             self.close()
+            return
         }
+        
+        let newRow = row == 0 ? 1 : (row - 1)
+        print("row: \(row), newRow: \(newRow)")
+        self.setCurrentDocument(index: newRow)
         
     }
     
@@ -118,6 +122,7 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     override func close() {
+        super.close()
         
         GlobalLaunchViewController.view.window?.windowController?.showWindow(nil)
         

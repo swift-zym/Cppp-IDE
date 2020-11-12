@@ -112,6 +112,8 @@ class CDSettings: NSObject {
     
     class func setDefault() {
         
+        UserDefaults.standard.setValue(true, forKey: "Initialized")
+        
         UserDefaults.standard.setValue("Menlo", forKey: "fontName")
         UserDefaults.standard.setValue(15, forKey: "fontSize")
         UserDefaults.standard.setValue(true, forKey: "autoComplete")
@@ -128,7 +130,7 @@ class CDSettings: NSObject {
     }
     
     static var isInitialized: Bool {
-        return UserDefaults.standard.string(forKey: "fontName") != nil
+        return UserDefaults.standard.bool(forKey: "Initialized")
     }
     
     static var font: NSFont {
