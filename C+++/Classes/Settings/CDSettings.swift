@@ -17,6 +17,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "fontName")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -26,6 +27,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "fontSize")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -35,6 +37,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "autoComplete")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -44,6 +47,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "codeCompletion")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -53,6 +57,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "liveIssues")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -62,6 +67,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "checksUpdate")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -71,6 +77,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "codeTooltip")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -80,6 +87,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "compiler")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -89,6 +97,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "compileArguments")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -98,6 +107,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue.dictionaryData, forKey: "lightTheme")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -107,6 +117,7 @@ class CDSettings: NSObject {
         }
         set {
             UserDefaults.standard.setValue(newValue.dictionaryData, forKey: "darkTheme")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
         }
     }
     
@@ -140,5 +151,7 @@ class CDSettings: NSObject {
     static func font(ofSize size: CGFloat) -> NSFont {
         return NSFont(name: CDSettings.fontName, size: size)!
     }
+    
+    static var settingsDidChangeNotificationName = NSNotification.Name("CDSettingsDidChange")
     
 }
