@@ -216,7 +216,7 @@ extension CDCodeDocument {
         }
         
         var res = [CDCompileError]()
-        for line in result.components(separatedBy: .newlines) {
+        for line in result.components(separatedBy: "\n") {
             
             if let error = parseLine(line: line) {
                 res.append(error)

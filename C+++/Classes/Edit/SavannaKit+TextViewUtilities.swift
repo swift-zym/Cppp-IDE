@@ -30,7 +30,7 @@ extension SKInnerTextView {
         
         var range = self.selectedRange
         var lineRange = NSMakeRange(0, 0)
-        for line in self.string.components(separatedBy: .newlines) {
+        for line in self.string.components(separatedBy: "\n") {
             lineRange.length = line.count + 1
             let anotherRange = NSIntersectionRange(range, lineRange)
             if anotherRange.length != 0 {
@@ -49,7 +49,7 @@ extension SKInnerTextView {
         
         var range = self.selectedRange
         var lineRange = NSMakeRange(0, 0)
-        for line in self.string.components(separatedBy: .newlines) {
+        for line in self.string.components(separatedBy: "\n") {
             lineRange.length = line.count + 1
             let anotherRange = NSIntersectionRange(range, lineRange)
             if anotherRange.length != 0 {
@@ -68,7 +68,7 @@ extension SKInnerTextView {
         
         var range = self.selectedRange
         var lineRange = NSMakeRange(0, 0)
-        for line in self.string.components(separatedBy: .newlines) {
+        for line in self.string.components(separatedBy: "\n") {
             lineRange.length = line.count + 1
             let anotherRange = NSIntersectionRange(range, lineRange)
             if anotherRange.length != 0 {

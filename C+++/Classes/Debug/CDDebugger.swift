@@ -126,7 +126,7 @@ class CDDebugger: NSObject {
             guard let hookNumber = Int(hookNumberStr) else {
                 return
             }
-            guard input.components(separatedBy: .newlines).count >= 2 else {
+            guard input.components(separatedBy: "\n").count >= 2 else {
                 return
             }
             let newVal = input.components(separatedBy: .newlines)[1]
@@ -139,7 +139,7 @@ class CDDebugger: NSObject {
         
         func parseCurrentLineNumber(input: String) {
             
-            for line in input.components(separatedBy: .newlines) {
+            for line in input.components(separatedBy: "\n") {
                 // -> [Line Number] [Code]
                 if line.hasPrefix("->") {
                     var l = line // mutable copy

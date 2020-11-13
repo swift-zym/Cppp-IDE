@@ -30,7 +30,7 @@ class CDCodeEditorLineNumberView: CDFlippedView {
         
         var array = [CGRect]()
         var location = 0
-        for line in self.textView.string.components(separatedBy: .newlines) {
+        for line in self.textView.string.components(separatedBy: "\n") {
             let rect = self.textView.layoutManager!.boundingRect(forGlyphRange: NSMakeRange(location, 0), in: self.textView.textContainer!)
             if rect != NSMakeRect(0, 0, 0, 0) {
                 array.append(rect)

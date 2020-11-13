@@ -51,7 +51,7 @@ extension String {
         
         var lineNumber = 0
         var characterPosition = 0
-        for line in self.components(separatedBy: .newlines) {
+        for line in self.components(separatedBy: "\n") {
             lineNumber += 1
             for _ in line {
                 characterPosition += 1
@@ -72,7 +72,7 @@ extension String {
         
         var columnNumber = 0
         var characterPosition = 0
-        for line in self.components(separatedBy: .newlines) {
+        for line in self.components(separatedBy: "\n") {
             columnNumber = 0
             for _ in line {
                 characterPosition += 1
