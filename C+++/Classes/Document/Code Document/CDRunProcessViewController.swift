@@ -41,7 +41,10 @@ class CDRunProcessViewController: NSViewController, LocalProcessTerminalViewDele
     }
     
     func processTerminated(source: TerminalView, exitCode: Int32?) {
-        self.terminalView.feed(text: "---------------\nProgram exited with exit code \(exitCode ?? -1)\nTime: \(abs(time?.timeIntervalSinceNow ?? 0.00)) seconds")
+        let timeInterval = abs(time?.timeIntervalSinceNow ?? 0.00)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+            self.terminalView.feed(text: "\n---------------\nProgram exited with exit code \(exitCode ?? -1)\nTime: \(timeInterval) seconds")
+        }
     }
     
     func sizeChanged(source: LocalProcessTerminalView, newCols: Int, newRows: Int) {  }
