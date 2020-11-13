@@ -42,22 +42,24 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     
     override func completions(forPartialWordRange charRange: NSRange, indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
         
+        let string = self.string
+        
         if !CDSettings.autoComplete {
-            return [String]()
+            return []
         }
        
         var completionResults = [CDCompletionResult]()
         
-        let substring = self.string.nsString.substring(with: charRange)
+        let substring = string.nsString.substring(with: charRange)
         if substring == "" || !(substring.first ?? "\0").isLetter && (substring.first ?? "\0") != "_" {
-            return [String]()
+            return []
         }
         
         
         if charRange.length == 1 {
             
-            let line = self.string.lineNumber(at: self.selectedRange.location) ?? 0
-            let column = self.string.columnNumber(at: self.selectedRange.location)
+            let line = string.lineNumber(at: self.selectedRange.location) ?? 0
+            let column = string.columnNumber(at: self.selectedRange.location)
             let results = self.translationUnit.completionResults(forLine: UInt(line), column: UInt(column))
             
             if results != nil {
@@ -78,8 +80,8 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
             var array = [CDCompletionResult]()
             for result in completionResults {
                 let _result = result.typedText.lowercased().compareWith(anotherString: substring.lowercased())
-                if _result.string == substring.lowercased() && substring.count != result.completionString.count {
-                    result.matchedRanges = _result.range
+                if _result.right && substring.count != result.completionString.count {
+                    result.matchedRanges = _result.ranges
                     array.append(result)
                 }
             }
@@ -91,10 +93,10 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
         } else {
             
             var array = [CDCompletionResult]()
-            for result in lastTimeCompletionResults {
+            for result in self.lastTimeCompletionResults {
                 let _result = result.typedText.lowercased().compareWith(anotherString: substring.lowercased())
-                if _result.string == substring.lowercased() && substring.count != result.completionString.count {
-                    result.matchedRanges = _result.range
+                if _result.right && substring.count != result.completionString.count {
+                    result.matchedRanges = _result.ranges
                     array.append(result)
                 }
             }
@@ -103,12 +105,9 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
         }
         
         guard completionResults.count > 0 else {
-            return [String]()
+            return []
         }
-        
-        // DispatchQueue.main.async {
-        
-        
+            
         if self.codeCompletionViewController == nil {
             self.codeCompletionViewController = CDCodeCompletionViewController()
             self.codeCompletionViewController.delegate = self
@@ -121,11 +120,8 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
         rect?.size.width = 1.0
         //  DispatchQueue.main.async {
         self.codeCompletionViewController.openInPopover(relativeTo: rect!, of: self, preferredEdge: .maxY)
-        //   }
-        
-        //   }
-        // print(String(format: "Time = %.7lf", -date.timeIntervalSinceNow))
-        return [String]()
+    
+        return []
         
     }
     
