@@ -60,6 +60,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     lazy var snippetDataSource = CDSnippetTableViewDataSource()
     lazy var recentFilesDataSource = CDRecentFilesTableViewDataSource()
     lazy var filesDataSource = CDFilesTableViewDataSource()
+    lazy var diagnosticsDataSource = CDDiagnosticsTableViewDataSource()
     
     var leftSidebarMode: LeftSidebarMode = .openFiles
     
@@ -186,7 +187,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     
 // MARK: - Diagnostics
     var diagnostics = [CKDiagnostic]()
-    var diagnosticsCells = [CDSnippetTableViewCell]()
+    var diagnosticsCells = [CDSnippet]()
     
     
     

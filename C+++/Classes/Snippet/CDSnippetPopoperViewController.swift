@@ -13,38 +13,32 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
     
     // MARK: - Properties
         
-    let imageNames = ["Code", "YellowCode", "GreenCode", "PurpleCode", "BlueCode"]
+    private let imageNames = ["Code", "YellowCode", "GreenCode", "PurpleCode", "BlueCode"]
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var textView: SKSyntaxTextView!
     @IBOutlet weak var imageView: NSButton!
     @IBOutlet weak var addToCodeButton: NSButton!
-    @IBOutlet weak var removeButton: NSButton!
     
     public var imageNameIndex: Int = 0
     private var popover: NSPopover!
     var isEditable: Bool = false
     
-    lazy var theme = SKDefaultSourceCodeTheme()
-    lazy var lexer = CDCppLexer()
+    private lazy var theme = SKDefaultSourceCodeTheme()
+    private lazy var lexer = CDCppLexer()
     
     func lexerForSource(_ source: String) -> SKLexer {
         return self.lexer
     }
-    /*
+    
     
     @IBAction func addToCode(_ sender: Any) {
-        self.delegate_textView.popoverViewController?(self, shouldAddToCode: self.textView.string)
+        GlobalMainWindowController.mainViewController.mainTextView.insertText(self.textView.text)
         self.popover?.close()
     }
     
-    @objc func removeItem() {
-        self.delegate_tableView?.popoverViewController?(self, shouldRemoveItemWithTitle: self.titleLabel.stringValue)
-        self.popover?.close()
-    }
-    */
     @objc func addItem() {
-        // self.delegate_tableView?.popoverViewController?(self, shouldAddItemWithTitle: self.titleLabel.stringValue, image: self.imageView.image!, code: self.textView.string)
+        CDSnippetController.shared.add(snippet: CDSnippet(title: self.titleLabel.stringValue, image: self.imageView.image, code: self.textView.text))
         self.popover?.close()
     }
     
@@ -57,7 +51,6 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
         imageNameIndex += 1
         imageNameIndex %= 5
         self.imageView.image = NSImage(named: imageNames[imageNameIndex])!
-        // self.delegate_tableViewCell.popoverViewController?(self, didSetImage: self.imageView.image!)
         
     }
 
@@ -79,15 +72,12 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
         self.isEditable = isEditable
         
         self.textView.textView.isEditable = isEditable
-        self.removeButton.target = self
-        // self.removeButton.action = #selector(removeItem)
         
         if self.isEditable == true {
             
             self.titleLabel.isEditable = true
-            self.addToCodeButton.isHidden = true
-            self.removeButton.action = #selector(addItem)
-            self.removeButton.title = "Add"
+            self.addToCodeButton.title = "Add Snippet"
+            self.addToCodeButton.action = #selector(addItem)
             
         }
         

@@ -109,7 +109,7 @@ class CDSearchViewController: NSViewController, NSTableViewDataSource, NSTextFie
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        for snippet in CDSnippetTableView.savedSnippets {
+        for snippet in CDSnippetController.shared.snippets {
             self.allResults.append(CDSearchResult(snippet: snippet))
         }
         for url in NSDocumentController.shared.recentDocumentURLs {

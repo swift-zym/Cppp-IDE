@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        CDSnippetController.shared.initialize()
         if !CDSettings.isInitialized {
             CDSettings.setDefault()
         }

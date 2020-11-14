@@ -10,7 +10,7 @@ import Cocoa
 
 class CDSearchResult: NSObject, SKSyntaxTextViewDelegate {
     
-    public init(snippet: CDSnippetTableViewCell) {
+    public init(snippet: CDSnippet) {
         super.init()
         
         self.title = snippet.title

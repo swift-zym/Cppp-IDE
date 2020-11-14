@@ -10,7 +10,6 @@
             <connections>
                 <outlet property="addToCodeButton" destination="MlQ-AU-NIG" id="jSi-EN-BTR"/>
                 <outlet property="imageView" destination="nkU-dH-6NV" id="Cod-ol-F5e"/>
-                <outlet property="removeButton" destination="sFI-0I-EwQ" id="KOM-hc-1pE"/>
                 <outlet property="textView" destination="heX-fl-BNu" id="Fpp-zb-IxP"/>
                 <outlet property="titleLabel" destination="vfl-J8-3TD" id="wuw-Sv-BbC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -31,13 +30,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sFI-0I-EwQ">
-                    <rect key="frame" x="11" y="18" width="65" height="23"/>
-                    <buttonCell key="cell" type="roundTextured" title="Remove" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nZy-dL-d2V">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="nkU-dH-6NV">
                     <rect key="frame" x="-4" y="234" width="50" height="37"/>
                     <constraints>
@@ -69,11 +61,8 @@
             <constraints>
                 <constraint firstItem="heX-fl-BNu" firstAttribute="top" secondItem="nkU-dH-6NV" secondAttribute="bottom" constant="2" id="Alx-Rz-BZo"/>
                 <constraint firstItem="MlQ-AU-NIG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="199" id="Bp9-tI-PNH"/>
-                <constraint firstAttribute="bottom" secondItem="sFI-0I-EwQ" secondAttribute="bottom" constant="20" id="DtT-Zc-aEK"/>
                 <constraint firstAttribute="trailing" secondItem="heX-fl-BNu" secondAttribute="trailing" constant="11" id="JEY-8H-JdH"/>
                 <constraint firstItem="heX-fl-BNu" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="12" id="L40-v9-tmK"/>
-                <constraint firstAttribute="trailing" secondItem="sFI-0I-EwQ" secondAttribute="trailing" constant="223" id="UVx-U9-7bn"/>
-                <constraint firstItem="sFI-0I-EwQ" firstAttribute="top" secondItem="heX-fl-BNu" secondAttribute="bottom" constant="13" id="Wd0-LA-bal"/>
                 <constraint firstItem="nkU-dH-6NV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="-4" id="bo5-EY-lww"/>
                 <constraint firstItem="nkU-dH-6NV" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="eHL-al-0JI"/>
                 <constraint firstItem="MlQ-AU-NIG" firstAttribute="top" secondItem="heX-fl-BNu" secondAttribute="bottom" constant="13" id="hIj-Pl-6GB"/>
