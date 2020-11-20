@@ -60,18 +60,19 @@ class CDMinimapView: NSControl {
         self.scrollerView.frame.size.height = scrollerViewHeight
         
         let scrollerY: CGFloat
+        
         if minimapVisibleAreaHeight == visibleAreaHeight {
-            scrollerY = (point.y / (totalHeight - visibleAreaHeight) * totalHeight) / view.textView.frame.height * (minimapVisibleAreaHeight - scrollerViewHeight - visibleAreaHeight / view.textView.frame.height)
+            scrollerY = (point.y / (totalHeight - visibleAreaHeight) * totalHeight) / view.textView.frame.height * (minimapVisibleAreaHeight - scrollerViewHeight)
+            
+            let imageViewY = point.y * ratio - scrollerY
+            self.scrollView.scroll(self.scrollView.contentView, to: NSMakePoint(0.0, imageViewY))
+            self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
+            
         } else {
             scrollerY = point.y / view.textView.frame.height * minimapVisibleAreaHeight
         }
+        
         self.scrollerView.frame.origin.y = visibleAreaHeight - (scrollerY + scrollerViewHeight)
-        /*
-        let imageViewY = point.y * (self.imageView.frame.height - scrollerViewHeight) / view.textView.frame.height + scrollerY
-        print(point.y * ratio, scrollerY, imageViewY)
-        self.scrollView.scroll(self.scrollView.contentView, to: NSMakePoint(0.0, self.imageView.frame.height - imageViewY))
-        self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
-        */
         
     }
     
