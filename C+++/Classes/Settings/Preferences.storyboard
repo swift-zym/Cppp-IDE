@@ -410,7 +410,7 @@
             <objects>
                 <viewController title="Editor" id="tfD-Ol-1eX" customClass="CDEditorPreferencesViewController" customModule="C___" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="KWj-vr-i0p">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="219"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="294"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Code Editing Options" translatesAutoresizingMaskIntoConstraints="NO" id="gd9-p0-irw">
@@ -486,23 +486,60 @@
                                     <constraint firstAttribute="height" constant="179" id="jPe-2X-kqw"/>
                                 </constraints>
                             </box>
+                            <box title="Font Options" translatesAutoresizingMaskIntoConstraints="NO" id="dv4-pH-LIZ">
+                                <rect key="frame" x="35" y="206" width="381" height="74"/>
+                                <view key="contentView" id="K3U-H7-B77">
+                                    <rect key="frame" x="3" y="3" width="375" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MmC-WZ-W3n">
+                                            <rect key="frame" x="8" y="33" width="359" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Font: Font Name" id="fA1-Mz-Xma">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXD-k6-1ni">
+                                            <rect key="frame" x="3" y="1" width="129" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Choose font..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zeu-r0-LtZ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="chooseAnotherFont:" target="tfD-Ol-1eX" id="04X-ue-ngu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="BOy-5Q-wJf"/>
+                                    <constraint firstAttribute="width" constant="375" id="oMU-7G-pde"/>
+                                </constraints>
+                            </box>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gd9-p0-irw" firstAttribute="leading" secondItem="KWj-vr-i0p" secondAttribute="leading" constant="38" id="30H-no-IYf"/>
-                            <constraint firstItem="gd9-p0-irw" firstAttribute="top" secondItem="KWj-vr-i0p" secondAttribute="top" constant="20" symbolic="YES" id="318-t2-pby"/>
+                            <constraint firstItem="gd9-p0-irw" firstAttribute="top" secondItem="KWj-vr-i0p" secondAttribute="top" constant="95" id="318-t2-pby"/>
+                            <constraint firstItem="dv4-pH-LIZ" firstAttribute="leading" secondItem="KWj-vr-i0p" secondAttribute="leading" constant="38" id="aKO-VC-SRK"/>
                             <constraint firstAttribute="bottom" secondItem="gd9-p0-irw" secondAttribute="bottom" constant="20" id="gmK-EC-08c"/>
                             <constraint firstAttribute="trailing" secondItem="gd9-p0-irw" secondAttribute="trailing" constant="37" id="ioD-Ye-Uy3"/>
+                            <constraint firstAttribute="trailing" secondItem="dv4-pH-LIZ" secondAttribute="trailing" constant="37" id="o6P-0Q-z82"/>
+                            <constraint firstItem="dv4-pH-LIZ" firstAttribute="top" secondItem="KWj-vr-i0p" secondAttribute="top" constant="14" id="sSW-P6-JPU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="autoComplete" destination="stZ-hI-2GH" id="O2S-mp-lDZ"/>
-                        <outlet property="displaysTooltip" destination="Yox-td-BbA" id="GCt-Kc-dww"/>
-                        <outlet property="showsCompletionList" destination="Yox-td-BbA" id="7Uk-BA-VcV"/>
+                        <outlet property="autoComplete" destination="stZ-hI-2GH" id="juu-be-fXQ"/>
+                        <outlet property="displaysTooltip" destination="Y02-SS-QE4" id="wkN-Kj-dYK"/>
+                        <outlet property="fontNameLabel" destination="MmC-WZ-W3n" id="SMa-CD-PhH"/>
+                        <outlet property="showsCompletionList" destination="Yox-td-BbA" id="zOv-2u-7CS"/>
                     </connections>
                 </viewController>
                 <customObject id="Ate-nw-Psy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="733.5"/>
+            <point key="canvasLocation" x="504" y="771"/>
         </scene>
     </scenes>
     <resources>
