@@ -18,7 +18,7 @@ protocol SKSyntaxTextViewDelegate: class {
 	
 	func lexerForSource(_ source: String) -> SKLexer
     
-    func didScroll(to: NSPoint)
+    func didScroll(_ syntaxTextView: SKSyntaxTextView, to: NSPoint)
 	
 }
 
@@ -31,7 +31,7 @@ extension SKSyntaxTextViewDelegate {
 	
     func textViewDidBeginEditing(_ syntaxTextView: SKSyntaxTextView) { }
     
-    func didScroll(to: NSPoint) { }
+    func didScroll(_ syntaxTextView: SKSyntaxTextView, to: NSPoint) { }
     
 }
 
@@ -408,7 +408,7 @@ class SKSyntaxTextView: View {
 extension SKSyntaxTextView: CDScrollViewDelegate {
     
     func scrollViewDidScroll(to point: NSPoint) {
-        self.delegate?.didScroll(to: point)
+        self.delegate?.didScroll(self, to: point)
     }
     
 }

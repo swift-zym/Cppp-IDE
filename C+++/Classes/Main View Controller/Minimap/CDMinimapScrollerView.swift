@@ -10,15 +10,20 @@ import Cocoa
 
 class CDMinimapScrollerView: NSControl {
     
+    var minimapView: CDMinimapView {
+        return self.superview! as! CDMinimapView
+    }
+    
     override func mouseDragged(with event: NSEvent) {
         super.mouseDragged(with: event)
         
+        let max = min(self.minimapView.imageView.frame.height, self.minimapView.frame.height)
         self.frame.origin.y += event.deltaY
         if self.frame.origin.y <= 0 {
             self.frame.origin.y = 0
         }
-        if self.frame.height + self.frame.origin.y >= self.superview!.frame.height {
-            self.frame.origin.y = self.superview!.frame.height - self.frame.height
+        if self.frame.height + self.frame.origin.y >= max {
+            self.frame.origin.y = max - self.frame.height
         }
         (self.superview! as! CDMinimapView).didDragScroller()
         

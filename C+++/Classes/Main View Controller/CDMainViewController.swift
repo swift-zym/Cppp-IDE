@@ -106,7 +106,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         
         self.mainTextView.delegate = self
         self.lineNumberView.textView = self.mainTextView.textView
-        self.minimapView.scrollView = self.mainTextView.scrollView
         self.sidebarTitleLabel.stringValue = "Files"
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
@@ -142,9 +141,9 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         }
     }
     
-    func didScroll(to point: NSPoint) {
+    func didScroll(_ syntaxTextView: SKSyntaxTextView, to point: NSPoint) {
         self.lineNumberView.enclosingScrollView?.scroll(self.lineNumberView.enclosingScrollView!.contentView, to: point)
-        self.minimapView.scrollViewDidScrollToPoint(point: point)
+        self.minimapView.scrollViewDidScrollToPoint(syntaxTextView, point: point)
     }
     
     
@@ -165,11 +164,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
             
             let dataOfView = self.mainTextView.textView.dataWithPDF(inside: self.mainTextView.textView.bounds)
             let imageOfView = NSImage(data: dataOfView)!
-            self.minimapView.imageView.image = imageOfView
-            if self.minimapView.imageView.frame.width != 0 && imageOfView.size.width != 0 {
-                self.minimapView.frame.size.height = imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
-                self.minimapView.imageView.frame.size.height =  imageOfView.size.height / (imageOfView.size.width / self.minimapView.imageView.frame.width)
-            }
+            self.minimapView.setMinimapImage(imageOfView)
             
         }
         

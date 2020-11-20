@@ -8,37 +8,87 @@
 
 import Cocoa
 
-class CDMinimapView: CDFlippedView {
+class CDMinimapView: NSControl {
     
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var scrollerView: CDMinimapScrollerView!
     @IBOutlet weak var scrollView: NSScrollView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
-    func didDragScroller() {
-        
-        let a = self.scrollView.frame.height
-        let b = self.scrollView.documentView!.frame.height
-        let c = self.imageView.frame.height
-        self.scrollerView.frame.size.height = (a / b) * c
-        let d = self.scrollerView.frame.origin.y
-        self.scrollView.scroll(self.scrollView.contentView, to: NSMakePoint(0, d / c * b))
-        self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
-
+    private var visibleAreaHeight: CGFloat {
+        return self.frame.height
     }
     
-    func scrollViewDidScrollToPoint(point: NSPoint) {
+    private var minimapVisibleAreaHeight: CGFloat {
+        return min(self.frame.height, self.imageView.frame.height)
+    }
+    
+    func setMinimapImage(_ image: NSImage) {
         
-        let a = self.scrollView.frame.height
-        let b = self.scrollView.documentView!.frame.height
-        let c = self.imageView.frame.height
-        let d = point.y
-        let res = (a / b) * c
-        guard b != 0 && a != 0 && c != 0 && d != 0 else {
-            return
+        self.imageView.image = image
+        
+        if self.imageView.frame.width != 0 && image.size.width != 0 {
+            self.imageView.superview?.frame.size.height = image.size.height / (image.size.width / self.imageView.frame.width)
+            self.heightConstraint.constant = image.size.height / (image.size.width / self.imageView.frame.width)
         }
-        self.scrollerView.frame.size.height = res
-        // print("scroller height = scrollview height / textview height * imageviewheight\n                = \(a) / \(b) * \(c)")
-        self.scrollerView.frame.origin.y = (d / b) * c
+        
+        
+    }
+    /*
+    override func mouseEntered(with event: NSEvent) {
+        super.mouseEntered(with: event)
+        self.scrollerView.isHidden = false
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
+        self.scrollerView.isHidden = true
+    }
+    */
+    func didDragScroller() {
+        
+        
+    }
+    
+    func scrollViewDidScrollToPoint(_ view: SKSyntaxTextView, point: NSPoint) {
+        
+        let totalHeight = view.textView.frame.height
+        
+        let ratio = self.imageView.frame.height / totalHeight
+        
+        let scrollerViewHeight = visibleAreaHeight * ratio
+        self.scrollerView.frame.size.height = scrollerViewHeight
+        
+        let scrollerY: CGFloat
+        if minimapVisibleAreaHeight == visibleAreaHeight {
+            scrollerY = (point.y / (totalHeight - visibleAreaHeight) * totalHeight) / view.textView.frame.height * (minimapVisibleAreaHeight - scrollerViewHeight - visibleAreaHeight / view.textView.frame.height)
+        } else {
+            scrollerY = point.y / view.textView.frame.height * minimapVisibleAreaHeight
+        }
+        self.scrollerView.frame.origin.y = visibleAreaHeight - (scrollerY + scrollerViewHeight)
+        /*
+        let imageViewY = point.y * (self.imageView.frame.height - scrollerViewHeight) / view.textView.frame.height + scrollerY
+        print(point.y * ratio, scrollerY, imageViewY)
+        self.scrollView.scroll(self.scrollView.contentView, to: NSMakePoint(0.0, self.imageView.frame.height - imageViewY))
+        self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
+        */
+        
+    }
+    
+    override func updateTrackingAreas() {
+        
+        for area in self.trackingAreas {
+            self.removeTrackingArea(area)
+        }
+        
+        let trackingArea = NSTrackingArea(rect: self.bounds, options: [.activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
         
     }
     
