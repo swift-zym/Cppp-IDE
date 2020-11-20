@@ -17,6 +17,10 @@ extension String {
         return self[ self.index(startIndex, offsetBy: i) ]
     }
     
+    func index(_ int: Int) -> Index {
+        return self.index(self.startIndex, offsetBy: int)
+    }
+    
     subscript (bounds: Range<Int>) -> Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
@@ -128,6 +132,9 @@ extension String {
     }
     
     func compareWith(anotherString string: String) -> (right: Bool, ranges: [NSRange]) {
+        guard string.first == self.first else {
+            return (false, [])
+        }
         let array = Array(string)
         var str = self
         var ranges = [NSRange]()
