@@ -19,17 +19,22 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     }
     
     override func insertText(_ string: Any, replacementRange: NSRange) {
-        super.insertText(string, replacementRange: replacementRange)
+        
+        guard CDSettings.autoComplete else {
+            super.insertText(string, replacementRange: replacementRange)
+            return
+        }
         
         if let string = string as? String {
             
             switch string {
-                case "(": super.insertText(")", replacementRange: replacementRange)
-                case "[": super.insertText("]", replacementRange: replacementRange)
-                case "{": super.insertText("}", replacementRange: replacementRange)
-                case "\"": super.insertText("\"", replacementRange: replacementRange)
-                case "'": super.insertText("'", replacementRange: replacementRange)
+                case "(": super.insertText("()", replacementRange: replacementRange)
+                case "[": super.insertText("[]", replacementRange: replacementRange)
+                case "{": super.insertText("{}", replacementRange: replacementRange)
+                case "\"": super.insertText("\"\"", replacementRange: replacementRange)
+                case "'": super.insertText("''", replacementRange: replacementRange)
                 default:
+                    super.insertText(string, replacementRange: replacementRange)
                     self.complete(nil)
                     return
             }

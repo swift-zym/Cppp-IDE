@@ -9,23 +9,19 @@
 import Cocoa
 
 extension SKInnerTextView {
-    /*
+    
     @IBAction func biggerFont(_ sender: Any?) {
         
-        let settings = CDSettings
-        settings?.fontSize += 1
-        CDSettings = settings
+        CDSettings.fontSize += 1
         
     }
     
     @IBAction func smallerFont(_ sender: Any?) {
         
-        let settings = CDSettings
-        settings?.fontSize -= 1
-        CDSettings = settings
+        CDSettings.fontSize -= 1
         
     }
-    */
+    
     @IBAction func changeSelectionToComment(_ sender: Any?) {
         
         var range = self.selectedRange
@@ -85,6 +81,14 @@ extension SKInnerTextView {
         }
         self.setSelectedRange(range)
         
+    }
+    
+    override func shouldChangeText(in affectedCharRange: NSRange, replacementString: String?) -> Bool {
+        /*if replacementString != nil {
+            let ans = FormattingHelper.formattedText(for: replacementString!, in: self.string, range: affectedCharRange)
+            self.setSelectedRange(ans.newRange)
+        }*/
+        return super.shouldChangeText(in: affectedCharRange, replacementString: replacementString)
     }
     
 }
