@@ -1,3 +1,14 @@
+# C+++ IDE for Mac
+
+----
+
+**C+++** is a simple C++ IDE for macOS. It's for **OI (Olympics in Informatics, 信息学奥赛)** learners to use. It's a little like _Dev-C++_ on Windows(which a lot of OIers use) but it is much easier to use.
+
+It is developed by a Grade-Seven student @23786.
+
+![developing](https://img.shields.io/badge/C%2B%2B%2B%203.0-Developing-brightgreen.svg)![not recommended](https://img.shields.io/badge/C%2B%2B%2B%202.1.0-Not%20Recommended-orangered.svg)![language](https://img.shields.io/badge/Language-English-blue.svg)
+
+
 ## Note: Version 3.0 is being developed, but because it is a large update, so developing takes a lot of time. The new version will not be released until **macOS 11.0 Big Sur** is released. But **do not install version 2.1**, it is really unstable.
 
 ## So if you want to use C+++, the best choice is to **wait** until the version 3.0 is released.
@@ -6,7 +17,7 @@ The website of this project is at [http://www.cpppide.ml](http://www.cpppide.ml)
 
 ----
 
-#  C+++ IDE 2.1 for macOS
+##  C+++ IDE 2.1 for macOS
 
 [![2-1-0-Welcome.png](https://i.postimg.cc/t44BQKT8/2-1-0-Welcome.png)](https://postimg.cc/w7nXDbDk)
 
