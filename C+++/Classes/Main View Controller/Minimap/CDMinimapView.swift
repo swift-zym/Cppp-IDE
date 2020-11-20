@@ -15,11 +15,11 @@ class CDMinimapView: NSControl {
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
-    private var visibleAreaHeight: CGFloat {
+    var visibleAreaHeight: CGFloat {
         return self.frame.height
     }
     
-    private var minimapVisibleAreaHeight: CGFloat {
+    var minimapVisibleAreaHeight: CGFloat {
         return min(self.frame.height, self.imageView.frame.height)
     }
     
@@ -46,6 +46,7 @@ class CDMinimapView: NSControl {
     }
     */
     func didDragScroller() {
+        
         
         
     }

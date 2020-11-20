@@ -17,13 +17,12 @@ class CDMinimapScrollerView: NSControl {
     override func mouseDragged(with event: NSEvent) {
         super.mouseDragged(with: event)
         
-        let max = min(self.minimapView.imageView.frame.height, self.minimapView.frame.height)
-        self.frame.origin.y += event.deltaY
-        if self.frame.origin.y <= 0 {
-            self.frame.origin.y = 0
+        self.frame.origin.y -= event.deltaY
+        if self.frame.origin.y + self.frame.height >= self.minimapView.visibleAreaHeight {
+            self.frame.origin.y = self.minimapView.visibleAreaHeight - self.frame.height
         }
-        if self.frame.height + self.frame.origin.y >= max {
-            self.frame.origin.y = max - self.frame.height
+        if self.frame.origin.y <= self.minimapView.visibleAreaHeight -  self.minimapView.minimapVisibleAreaHeight {
+            self.frame.origin.y = self.minimapView.visibleAreaHeight -  self.minimapView.minimapVisibleAreaHeight
         }
         (self.superview! as! CDMinimapView).didDragScroller()
         
