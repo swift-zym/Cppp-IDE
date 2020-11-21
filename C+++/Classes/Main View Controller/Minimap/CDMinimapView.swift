@@ -52,16 +52,21 @@ class CDMinimapView: NSControl {
         let scrollerViewHeight = self.scrollerView.frame.height
         let scrollerViewY = visibleAreaHeight - scrollerViewHeight - self.scrollerView.frame.origin.y
         
-        let scrollViewY = scrollerViewY / (minimapVisibleAreaHeight - scrollerViewHeight) * (totalHeight - visibleAreaHeight)
-        
-        self.codeEditor.scrollView.scroll(self.codeEditor.scrollView.contentView, to: NSMakePoint(0.0, scrollViewY))
-        self.codeEditor.scrollView.reflectScrolledClipView(self.codeEditor.scrollView.contentView)
+        if (minimapVisibleAreaHeight - scrollerViewHeight != 0) {
+            let scrollViewY = scrollerViewY / (minimapVisibleAreaHeight - scrollerViewHeight) * (totalHeight - visibleAreaHeight)
+            self.codeEditor.scrollView.scroll(self.codeEditor.scrollView.contentView, to: NSMakePoint(0.0, scrollViewY))
+            self.codeEditor.scrollView.reflectScrolledClipView(self.codeEditor.scrollView.contentView)
+        }
         
     }
     
     func scrollViewDidScrollToPoint(_ view: SKSyntaxTextView, point: NSPoint) {
         
         let totalHeight = view.textView.frame.height
+        
+        guard totalHeight != 0 else {
+            return
+        }
         
         let ratio = self.imageView.frame.height / totalHeight
         
@@ -71,14 +76,17 @@ class CDMinimapView: NSControl {
         let scrollerY: CGFloat
         
         if minimapVisibleAreaHeight == visibleAreaHeight {
-            scrollerY = point.y / (totalHeight - visibleAreaHeight) * (minimapVisibleAreaHeight - scrollerViewHeight)
             
+            scrollerY = point.y / (totalHeight - visibleAreaHeight) * (minimapVisibleAreaHeight - scrollerViewHeight)
+            guard totalHeight - visibleAreaHeight != 0 else {
+                return
+            }
             let imageViewY = point.y * ratio - scrollerY
             self.scrollView.scroll(self.scrollView.contentView, to: NSMakePoint(0.0, imageViewY))
             self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
             
         } else {
-            scrollerY = point.y / view.textView.frame.height * minimapVisibleAreaHeight
+            scrollerY = point.y / totalHeight * minimapVisibleAreaHeight
         }
         
         self.scrollerView.frame.origin.y = visibleAreaHeight - (scrollerY + scrollerViewHeight)
