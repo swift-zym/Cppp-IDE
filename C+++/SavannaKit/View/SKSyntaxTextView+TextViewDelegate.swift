@@ -165,7 +165,7 @@ extension SKSyntaxTextView: NSTextViewDelegate {
         }
         
         wrapperView.setNeedsDisplay(wrapperView.bounds)
-        self.document?.content.contentString = self.text
+        self.textView.document?.content.contentString = self.text
         self.delegate?.didChangeText(self)
         
     }

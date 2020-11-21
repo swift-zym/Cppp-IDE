@@ -11,9 +11,8 @@ import Cocoa
 extension SKSyntaxTextView {
     
     func setDocument(newDocument: CDCodeDocument) {
-        self.document = newDocument
+        self.textView.document = newDocument
         self.text = newDocument.content.contentString
-        self.window?.windowController?.document = newDocument
     }
     
 }

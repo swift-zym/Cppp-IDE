@@ -13,6 +13,8 @@ protocol SKInnerTextViewDelegate: class {
 }
 
 class SKInnerTextView: TextView {
+    
+    var document: CDCodeDocument?
 	
 	weak var innerDelegate: SKInnerTextViewDelegate?
 	

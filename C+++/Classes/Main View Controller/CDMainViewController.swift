@@ -193,8 +193,8 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.mainTextView.document = self.view.window?.windowController?.document as? CDCodeDocument
-        self.mainTextView.text = self.mainTextView.document?.content.contentString ?? ""
+        self.mainTextView.textView.document = self.view.window?.windowController?.document as? CDCodeDocument
+        self.mainTextView.text = self.mainTextView.textView.document?.content.contentString ?? ""
         
     }
     
