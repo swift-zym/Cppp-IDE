@@ -37,7 +37,7 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     
     func setCurrentDocument(index: Int) {
         
-        guard index >= 0 && index < self.documents.count else{
+        guard index >= 0 && index < self.documents.count else {
             return
         }
         self.document?.removeWindowController(self)
@@ -51,18 +51,16 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
     }
     
+    
     @objc func closeSelectedDocument() {
         
-        print(self.documents)
-        
-        let vc = self.contentViewController as! CDMainViewController
-        let row = vc.leftSidebarTableView.clickedRow
+        let row = self.mainViewController.leftSidebarTableView.clickedRow
         guard row >= 0 else {
             return
         }
         
         self.documents.remove(at: row)
-        vc.leftSidebarTableView.reloadData()
+        self.mainViewController.leftSidebarTableView.reloadData()
         
         if self.documents.count == 0 {
             self.close()
@@ -70,8 +68,18 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         }
         
         let newRow = row == 0 ? 1 : (row - 1)
-        print("row: \(row), newRow: \(newRow)")
         self.setCurrentDocument(index: newRow)
+        
+    }
+    
+    @objc func showCurrentDocumentInFinder() {
+        
+        let row = self.mainViewController.leftSidebarTableView.clickedRow
+        guard row >= 0 else {
+            return
+        }
+        
+        NSWorkspace.shared.selectFile(self.documents[row].fileURL?.path, inFileViewerRootedAtPath: "")
         
     }
     
@@ -90,18 +98,9 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
     }
     
-    func disableCompiling() {
-        
-        let vc = (self.contentViewController as! CDMainViewController)
-        vc.enterSimpleMode(self)
-        vc.rightConstraint.constant = 0.0
-        
-    }
-    
     @IBAction func toggleLeftSidebar(_ sender: Any?) {
         
-        let vc = (self.contentViewController as! CDMainViewController)
-        vc.toggleLeftSidebar(sender)
+        self.mainViewController.toggleLeftSidebar(sender)
         
     }
     

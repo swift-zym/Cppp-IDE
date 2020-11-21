@@ -227,11 +227,11 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     }
     
     @IBAction func toggleMinimap(_ sender: Any?) {
-        if self.minimapView.enclosingScrollView!.isHidden {
-            self.minimapView.enclosingScrollView?.isHidden = false
+        if self.minimapView.isHidden {
+            self.minimapView.isHidden = false
             self.minimapViewConstraint.constant = 123.0
         } else {
-            self.minimapView.enclosingScrollView?.isHidden = true
+            self.minimapView.isHidden = true
             self.minimapViewConstraint.constant = 0.0
         }
     }

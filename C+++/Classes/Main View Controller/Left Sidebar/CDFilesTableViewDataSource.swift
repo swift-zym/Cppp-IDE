@@ -12,7 +12,8 @@ class CDFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NSTa
     
     var menu: NSMenu? {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Close", action: #selector(CDMainWindowController.closeSelectedDocument), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(target: GlobalMainWindowController, title: "Show in Finder", action: #selector(CDMainWindowController.showCurrentDocumentInFinder), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(target: GlobalMainWindowController, title: "Close", action: #selector(CDMainWindowController.closeSelectedDocument), keyEquivalent: ""))
         return menu
     }
     
