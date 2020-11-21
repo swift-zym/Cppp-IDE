@@ -32,7 +32,7 @@ class CDMinimapScrollerView: NSControl {
         super.init(coder: coder)
         
         self.wantsLayer = true
-        self.layer?.backgroundColor = NSColor(white: 0.7, alpha: 0.4).cgColor
+        self.layer?.backgroundColor = NSColor(white: 0.7, alpha: 0.2).cgColor
         self.setNeedsDisplay()
         
     }

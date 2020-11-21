@@ -1246,6 +1246,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="sw1-Sh-81O" secondAttribute="bottom" id="jfY-LM-Wk4"/>
                                                                 </constraints>
                                                                 <connections>
+                                                                    <outlet property="codeEditor" destination="vGI-3r-Mbu" id="j5h-B5-K8e"/>
                                                                     <outlet property="heightConstraint" destination="eKB-6B-CAV" id="Ndx-Tu-tOe"/>
                                                                     <outlet property="imageView" destination="ofy-Uc-Az8" id="xdQ-fX-CtM"/>
                                                                     <outlet property="scrollView" destination="sw1-Sh-81O" id="lhU-KA-MPk"/>

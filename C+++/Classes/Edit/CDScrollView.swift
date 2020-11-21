@@ -23,4 +23,9 @@ class CDScrollView: NSScrollView {
         
     }
     
+    func scrollWithoutInformingDelegate(_ clipView: NSClipView, to point: NSPoint) {
+        super.scroll(clipView, to: point)
+        
+    }
+    
 }

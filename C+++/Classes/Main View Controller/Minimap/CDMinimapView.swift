@@ -14,6 +14,7 @@ class CDMinimapView: NSControl {
     @IBOutlet weak var scrollerView: CDMinimapScrollerView!
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var codeEditor: SKSyntaxTextView!
     
     var visibleAreaHeight: CGFloat {
         return self.frame.height
@@ -34,20 +35,27 @@ class CDMinimapView: NSControl {
         
         
     }
-    /*
+    
     override func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)
-        self.scrollerView.isHidden = false
+        self.scrollerView.layer?.backgroundColor = NSColor(white: 0.7, alpha: 0.3).cgColor
     }
     
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
-        self.scrollerView.isHidden = true
+        self.scrollerView.layer?.backgroundColor = NSColor(white: 0.7, alpha: 0.2).cgColor
     }
-    */
+    
     func didDragScroller() {
         
+        let totalHeight = self.codeEditor.textView.frame.height
+        let scrollerViewHeight = self.scrollerView.frame.height
+        let scrollerViewY = visibleAreaHeight - scrollerViewHeight - self.scrollerView.frame.origin.y
         
+        let scrollViewY = scrollerViewY / (minimapVisibleAreaHeight - scrollerViewHeight) * (totalHeight - visibleAreaHeight)
+        
+        self.codeEditor.scrollView.scroll(self.codeEditor.scrollView.contentView, to: NSMakePoint(0.0, scrollViewY))
+        self.codeEditor.scrollView.reflectScrolledClipView(self.codeEditor.scrollView.contentView)
         
     }
     
@@ -63,7 +71,7 @@ class CDMinimapView: NSControl {
         let scrollerY: CGFloat
         
         if minimapVisibleAreaHeight == visibleAreaHeight {
-            scrollerY = (point.y / (totalHeight - visibleAreaHeight) * totalHeight) / view.textView.frame.height * (minimapVisibleAreaHeight - scrollerViewHeight)
+            scrollerY = point.y / (totalHeight - visibleAreaHeight) * (minimapVisibleAreaHeight - scrollerViewHeight)
             
             let imageViewY = point.y * ratio - scrollerY
             self.scrollView.scroll(self.scrollView.contentView, to: NSMakePoint(0.0, imageViewY))
