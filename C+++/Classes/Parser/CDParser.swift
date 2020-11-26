@@ -1,90 +1,205 @@
-////
-////  CDParser.swift
-////  C+++
-////
-////  Created by 23786 on 2020/8/8.
-////  Copyright © 2020 Zhu Yixuan. All rights reserved.
-////
 //
-//import Cocoa
+//  main.swift
+//  CommentRemover
 //
-//class CDParser: NSObject {
+//  Created by 23786 on 2020/11/24.
 //
-//    static func deleteCodeComment(_ code: String) -> String {
-//
-//        let lines = code.components(separatedBy: "\n")
-//
-//        var newSource = ""
-//        var inBlock = false
-//        var replaceFlag = false
-//
-//        for line in lines {
-//            if line.count == 0 {
-//                continue;
-//            }
-//            let quotationPattern = "^(.*?)\".*//.*\"";
-//
-//            do {
-//
-//                var newLine = line
-//
-//
-//                let regularExpression = try NSRegularExpression(pattern: quotationPattern)
-//                let result = regularExpression.matches(in: newLine,
-//                    range: NSMakeRange(0, newLine.count))
-//                if result.count > 0 {
-//                    newLine = newLine.nsString.replacingCharacters(in: result[0].range, with: "")
-//                    print(result[0].range, "newLine = \(newLine)")
-//                    replaceFlag = true
-//                }
-//
-//                let trimmedString = newLine.trimmingCharacters(in: .whitespacesAndNewlines)
-//
-//                if (trimmedString.hasPrefix("//")) {
-//                    continue
-//                }
-//                if (trimmedString.hasPrefix("/*") && line.hasSuffix("*/")) {
-//                    continue
-//                }
-//
-//                if try NSRegularExpression(pattern: "^/\\*").numberOfMatches(in: trimmedString, range: NSMakeRange(0, trimmedString.count)) > 0 {
-//                    inBlock = true
-//                }
-//                if try NSRegularExpression(pattern: "\\*/$").numberOfMatches(in: trimmedString, range: NSMakeRange(0, trimmedString.count)) > 0 {
-//                    inBlock = false
-//                    continue
-//                }
-//
-//                let pattern = "[^(.*?)//(.*)]|[^(.*?)/\\*(.*)\\*/]"
-//                // var pattern = @"[^(.*?)//(.*)]|[^(.*?)/\*(.*)\*/]";
-//
-//                let patternResult = try NSRegularExpression(pattern: pattern).matches(in: trimmedString, range: NSMakeRange(0, trimmedString.count))
-//                if patternResult.count > 0 && patternResult[0].numberOfRanges >= 1 {
-//                    newLine = trimmedString.nsString.substring(with: patternResult[0].range(at: 1))
-//                }
-//
-//                // 还原被替换的代码
-//                if replaceFlag {
-//                    print("还原特殊代码")
-//                   //  newLine = line.replacingCharacters(in: <#T##RangeExpression#>, with: tempLine)
-//                    replaceFlag = false;
-//                }
-//
-//                if inBlock {
-//                    continue
-//                }
-//                newSource += newLine as String + "\n";
-//
-//            } catch {
-//
-//                print("error")
-//
-//            }
-//        }
-//
-//        return newSource
-//
-//    }
-//
-//}
-//
+
+import Foundation
+
+class CDParser {
+
+    enum ParseMode {
+        case stringLiteral
+        case commentMayBegin
+        case singleLineComment
+        case multilineComment
+        case multilineCommentMayEnd
+        case backslash
+        case other
+    }
+
+    struct CodeFoldingLocation: CustomStringConvertible {
+        
+        init(index: Int = 0, line: Int = 0) {
+            self.index = index
+            self.line = line
+        }
+        
+        var index = 0, line = 0
+        
+        var description: String {
+            return "Line \(line)"
+        }
+        
+    }
+
+    struct CodeFoldingRange: CustomStringConvertible {
+        
+        init(begin: CDParser.CodeFoldingLocation, end: CDParser.CodeFoldingLocation) {
+            self.begin = begin
+            self.end = end
+        }
+        
+        var begin: CodeFoldingLocation
+        var end: CodeFoldingLocation
+        
+        var description: String {
+            return "(\(self.begin), \(self.end))"
+        }
+        
+    }
+
+    class func removeCommentAndStringLiteral(from code: String) -> String {
+
+        var newCode = ""
+        let lines = code.components(separatedBy: "\n")
+
+        var currentParseMode: ParseMode = .other
+
+        for line in lines {
+            
+            let array = Array(line)
+            for char in array {
+                var shouldInsert = true
+                switch char {
+                    case "\"":
+                        if currentParseMode == .backslash {
+                            currentParseMode = .stringLiteral
+                            shouldInsert = false
+                        } else if currentParseMode == .other {
+                            currentParseMode = .stringLiteral
+                        } else if currentParseMode == .stringLiteral {
+                            currentParseMode = .other
+                        } else {
+                            shouldInsert = false
+                        }
+                    case "/":
+                        if currentParseMode == .other {
+                            currentParseMode = .commentMayBegin
+                        } else if currentParseMode == .commentMayBegin {
+                            currentParseMode = .singleLineComment
+                            shouldInsert = false
+                            newCode.removeLast()
+                        } else if currentParseMode == .multilineCommentMayEnd {
+                            currentParseMode = .other
+                            shouldInsert = false
+                        } else if currentParseMode != .other {
+                            shouldInsert = false
+                        }
+                    case "*":
+                        if currentParseMode == .commentMayBegin {
+                            currentParseMode = .multilineComment
+                            shouldInsert = false
+                            newCode.removeLast()
+                        } else if currentParseMode == .multilineComment {
+                            currentParseMode = .multilineCommentMayEnd
+                            shouldInsert = false
+                        } else if currentParseMode != .other {
+                            shouldInsert = false
+                        }
+                    case "\\":
+                        if currentParseMode == .stringLiteral {
+                            currentParseMode = .backslash
+                        }
+                        if currentParseMode != .other {
+                            shouldInsert = false
+                        }
+                    default:
+                        if currentParseMode == .stringLiteral || currentParseMode == .singleLineComment || currentParseMode == .multilineComment || currentParseMode == .backslash {
+                            shouldInsert = false
+                        }
+                }
+                if shouldInsert {
+                    newCode.append(char)
+                }
+            }
+            
+            newCode.append("\n")
+            
+            if currentParseMode == .singleLineComment || currentParseMode == .stringLiteral {
+                currentParseMode = .other
+            }
+            
+        }
+
+        return newCode
+
+    }
+
+    class func getFoldingRanges(from code_: String) -> (ranges: [CodeFoldingRange], lines: [Int]) {
+
+        var ranges = [CodeFoldingRange]()
+        var queue = [CodeFoldingLocation]()
+        var lineNumbers = [Int]()
+
+        let lines = code_.components(separatedBy: "\n")
+
+        var currentParseMode: ParseMode = .other
+
+        var lineNumber = 1, index = 0
+
+        for line in lines {
+            
+            let array = Array(line)
+            for char in array {
+                switch char {
+                    case "\"":
+                        if currentParseMode == .backslash {
+                            currentParseMode = .stringLiteral
+                        } else if currentParseMode == .other {
+                            currentParseMode = .stringLiteral
+                        } else if currentParseMode == .stringLiteral {
+                            currentParseMode = .other
+                        }
+                    case "/":
+                        if currentParseMode == .other {
+                            currentParseMode = .commentMayBegin
+                        } else if currentParseMode == .commentMayBegin {
+                            currentParseMode = .singleLineComment
+                        } else if currentParseMode == .multilineCommentMayEnd {
+                            currentParseMode = .other
+                        }
+                    case "*":
+                        if currentParseMode == .commentMayBegin {
+                            currentParseMode = .multilineComment
+                        } else if currentParseMode == .multilineComment {
+                            currentParseMode = .multilineCommentMayEnd
+                        }
+                    case "\\":
+                        if currentParseMode == .stringLiteral {
+                            currentParseMode = .backslash
+                        }
+                    default:
+                        if currentParseMode == .stringLiteral || currentParseMode == .singleLineComment || currentParseMode == .multilineComment || currentParseMode == .backslash {
+                        }
+                }
+                
+                if currentParseMode == .other {
+                    if char == "{" {
+                        queue.append(CodeFoldingLocation(index: index, line: lineNumber))
+                    } else if char == "}" {
+                        if queue.count >= 1 {
+                            ranges.append(CodeFoldingRange(begin: queue.last!, end: CodeFoldingLocation(index: index, line: lineNumber)))
+                            lineNumbers.append(queue.last!.line)
+                            queue.removeLast()
+                        }
+                    }
+                }
+                index += 1
+            }
+            
+            if currentParseMode == .singleLineComment || currentParseMode == .stringLiteral {
+                currentParseMode = .other
+            }
+            
+            lineNumber += 1
+            index += 1
+            
+        }
+
+        return (ranges: ranges, lines: lineNumbers)
+        
+    }
+    
+}

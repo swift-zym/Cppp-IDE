@@ -93,6 +93,7 @@
 		185CD64224CC639500A9511B /* CDSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CD64124CC639500A9511B /* CDSearchViewController.swift */; };
 		185CD64424CC642E00A9511B /* CDSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185CD64324CC642D00A9511B /* CDSearchViewController.xib */; };
 		1860EC3324839A8B0066DE64 /* CDDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860EC3224839A8B0066DE64 /* CDDocumentController.swift */; };
+		1861BE00256F12B1003C4F72 /* CDCodeFoldingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861BDFF256F12B1003C4F72 /* CDCodeFoldingButton.swift */; };
 		18669BE324E7D20D00C9DEE2 /* CDProjectMainViewController+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18669BE224E7D20D00C9DEE2 /* CDProjectMainViewController+Dragging.swift */; };
 		1868F16124E914C50077FD8D /* CDProjectNewFileChooseTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868F16024E914C50077FD8D /* CDProjectNewFileChooseTypeViewController.swift */; };
 		1868F16424E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868F16224E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift */; };
@@ -281,6 +282,7 @@
 		185CD64124CC639500A9511B /* CDSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDSearchViewController.swift; sourceTree = "<group>"; };
 		185CD64324CC642D00A9511B /* CDSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CDSearchViewController.xib; sourceTree = "<group>"; };
 		1860EC3224839A8B0066DE64 /* CDDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDocumentController.swift; sourceTree = "<group>"; };
+		1861BDFF256F12B1003C4F72 /* CDCodeFoldingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeFoldingButton.swift; sourceTree = "<group>"; };
 		18669BE224E7D20D00C9DEE2 /* CDProjectMainViewController+Dragging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProjectMainViewController+Dragging.swift"; sourceTree = "<group>"; };
 		1868F16024E914C50077FD8D /* CDProjectNewFileChooseTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDProjectNewFileChooseTypeViewController.swift; sourceTree = "<group>"; };
 		1868F16224E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */,
 				1849ED8E24DFCC55006DCDB4 /* SavannaKit+TextViewUtilities.swift */,
 				1801DF5E24D2DDC2005CAD42 /* CDCodeEditorLineNumberView.swift */,
+				1861BDFF256F12B1003C4F72 /* CDCodeFoldingButton.swift */,
 				1801DF6024D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift */,
 				18E7291F244E756E000317D7 /* CDScrollView.swift */,
 			);
@@ -584,6 +587,7 @@
 				186AC7F224A47BD900F6B682 /* NSViewController Extension.swift */,
 				183908B02548533D00313605 /* CDCompileResultMessageBox.swift */,
 				183908B12548533D00313605 /* CDCompileResultMessageBox.xib */,
+				18C5C762255F7C9D00C78FC0 /* NSMenuItem Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -938,6 +942,7 @@
 				183BE91124AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift in Sources */,
 				180480AE2448602700CD0A4D /* CDSettings.swift in Sources */,
 				18CDFAE3251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift in Sources */,
+				1861BE00256F12B1003C4F72 /* CDCodeFoldingButton.swift in Sources */,
 				18E72920244E756E000317D7 /* CDScrollView.swift in Sources */,
 				18B185732463B32400B579AD /* CDSnippetPopoperViewController.swift in Sources */,
 				1815A0DB24E15BEA00D1B23C /* CDProject.swift in Sources */,

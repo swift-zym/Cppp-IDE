@@ -122,8 +122,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         
         NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(_:)), name: CDSettings.settingsDidChangeNotificationName, object: nil)
         
-        // TODO: Set the theme and font of the code editor.
-        
         self.consoleView.logView.font = menloFont(ofSize: 13.0)
         
         self.leftSidebarTableView.delegate = self.filesDataSource
@@ -165,6 +163,11 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
             let dataOfView = self.mainTextView.textView.dataWithPDF(inside: self.mainTextView.textView.bounds)
             let imageOfView = NSImage(data: dataOfView)!
             self.minimapView.setMinimapImage(imageOfView)
+            
+            let res = CDParser.getFoldingRanges(from: self.mainTextView.text)
+            self.lineNumberView.codeFoldingLines = res.lines
+            self.lineNumberView.codeFoldingRanges = res.ranges
+            self.lineNumberView.draw()
             
         }
         
