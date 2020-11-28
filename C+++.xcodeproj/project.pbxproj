@@ -31,15 +31,6 @@
 		181B4F8B24DC392C000F3ED7 /* CDMinimapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B4F8A24DC392C000F3ED7 /* CDMinimapView.swift */; };
 		181B4F8D24DCED1E000F3ED7 /* CDMinimapScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B4F8C24DCED1E000F3ED7 /* CDMinimapScrollerView.swift */; };
 		181B4F9024DE39F7000F3ED7 /* CDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B4F8F24DE39F7000F3ED7 /* CDParser.swift */; };
-		181F2B8E24AB44C600C4B217 /* Index.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8B24AB318800C4B217 /* Index.h */; };
-		181F2B8F24AB44E100C4B217 /* BuildSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8424AB30AC00C4B217 /* BuildSystem.h */; };
-		181F2B9024AB44E900C4B217 /* CXErrorCode.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8624AB311000C4B217 /* CXErrorCode.h */; };
-		181F2B9124AB47D700C4B217 /* CXString.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8724AB312E00C4B217 /* CXString.h */; };
-		181F2B9224AB47DB00C4B217 /* ExternC.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8924AB316300C4B217 /* ExternC.h */; };
-		181F2B9324AB47DF00C4B217 /* FatalErrorHandler.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8A24AB317600C4B217 /* FatalErrorHandler.h */; };
-		181F2B9424AB47E400C4B217 /* Documentation.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8824AB314900C4B217 /* Documentation.h */; };
-		181F2B9524AB47E800C4B217 /* Platform.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8C24AB31E700C4B217 /* Platform.h */; };
-		181F2B9624AB47ED00C4B217 /* CXCompilationDatabase.h in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B8524AB30D200C4B217 /* CXCompilationDatabase.h */; };
 		181F2B9724AB490300C4B217 /* C+++-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 187EF969248C86DD0023F381 /* C+++-Bridging-Header.h */; };
 		181F2B9A24AB557D00C4B217 /* libclang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 181F2B9924AB557D00C4B217 /* libclang.dylib */; };
 		181F2B9B24AB558500C4B217 /* libclang.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 181F2B9924AB557D00C4B217 /* libclang.dylib */; };
@@ -130,6 +121,7 @@
 		18C5C7572557EA5100C78FC0 /* CDThemePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C7562557EA5100C78FC0 /* CDThemePreferencesViewController.swift */; };
 		18C5C75A255D5EA200C78FC0 /* CDRunProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C758255D5EA200C78FC0 /* CDRunProcessViewController.swift */; };
 		18C5C75B255D5EA200C78FC0 /* CDRunProcessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C5C759255D5EA200C78FC0 /* CDRunProcessViewController.xib */; };
+		18C5C75E255EB23300C78FC0 /* CDDiagnosticsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C75D255EB23300C78FC0 /* CDDiagnosticsTableViewDataSource.swift */; };
 		18C5C761255F535800C78FC0 /* CDSnippetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C760255F535800C78FC0 /* CDSnippetController.swift */; };
 		18C5C763255F7C9D00C78FC0 /* NSMenuItem Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5C762255F7C9D00C78FC0 /* NSMenuItem Extension.swift */; };
 		18CAC8D0252B052F00B60F37 /* CDCompileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8CF252B052F00B60F37 /* CDCompileError.swift */; };
@@ -205,15 +197,6 @@
 		181B4F8A24DC392C000F3ED7 /* CDMinimapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMinimapView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		181B4F8C24DCED1E000F3ED7 /* CDMinimapScrollerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMinimapScrollerView.swift; sourceTree = "<group>"; };
 		181B4F8F24DE39F7000F3ED7 /* CDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDParser.swift; sourceTree = "<group>"; };
-		181F2B8424AB30AC00C4B217 /* BuildSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuildSystem.h; sourceTree = "<group>"; };
-		181F2B8524AB30D200C4B217 /* CXCompilationDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXCompilationDatabase.h; sourceTree = "<group>"; };
-		181F2B8624AB311000C4B217 /* CXErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXErrorCode.h; sourceTree = "<group>"; };
-		181F2B8724AB312E00C4B217 /* CXString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXString.h; sourceTree = "<group>"; };
-		181F2B8824AB314900C4B217 /* Documentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Documentation.h; sourceTree = "<group>"; };
-		181F2B8924AB316300C4B217 /* ExternC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternC.h; sourceTree = "<group>"; };
-		181F2B8A24AB317600C4B217 /* FatalErrorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FatalErrorHandler.h; sourceTree = "<group>"; };
-		181F2B8B24AB318800C4B217 /* Index.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Index.h; sourceTree = "<group>"; };
-		181F2B8C24AB31E700C4B217 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		181F2B9924AB557D00C4B217 /* libclang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libclang.dylib; sourceTree = "<group>"; };
 		181F2BAF24AC78B400C4B217 /* ClangKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClangKit.h; sourceTree = "<group>"; };
 		181F2BB024AC78B400C4B217 /* CKWarnings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKWarnings.h; sourceTree = "<group>"; };
@@ -321,6 +304,7 @@
 		18C5C7562557EA5100C78FC0 /* CDThemePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDThemePreferencesViewController.swift; sourceTree = "<group>"; };
 		18C5C758255D5EA200C78FC0 /* CDRunProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDRunProcessViewController.swift; sourceTree = "<group>"; };
 		18C5C759255D5EA200C78FC0 /* CDRunProcessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDRunProcessViewController.xib; sourceTree = "<group>"; };
+		18C5C75D255EB23300C78FC0 /* CDDiagnosticsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDiagnosticsTableViewDataSource.swift; sourceTree = "<group>"; };
 		18C5C760255F535800C78FC0 /* CDSnippetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetController.swift; sourceTree = "<group>"; };
 		18C5C762255F7C9D00C78FC0 /* NSMenuItem Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenuItem Extension.swift"; sourceTree = "<group>"; };
 		18CAC8CF252B052F00B60F37 /* CDCompileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompileError.swift; sourceTree = "<group>"; };
@@ -393,22 +377,6 @@
 				181B4F8F24DE39F7000F3ED7 /* CDParser.swift */,
 			);
 			path = Parser;
-			sourceTree = "<group>";
-		};
-		181F2B8324AB307F00C4B217 /* clang-c */ = {
-			isa = PBXGroup;
-			children = (
-				181F2B8424AB30AC00C4B217 /* BuildSystem.h */,
-				181F2B8624AB311000C4B217 /* CXErrorCode.h */,
-				181F2B8524AB30D200C4B217 /* CXCompilationDatabase.h */,
-				181F2B8724AB312E00C4B217 /* CXString.h */,
-				181F2B8824AB314900C4B217 /* Documentation.h */,
-				181F2B8924AB316300C4B217 /* ExternC.h */,
-				181F2B8A24AB317600C4B217 /* FatalErrorHandler.h */,
-				181F2B8B24AB318800C4B217 /* Index.h */,
-				181F2B8C24AB31E700C4B217 /* Platform.h */,
-			);
-			path = "clang-c";
 			sourceTree = "<group>";
 		};
 		181F2B9824AB557D00C4B217 /* Frameworks */ = {
@@ -734,7 +702,6 @@
 				18B3C77F24282C1F00F4CA14 /* AppDelegate.swift */,
 				184FE3FF24D55BE40093CC2B /* Utilities */,
 				183BF3C72428801C007AF6AC /* Classes */,
-				181F2B8324AB307F00C4B217 /* clang-c */,
 				181F2BAE24AC789700C4B217 /* ClangKit */,
 				187EF969248C86DD0023F381 /* C+++-Bridging-Header.h */,
 				182B3D022524A70500515375 /* SavannaKit */,
@@ -750,6 +717,7 @@
 			children = (
 				18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */,
 				18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */,
+				18C5C75D255EB23300C78FC0 /* CDDiagnosticsTableViewDataSource.swift */,
 				18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */,
 				1887D238254E2D5E00CD0D7D /* CDFilesTableViewDataSource.swift */,
 			);
@@ -890,19 +858,10 @@
 				182B3D622524A83500515375 /* NSMutableAttributedString+Tokens.swift in Sources */,
 				182B3D5F2524A83500515375 /* String+Range.swift in Sources */,
 				181F2B9724AB490300C4B217 /* C+++-Bridging-Header.h in Sources */,
-				181F2B9624AB47ED00C4B217 /* CXCompilationDatabase.h in Sources */,
 				182B3D732524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift in Sources */,
-				181F2B9524AB47E800C4B217 /* Platform.h in Sources */,
-				181F2B9424AB47E400C4B217 /* Documentation.h in Sources */,
-				181F2B9324AB47DF00C4B217 /* FatalErrorHandler.h in Sources */,
-				181F2B9224AB47DB00C4B217 /* ExternC.h in Sources */,
-				181F2B9124AB47D700C4B217 /* CXString.h in Sources */,
 				184FE40324D5608F0093CC2B /* CDCodeDocument+Compile.swift in Sources */,
 				182B3D722524A83500515375 /* SKSyntaxTextView.swift in Sources */,
-				181F2B9024AB44E900C4B217 /* CXErrorCode.h in Sources */,
-				181F2B8F24AB44E100C4B217 /* BuildSystem.h in Sources */,
 				1801DF6124D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift in Sources */,
-				181F2B8E24AB44C600C4B217 /* Index.h in Sources */,
 				181F2BD724AC78C700C4B217 /* CKTranslationUnit+Private.m in Sources */,
 				1806FCBC24C08CF70081D7BA /* String Extension.swift in Sources */,
 				181236AE2557D2760058004D /* CDThemePreferencesView.swift in Sources */,
@@ -957,6 +916,7 @@
 				182B3D772524A83500515375 /* SKSyntaxTextViewLayoutManager.swift in Sources */,
 				1802D04B24EF4FBD008C96BC /* CDProjectSettingsView.swift in Sources */,
 				18CAC8D0252B052F00B60F37 /* CDCompileError.swift in Sources */,
+				18C5C75E255EB23300C78FC0 /* CDDiagnosticsTableViewDataSource.swift in Sources */,
 				1802D05124EFF4D6008C96BC /* CDCreateProjectViewController.swift in Sources */,
 				182B3D6B2524A83500515375 /* SKSyntaxColorTheme.swift in Sources */,
 				182B3D6A2524A83500515375 /* SKParagraph.swift in Sources */,
@@ -1149,6 +1109,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = LLVM/Release/include;
 				INFOPLIST_FILE = "C+++/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1157,6 +1118,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					LLVM/Release/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 3.0;
@@ -1184,6 +1146,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = LLVM/Release/include;
 				INFOPLIST_FILE = "C+++/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1192,6 +1155,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					LLVM/Release/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 3.0;

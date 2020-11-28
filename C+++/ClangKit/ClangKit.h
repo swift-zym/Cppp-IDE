@@ -10,3 +10,10 @@
 #import "CKCompletionResult.h"
 #import "CKCompletionChunk.h"
 #import "CKLanguage.h"
+
+#ifdef __OBJC__
+    
+    #import <clang-c/Index.h>
+    
+#endif
+
