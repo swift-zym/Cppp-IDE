@@ -21,6 +21,12 @@ class CDCodeEditorLineNumberView: CDFlippedView {
     var debugCurrentLine: Int?
     var shouldReloadAfterChangingFrame: Bool = true
     
+    // var codeFoldingRanges: [CDParser.CodeFoldingRange] = []
+    var codeFoldingLines: [Int] = []
+    // var codeFoldingButtons: [CDCodeFoldingButton] = []
+    
+    @IBOutlet weak var codeEditor: SKSyntaxTextView!
+    
     func markLineAsCurrentDebuggingLine(line: Int) {
         self.debugCurrentLine = line
         self.buttonsArray[line].markAsDebugCurrentLine()
@@ -58,7 +64,8 @@ class CDCodeEditorLineNumberView: CDFlippedView {
             view.removeFromSuperview()
         }
         
-        self.buttonsArray = [CDCodeEditorLineNumberViewButton]()
+        self.buttonsArray = []
+        // self.codeFoldingButtons = []
         
         let rects = self.textViewLineRects
         for item in rects {
@@ -81,6 +88,19 @@ class CDCodeEditorLineNumberView: CDFlippedView {
             }
             self.buttonsArray.append(button)
             
+            /* if let index = self.codeFoldingLines.firstIndex(of: lineNumber) {
+                
+                let button = CDCodeFoldingButton(frame: NSMakeRect(38.0, item.origin.y, 20.0, item.height))
+                button.isBordered = false
+                button.index = index
+                button.target = self
+                button.action = #selector(foldingButtonClicked(_:))
+                button.image = NSImage(named: NSImage.touchBarGoDownTemplateName)
+                self.addSubview(button)
+                self.codeFoldingButtons.append(button)
+                
+            }*/
+            
         }
         
         self.shouldReloadAfterChangingFrame = false
@@ -89,6 +109,12 @@ class CDCodeEditorLineNumberView: CDFlippedView {
         self.shouldReloadAfterChangingFrame = true
         
     }
+    
+    /* @objc func foldingButtonClicked(_ sender: CDCodeFoldingButton) {        let range = self.codeFoldingRanges[sender.index]
+        let nsRange = NSMakeRange(range.begin.index, range.end.index - range.begin.index + 1)
+        print(nsRange, self.codeEditor.text.count)
+        self.codeEditor.textView.textStorage?.addAttribute(.foldedCode, value: true, range: nsRange)
+    }*/
     
     @objc func buttonClicked(_ sender: CDCodeEditorLineNumberViewButton) {
         sender.markAsBreakpointLine()

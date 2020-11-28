@@ -9,7 +9,8 @@ import Foundation
 
 class CDParser {
 
-    enum ParseMode {
+    
+    private enum ParseMode {
         case stringLiteral
         case commentMayBegin
         case singleLineComment
@@ -19,6 +20,7 @@ class CDParser {
         case other
     }
 
+    /*
     struct CodeFoldingLocation: CustomStringConvertible {
         
         init(index: Int = 0, line: Int = 0) {
@@ -32,8 +34,9 @@ class CDParser {
             return "Line \(line)"
         }
         
-    }
+    }*/
 
+    /*
     struct CodeFoldingRange: CustomStringConvertible {
         
         init(begin: CDParser.CodeFoldingLocation, end: CDParser.CodeFoldingLocation) {
@@ -48,9 +51,9 @@ class CDParser {
             return "(\(self.begin), \(self.end))"
         }
         
-    }
+    }*/
 
-    class func removeCommentAndStringLiteral(from code: String) -> String {
+    class func removeCommentAndStringLiteral(preserveStringLiteral: Bool = true, from code: String) -> String {
 
         var newCode = ""
         let lines = code.components(separatedBy: "\n")
@@ -66,13 +69,12 @@ class CDParser {
                     case "\"":
                         if currentParseMode == .backslash {
                             currentParseMode = .stringLiteral
-                            shouldInsert = false
+                            shouldInsert = preserveStringLiteral
                         } else if currentParseMode == .other {
                             currentParseMode = .stringLiteral
                         } else if currentParseMode == .stringLiteral {
                             currentParseMode = .other
-                        } else {
-                            shouldInsert = false
+                            shouldInsert = preserveStringLiteral
                         }
                     case "/":
                         if currentParseMode == .other {
@@ -84,6 +86,8 @@ class CDParser {
                         } else if currentParseMode == .multilineCommentMayEnd {
                             currentParseMode = .other
                             shouldInsert = false
+                        } else if currentParseMode == .stringLiteral {
+                            shouldInsert = preserveStringLiteral
                         } else if currentParseMode != .other {
                             shouldInsert = false
                         }
@@ -95,19 +99,23 @@ class CDParser {
                         } else if currentParseMode == .multilineComment {
                             currentParseMode = .multilineCommentMayEnd
                             shouldInsert = false
+                        } else if currentParseMode == .stringLiteral {
+                            shouldInsert = preserveStringLiteral
                         } else if currentParseMode != .other {
                             shouldInsert = false
                         }
                     case "\\":
                         if currentParseMode == .stringLiteral {
                             currentParseMode = .backslash
+                            shouldInsert = preserveStringLiteral
                         }
-                        if currentParseMode != .other {
-                            shouldInsert = false
-                        }
+                        
                     default:
-                        if currentParseMode == .stringLiteral || currentParseMode == .singleLineComment || currentParseMode == .multilineComment || currentParseMode == .backslash {
+                        if currentParseMode == .singleLineComment || currentParseMode == .multilineComment {
                             shouldInsert = false
+                        }
+                        if currentParseMode == .stringLiteral || currentParseMode == .backslash {
+                            shouldInsert = preserveStringLiteral
                         }
                 }
                 if shouldInsert {
@@ -127,6 +135,7 @@ class CDParser {
 
     }
 
+    /*
     class func getFoldingRanges(from code_: String) -> (ranges: [CodeFoldingRange], lines: [Int]) {
 
         var ranges = [CodeFoldingRange]()
@@ -201,5 +210,6 @@ class CDParser {
         return (ranges: ranges, lines: lineNumbers)
         
     }
+    */
     
 }

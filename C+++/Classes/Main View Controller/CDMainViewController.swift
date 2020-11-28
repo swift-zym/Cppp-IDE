@@ -164,10 +164,10 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
             let imageOfView = NSImage(data: dataOfView)!
             self.minimapView.setMinimapImage(imageOfView)
             
-            let res = CDParser.getFoldingRanges(from: self.mainTextView.text)
-            self.lineNumberView.codeFoldingLines = res.lines
-            self.lineNumberView.codeFoldingRanges = res.ranges
-            self.lineNumberView.draw()
+            // let res = CDParser.getFoldingRanges(from: self.mainTextView.text)
+            // self.lineNumberView.codeFoldingLines = res.lines
+            // self.lineNumberView.codeFoldingRanges = res.ranges
+            // self.lineNumberView.draw()
             
         }
         

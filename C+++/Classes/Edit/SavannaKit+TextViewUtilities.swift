@@ -22,6 +22,13 @@ extension SKInnerTextView {
         
     }
     
+    @IBAction func removeComments(_ sender: Any?) {
+        
+        self.string = CDParser.removeCommentAndStringLiteral(from: self.string)
+        self.didChangeText()
+        
+    }
+    
     @IBAction func changeSelectionToComment(_ sender: Any?) {
         
         var range = self.selectedRange

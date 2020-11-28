@@ -36,6 +36,7 @@ class CDCodeEditorLineNumberViewButton: NSButton {
         if self.isBreakpoint == true {
             self.isBreakpoint = false
             superview.debugLines.remove(self.title.nsString.integerValue)
+            GlobalMainWindowController.mainViewController.mainTextView.textView.document?.debugger?.removeBreakpoint(line: self.title.nsString.integerValue)
             superview.draw()
             return
         }
@@ -43,7 +44,7 @@ class CDCodeEditorLineNumberViewButton: NSButton {
         self.drawBackground(color: .systemBlue)
         if self.superview != nil {
             superview.debugLines.insert(self.title.nsString.integerValue)
-            (self.window?.contentViewController as! CDMainViewController).mainTextView.textView.document?.debugger?.addBreakpoint(line: self.title.nsString.integerValue)
+            GlobalMainWindowController.mainViewController.mainTextView.textView.document?.debugger?.addBreakpoint(line: self.title.nsString.integerValue)
         }
         
     }
