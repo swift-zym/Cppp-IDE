@@ -15,32 +15,46 @@ class CDDebugger: NSObject {
     private var pipe: Pipe?
     private var errorPipe: Pipe?
     var delegate: CDDebuggerDelegate?
-    private(set) var watchVars: [CDDebugWatchVar] = [ CDDebugWatchVar(name: "a") ]
+    private(set) var watchVars: [CDDebugWatchVar] = []
     private var watchVarIndex = 0
-    private var breakpoints: Set< CDDebuggerBreakpoint > = []
+    private var breakpoints: [CDDebuggerBreakpoint] = []
     private var breakpointMaxIndex = 1
     
     func addBreakpoint(line: Int) {
         
-        self.breakpoints.insert( CDDebuggerBreakpoint(line: line, index: breakpointMaxIndex) )
+        for item in self.breakpoints {
+            if item.line == line {
+                return
+            }
+        }
+        
+        self.breakpoints.append( CDDebuggerBreakpoint(line: line, index: breakpointMaxIndex) )
         breakpointMaxIndex += 1
         
         if self.debugTask?.isRunning ?? false {
             self.sendCommand(command: "breakpoint set --line \(line)")
         }
         
-        breakpointMaxIndex += 1
-        
     }
     
     func removeBreakpoint(line: Int) {
         
-        let index = self.breakpoints[self.breakpoints.firstIndex(of: CDDebuggerBreakpoint(line: line, index: -1))!].index
+        var index = 0
         
-        self.breakpoints.remove( CDDebuggerBreakpoint(line: line, index: -1) )
-        
-        if self.debugTask?.isRunning ?? false {
-            self.sendCommand(command: "breakpoint delete \(index)")
+        for item in self.breakpoints {
+            
+            if item.line == line {
+                
+                self.breakpoints.remove(at: index)
+                
+                if self.debugTask?.isRunning ?? false {
+                    self.sendCommand(command: "breakpoint delete \(item.index)")
+                }
+                
+            }
+            
+            index += 1
+            
         }
         
     }
@@ -89,24 +103,27 @@ class CDDebugger: NSObject {
         
         debugTask?.launch()
         
-        for bp in self.breakpoints {
-            self.sendCommand(command: "breakpoint set --line \(bp)")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+            
+            for bp in self.breakpoints {
+                self.sendCommand(command: "breakpoint set --line \(bp.line)")
+            }
+            
+            var index = 1
+            for v in self.watchVars {
+                self.sendCommand(command: "display \(v.name)")
+                self.watchVars[index - 1].index = index
+                index += 1
+            }
+            
         }
         
-        var index = 1
-        for v in self.watchVars {
-            self.sendCommand(command: "display \(v.name)")
-            self.watchVars[index - 1].index = index
-            index += 1
-        }
-        
-        // self.sendCommand(command: "run")
         
     }
     
     func end() {
         
-        debugTask?.terminate()
+       //  self.processView.
         
     }
     
@@ -169,7 +186,9 @@ class CDDebugger: NSObject {
     }
     
     func sendCommand(command: String) {
-        self.pipe?.fileHandleForWriting.write( (command + "\n").data(using: .utf8)! )
+        if self.debugTask?.isRunning ?? false {
+            self.pipe?.fileHandleForWriting.write( (command + "\n").data(using: .utf8)! )
+        }
     }
     
     func addWatchVar(variableName name: String) {

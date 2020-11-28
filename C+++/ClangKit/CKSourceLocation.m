@@ -20,7 +20,7 @@
 {
     CXSourceLocation location;
     CXFile           file;
-    CXString         fileName;
+    // CXString         fileName;
     unsigned int     line;
     unsigned int     column;
     unsigned int     offset;
@@ -37,12 +37,12 @@
         
         clang_getExpansionLocation( location, &file, &line, &column, &offset );
         
-        fileName = clang_getFileName( file );
+        /*fileName = clang_getFileName( file );
         
         if( clang_getCString( fileName ) != NULL )
         {
             _fileName = [ [ NSString alloc ] initWithCString: clang_getCString( fileName ) encoding: NSUTF8StringEncoding ];
-        }
+        }*/
     }
     
     return self;
@@ -57,11 +57,11 @@
         _ptrData2   = location.ptr_data[1];
         _intData    = location.int_data;
         
-        CXString fileName = clang_getFileName( [unit cxFile] );
+        /*CXString fileName = clang_getFileName( [unit cxFile] );
         if( clang_getCString( fileName ) != NULL )
         {
             _fileName = [ [ NSString alloc ] initWithCString: clang_getCString( fileName ) encoding: NSUTF8StringEncoding ];
-        }
+        }*/
         
     }
     

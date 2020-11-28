@@ -123,6 +123,8 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         NotificationCenter.default.addObserver(self, selector: #selector(settingsDidChange(_:)), name: CDSettings.settingsDidChangeNotificationName, object: nil)
         
         self.consoleView.logView.font = menloFont(ofSize: 13.0)
+        self.consoleView.debugTextView.font = menloFont(ofSize: 12.0)
+        self.consoleView.commandTextField.font = menloFont(ofSize: 13.0)
         
         self.leftSidebarTableView.delegate = self.filesDataSource
         self.leftSidebarTableView.dataSource = self.filesDataSource

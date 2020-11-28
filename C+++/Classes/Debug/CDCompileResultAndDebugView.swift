@@ -16,7 +16,8 @@ class CDCompileResultAndDebugView: NSView {
     @IBOutlet weak var errorImageLabel: NSImageView!
     @IBOutlet weak var warningCountLabel: NSTextField!
     @IBOutlet weak var warningImageView: NSImageView!
-    @IBOutlet weak var processView: LocalProcessTerminalView!
+    @IBOutlet weak var commandTextField: NSTextField!
+    @IBOutlet weak var debugTextView: NSTextView!
     
     @IBOutlet weak var logView: NSTextView!
     @IBOutlet weak var compileResultTableView: NSTableView!
@@ -70,6 +71,10 @@ class CDCompileResultAndDebugView: NSView {
             (self.window?.windowController?.document as! CDCodeDocument).debugger?.addWatchVar(variableName: input)
             self.watchVarsTableView.reloadData()
         }
+    }
+    
+    @IBAction func sendInput(_ sender: Any?) {
+        sendInput(self.commandTextField.stringValue)
     }
     
 }
