@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,10 +36,10 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="obk-zY-Bcl" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label="General" identifier="General" image="NSStatusUnavailable" id="Ote-9U-N8V"/>
-                        <tabViewItem label="Theme" identifier="Theme" image="NSStatusPartiallyAvailable" id="zBG-a3-VmO"/>
-                        <tabViewItem label="Editor" identifier="Editor" image="NSStatusAvailable" id="fbu-2o-r6n"/>
-                        <tabViewItem label="Compile" identifier="Compile" image="NSStatusNone" id="cAc-Ts-dEf"/>
+                        <tabViewItem label="General" identifier="General" image="Global" id="Ote-9U-N8V"/>
+                        <tabViewItem label="Theme" identifier="Theme" image="Theme" id="zBG-a3-VmO"/>
+                        <tabViewItem label="Editor" identifier="Editor" image="Keyboard" id="fbu-2o-r6n"/>
+                        <tabViewItem label="Compile" identifier="Compile" image="Terminal" id="cAc-Ts-dEf"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="WMq-ne-5uh">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -342,7 +342,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-rf-k8g">
-                                            <rect key="frame" x="11" y="69.5" width="299" height="17.5"/>
+                                            <rect key="frame" x="11" y="70" width="299" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Check for new versions after launching C+++" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7We-1n-z7A">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -420,7 +420,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stZ-hI-2GH">
-                                            <rect key="frame" x="8" y="92.5" width="116" height="17.5"/>
+                                            <rect key="frame" x="8" y="93" width="116" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Auto Complete " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="siH-dG-fzd">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -431,7 +431,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-td-BbA">
-                                            <rect key="frame" x="8" y="135.5" width="121" height="17.5"/>
+                                            <rect key="frame" x="8" y="136" width="121" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Completion List" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tiI-Hw-BGP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -460,7 +460,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y02-SS-QE4">
-                                            <rect key="frame" x="7" y="48.5" width="184" height="18.5"/>
+                                            <rect key="frame" x="7" y="49" width="184" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Show Information of Code" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TWo-le-d24">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -543,9 +543,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSStatusAvailable" width="16" height="16"/>
-        <image name="NSStatusNone" width="16" height="16"/>
-        <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
-        <image name="NSStatusUnavailable" width="16" height="16"/>
+        <image name="Global" width="512" height="512"/>
+        <image name="Keyboard" width="512" height="512"/>
+        <image name="Terminal" width="512" height="512"/>
+        <image name="Theme" width="512" height="512"/>
     </resources>
 </document>

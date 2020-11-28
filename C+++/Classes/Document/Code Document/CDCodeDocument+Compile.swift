@@ -57,6 +57,9 @@ extension CDCodeDocument {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.10) {
                 // let process = processForShellCommand(command: "cd \"\(path)\"\n" + "./\(out)")
                 // process.launch()
+                guard FileManager.default.fileExists(atPath: path) else {
+                    return
+                }
                 CDRunProcessViewController.run(command: "cd \"\(path)\"\n" + "./\(out)", name: fileURL.deletingPathExtension().lastPathComponent)
             }
         }

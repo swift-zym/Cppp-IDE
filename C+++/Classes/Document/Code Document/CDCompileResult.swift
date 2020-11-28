@@ -31,6 +31,7 @@ class CDCompileResult: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     }
     
     var succeed: Bool {
+        calculateErrorAndWarningCount()
         return self.errorCount == 0
     }
     
