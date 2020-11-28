@@ -1,7 +1,7 @@
 // ClangKit
 
 #import "CKCursor.h"
-#import "../clang-c/Index.h"
+#import "clang-c/Index.h"
 #import <Cocoa/Cocoa.h>
 
 /*!

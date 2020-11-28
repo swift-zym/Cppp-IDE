@@ -1,7 +1,7 @@
 // ClangKit
  
 #import <Cocoa/Cocoa.h>
-#import "../clang-c/Index.h"
+#import "clang-c/Index.h"
 
 /*!
  * @class           CKIndex

@@ -2,7 +2,7 @@
  
 #import <Cocoa/Cocoa.h>
 #import "CKLanguage.h"
-#import "../clang-c/Index.h"
+#import "clang-c/Index.h"
 
 @class CKIndex;
 
