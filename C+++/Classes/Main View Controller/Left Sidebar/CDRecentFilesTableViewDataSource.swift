@@ -50,11 +50,7 @@ class CDRecentFilesTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate
     func didClick(tableView: NSTableView) {
         
         NSDocumentController.shared.openDocument(withContentsOf: recentFiles()[tableView.clickedRow], display: true, completionHandler: { (_, _, _) in } )
-        
-        /*let vc = CDSnippetPopoperViewController()
-        let current = CDSnippetTableViewDataSource.savedSnippets[tableView.clickedRow]
-        vc.setup(title: current.title, image: current.titleLabel.image, code: current.code, isEditable: false)
-        vc.openInPopover(relativeTo: tableView.view(atColumn: 0, row: tableView.clickedRow, makeIfNecessary: true)!.bounds, of: tableView.view(atColumn: 0, row: tableView.clickedRow, makeIfNecessary: true)!, preferredEdge: .maxX)*/
+        GlobalMainWindowController.mainViewController.switchSidebarContentTo(mode: .openFiles)
         
     }
     

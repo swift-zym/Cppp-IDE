@@ -55,6 +55,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     @IBOutlet weak var minimapViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var sidebarTitleLabel: NSTextField!
     @IBOutlet weak var leftSidebarTableView: NSTableView!
+    @IBOutlet weak var leftSidebarSwitchButton: NSButton!
     
     var observation: NSKeyValueObservation?
     lazy var snippetDataSource = CDSnippetTableViewDataSource()
@@ -126,9 +127,7 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         self.consoleView.debugTextView.font = menloFont(ofSize: 12.0)
         self.consoleView.commandTextField.font = menloFont(ofSize: 13.0)
         
-        self.leftSidebarTableView.delegate = self.filesDataSource
-        self.leftSidebarTableView.dataSource = self.filesDataSource
-        self.leftSidebarTableView.menu = self.filesDataSource.menu
+        self.switchSidebarContentTo(mode: .openFiles)
         // initialize the scroll view and the minimap view.
         self.mainTextView.scrollView.scroll(self.mainTextView.scrollView.contentView, to: NSMakePoint(0, 0))
         
