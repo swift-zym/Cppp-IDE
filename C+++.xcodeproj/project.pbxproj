@@ -33,7 +33,7 @@
 		181B4F9024DE39F7000F3ED7 /* CDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B4F8F24DE39F7000F3ED7 /* CDParser.swift */; };
 		181F2B9724AB490300C4B217 /* C+++-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 187EF969248C86DD0023F381 /* C+++-Bridging-Header.h */; };
 		181F2B9A24AB557D00C4B217 /* libclang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 181F2B9924AB557D00C4B217 /* libclang.dylib */; };
-		181F2B9B24AB558500C4B217 /* libclang.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 181F2B9924AB557D00C4B217 /* libclang.dylib */; };
+		181F2B9B24AB558500C4B217 /* libclang.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 181F2B9924AB557D00C4B217 /* libclang.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		181F2BCF24AC78C700C4B217 /* CKCompletionChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 181F2BB624AC78C600C4B217 /* CKCompletionChunk.m */; };
 		181F2BD024AC78C700C4B217 /* CKToken+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 181F2BB824AC78C600C4B217 /* CKToken+Private.m */; };
 		181F2BD124AC78C700C4B217 /* CKCursor+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 181F2BBD24AC78C600C4B217 /* CKCursor+Private.m */; };
@@ -797,7 +797,7 @@
 			attributes = {
 				CLASSPREFIX = CD;
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Zhu Yixuan";
 				TargetAttributes = {
 					18B3C77C24282C1F00F4CA14 = {
