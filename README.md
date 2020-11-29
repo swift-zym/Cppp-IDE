@@ -13,6 +13,12 @@ It is developed by a Grade-Seven student @23786.
 
 ## So if you want to use C+++, the best choice is to **wait** until the version 3.0 is released.
 
+## Version 3.0 Screenshot Preview
+
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1gl60ssvjv0j30uc0lgwur.jpg)
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1gl60wqigcdj30z20u0qv5.jpg)
+
+
 The website of this project is at [http://www.cpppide.ml](http://www.cpppide.ml).
 
 ----
