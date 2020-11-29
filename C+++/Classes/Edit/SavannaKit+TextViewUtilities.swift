@@ -45,6 +45,7 @@ extension SKInnerTextView {
             lineRange.location += line.count + 1
         }
         self.setSelectedRange(range)
+        GlobalMainWindowController.mainViewController.mainTextView.didUpdateText()
         
     }
     
@@ -64,6 +65,7 @@ extension SKInnerTextView {
             lineRange.location += line.count + 1
         }
         self.setSelectedRange(range)
+        GlobalMainWindowController.mainViewController.mainTextView.didUpdateText()
         
     }
     
@@ -87,15 +89,8 @@ extension SKInnerTextView {
             lineRange.location += line.count + 1
         }
         self.setSelectedRange(range)
+        GlobalMainWindowController.mainViewController.mainTextView.didUpdateText()
         
-    }
-    
-    override func shouldChangeText(in affectedCharRange: NSRange, replacementString: String?) -> Bool {
-        /*if replacementString != nil {
-            let ans = FormattingHelper.formattedText(for: replacementString!, in: self.string, range: affectedCharRange)
-            self.setSelectedRange(ans.newRange)
-        }*/
-        return super.shouldChangeText(in: affectedCharRange, replacementString: replacementString)
     }
     
 }
