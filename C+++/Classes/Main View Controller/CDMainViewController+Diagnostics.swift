@@ -24,7 +24,7 @@ extension CDMainViewController: CDDiagnosticsViewControllerDelegate {
         if self.diagnostics.count > 0 {
             let vc = CDDiagnosticsViewController()
             vc.delegate = self
-            vc.openInPopover(relativeTo: sender.bounds, of: sender, preferredEdge: .minY, diagnostic: self.diagnostics[(sender.superview as! CDSnippetTableViewCell).index])
+            // vc.openInPopover(relativeTo: sender.bounds, of: sender, preferredEdge: .minY, diagnostic: self.diagnostics[(sender.superview as! CDSnippet).index])
         }
         
     }
