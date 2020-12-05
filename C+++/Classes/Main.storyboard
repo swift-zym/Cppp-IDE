@@ -1231,7 +1231,7 @@
                                                                             <subviews>
                                                                                 <view id="MNf-2C-8WD" customClass="CDFlippedView" customModule="C___" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="123" height="557"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                    <autoresizingMask key="autoresizingMask"/>
                                                                                     <subviews>
                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofy-Uc-Az8">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="123" height="557"/>
@@ -1495,6 +1495,20 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="211" height="117"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
+                                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="06h-4Q-aaf">
+                                                                                <rect key="frame" x="189" y="94.5" width="17.5" height="21"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="17" id="Y8x-ky-mgu"/>
+                                                                                    <constraint firstAttribute="height" constant="17" id="aUL-OC-DjE"/>
+                                                                                </constraints>
+                                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="zSy-nz-oD3">
+                                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                </buttonCell>
+                                                                                <connections>
+                                                                                    <action selector="addWatchVar:" target="M8q-ws-1g9" id="stu-np-5Mj"/>
+                                                                                </connections>
+                                                                            </button>
                                                                             <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caT-uU-4yG">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="211" height="117"/>
                                                                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" id="pD9-hq-sL2">
@@ -1538,20 +1552,6 @@
                                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                                 </tableHeaderView>
                                                                             </scrollView>
-                                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="06h-4Q-aaf">
-                                                                                <rect key="frame" x="189" y="94.5" width="17.5" height="21"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="17" id="Y8x-ky-mgu"/>
-                                                                                    <constraint firstAttribute="height" constant="17" id="aUL-OC-DjE"/>
-                                                                                </constraints>
-                                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="zSy-nz-oD3">
-                                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                    <font key="font" metaFont="system"/>
-                                                                                </buttonCell>
-                                                                                <connections>
-                                                                                    <action selector="addWatchVar:" target="M8q-ws-1g9" id="stu-np-5Mj"/>
-                                                                                </connections>
-                                                                            </button>
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="06h-4Q-aaf" firstAttribute="top" secondItem="Mdy-pC-4fb" secondAttribute="top" constant="4" id="4Da-Uo-HYc"/>
