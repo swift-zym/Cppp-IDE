@@ -87,12 +87,13 @@ extension CDCodeDocument {
                 }
                 switch error.type {
                     case .error, .fatalError:
-                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsErrorLine()
+                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsErrorLine()
                     case .warning:
-                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsWarningLine()
+                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsWarningLine()
                     case .note, .unknown:
-                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsNoteLine()
+                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsNoteLine()
                 }
+                
             }
         }
         
@@ -130,11 +131,11 @@ extension CDCodeDocument {
             for error in res.result!.errors {
                 switch error.type {
                     case .error, .fatalError:
-                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsErrorLine()
+                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsErrorLine()
                     case .warning:
-                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].markAsWarningLine()
+                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsWarningLine()
                     case .note, .unknown:
-                        self.contentViewController.lineNumberView.buttonsArray[error.line - 1].backgroundColor = .systemGray
+                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].backgroundColor = .systemGray
                 }
             }
         }

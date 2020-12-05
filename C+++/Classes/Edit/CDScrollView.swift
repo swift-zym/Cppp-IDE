@@ -9,7 +9,7 @@
 import Cocoa
 
 @objc protocol CDScrollViewDelegate {
-    @objc optional func scrollViewDidScroll(to: NSPoint)
+    @objc optional func scrollView(_: CDScrollView, didScrollTo: NSPoint)
 }
 
 class CDScrollView: NSScrollView {
@@ -19,7 +19,7 @@ class CDScrollView: NSScrollView {
     override func scroll(_ clipView: NSClipView, to point: NSPoint) {
         super.scroll(clipView, to: point)
         
-        self.scrollDelegate?.scrollViewDidScroll?(to: point)
+        self.scrollDelegate?.scrollView?(self, didScrollTo: point)
         
     }
     

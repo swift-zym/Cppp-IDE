@@ -168,6 +168,10 @@ extension SKSyntaxTextView: NSTextViewDelegate {
         self.textView.document?.content.contentString = self.text
         self.delegate?.didChangeText(self)
         
+        DispatchQueue.main.async {
+            self.lineNumberView?.draw()
+        }
+        
     }
     
     open func textViewDidChangeSelection(_ notification: Notification) {

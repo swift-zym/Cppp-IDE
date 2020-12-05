@@ -28,7 +28,7 @@ extension CDCodeDocument: CDDebuggerDelegate {
     }
     
     func currentLineMoved(to line: Int) {
-        self.contentViewController.lineNumberView.markLineAsCurrentDebuggingLine(line: line - 1)
+        self.contentViewController.mainTextView.lineNumberView?.markLineAsCurrentDebuggingLine(line: line - 1)
     }
     
     
@@ -43,7 +43,7 @@ extension CDCodeDocument: CDDebuggerDelegate {
         self.debugger?.delegate = self
         self.contentViewController.consoleView.watchVarsTableView.dataSource = self.debugger
         
-        for i in self.contentViewController.lineNumberView.debugLines {
+        for i in self.contentViewController.mainTextView.lineNumberView?.debugLines ?? [] {
             self.debugger?.addBreakpoint(line: i)
         }
         

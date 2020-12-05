@@ -901,7 +901,7 @@
                                                                                         <constraint firstAttribute="width" constant="31" id="nye-5K-bgV"/>
                                                                                         <constraint firstAttribute="height" constant="31" id="uDh-qd-1ER"/>
                                                                                     </constraints>
-                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NewFile" id="WSp-SW-KQm"/>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NewDoc" id="WSp-SW-KQm"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ANY-b0-rAb">
                                                                                     <rect key="frame" x="37" y="5" width="159" height="15"/>
@@ -1166,46 +1166,8 @@
                                                                 </constraints>
                                                             </customView>
                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="vGI-3r-Mbu" customClass="SKSyntaxTextView" customModule="C___" customModuleProvider="target">
-                                                                <rect key="frame" x="45" y="22" width="529" height="559"/>
+                                                                <rect key="frame" x="0.0" y="22" width="574" height="559"/>
                                                             </customView>
-                                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-8l-v7n" customClass="CDScrollView" customModule="C___" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="22" width="45" height="559"/>
-                                                                <clipView key="contentView" id="qX4-wV-paH">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="559"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <subviews>
-                                                                        <view id="cNK-vJ-sdN" customClass="CDFlippedView" customModule="C___" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="47" height="560"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                            <subviews>
-                                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="TKg-F7-Lpz" customClass="CDCodeEditorLineNumberView" customModule="C___" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="560"/>
-                                                                                    <connections>
-                                                                                        <outlet property="codeEditor" destination="vGI-3r-Mbu" id="ATq-hW-adB"/>
-                                                                                    </connections>
-                                                                                </customView>
-                                                                            </subviews>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="bottom" secondItem="TKg-F7-Lpz" secondAttribute="bottom" id="2uS-pR-vpH"/>
-                                                                                <constraint firstItem="TKg-F7-Lpz" firstAttribute="leading" secondItem="cNK-vJ-sdN" secondAttribute="leading" id="8HE-p3-dfU"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="TKg-F7-Lpz" secondAttribute="trailing" id="h16-Y5-DFf"/>
-                                                                                <constraint firstItem="TKg-F7-Lpz" firstAttribute="top" secondItem="cNK-vJ-sdN" secondAttribute="top" id="rAH-lp-WJY"/>
-                                                                            </constraints>
-                                                                        </view>
-                                                                    </subviews>
-                                                                </clipView>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="45" id="kwM-QE-QDp"/>
-                                                                </constraints>
-                                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Smr-Cv-EUn">
-                                                                    <rect key="frame" x="-100" y="-100" width="43" height="16"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </scroller>
-                                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4VB-io-gUF">
-                                                                    <rect key="frame" x="-100" y="-100" width="16" height="245"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </scroller>
-                                                            </scrollView>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EqW-A4-DAu">
                                                                 <rect key="frame" x="673" y="588.5" width="18.5" height="24"/>
                                                                 <constraints>
@@ -1239,7 +1201,7 @@
                                                                                                 <constraint firstAttribute="width" constant="123" id="NGr-gc-dQd"/>
                                                                                                 <constraint firstAttribute="height" constant="557" id="eKB-6B-CAV"/>
                                                                                             </constraints>
-                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="axesIndependently" image="AppIcon" id="aQE-De-uFQ"/>
+                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="axesIndependently" id="aQE-De-uFQ"/>
                                                                                         </imageView>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -1285,21 +1247,18 @@
                                                             <constraint firstAttribute="trailing" secondItem="Qbd-KS-cEz" secondAttribute="trailing" id="4ee-QA-8cR"/>
                                                             <constraint firstAttribute="trailing" secondItem="EqW-A4-DAu" secondAttribute="trailing" constant="8" id="9ib-1E-IZF"/>
                                                             <constraint firstItem="EqW-A4-DAu" firstAttribute="top" secondItem="rcv-TM-aRa" secondAttribute="top" constant="12" id="EFs-P9-eei"/>
+                                                            <constraint firstItem="vGI-3r-Mbu" firstAttribute="leading" secondItem="rcv-TM-aRa" secondAttribute="leading" id="H66-W6-ghT"/>
                                                             <constraint firstItem="Qbd-KS-cEz" firstAttribute="top" secondItem="J1l-QZ-aWd" secondAttribute="bottom" id="HZN-zK-k9v"/>
                                                             <constraint firstAttribute="trailing" secondItem="vGI-3r-Mbu" secondAttribute="trailing" constant="125" id="JKq-2T-gLN"/>
                                                             <constraint firstItem="J1l-QZ-aWd" firstAttribute="leading" secondItem="rcv-TM-aRa" secondAttribute="leading" id="JwN-NN-aMf"/>
                                                             <constraint firstItem="vGI-3r-Mbu" firstAttribute="top" secondItem="J1l-QZ-aWd" secondAttribute="bottom" id="L2L-YJ-dyX"/>
-                                                            <constraint firstItem="RCh-2s-VX0" firstAttribute="top" secondItem="OgG-8l-v7n" secondAttribute="bottom" id="MWE-S5-yhT"/>
-                                                            <constraint firstItem="OgG-8l-v7n" firstAttribute="leading" secondItem="rcv-TM-aRa" secondAttribute="leading" id="Pp1-iY-czW"/>
                                                             <constraint firstItem="Qbd-KS-cEz" firstAttribute="leading" secondItem="vGI-3r-Mbu" secondAttribute="trailing" id="R7a-5y-0Lu"/>
                                                             <constraint firstItem="RCh-2s-VX0" firstAttribute="top" secondItem="Qbd-KS-cEz" secondAttribute="bottom" id="WNj-lf-9c4"/>
                                                             <constraint firstAttribute="trailing" secondItem="J1l-QZ-aWd" secondAttribute="trailing" id="b8u-Rs-Tuj"/>
-                                                            <constraint firstItem="OgG-8l-v7n" firstAttribute="top" secondItem="J1l-QZ-aWd" secondAttribute="bottom" id="d9w-wg-0hU"/>
                                                             <constraint firstItem="J1l-QZ-aWd" firstAttribute="top" secondItem="rcv-TM-aRa" secondAttribute="top" id="ebr-XE-i9o"/>
                                                             <constraint firstItem="RCh-2s-VX0" firstAttribute="leading" secondItem="rcv-TM-aRa" secondAttribute="leading" id="hep-n0-cTk"/>
                                                             <constraint firstAttribute="bottom" secondItem="RCh-2s-VX0" secondAttribute="bottom" id="iVv-o1-ioM"/>
                                                             <constraint firstItem="RCh-2s-VX0" firstAttribute="top" secondItem="vGI-3r-Mbu" secondAttribute="bottom" id="p5F-Mq-1gy"/>
-                                                            <constraint firstItem="vGI-3r-Mbu" firstAttribute="leading" secondItem="OgG-8l-v7n" secondAttribute="trailing" id="vbe-Nd-GUV"/>
                                                         </constraints>
                                                     </customView>
                                                     <customView id="M8q-ws-1g9" customClass="CDCompileResultAndDebugView" customModule="C___" customModuleProvider="target">
@@ -1815,8 +1774,6 @@
                         <outlet property="leftSidebarSwitchButton" destination="xz8-bC-xC1" id="4Ol-7Y-LhX"/>
                         <outlet property="leftSidebarTableView" destination="Fks-kw-vs8" id="4t9-p6-07t"/>
                         <outlet property="leftView" destination="Qyo-s2-8ZO" id="VT5-js-cmi"/>
-                        <outlet property="lineNumberScrollView" destination="OgG-8l-v7n" id="iRh-5n-hwb"/>
-                        <outlet property="lineNumberView" destination="TKg-F7-Lpz" id="H55-he-tmo"/>
                         <outlet property="linesLabel" destination="42g-tY-n4q" id="vAG-yT-KLn"/>
                         <outlet property="mainTextView" destination="vGI-3r-Mbu" id="cOk-bp-FVt"/>
                         <outlet property="minimapView" destination="Qbd-KS-cEz" id="2fO-py-YVv"/>
@@ -1892,7 +1849,7 @@
                                                                                 <constraint firstAttribute="height" constant="31" id="IHX-Aa-JmC"/>
                                                                                 <constraint firstAttribute="width" constant="31" id="aB0-u4-dF9"/>
                                                                             </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NewFile" id="ZkJ-gj-t2E"/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NewDoc" id="ZkJ-gj-t2E"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coq-Pb-iF7">
                                                                             <rect key="frame" x="36" y="5" width="116" height="15"/>
@@ -2148,7 +2105,6 @@
         <image name="NSTouchBarPlayTemplate" width="12" height="13"/>
         <image name="NSTouchBarSearchTemplate" width="15" height="15"/>
         <image name="NewDoc" width="512" height="512"/>
-        <image name="NewFile" width="1320" height="1320"/>
         <image name="Project" width="512" height="512"/>
         <image name="Run" width="256" height="256"/>
         <image name="Submit" width="512" height="512"/>

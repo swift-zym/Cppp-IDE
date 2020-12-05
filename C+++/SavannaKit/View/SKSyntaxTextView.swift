@@ -52,6 +52,8 @@ class SKSyntaxTextView: View {
 	private var textViewSelectedRangeObserver: NSKeyValueObservation?
 
 	let textView: SKInnerTextView
+    
+    var lineNumberView: CDCodeEditorLineNumberView?
 	
 	public var contentTextView: TextView {
 		return textView
@@ -79,16 +81,19 @@ class SKSyntaxTextView: View {
     public override init(frame: CGRect) {
         textView = SKSyntaxTextView.createInnerTextView()
         super.init(frame: frame)
+        lineNumberView = self.createLineNumberView()
         setup()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         textView = SKSyntaxTextView.createInnerTextView()
         super.init(coder: aDecoder)
+        lineNumberView = self.createLineNumberView()
         setup()
     }
 	
     private static func createInnerTextView() -> SKInnerTextView {
+        
         let textStorage = NSTextStorage()
         let layoutManager = SKSyntaxTextViewLayoutManager()
         
@@ -102,30 +107,41 @@ class SKSyntaxTextView: View {
         textStorage.addLayoutManager(layoutManager)
         
         return SKInnerTextView(frame: .zero, textContainer: textContainer)
+        
+    }
+    
+    private func createLineNumberView() -> CDCodeEditorLineNumberView {
+        return CDCodeEditorLineNumberView(frame: NSMakeRect(0, 0, 45, 0), textView: self.textView)
     }
 
     let scrollView = CDScrollView()
+    let lineNumberScrollView = CDScrollView()
 	
 	private func setup() {
     
         wrapperView.translatesAutoresizingMaskIntoConstraints = false
         
-        scrollView.backgroundColor = .clear
-        scrollView.drawsBackground = false
-        scrollView.scrollDelegate = self
-        
-        scrollView.contentView.backgroundColor = .clear
-        
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        for scrollView in [scrollView, lineNumberScrollView] {
+            
+            scrollView.drawsBackground = false
+            scrollView.scrollDelegate = self
+            
+            scrollView.contentView.backgroundColor = .clear
+            scrollView.translatesAutoresizingMaskIntoConstraints = false
+            
+            scrollView.scrollerKnobStyle = .light
+            scrollView.borderType = .noBorder
+            
+            addSubview(scrollView)
+            
+        }
 
-        addSubview(scrollView)
-        
         addSubview(wrapperView)
 
         
         scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 45.0).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
         wrapperView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -134,13 +150,35 @@ class SKSyntaxTextView: View {
         wrapperView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         
         
-        scrollView.borderType = .noBorder
+        lineNumberScrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        lineNumberScrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        lineNumberScrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        lineNumberScrollView.widthAnchor.constraint(equalToConstant: 45.0).isActive = true
+        lineNumberScrollView.documentView = lineNumberView
+        lineNumberScrollView.drawsBackground = true
+        lineNumberScrollView.backgroundColor = .textBackgroundColor
+        let view = CDFlippedView(frame: NSMakeRect(0.0, 0.0, 45.0, 0.0))
+        lineNumberScrollView.documentView = view
+        view.addSubview(lineNumberView!)
+        lineNumberView?.frame.origin = NSPoint.zero
+        lineNumberView?.widthAnchor.constraint(equalToConstant: 45.0).isActive = true
+        lineNumberView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        lineNumberView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        lineNumberView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        lineNumberView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        // lineNumberView?.autoresizingMask = [.maxXMargin, .minXMargin, .maxYMargin, .minYMargin, .height, .width]
+        // lineNumberView?.superview!.autoresizingMask = [.maxXMargin, .minXMargin, .maxYMargin, .minYMargin]
+        lineNumberScrollView.hasVerticalScroller = false
+        lineNumberScrollView.hasHorizontalScroller = false
+        lineNumberScrollView.identifier = NSUserInterfaceItemIdentifier(rawValue: "lineNumberViewScrollView")
+        
+        
         scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalScroller = false
-        scrollView.scrollerKnobStyle = .light
+        scrollView.backgroundColor = .clear
+        scrollView.identifier = NSUserInterfaceItemIdentifier(rawValue: "textViewScrollView")
         
         scrollView.documentView = textView
-        
         scrollView.contentView.postsBoundsChangedNotifications = true
         
         textView.minSize = NSSize(width: 0.0, height: self.bounds.height)
@@ -405,8 +443,17 @@ class SKSyntaxTextView: View {
 
 extension SKSyntaxTextView: CDScrollViewDelegate {
     
-    func scrollViewDidScroll(to point: NSPoint) {
-        self.delegate?.didScroll(self, to: point)
+    func scrollView(_ scrollView: CDScrollView, didScrollTo point: NSPoint) {
+        
+        if scrollView.identifier?.rawValue == "textViewScrollView" {
+            self.delegate?.didScroll(self, to: point)
+            self.lineNumberScrollView.scrollWithoutInformingDelegate(self.lineNumberScrollView.contentView, to: point)
+            self.lineNumberScrollView.reflectScrolledClipView(self.lineNumberScrollView.contentView)
+        } else {
+            self.scrollView.scroll(self.scrollView.contentView, to: point)
+            self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
+        }
+        
     }
     
 }

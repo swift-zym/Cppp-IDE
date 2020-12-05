@@ -49,8 +49,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     @IBOutlet weak var leftView: NSView!
     @IBOutlet weak var bigSplitView: NSSplitView!
     @IBOutlet weak var smallSplitView: NSSplitView!
-    @IBOutlet weak var lineNumberView: CDCodeEditorLineNumberView!
-    @IBOutlet weak var lineNumberScrollView: CDScrollView!
     @IBOutlet weak var minimapView: CDMinimapView!
     @IBOutlet weak var minimapViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var sidebarTitleLabel: NSTextField!
@@ -106,7 +104,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         super.viewDidLoad()
         
         self.mainTextView.delegate = self
-        self.lineNumberView.textView = self.mainTextView.textView
         self.sidebarTitleLabel.stringValue = "Files"
         
         self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
@@ -141,7 +138,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     }
     
     func didScroll(_ syntaxTextView: SKSyntaxTextView, to point: NSPoint) {
-        self.lineNumberView.enclosingScrollView?.scroll(self.lineNumberView.enclosingScrollView!.contentView, to: point)
         self.minimapView.scrollViewDidScrollToPoint(syntaxTextView, point: point)
     }
     
@@ -151,9 +147,6 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
     func didChangeText(_ syntaxTextView: SKSyntaxTextView) {
         
         syntaxTextView.textView.textStorage?.addAttribute(.toolTip, value: true, range: NSMakeRange(0, syntaxTextView.text.count))
-        DispatchQueue.main.async {
-            self.lineNumberView.draw()
-        }
         
         self.linesLabel.stringValue = "\(syntaxTextView.textView.textStorage?.paragraphs.count ?? 0) lines"
         self.charactersLabel.stringValue = "\(syntaxTextView.text.count) characters"

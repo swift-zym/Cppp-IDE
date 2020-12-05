@@ -464,6 +464,8 @@
 			children = (
 				182B3D562524A83500515375 /* SKSyntaxTextView.swift */,
 				182B3D572524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift */,
+				1801DF5E24D2DDC2005CAD42 /* CDCodeEditorLineNumberView.swift */,
+				1801DF6024D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift */,
 				182B3D582524A83500515375 /* SKInnerTextView.swift */,
 				182B3D592524A83500515375 /* SKTextViewWrapperView.swift */,
 				182B3D5B2524A83500515375 /* SKSyntaxTextViewLayoutManager.swift */,
@@ -530,8 +532,6 @@
 			children = (
 				1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */,
 				1849ED8E24DFCC55006DCDB4 /* SavannaKit+TextViewUtilities.swift */,
-				1801DF5E24D2DDC2005CAD42 /* CDCodeEditorLineNumberView.swift */,
-				1801DF6024D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift */,
 				18E7291F244E756E000317D7 /* CDScrollView.swift */,
 			);
 			path = Edit;
