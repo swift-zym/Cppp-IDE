@@ -19,6 +19,8 @@ protocol SKSyntaxTextViewDelegate: class {
 	func lexerForSource(_ source: String) -> SKLexer
     
     func didScroll(_ syntaxTextView: SKSyntaxTextView, to: NSPoint)
+    
+    func didClickLineNumber(atLine: Int, button: CDCodeEditorLineNumberViewButton)
 	
 }
 
@@ -32,6 +34,8 @@ extension SKSyntaxTextViewDelegate {
     func textViewDidBeginEditing(_ syntaxTextView: SKSyntaxTextView) { }
     
     func didScroll(_ syntaxTextView: SKSyntaxTextView, to: NSPoint) { }
+    
+    func didClickLineNumber(atLine: Int, button: CDCodeEditorLineNumberViewButton) { }
     
 }
 
@@ -161,6 +165,7 @@ class SKSyntaxTextView: View {
         lineNumberScrollView.documentView = view
         view.addSubview(lineNumberView!)
         lineNumberView?.frame.origin = NSPoint.zero
+        lineNumberView?.delegate = self
         lineNumberView?.widthAnchor.constraint(equalToConstant: 45.0).isActive = true
         lineNumberView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         lineNumberView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -454,6 +459,15 @@ extension SKSyntaxTextView: CDScrollViewDelegate {
             self.scrollView.reflectScrolledClipView(self.scrollView.contentView)
         }
         
+    }
+    
+}
+
+
+extension SKSyntaxTextView: CDCodeEditorLineNumberViewDelegate {
+    
+    func didClickButton(atLine line: Int, button: CDCodeEditorLineNumberViewButton) {
+        self.delegate?.didClickLineNumber(atLine: line, button: button)
     }
     
 }

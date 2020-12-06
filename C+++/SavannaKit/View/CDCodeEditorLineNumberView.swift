@@ -8,6 +8,11 @@
 
 import Cocoa
 
+@objc
+protocol CDCodeEditorLineNumberViewDelegate {
+    @objc optional func didClickButton(atLine: Int, button: CDCodeEditorLineNumberViewButton)
+}
+
 class CDCodeEditorLineNumberView: CDFlippedView {
     
     init(frame frameRect: NSRect, textView: NSTextView) {
@@ -20,6 +25,7 @@ class CDCodeEditorLineNumberView: CDFlippedView {
     var debugLines: Set<Int> = []
     var debugCurrentLine: Int?
     var shouldReloadAfterChangingFrame: Bool = true
+    var delegate: CDCodeEditorLineNumberViewDelegate?
     
     // var codeFoldingRanges: [CDParser.CodeFoldingRange] = []
     var codeFoldingLines: [Int] = []
@@ -118,6 +124,9 @@ class CDCodeEditorLineNumberView: CDFlippedView {
     
     @objc func buttonClicked(_ sender: CDCodeEditorLineNumberViewButton) {
         sender.markAsBreakpointLine()
+        if let line = Int(sender.title) {
+            self.delegate?.didClickButton?(atLine: line, button: sender)
+        }
     }
     
     required init?(coder: NSCoder) {

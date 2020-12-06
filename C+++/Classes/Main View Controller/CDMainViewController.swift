@@ -100,6 +100,14 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         return self.lexer
     }
     
+    func didClickLineNumber(atLine: Int, button: CDCodeEditorLineNumberViewButton) {
+        if button.isBreakpoint {
+            self.mainTextView.textView.document?.debugger?.addBreakpoint(line: button.title.nsString.integerValue)
+        } else {
+            self.mainTextView.textView.document?.debugger?.removeBreakpoint(line: button.title.nsString.integerValue)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
