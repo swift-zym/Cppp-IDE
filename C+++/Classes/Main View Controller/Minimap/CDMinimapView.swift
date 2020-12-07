@@ -43,7 +43,7 @@ class CDMinimapView: NSControl {
     
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
-        self.scrollerView.layer?.backgroundColor = NSColor(white: 0.7, alpha: 0.2).cgColor
+        self.scrollerView.layer?.backgroundColor = NSColor(white: 0.7, alpha: 0.12).cgColor
     }
     
     func didDragScroller() {
