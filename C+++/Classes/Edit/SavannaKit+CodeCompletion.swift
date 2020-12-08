@@ -125,6 +125,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
         rect?.size.width = 1.0
         //  DispatchQueue.main.async {
         self.codeCompletionViewController.openInPopover(relativeTo: rect!, of: self, preferredEdge: .maxY)
+        self.codeCompletionViewController.tableView?.selectRowIndexes(IndexSet([0]), byExtendingSelection: false)
     
         return []
         

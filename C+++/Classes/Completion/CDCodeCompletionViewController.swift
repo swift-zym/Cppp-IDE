@@ -51,20 +51,10 @@ class CDCodeCompletionViewController: NSViewController, NSTableViewDataSource, N
         }
         
     }
-    
-    override func awakeFromNib() {
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.cell?.font = CDSettings.font
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        self.tableView?.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-        self.tableView?.cell?.font = CDSettings.font
         
     }
     
