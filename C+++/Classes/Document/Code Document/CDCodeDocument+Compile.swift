@@ -80,8 +80,11 @@ extension CDCodeDocument {
         
         let res = CDCodeDocument.compileFile(fileURL: self.fileURL!, alsoRuns: true)
         
-        if res.result != nil {
-            for error in res.result!.errors {
+        let result = res.result
+        result?.calculateErrorAndWarningCount()
+        
+        if result != nil {
+            for error in result!.errors {
                 guard error.file == self.fileURL?.lastPathComponent else {
                     continue
                 }
@@ -101,7 +104,7 @@ extension CDCodeDocument {
         self.contentViewController?.consoleView?.logView?.string = res.log
         
         let vc = CDCompileResultMessageBox()
-        vc.isSuccess = (res.result?.succeed) ?? false
+        vc.isSuccess = (result?.succeed) ?? false
         self.contentViewController?.presentAsSheet(vc)
         
     }
