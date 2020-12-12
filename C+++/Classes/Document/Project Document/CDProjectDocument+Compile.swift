@@ -120,10 +120,10 @@ extension CDProjectDocument {
         
         output.append("End.")
         
-        output.append("Reading custom compile command file...")
-        output.append("Note: Using custom compile command may cause unknown problems.")
-        
         if customCompileCommand {
+            
+            output.append("Reading custom compile command file...")
+            output.append("Note: Using custom compile command may cause unknown problems.")
             
             guard customCompileCommandFilePath != "NOTFOUND" else {
                 output.append("Error: Cannot find custom compile command file. Create a \"compile.txt\" file and add it to the project. Or go to the project settings and set the \"Compile Command\" option to default. (5)")
@@ -189,8 +189,8 @@ extension CDProjectDocument {
                 
             } else {
                 
-                self.contentViewController.showAlert("Error", "The output file directory cannot be created. (2, file: \(path)")
-                output.append("The output file directory cannot be created. (2, file: \(path)")
+                self.contentViewController.showAlert("Error", "The output file directory cannot be created. (2, file: \(path))")
+                output.append("The output file directory cannot be created. (2, file: \(path))")
                 return (didSuccess: false, output)
                 
             }
@@ -232,8 +232,8 @@ extension CDProjectDocument {
                 
             } else {
                 
-                self.contentViewController.showAlert("Error", "The output file directory cannot be created. (2, file: \(path)")
-                output.append("The output file directory cannot be created. (2, file: \(path)")
+                self.contentViewController.showAlert("Error", "The output file directory cannot be created. (2, file: \(path))")
+                output.append("The output file directory cannot be created. (2, file: \(path))")
                 return (didSuccess: false, output)
                 
             }

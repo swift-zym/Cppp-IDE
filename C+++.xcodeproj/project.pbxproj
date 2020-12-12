@@ -89,6 +89,8 @@
 		1868F16424E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868F16224E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift */; };
 		1868F16524E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1868F16324E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.xib */; };
 		186AC7F324A47BD900F6B682 /* NSViewController Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AC7F224A47BD900F6B682 /* NSViewController Extension.swift */; };
+		186E2A232580E2C900B56961 /* CDProjectMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E2A222580E2C900B56961 /* CDProjectMainWindowController.swift */; };
+		186E2A252580EB2C00B56961 /* CDProjectMainViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E2A242580EB2C00B56961 /* CDProjectMainViewController+Appearance.swift */; };
 		1872603424AF4FE8004C69B2 /* CDDiagnosticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1872603224AF4FE8004C69B2 /* CDDiagnosticsViewController.swift */; };
 		1872603524AF4FE8004C69B2 /* CDDiagnosticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1872603324AF4FE8004C69B2 /* CDDiagnosticsViewController.xib */; };
 		187527B0247A6A1900A7522A /* CDLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527AF247A6A1900A7522A /* CDLaunchViewController.swift */; };
@@ -269,6 +271,8 @@
 		1868F16224E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDProjectNewFileChooseTypeViewControllerCollectionViewItem.swift; sourceTree = "<group>"; };
 		1868F16324E9173F0077FD8D /* CDProjectNewFileChooseTypeViewControllerCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CDProjectNewFileChooseTypeViewControllerCollectionViewItem.xib; sourceTree = "<group>"; };
 		186AC7F224A47BD900F6B682 /* NSViewController Extension.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = "NSViewController Extension.swift"; sourceTree = "<group>"; };
+		186E2A222580E2C900B56961 /* CDProjectMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDProjectMainWindowController.swift; sourceTree = "<group>"; };
+		186E2A242580EB2C00B56961 /* CDProjectMainViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProjectMainViewController+Appearance.swift"; sourceTree = "<group>"; };
 		1872603224AF4FE8004C69B2 /* CDDiagnosticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDiagnosticsViewController.swift; sourceTree = "<group>"; };
 		1872603324AF4FE8004C69B2 /* CDDiagnosticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDDiagnosticsViewController.xib; sourceTree = "<group>"; };
 		187527AF247A6A1900A7522A /* CDLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLaunchViewController.swift; sourceTree = "<group>"; };
@@ -590,6 +594,8 @@
 				1815A0D624E0E93200D1B23C /* CDProjectMainViewController.swift */,
 				1802D04C24EF52E5008C96BC /* CDProjectMainViewController+ProjectSettings.swift */,
 				18669BE224E7D20D00C9DEE2 /* CDProjectMainViewController+Dragging.swift */,
+				186E2A222580E2C900B56961 /* CDProjectMainWindowController.swift */,
+				186E2A242580EB2C00B56961 /* CDProjectMainViewController+Appearance.swift */,
 				1853803B24E27A8C00C13AD1 /* CDProjectMainViewController+NSOutlineView.swift */,
 				1802D04A24EF4FBD008C96BC /* CDProjectSettingsView.swift */,
 			);
@@ -930,6 +936,7 @@
 				1827400C24A6343000AF3613 /* CDToolbarStateButton.swift in Sources */,
 				1887D239254E2D5E00CD0D7D /* CDFilesTableViewDataSource.swift in Sources */,
 				1868F16124E914C50077FD8D /* CDProjectNewFileChooseTypeViewController.swift in Sources */,
+				186E2A252580EB2C00B56961 /* CDProjectMainViewController+Appearance.swift in Sources */,
 				181F2BD324AC78C700C4B217 /* CKToken.m in Sources */,
 				181236A82557BE4C0058004D /* NSButton Extension.swift in Sources */,
 				182B3D742524A83500515375 /* SKInnerTextView.swift in Sources */,
@@ -944,6 +951,7 @@
 				181F2BDB24AC78C700C4B217 /* CKFixIt.m in Sources */,
 				181236B02557D5620058004D /* CDCodeEditorTheme.swift in Sources */,
 				18B3C7942428378E00F4CA14 /* CDMainWindowController.swift in Sources */,
+				186E2A232580E2C900B56961 /* CDProjectMainWindowController.swift in Sources */,
 				18FC054B2487BA3600F33CE2 /* CDTestViewController.swift in Sources */,
 				18FC02882490E612004551B1 /* CDUpdateManager.swift in Sources */,
 				1881D5F124D011DC0082F2C4 /* CDMainViewController+Search.swift in Sources */,

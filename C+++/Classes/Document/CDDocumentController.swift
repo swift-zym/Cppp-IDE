@@ -47,11 +47,13 @@ class CDDocumentController: NSDocumentController {
         
         super.openDocument(withContentsOf: url, display: displayDocument) {
             (document, success, error) in
-            guard document != nil || !displayDocument else {
-                GlobalMainWindowController.contentViewController?.showAlert("Error", error?.localizedDescription ?? "")
-                return
+            if document is CDCodeDocument {
+                guard document != nil || !displayDocument else {
+                    GlobalMainWindowController.contentViewController?.showAlert("Error", error?.localizedDescription ?? "")
+                    return
+                }
+                GlobalMainWindowController.addDocument(document! as! CDCodeDocument)
             }
-            GlobalMainWindowController.addDocument(document! as! CDCodeDocument)
             completionHandler(document, success, error)
         }
         

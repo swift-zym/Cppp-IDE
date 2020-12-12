@@ -12,6 +12,7 @@ class CDProjectDocument: NSDocument {
     
     var project: CDProject!
     var contentViewController: CDProjectMainViewController!
+    var contentWindowController: CDProjectMainWindowController!
     var documents = [NSDocument]()
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
@@ -55,7 +56,9 @@ class CDProjectDocument: NSDocument {
         
         let storyboard = NSStoryboard(name: "Project", bundle: nil)
         if let windowController = storyboard.instantiateController(withIdentifier: "Project Window Controller") as? NSWindowController {
+            
             self.addWindowController(windowController)
+            self.contentWindowController = windowController as? CDProjectMainWindowController
             
             if let vc = windowController.contentViewController as? CDProjectMainViewController {
                 vc.document = self
@@ -71,9 +74,8 @@ class CDProjectDocument: NSDocument {
     override func save(_ sender: Any?) {
         super.save(sender)
         
-        if let document = self.contentViewController.contentVC.representedObject as? CDCodeDocument {
-            document.save(sender)
-        }
+        let document = self.contentWindowController.document as? CDCodeDocument
+        document?.save(sender)
         
     }
     

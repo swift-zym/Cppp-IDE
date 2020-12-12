@@ -97,7 +97,7 @@ extension CDProjectMainViewController: NSOutlineViewDataSource, NSOutlineViewDel
     
     func insert(newItem: CDProjectItem) {
         
-        let _item = self.outlineView.item(atRow: self.outlineView.clickedRow)
+        let _item = self.outlineView.item(atRow: self.outlineView.clickedRow >= 0 ? self.outlineView.clickedRow : self.outlineView.selectedRow)
         
         if let item = _item as? CDProjectItem {
             
@@ -121,6 +121,8 @@ extension CDProjectMainViewController: NSOutlineViewDataSource, NSOutlineViewDel
                         
                         self.outlineView.insertItems(at: IndexSet(arrayLiteral: _index), inParent: _superItem)
                         return
+                    } else {
+                        self.outlineView.insertItems(at: IndexSet(arrayLiteral: 0), inParent: _item)
                     }
                     
                 case .folder(let folder):
@@ -135,6 +137,8 @@ extension CDProjectMainViewController: NSOutlineViewDataSource, NSOutlineViewDel
             
             if let superItem = self.outlineView.parent(forItem: _item) {
                 self.outlineView.insertItems(at: IndexSet(arrayLiteral: index), inParent: superItem)
+            } else {
+                self.outlineView.insertItems(at: IndexSet(arrayLiteral: index), inParent: _item)
             }
             
         }

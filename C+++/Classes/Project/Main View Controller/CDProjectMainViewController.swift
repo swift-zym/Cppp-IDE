@@ -8,14 +8,18 @@
 
 import Cocoa
 
-class CDProjectMainViewController: NSViewController {
+class CDProjectMainViewController: NSViewController, SKSyntaxTextViewDelegate {
     
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet weak var fileView: NSView!
     @IBOutlet weak var projectSettingsView: CDProjectSettingsView!
+    @IBOutlet weak var codeEditor: SKSyntaxTextView!
+    @IBOutlet weak var minimapView: CDMinimapView!
     
     weak var document: CDProjectDocument!
-    weak var contentVC: CDMainViewController!
+    lazy var cppLexer = CDCppLexer()
+    lazy var currentTheme = CDSettings.lightTheme
+    var observation: NSKeyValueObservation?
     
     // MARK: - Dragging
     var draggedItem: Any? = nil
@@ -53,9 +57,21 @@ class CDProjectMainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.contentVC = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "Main View Controller") as? CDMainViewController
-        contentVC.isOpeningInProjectViewController = true
-        self.addChild(contentVC)
+        self.codeEditor.delegate = self
+        self.minimapView.codeEditor = self.codeEditor
+        
+        self.changeAppearance(newAppearance: self.view.effectiveAppearance.name)
+       
+        // observe the appearance of the view.
+        self.observation = observe(\.view.effectiveAppearance, options: [.old, .new]) { object, change in
+            
+            // print ("old \(change.oldValue!.name) now \(change.newValue!.name).")
+            if change.oldValue!.name != change.newValue!.name {
+                self.changeAppearance(newAppearance: change.newValue!.name)
+            }
+            
+        }
+        
         
         self.outlineView?.registerForDraggedTypes([.string, .fileURL])
         
@@ -78,6 +94,22 @@ class CDProjectMainViewController: NSViewController {
         
         self.projectSettingsView.versionTextField.stringValue = self.document?.project?.version ?? "nil"
         self.projectSettingsView.button.state = self.document?.project?.compileCommand == "Default" ? .on : .off
+        
+    }
+    
+    func lexerForSource(_ source: String) -> SKLexer {
+        return self.cppLexer
+    }
+    
+    func didScroll(_ syntaxTextView: SKSyntaxTextView, to point: NSPoint) {
+        self.minimapView?.scrollViewDidScrollToPoint(syntaxTextView, point: point)
+    }
+    
+    func didChangeText(_ syntaxTextView: SKSyntaxTextView) {
+        
+        let dataOfView = self.codeEditor.textView.dataWithPDF(inside: self.codeEditor.textView.bounds)
+        let imageOfView = NSImage(data: dataOfView)!
+        self.minimapView.setMinimapImage(imageOfView)
         
     }
  

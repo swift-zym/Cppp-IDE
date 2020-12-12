@@ -22,7 +22,7 @@ class CDProjectNewFileChooseTypeViewController: NSViewController, NSCollectionVi
         "C/C++ Header": ["h", "hpp", "h++"],
         "C Source": ["c"],
         "Text File": [],
-        "Markdown File": ["md"]
+        "Markdown File": ["md", "markdown"]
     ]
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
