@@ -395,10 +395,10 @@ Gw
                                                                                     <outlet property="versionTextField" destination="1Iw-Sl-0Uo" id="6kb-bt-H5z"/>
                                                                                 </connections>
                                                                             </customView>
-                                                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="IGX-R6-mHa" customClass="SKSyntaxTextView" customModule="C___" customModuleProvider="target">
+                                                                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGX-R6-mHa" customClass="SKSyntaxTextView" customModule="C___" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="406" height="382"/>
                                                                             </customView>
-                                                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xdh-Ez-YB0" customClass="CDMinimapView" customModule="C___" customModuleProvider="target">
+                                                                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xdh-Ez-YB0" customClass="CDMinimapView" customModule="C___" customModuleProvider="target">
                                                                                 <rect key="frame" x="406" y="0.0" width="125" height="382"/>
                                                                                 <subviews>
                                                                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idi-vb-zyI">
@@ -408,13 +408,13 @@ Gw
                                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                             <subviews>
                                                                                                 <view id="I4N-yj-RQB" customClass="CDFlippedView" customModule="C___" customModuleProvider="target">
-                                                                                                    <rect key="frame" x="0.0" y="-177" width="123" height="407"/>
+                                                                                                    <rect key="frame" x="0.0" y="-177" width="123" height="380"/>
                                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                                     <subviews>
                                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EFs-ID-YiR">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="123" height="407"/>
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="123" height="380"/>
                                                                                                             <constraints>
-                                                                                                                <constraint firstAttribute="height" constant="407" id="7pK-rF-nCX"/>
+                                                                                                                <constraint firstAttribute="height" constant="380" id="7pK-rF-nCX"/>
                                                                                                                 <constraint firstAttribute="width" constant="123" id="rXS-nn-G1F"/>
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="axesIndependently" id="ARb-sd-coq"/>

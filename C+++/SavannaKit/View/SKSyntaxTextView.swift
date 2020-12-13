@@ -91,6 +91,7 @@ class SKSyntaxTextView: View {
     
     public required init?(coder aDecoder: NSCoder) {
         textView = SKSyntaxTextView.createInnerTextView()
+        NotificationCenter.default.addObserver(textView, selector: #selector(SKInnerTextView.receivedCompletion(_:)), name: NSNotification.Name("C+++_Received_Code_Completion_Data"), object: nil)
         super.init(coder: aDecoder)
         lineNumberView = self.createLineNumberView()
         setup()

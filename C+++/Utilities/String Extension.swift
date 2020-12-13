@@ -51,21 +51,15 @@ extension String {
     /// Get the number of the line which the character at a specific position is in.
     /// - Parameter position: The position.
     /// - Returns: The number of the line which the character at `position` is in.
-    func lineNumber(at position: Int) -> Int? {
+    func lineNumber(at position: Int) -> Int {
         
         var lineNumber = 0
         var characterPosition = 0
         for line in self.components(separatedBy: "\n") {
             lineNumber += 1
-            for _ in line {
-                characterPosition += 1
-                if characterPosition == position {
-                    return lineNumber
-                }
-            }
-            characterPosition += 1
-            if characterPosition == position {
-                return lineNumber
+            characterPosition += line.count + 1
+            if (position <= characterPosition) {
+                return lineNumber;
             }
         }
         return 1
@@ -74,22 +68,12 @@ extension String {
     
     func columnNumber(at position: Int) -> Int {
         
-        var columnNumber = 0
         var characterPosition = 0
         for line in self.components(separatedBy: "\n") {
-            columnNumber = 0
-            for _ in line {
-                characterPosition += 1
-                columnNumber += 1
-                if characterPosition == position {
-                    return columnNumber
-                }
+            if characterPosition + line.count + 1 >= position {
+                return position - characterPosition
             }
-            characterPosition += 1
-            columnNumber += 1
-            if characterPosition == position {
-                return columnNumber
-            }
+            characterPosition += line.count + 1
         }
         return 1
         
@@ -140,11 +124,11 @@ extension String {
         var ranges = [NSRange]()
         var i = 0
         for a in array {
-            let index = str.firstIndexOf(String(a))
-            if index != -1 {
-                str.removeSubrange(..<str.index(str.startIndex, offsetBy: index))
-                i += index
-                ranges.append(NSMakeRange(i, 1))
+            let index = str.firstIndex(of: a)
+            if index != nil {
+                i += self.distance(from: self.startIndex, to: index!) + 1
+                str.removeSubrange(...index!)
+                ranges.append(NSMakeRange(i - 1, 1))
             } else {
                 return (right: false, ranges: ranges)
             }

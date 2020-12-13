@@ -129,7 +129,7 @@ extension SKSyntaxTextView: NSTextViewDelegate {
     
     
     open func textView(_ textView: NSTextView, willDisplayToolTip tooltip: String, forCharacterAt characterIndex: Int) -> String? {
-        let location = CKSourceLocation(translationUnit: self.textView.translationUnit, line: Int32(textView.string.lineNumber(at: characterIndex)!), col: Int32(textView.string.columnNumber(at: characterIndex)))
+        let location = CKSourceLocation(translationUnit: self.textView.translationUnit, line: Int32(textView.string.lineNumber(at: characterIndex)), col: Int32(textView.string.columnNumber(at: characterIndex)))
         let cursor = CKCursor(location: location, translationUnit: self.textView.translationUnit)
         if cursor?.kindSpelling != nil && cursor?.displayName != nil {
             return (cursor?.kindSpelling)! + ": " + (cursor?.displayName)!
