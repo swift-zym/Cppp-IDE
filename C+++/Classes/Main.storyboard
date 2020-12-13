@@ -618,7 +618,7 @@
                         <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="120" y="80" width="960" height="719"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
                         <value key="minSize" type="size" width="700" height="600"/>
                         <toolbar key="toolbar" implicitIdentifier="CB018D88-E93D-4CED-B9A7-FD4396751838" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="4Dk-sT-khY">
                             <allowedToolbarItems>
@@ -799,20 +799,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="217" height="771"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XjK-g4-Xti">
-                                                <rect key="frame" x="2" y="0.5" width="17.5" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="17" id="4dj-Om-RLN"/>
-                                                    <constraint firstAttribute="height" constant="18" id="MP8-HA-oxT"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="ET2-hz-STm">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="addItem:" target="5gI-5U-AMq" id="NXc-fA-CBm"/>
-                                                </connections>
-                                            </button>
                                             <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xz8-bC-xC1">
                                                 <rect key="frame" x="9" y="702" width="24" height="26"/>
                                                 <constraints>
@@ -853,13 +839,13 @@
                                                 </textFieldCell>
                                             </textField>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="10" verticalLineScroll="30" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brN-Ab-DOp">
-                                                <rect key="frame" x="0.0" y="28" width="217" height="657"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="217" height="685"/>
                                                 <clipView key="contentView" drawsBackground="NO" id="NIJ-8Q-Dhz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="217" height="657"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="217" height="685"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="inset" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" typeSelect="NO" rowHeight="25" rowSizeStyle="automatic" viewBased="YES" id="Fks-kw-vs8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="657"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="685"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <size key="intercellSpacing" width="0.0" height="5"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1064,14 +1050,12 @@
                                         <constraints>
                                             <constraint firstItem="xz8-bC-xC1" firstAttribute="top" secondItem="Qyo-s2-8ZO" secondAttribute="top" constant="43" id="5C3-ao-bRn"/>
                                             <constraint firstItem="T0f-gA-vKa" firstAttribute="top" secondItem="Qyo-s2-8ZO" secondAttribute="top" constant="47" id="6C8-if-VJ8"/>
-                                            <constraint firstItem="XjK-g4-Xti" firstAttribute="leading" secondItem="Qyo-s2-8ZO" secondAttribute="leading" constant="2" id="8sF-p0-JFD"/>
                                             <constraint firstAttribute="width" constant="217" placeholder="YES" id="Jvn-8P-rhD"/>
                                             <constraint firstItem="gzI-SZ-yvK" firstAttribute="leading" secondItem="T0f-gA-vKa" secondAttribute="trailing" constant="2" id="OJL-1N-aie"/>
                                             <constraint firstItem="xz8-bC-xC1" firstAttribute="leading" secondItem="Qyo-s2-8ZO" secondAttribute="leading" constant="9" id="Ozc-rT-8DF"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="217" id="UZe-9D-Slq"/>
-                                            <constraint firstAttribute="bottom" secondItem="XjK-g4-Xti" secondAttribute="bottom" constant="2" id="f6k-4c-5DW"/>
+                                            <constraint firstAttribute="bottom" secondItem="brN-Ab-DOp" secondAttribute="bottom" id="fcB-Wo-7bU"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="gMX-YC-fKh"/>
-                                            <constraint firstItem="XjK-g4-Xti" firstAttribute="top" secondItem="brN-Ab-DOp" secondAttribute="bottom" constant="8" id="iGT-W3-GWr"/>
                                             <constraint firstItem="T0f-gA-vKa" firstAttribute="leading" secondItem="xz8-bC-xC1" secondAttribute="trailing" constant="2" id="kEA-tC-5fJ"/>
                                             <constraint firstItem="gzI-SZ-yvK" firstAttribute="top" secondItem="Qyo-s2-8ZO" secondAttribute="top" constant="43" id="oMl-rZ-yU0"/>
                                             <constraint firstItem="brN-Ab-DOp" firstAttribute="top" secondItem="xz8-bC-xC1" secondAttribute="bottom" constant="17" id="tme-6P-xb2"/>
@@ -1764,7 +1748,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addSnippetButton" destination="XjK-g4-Xti" id="tIB-Nz-zDD"/>
                         <outlet property="bigSplitView" destination="LB2-Rd-Bhv" id="ZER-aX-bhz"/>
                         <outlet property="charactersLabel" destination="VGX-he-xwO" id="jmZ-4Z-CPF"/>
                         <outlet property="consoleView" destination="M8q-ws-1g9" id="8eO-sM-vWK"/>

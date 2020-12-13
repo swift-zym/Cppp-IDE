@@ -69,7 +69,6 @@
 		183908B22548533D00313605 /* CDCompileResultMessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183908B02548533D00313605 /* CDCompileResultMessageBox.swift */; };
 		183908B32548533D00313605 /* CDCompileResultMessageBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183908B12548533D00313605 /* CDCompileResultMessageBox.xib */; };
 		183BE91124AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91024AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift */; };
-		183BE91324AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91224AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift */; };
 		183BE91524AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91424AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift */; };
 		183BE91724AEBD26000F60A0 /* CDMainViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91624AEBD26000F60A0 /* CDMainViewController+Appearance.swift */; };
 		183BE91924AEBD7B000F60A0 /* CDMainViewController+SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE91824AEBD7B000F60A0 /* CDMainViewController+SettingsView.swift */; };
@@ -251,7 +250,6 @@
 		183908B02548533D00313605 /* CDCompileResultMessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompileResultMessageBox.swift; sourceTree = "<group>"; };
 		183908B12548533D00313605 /* CDCompileResultMessageBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDCompileResultMessageBox.xib; sourceTree = "<group>"; };
 		183BE91024AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+Diagnostics.swift"; sourceTree = "<group>"; };
-		183BE91224AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+SnippetTableView.swift"; sourceTree = "<group>"; };
 		183BE91424AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+SegmentedControl.swift"; sourceTree = "<group>"; };
 		183BE91624AEBD26000F60A0 /* CDMainViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+Appearance.swift"; sourceTree = "<group>"; };
 		183BE91824AEBD7B000F60A0 /* CDMainViewController+SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+SettingsView.swift"; sourceTree = "<group>"; };
@@ -677,7 +675,6 @@
 				183BE91624AEBD26000F60A0 /* CDMainViewController+Appearance.swift */,
 				183BE91424AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift */,
 				18CDFADF251780A400C3F05B /* Left Sidebar */,
-				183BE91224AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift */,
 				183BE91024AEB1C4000F60A0 /* CDMainViewController+Diagnostics.swift */,
 				1881D5F024D011DC0082F2C4 /* CDMainViewController+Search.swift */,
 			);
@@ -926,7 +923,6 @@
 				1802D05124EFF4D6008C96BC /* CDCreateProjectViewController.swift in Sources */,
 				182B3D6B2524A83500515375 /* SKSyntaxColorTheme.swift in Sources */,
 				182B3D6A2524A83500515375 /* SKParagraph.swift in Sources */,
-				183BE91324AEBC49000F60A0 /* CDMainViewController+SnippetTableView.swift in Sources */,
 				18E17EBB24A809D200392009 /* CDCodeCompletionViewController.swift in Sources */,
 				181F2BD924AC78C700C4B217 /* CKSourceLocation.m in Sources */,
 				18E17F0E24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift in Sources */,
