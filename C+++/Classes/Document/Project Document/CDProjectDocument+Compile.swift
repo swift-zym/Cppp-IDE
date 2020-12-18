@@ -16,6 +16,8 @@ extension CDProjectDocument {
     
     func compileProject() -> (didSuccess: Bool, output: [String]) {
         
+        self.save(nil)
+        
         if self.fileURL == nil {
             self.contentViewController.showAlert("Error", "Please save your project first.")
         }

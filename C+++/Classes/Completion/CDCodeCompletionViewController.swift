@@ -46,9 +46,7 @@ class CDCodeCompletionViewController: NSViewController, NSTableViewDataSource, N
         
         tableView.delegate = nil
         tableView.dataSource = nil
-        if self.popover.isShown == true {
-            popover.close()
-        }
+        popover = nil
         
     }
 

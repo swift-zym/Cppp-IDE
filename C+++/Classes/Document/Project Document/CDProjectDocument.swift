@@ -74,6 +74,7 @@ class CDProjectDocument: NSDocument {
     override func save(_ sender: Any?) {
         super.save(sender)
         
+        NSLog("Saving Project...")
         let document = self.contentWindowController.document as? CDCodeDocument
         document?.save(sender)
         

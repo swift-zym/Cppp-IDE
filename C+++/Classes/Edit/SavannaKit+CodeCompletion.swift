@@ -85,19 +85,24 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
             return
         }
         
-        if self.codeCompletionViewController == nil {
-            self.codeCompletionViewController = CDCodeCompletionViewController()
-            self.codeCompletionViewController.delegate = self
-        } else {
-            self.codeCompletionViewController.popover = nil
+        guard !(self.codeCompletionViewController?.popover.isShown ?? false) else {
+            return
         }
         
-        self.codeCompletionViewController.results = self.cachedCompletionResults
-        self.codeCompletionViewController.range = self.rangeForUserCompletion
+        if self.codeCompletionViewController == nil {
+            self.codeCompletionViewController = CDCodeCompletionViewController()
+            self.codeCompletionViewController?.delegate = self
+        } else {
+            self.codeCompletionViewController?.popover = nil
+        }
+        
+        self.codeCompletionViewController?.results = self.cachedCompletionResults
+        
+        self.codeCompletionViewController?.range = self.rangeForUserCompletion
         var rect = self.layoutManager?.boundingRect(forGlyphRange: self.selectedRange, in: self.textContainer!)
         rect?.size.width = 1.0
-        self.codeCompletionViewController.openInPopover(relativeTo: rect!, of: self, preferredEdge: .maxY)
-        self.codeCompletionViewController.tableView?.selectRowIndexes(IndexSet([0]), byExtendingSelection: false)
+        self.codeCompletionViewController?.openInPopover(relativeTo: rect!, of: self, preferredEdge: .maxY)
+        self.codeCompletionViewController?.tableView?.selectRowIndexes(IndexSet([0]), byExtendingSelection: false)
         
     }
     
@@ -168,19 +173,19 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
             
             wantsCodeCompletion = true
             
-            let date = Date()
+            // let date = Date()
             
             
             getCompletionResults(string: string, forTypedText: substring, charRange: range, cursorIndex: self.selectedRange.location)
             
-            NSLog("In the front of a word: Time: %.5lf", -date.timeIntervalSinceNow)
+            // NSLog("In the front of a word: Time: %.5lf", -date.timeIntervalSinceNow)
             
         } else {
             
-            let date = Date()
+            // let date = Date()
             filterCompletions(typedText: substring)
             showCompletionViewController()
-            NSLog("In the middle of a word: Time: %.5lf", -date.timeIntervalSinceNow)
+            // NSLog("In the middle of a word: Time: %.5lf", -date.timeIntervalSinceNow)
             
         }
         
@@ -189,7 +194,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     override func deleteForward(_ sender: Any?) {
         super.deleteForward(sender)
         
-        self.codeCompletionViewController.closePopover()
+        self.codeCompletionViewController?.closePopover()
         self.cachedCompletionResults = []
         self.wantsCodeCompletion = false
         
@@ -198,7 +203,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
     override func deleteBackward(_ sender: Any?) {
         super.deleteBackward(sender)
         
-        self.codeCompletionViewController.closePopover()
+        self.codeCompletionViewController?.closePopover()
         self.cachedCompletionResults = []
         self.wantsCodeCompletion = false
         

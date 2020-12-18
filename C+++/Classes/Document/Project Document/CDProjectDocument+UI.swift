@@ -12,6 +12,8 @@ extension CDProjectDocument {
     
     func openDocument(item: CDProjectItem) {
         
+        self.save(nil)
+        
         switch item {
             
             case .document(let document):

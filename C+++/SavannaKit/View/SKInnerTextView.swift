@@ -25,7 +25,7 @@ class SKInnerTextView: TextView {
     // Code Completion
     var cachedCompletionResults = [CDCompletionResult]()
     var charRangeForCompletion: NSRange?
-    var codeCompletionViewController: CDCodeCompletionViewController!
+    var codeCompletionViewController: CDCodeCompletionViewController?
     var wantsCodeCompletion = false
 	
 	func invalidateCachedParagraphs() {

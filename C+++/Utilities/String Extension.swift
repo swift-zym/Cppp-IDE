@@ -119,19 +119,19 @@ extension String {
         guard string.first == self.first else {
             return (false, [])
         }
-        let array = Array(string)
-        var str = self
         var ranges = [NSRange]()
-        var i = 0
-        for a in array {
-            let index = str.firstIndex(of: a)
-            if index != nil {
-                i += self.distance(from: self.startIndex, to: index!) + 1
-                str.removeSubrange(...index!)
-                ranges.append(NSMakeRange(i - 1, 1))
-            } else {
-                return (right: false, ranges: ranges)
+        var i = 0, j = 0
+        let lengthA = string.count
+        let lengthB = self.count
+        while i < lengthA && j < lengthB {
+            if string[i] == self[j] {
+                ranges.append(NSMakeRange(j, 1))
+                i += 1
             }
+            j += 1
+        }
+        if i != lengthA {
+            return (right: false, ranges: [])
         }
         return (right: true, ranges: ranges)
     }
