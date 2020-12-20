@@ -23,6 +23,8 @@ class CDCompileResultAndDebugView: NSView {
     @IBOutlet weak var compileResultTableView: NSTableView!
     
     @IBOutlet weak var debugSplitView: NSSplitView!
+    @IBOutlet weak var resultAndRunSplitView: NSSplitView!
+    @IBOutlet weak var runView: CDTestPointRunView!
     @IBOutlet weak var watchVarsTableView: NSTableView!
     
     var compileResult: CDCompileResult? {

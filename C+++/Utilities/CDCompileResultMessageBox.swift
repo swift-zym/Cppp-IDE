@@ -20,14 +20,14 @@ class CDCompileResultMessageBox: NSViewController {
         // Do view setup here.
         switch isSuccess {
             case true:
-                self.label.stringValue = "Compile Succeed"
-                self.imageView.image = #imageLiteral(resourceName: "success")
+                self.label?.stringValue = "Compile Succeed"
+                self.imageView?.image = #imageLiteral(resourceName: "success")
             case false:
-                self.label.stringValue = "Compile Failed"
-                self.imageView.image = #imageLiteral(resourceName: "fail")
+                self.label?.stringValue = "Compile Failed"
+                self.imageView?.image = #imageLiteral(resourceName: "fail")
                 
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75) {
             self.dismiss(self)
         }
     }

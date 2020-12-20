@@ -21,7 +21,7 @@ extension CDCompileResultAndDebugView {
                 self.errorImageLabel.isHidden = false
                 self.warningImageView.isHidden = false
                 self.warningCountLabel.isHidden = false
-                self.compileResultTableView.enclosingScrollView?.isHidden = false
+                self.resultAndRunSplitView.isHidden = false
                 self.titleLabel.stringValue = "Compile Result"
                 
             case 1:
@@ -31,7 +31,7 @@ extension CDCompileResultAndDebugView {
                 self.errorImageLabel.isHidden = false
                 self.warningImageView.isHidden = false
                 self.warningCountLabel.isHidden = false
-                self.compileResultTableView.enclosingScrollView?.isHidden = true
+                self.resultAndRunSplitView.isHidden = true
                 self.titleLabel.stringValue = "Compile Log"
                 
             case 2:
@@ -41,9 +41,9 @@ extension CDCompileResultAndDebugView {
                 self.errorImageLabel.isHidden = true
                 self.warningImageView.isHidden = true
                 self.warningCountLabel.isHidden = true
-                self.compileResultTableView.enclosingScrollView?.isHidden = true
+                self.resultAndRunSplitView.isHidden = true
                 self.titleLabel.stringValue = "Debug"
-                
+            
             default:
                 break
                 
