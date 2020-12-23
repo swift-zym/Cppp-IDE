@@ -131,6 +131,9 @@ class CDMainViewController: NSViewController, NSTextViewDelegate, NSSplitViewDel
         self.consoleView.logView.font = menloFont(ofSize: 13.0)
         self.consoleView.debugTextView.font = menloFont(ofSize: 12.0)
         self.consoleView.commandTextField.font = menloFont(ofSize: 13.0)
+        self.consoleView.runView.input?.font = menloFont(ofSize: 12.0)
+        self.consoleView.runView.expectedOutput?.font = menloFont(ofSize: 12.0)
+        self.consoleView.runView.actualOutput?.font = menloFont(ofSize: 12.0)
         
         self.switchSidebarContentTo(mode: .openFiles)
         // initialize the scroll view and the minimap view.

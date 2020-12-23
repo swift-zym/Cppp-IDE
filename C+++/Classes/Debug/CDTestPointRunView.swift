@@ -14,6 +14,7 @@ class CDTestPointRunView: NSView {
     @IBOutlet weak var expectedOutput: NSTextView?
     @IBOutlet weak var actualOutput: NSTextView?
     @IBOutlet weak var expectedOutputSwitchButton: NSButton?
+    @IBOutlet weak var stateLabel: NSTextField?
     
     @IBAction func expectedOutputButtonClicked(_ sender: Any?) {
         self.expectedOutput?.isHidden = (self.expectedOutputSwitchButton?.state ?? .off) == .off

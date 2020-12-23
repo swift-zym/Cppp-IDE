@@ -742,7 +742,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="972" height="771"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Plg-HC-3SL">
+                            <button toolTip="Compile" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Plg-HC-3SL">
                                 <rect key="frame" x="921" y="719" width="46" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="6H5-Yq-yBe"/>
@@ -756,7 +756,7 @@
                                     <action selector="compileFile:" target="2Tp-Fl-jBw" id="Mdi-Ed-JY1"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlK-fG-wwa">
+                            <button toolTip="Debug" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlK-fG-wwa">
                                 <rect key="frame" x="921" y="672" width="46" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="3lt-sS-X2h"/>
@@ -770,7 +770,7 @@
                                     <action selector="beginDebugging:" target="2Tp-Fl-jBw" id="SU4-Wh-1od"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-tD-pcw">
+                            <button toolTip="Test" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-tD-pcw">
                                 <rect key="frame" x="921" y="625" width="46" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="r4f-jH-H6c"/>
@@ -1255,7 +1255,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="699" height="121"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="XdU-QA-NPp">
+                                                                        <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="XdU-QA-NPp">
                                                                             <rect key="frame" x="0.0" y="0.0" width="699" height="121"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1767,7 +1767,7 @@
                                                                                         </scroller>
                                                                                     </scrollView>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="12A-fm-w9I">
-                                                                                        <rect key="frame" x="233" y="101" width="43" height="16"/>
+                                                                                        <rect key="frame" x="233" y="98" width="43" height="16"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Actual" id="jXL-TG-Ia0">
                                                                                             <font key="font" usesAppearanceFont="YES"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1775,7 +1775,7 @@
                                                                                         </textFieldCell>
                                                                                     </textField>
                                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Gx-DK-EHv">
-                                                                                        <rect key="frame" x="120" y="100" width="83" height="18"/>
+                                                                                        <rect key="frame" x="120" y="98" width="83" height="18"/>
                                                                                         <buttonCell key="cell" type="check" title="Expected" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EaJ-ef-Zjv">
                                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                             <font key="font" metaFont="system"/>
@@ -1784,15 +1784,15 @@
                                                                                             <action selector="expectedOutputButtonClicked:" target="7Fx-zI-8ri" id="278-CJ-yxg"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CRF-UA-R26">
-                                                                                        <rect key="frame" x="279" y="101" width="16" height="16"/>
-                                                                                    </progressIndicator>
-                                                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LKW-Gg-kDn">
-                                                                                        <rect key="frame" x="44" y="93" width="30" height="23"/>
+                                                                                    <button toolTip="Run (Without Compiling)" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LKW-Gg-kDn">
+                                                                                        <rect key="frame" x="44" y="94" width="30" height="23"/>
                                                                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Run" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gpG-sL-Qbf">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                             <font key="font" metaFont="system"/>
                                                                                         </buttonCell>
+                                                                                        <connections>
+                                                                                            <action selector="runTestPoint:" target="M8q-ws-1g9" id="Oym-9f-p3d"/>
+                                                                                        </connections>
                                                                                     </button>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8HE-cI-VzW">
                                                                                         <rect key="frame" x="8" y="99" width="35" height="16"/>
@@ -1802,36 +1802,60 @@
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
                                                                                     </textField>
+                                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qge-Ql-bin">
+                                                                                        <rect key="frame" x="277" y="98" width="8" height="14"/>
+                                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title=" " id="BUs-5Y-5Oe">
+                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                    </textField>
+                                                                                    <button toolTip="Run (Without Compiling)" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GCT-3B-fUJ">
+                                                                                        <rect key="frame" x="74" y="94" width="30" height="23"/>
+                                                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Terminal" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gPq-uY-sta">
+                                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                        </buttonCell>
+                                                                                        <connections>
+                                                                                            <action selector="runTestPoint:" target="M8q-ws-1g9" id="5tS-Sg-mMz"/>
+                                                                                        </connections>
+                                                                                    </button>
                                                                                 </subviews>
                                                                                 <constraints>
                                                                                     <constraint firstItem="aKA-e9-I2t" firstAttribute="width" secondItem="4NI-vf-Iva" secondAttribute="width" id="07q-We-ah0"/>
-                                                                                    <constraint firstItem="CRF-UA-R26" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="4" id="0Hc-lK-OVF"/>
-                                                                                    <constraint firstItem="7Gx-DK-EHv" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="4" id="3wg-by-jL0"/>
+                                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="347" id="3fp-1q-dkD"/>
+                                                                                    <constraint firstItem="7Gx-DK-EHv" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="6" id="3wg-by-jL0"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="hh9-vU-r0R" secondAttribute="bottom" constant="4" id="4pO-Kp-Xig"/>
-                                                                                    <constraint firstItem="aKA-e9-I2t" firstAttribute="top" secondItem="7Gx-DK-EHv" secondAttribute="bottom" constant="8" symbolic="YES" id="5fx-a9-tqd"/>
+                                                                                    <constraint firstItem="aKA-e9-I2t" firstAttribute="top" secondItem="7Gx-DK-EHv" secondAttribute="bottom" constant="6" id="5fx-a9-tqd"/>
                                                                                     <constraint firstItem="eld-aM-FHl" firstAttribute="leading" secondItem="7Fx-zI-8ri" secondAttribute="leading" constant="10" id="5rg-nc-9EI"/>
-                                                                                    <constraint firstItem="eld-aM-FHl" firstAttribute="top" secondItem="LKW-Gg-kDn" secondAttribute="bottom" constant="2" id="BOs-00-bsa"/>
+                                                                                    <constraint firstItem="Qge-Ql-bin" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="9" id="5zu-dc-yna"/>
+                                                                                    <constraint firstItem="eld-aM-FHl" firstAttribute="top" secondItem="LKW-Gg-kDn" secondAttribute="bottom" constant="3" id="BOs-00-bsa"/>
                                                                                     <constraint firstItem="7Gx-DK-EHv" firstAttribute="leading" secondItem="ecD-n6-9G9" secondAttribute="leading" id="D7t-og-DXm"/>
-                                                                                    <constraint firstItem="LKW-Gg-kDn" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="6" id="Dfk-ai-TFN"/>
+                                                                                    <constraint firstItem="LKW-Gg-kDn" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="5" id="Dfk-ai-TFN"/>
                                                                                     <constraint firstItem="8HE-cI-VzW" firstAttribute="leading" secondItem="eQt-ek-Ypk" secondAttribute="leading" id="ELz-5r-N9e"/>
-                                                                                    <constraint firstItem="CRF-UA-R26" firstAttribute="leading" secondItem="12A-fm-w9I" secondAttribute="trailing" constant="5" id="EqB-NW-3ww"/>
                                                                                     <constraint firstItem="12A-fm-w9I" firstAttribute="leading" secondItem="4NI-vf-Iva" secondAttribute="leading" id="LcQ-yO-nJy"/>
+                                                                                    <constraint firstItem="hh9-vU-r0R" firstAttribute="top" secondItem="Qge-Ql-bin" secondAttribute="bottom" constant="4" id="MVw-Rz-zqi"/>
+                                                                                    <constraint firstItem="hh9-vU-r0R" firstAttribute="top" secondItem="12A-fm-w9I" secondAttribute="bottom" constant="4" id="R64-cT-qI2"/>
                                                                                     <constraint firstItem="8HE-cI-VzW" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="6" id="T87-nX-1Wb"/>
-                                                                                    <constraint firstItem="hh9-vU-r0R" firstAttribute="top" secondItem="CRF-UA-R26" secondAttribute="bottom" constant="7" id="YeQ-TB-8uT"/>
+                                                                                    <constraint firstItem="Qge-Ql-bin" firstAttribute="leading" secondItem="12A-fm-w9I" secondAttribute="trailing" constant="5" id="V6M-hI-9GA"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="eld-aM-FHl" secondAttribute="bottom" constant="4" id="Yrt-xP-fx1"/>
+                                                                                    <constraint firstItem="eld-aM-FHl" firstAttribute="top" secondItem="GCT-3B-fUJ" secondAttribute="bottom" constant="3" id="Zlo-Lf-61I"/>
+                                                                                    <constraint firstItem="GCT-3B-fUJ" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="5" id="c6x-D6-ejl"/>
                                                                                     <constraint firstItem="eld-aM-FHl" firstAttribute="width" secondItem="ecD-n6-9G9" secondAttribute="width" id="cqU-QG-Gtq"/>
-                                                                                    <constraint firstItem="12A-fm-w9I" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="4" id="fFJ-xz-J75"/>
+                                                                                    <constraint firstItem="12A-fm-w9I" firstAttribute="top" secondItem="7Fx-zI-8ri" secondAttribute="top" constant="7" id="fFJ-xz-J75"/>
                                                                                     <constraint firstItem="aKA-e9-I2t" firstAttribute="leading" secondItem="eld-aM-FHl" secondAttribute="trailing" constant="10" id="gGU-Xy-JaJ"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="hh9-vU-r0R" secondAttribute="trailing" constant="10" id="gI4-Wz-m1y"/>
                                                                                     <constraint firstItem="hh9-vU-r0R" firstAttribute="leading" secondItem="aKA-e9-I2t" secondAttribute="trailing" constant="10" id="o8c-fz-Fp0"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="aKA-e9-I2t" secondAttribute="bottom" constant="4" id="sYe-l0-WJv"/>
                                                                                     <constraint firstItem="LKW-Gg-kDn" firstAttribute="leading" secondItem="8HE-cI-VzW" secondAttribute="trailing" constant="4" id="vtL-gH-Vtz"/>
+                                                                                    <constraint firstItem="GCT-3B-fUJ" firstAttribute="leading" secondItem="LKW-Gg-kDn" secondAttribute="trailing" constant="2" id="zcw-Nb-quJ"/>
                                                                                 </constraints>
                                                                                 <connections>
                                                                                     <outlet property="actualOutput" destination="4NI-vf-Iva" id="ZYm-gm-BVz"/>
                                                                                     <outlet property="expectedOutput" destination="ecD-n6-9G9" id="82G-CF-enx"/>
                                                                                     <outlet property="expectedOutputSwitchButton" destination="7Gx-DK-EHv" id="xOS-nr-CL2"/>
                                                                                     <outlet property="input" destination="eQt-ek-Ypk" id="7cH-GF-ciS"/>
+                                                                                    <outlet property="stateLabel" destination="Qge-Ql-bin" id="K2X-Hh-QTL"/>
                                                                                 </connections>
                                                                             </customView>
                                                                         </subviews>
@@ -2277,6 +2301,7 @@
         <image name="Project" width="512" height="512"/>
         <image name="Run" width="256" height="256"/>
         <image name="Submit" width="512" height="512"/>
+        <image name="Terminal" width="512" height="512"/>
         <image name="Test" width="1300" height="1300"/>
         <image name="error" width="256" height="256"/>
         <image name="warning" width="256" height="256"/>

@@ -27,6 +27,12 @@ class CDCompileResultAndDebugView: NSView {
     @IBOutlet weak var runView: CDTestPointRunView!
     @IBOutlet weak var watchVarsTableView: NSTableView!
     
+    
+    private var inputPipe: Pipe?
+    private var errorPipe: Pipe?
+    private var outputPipe: Pipe?
+    private var runProcess: Process?
+    
     var compileResult: CDCompileResult? {
         didSet {
             self.compileResultTableView.dataSource = self.compileResult
@@ -77,6 +83,77 @@ class CDCompileResultAndDebugView: NSView {
     
     @IBAction func sendInput(_ sender: Any?) {
         sendInput(self.commandTextField.stringValue)
+    }
+    
+    @IBAction func runTestPoint(_ sender: Any?) {
+        
+        guard let name = (self.window?.windowController?.document as? NSDocument)?.fileURL?.deletingPathExtension().path else {
+            return
+        }
+        
+        if !FileManager.default.fileExists(atPath: name) {
+            (self.window?.windowController?.document as? CDCodeDocument)?.compileFile(nil)
+        }
+
+        self.runProcess = processForShellCommand(command: name)
+        inputPipe = Pipe()
+        errorPipe = Pipe()
+        outputPipe = Pipe()
+        inputPipe?.fileHandleForWriting.write( ((self.runView.input?.string ?? "") + "\nEOF\n").data(using: .utf8)! )
+        
+        runProcess?.standardInput = self.inputPipe
+        runProcess?.standardError = self.errorPipe
+        runProcess?.standardOutput = self.outputPipe
+        
+        self.runView?.stateLabel?.stringValue = "Running"
+        
+        let date = Date()
+        runProcess?.terminationHandler = { (process) in
+            DispatchQueue.main.async {
+                let data = self.outputPipe!.fileHandleForReading.readDataToEndOfFile()
+                self.runView.actualOutput?.string = String(data: data, encoding: .utf8) ?? "Error"
+                self.runView?.stateLabel?.stringValue = String(format: "%.2lfs ", -date.timeIntervalSinceNow)
+                
+                if !(self.runView.expectedOutput?.isHidden ?? true) {
+                    let linesA = self.runView.actualOutput!.string.components(separatedBy: "\n")
+                    let linesE = self.runView.expectedOutput!.string.components(separatedBy: "\n")
+                    var i = 0
+                    while i < linesA.count || i < linesE.count {
+                        let lhs: String
+                        let rhs: String
+                        if i >= linesA.count {
+                            lhs = ""
+                        } else {
+                            lhs = linesA[i].trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
+                        if i >= linesE.count {
+                            rhs = ""
+                        } else {
+                            rhs = linesE[i].trimmingCharacters(in: .whitespacesAndNewlines)
+                        }
+                        if lhs != rhs {
+                            self.runView.stateLabel?.stringValue += "WA"
+                            return
+                        }
+                        i += 1
+                    }
+                    self.runView.stateLabel?.stringValue += "AC"
+                }
+                
+            }
+        }
+        runProcess?.launch()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20.0) {
+            if self.runProcess?.isRunning ?? false {
+                self.runProcess?.terminate()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
+                    self.runView?.actualOutput?.string += "----------\n>20s, automatically stopped running."
+                }
+            }
+        }
+        
+        
     }
     
 }
