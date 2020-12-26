@@ -54,7 +54,7 @@ extension CDCodeDocument {
         }*/
         
         if alsoRuns && res.succeed {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.10) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.10) {
                 // let process = processForShellCommand(command: "cd \"\(path)\"\n" + "./\(out)")
                 // process.launch()
                 guard FileManager.default.fileExists(atPath: path) else {
@@ -68,17 +68,33 @@ extension CDCodeDocument {
         
     }
     
-    
-    
-    
-    @IBAction func compileFile(_ sender: Any?) {
+    @IBAction func runExecutableInTerminal(_ sender: Any?) {
         
         guard self.fileURL != nil else {
-            self.contentViewController?.showAlert("Error", "Please save your file first before compiling.")
+            self.contentViewController?.showAlert("Error", "Please save your file first before running or compiling.")
             return
         }
         
-        let res = CDCodeDocument.compileFile(fileURL: self.fileURL!, alsoRuns: true)
+        let path = self.fileURL!.deletingPathExtension()
+        let out = path.lastPathComponent
+        
+        guard FileManager.default.fileExists(atPath: path.path) else {
+            self.contentViewController?.showAlert("Error", "The executable file doesn't exist. Please compile the program again.")
+            return
+        }
+        CDRunProcessViewController.run(command: "cd \"\(path.deletingLastPathComponent().path)\"\n" + "./\(out)", name: fileURL!.deletingPathExtension().lastPathComponent)
+        
+    }
+    
+    @discardableResult
+    private func compileFile(runs: Bool) -> Bool {
+        
+        guard self.fileURL != nil else {
+            self.contentViewController?.showAlert("Error", "Please save your file first before compiling.")
+            return false
+        }
+        
+        let res = CDCodeDocument.compileFile(fileURL: self.fileURL!, alsoRuns: runs)
         
         let result = res.result
         result?.calculateErrorAndWarningCount()
@@ -103,9 +119,28 @@ extension CDCodeDocument {
         self.contentViewController?.consoleView?.compileResult = res.result
         self.contentViewController?.consoleView?.logView?.string = res.log
         
-        let vc = CDCompileResultMessageBox()
-        vc.isSuccess = (result?.succeed) ?? false
-        self.contentViewController?.presentAsSheet(vc)
+        if !(result?.succeed ?? true) {
+            let vc = CDCompileResultMessageBox()
+            vc.isSuccess = false
+            self.contentViewController?.presentAsSheet(vc)
+        }
+        
+        return result?.succeed ?? false
+        
+    }
+    
+    
+    @IBAction func compileFile(_ sender: Any?) {
+        
+        compileFile(runs: true)
+        
+    }
+    
+    @IBAction func compileAndRunTestPoint(_ sender: Any?) {
+        
+        if compileFile(runs: false) {
+            self.contentViewController.consoleView.runTestPoint(sender)
+        }
         
     }
     
@@ -123,33 +158,7 @@ extension CDCodeDocument {
     
     @IBAction func compileWithoutRunning(_ sender: Any?) {
         
-        guard self.fileURL != nil else {
-            self.contentViewController?.showAlert("Error", "Please save your file first before compiling.")
-            return
-        }
-        
-        let res = CDCodeDocument.compileFile(fileURL: self.fileURL!, alsoRuns: false)
-        
-        if res.result != nil {
-            for error in res.result!.errors {
-                switch error.type {
-                    case .error, .fatalError:
-                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsErrorLine()
-                    case .warning:
-                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].markAsWarningLine()
-                    case .note, .unknown:
-                        self.contentViewController.mainTextView.lineNumberView?.buttonsArray[error.line - 1].backgroundColor = .systemGray
-                }
-            }
-        }
-        
-        self.contentViewController?.consoleView?.compileResult = res.result
-        self.contentViewController?.consoleView?.logView?.string = res.log
-        
-        
-        let vc = CDCompileResultMessageBox()
-        vc.isSuccess = (res.result?.succeed) ?? false
-        self.contentViewController?.presentAsSheet(vc)
+        compileFile(runs: false)
         
     }
     
