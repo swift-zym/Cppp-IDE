@@ -115,7 +115,7 @@ extension SKInnerTextView: CDCodeCompletionViewControllerDelegate {
             let line = string.lineNumber(at: cursorIndex)
             let column = string.columnNumber(at: cursorIndex)
             
-            var completionResults = [CDCompletionResult]()
+            var completionResults = CDSnippetController.shared.completionItems
             
             let results = CKTranslationUnit(text: string, language: CKLanguageCPP).completionResults(forLine: UInt(line), column: UInt(column))
             

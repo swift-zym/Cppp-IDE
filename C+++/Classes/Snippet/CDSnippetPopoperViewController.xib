@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,20 +30,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="nkU-dH-6NV">
-                    <rect key="frame" x="-4" y="234" width="50" height="37"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="37" id="15O-jp-JgO"/>
-                        <constraint firstAttribute="width" constant="50" id="UAc-Jd-0Vc"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Code" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="R6w-Rh-sJs">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="changeImage:" target="-2" id="XyA-gs-50x"/>
-                    </connections>
-                </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="heX-fl-BNu" customClass="SKSyntaxTextView" customModule="C___" customModuleProvider="target">
                     <rect key="frame" x="12" y="53" width="275" height="179"/>
                 </customView>
@@ -57,14 +43,28 @@
                         <action selector="addToCode:" target="-2" id="aCD-0P-njN"/>
                     </connections>
                 </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="nkU-dH-6NV">
+                    <rect key="frame" x="13" y="239" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="15O-jp-JgO"/>
+                        <constraint firstAttribute="width" constant="28" id="UAc-Jd-0Vc"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Code" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="R6w-Rh-sJs">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeImage:" target="-2" id="XyA-gs-50x"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="heX-fl-BNu" firstAttribute="top" secondItem="nkU-dH-6NV" secondAttribute="bottom" constant="2" id="Alx-Rz-BZo"/>
+                <constraint firstItem="heX-fl-BNu" firstAttribute="top" secondItem="nkU-dH-6NV" secondAttribute="bottom" constant="7" id="Alx-Rz-BZo"/>
                 <constraint firstItem="MlQ-AU-NIG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="199" id="Bp9-tI-PNH"/>
                 <constraint firstAttribute="trailing" secondItem="heX-fl-BNu" secondAttribute="trailing" constant="11" id="JEY-8H-JdH"/>
                 <constraint firstItem="heX-fl-BNu" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="12" id="L40-v9-tmK"/>
-                <constraint firstItem="nkU-dH-6NV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="-4" id="bo5-EY-lww"/>
-                <constraint firstItem="nkU-dH-6NV" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="eHL-al-0JI"/>
+                <constraint firstItem="nkU-dH-6NV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="13" id="bo5-EY-lww"/>
+                <constraint firstItem="nkU-dH-6NV" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="11" id="eHL-al-0JI"/>
                 <constraint firstItem="MlQ-AU-NIG" firstAttribute="top" secondItem="heX-fl-BNu" secondAttribute="bottom" constant="13" id="hIj-Pl-6GB"/>
                 <constraint firstAttribute="bottom" secondItem="MlQ-AU-NIG" secondAttribute="bottom" constant="20" id="pFv-xU-wjl"/>
             </constraints>
@@ -72,6 +72,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="Code" width="160" height="170"/>
+        <image name="Code" width="512" height="512"/>
     </resources>
 </document>

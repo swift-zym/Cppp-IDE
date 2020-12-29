@@ -924,7 +924,7 @@
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XJK-Zo-0vV">
-                                                                                    <rect key="frame" x="44" y="10" width="153" height="16"/>
+                                                                                    <rect key="frame" x="38" y="10" width="153" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Code Snippet Title" id="G9h-NB-U7y">
                                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -932,22 +932,22 @@
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lzS-xs-Evn">
-                                                                                    <rect key="frame" x="3" y="0.0" width="35" height="35"/>
+                                                                                    <rect key="frame" x="5" y="4" width="28" height="28"/>
                                                                                     <constraints>
-                                                                                        <constraint firstAttribute="height" constant="35" id="9LM-1b-A2f"/>
-                                                                                        <constraint firstAttribute="width" constant="35" id="lLV-4K-gez"/>
+                                                                                        <constraint firstAttribute="height" constant="28" id="9LM-1b-A2f"/>
+                                                                                        <constraint firstAttribute="width" constant="28" id="lLV-4K-gez"/>
                                                                                     </constraints>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Code" id="p0N-HX-2ze"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <constraints>
-                                                                                <constraint firstItem="lzS-xs-Evn" firstAttribute="top" secondItem="l9h-Xv-E9p" secondAttribute="top" id="Q2U-Kr-R39"/>
-                                                                                <constraint firstItem="lzS-xs-Evn" firstAttribute="leading" secondItem="l9h-Xv-E9p" secondAttribute="leading" constant="3" id="WYp-0B-Hd9"/>
+                                                                                <constraint firstItem="lzS-xs-Evn" firstAttribute="top" secondItem="l9h-Xv-E9p" secondAttribute="top" constant="3" id="Q2U-Kr-R39"/>
+                                                                                <constraint firstItem="lzS-xs-Evn" firstAttribute="leading" secondItem="l9h-Xv-E9p" secondAttribute="leading" constant="5" id="WYp-0B-Hd9"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="XJK-Zo-0vV" secondAttribute="bottom" constant="10" id="cU8-hl-fvw"/>
                                                                                 <constraint firstItem="XJK-Zo-0vV" firstAttribute="top" secondItem="l9h-Xv-E9p" secondAttribute="top" constant="9" id="ggU-Ay-YOV"/>
-                                                                                <constraint firstItem="XJK-Zo-0vV" firstAttribute="leading" secondItem="lzS-xs-Evn" secondAttribute="trailing" constant="8" symbolic="YES" id="hgl-hn-iDQ"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="lzS-xs-Evn" secondAttribute="bottom" id="mn9-YZ-Ipt"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="XJK-Zo-0vV" secondAttribute="trailing" constant="2" id="vfw-VE-al3"/>
+                                                                                <constraint firstItem="XJK-Zo-0vV" firstAttribute="leading" secondItem="lzS-xs-Evn" secondAttribute="trailing" constant="7" id="hgl-hn-iDQ"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="lzS-xs-Evn" secondAttribute="bottom" constant="4" id="mn9-YZ-Ipt"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="XJK-Zo-0vV" secondAttribute="trailing" constant="8" id="vfw-VE-al3"/>
                                                                             </constraints>
                                                                             <connections>
                                                                                 <outlet property="imageView" destination="lzS-xs-Evn" id="YTa-w1-DRW"/>
@@ -2300,7 +2300,7 @@
     </scenes>
     <resources>
         <image name="AppIcon" width="128" height="128"/>
-        <image name="Code" width="160" height="170"/>
+        <image name="Code" width="512" height="512"/>
         <image name="Debug" width="1100" height="1100"/>
         <image name="Folder" width="512" height="512"/>
         <image name="HideLeftSidebar" width="256" height="256"/>

@@ -12,7 +12,18 @@ fileprivate var _sharedController = CDSnippetController()
 
 class CDSnippetController: NSObject {
     
-    var snippets: [CDSnippet] = []
+    private(set) var snippets: [CDSnippet] = [] {
+        didSet {
+            self.completionItems = []
+            for item in self.snippets {
+                if item.completion != nil {
+                    self.completionItems.append(CDCompletionResult(snippet: item))
+                }
+            }
+        }
+    }
+    
+    var completionItems: [CDCompletionResult] = []
     
     private static let archivePath = FileManager().urls(for: .libraryDirectory, in: .userDomainMask).first!.appendingPathComponent("C+++").appendingPathComponent("Snippets")
     
@@ -34,7 +45,7 @@ class CDSnippetController: NSObject {
         } else {
             sampleSnippets.forEach {
                 item in
-                self.snippets.append( CDSnippet(title: item.key, image: #imageLiteral(resourceName: "Code"), code: item.value) )
+                self.snippets.append( CDSnippet(title: item.key, image: #imageLiteral(resourceName: "Code"), code: item.value, completion: item.key.components(separatedBy: .whitespaces).first?.lowercased()) )
             }
             NSKeyedArchiver.archiveRootObject(self.snippets, toFile: CDSnippetController.archivePath.path)
         }

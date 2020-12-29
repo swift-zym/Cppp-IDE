@@ -24,6 +24,7 @@ class CDCompletionResult: NSObject {
         case function = 0x05
         case variable = 0x06
         case preprocessing = 0x07
+        case snippet = 0x08
         case other = 0xFF
         
         static func resultType(forCKCursorKind kind: CKCursorKind) -> ResultType {
@@ -59,6 +60,9 @@ class CDCompletionResult: NSObject {
     
     var attributedString: NSAttributedString {
         let attributedString = NSMutableAttributedString(string: self.textForDisplay, attributes: [.font: NSFont(name: CDSettings.fontName , size: 12.0)!])
+        if self.type == .snippet {
+            return attributedString
+        }
         for i in self.matchedRanges {
             attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: i)
         }
@@ -76,6 +80,7 @@ class CDCompletionResult: NSObject {
             case .typealias: return NSImage(named: "Typealias")
             case .struct: return NSImage(named: "Struct")
             case .variable: return NSImage(named: "Variable")
+            case .snippet: return NSImage(named: "Code")
             default: return nil
         }
         
@@ -83,6 +88,15 @@ class CDCompletionResult: NSObject {
     
     var completionString: String {
         return self.typedText + self.otherTexts.joined(separator: "")
+    }
+    
+    init(snippet: CDSnippet) {
+        
+        self.typedText = snippet.completion ?? ""
+        type = .snippet
+        textForDisplay = "\(snippet.title) - Code Snippet"
+        otherTexts = [snippet.code]
+        
     }
     
     init(clangKitCompletionResult _result: CKCompletionResult) {
