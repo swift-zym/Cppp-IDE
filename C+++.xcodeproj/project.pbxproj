@@ -287,7 +287,7 @@
 		1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavannaKit+CodeCompletion.swift"; sourceTree = "<group>"; };
 		1899D9242526B4EF00EE5780 /* CDMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainWindow.swift; sourceTree = "<group>"; };
 		18B1856F24638B2A00B579AD /* CDSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippet.swift; sourceTree = "<group>"; };
-		18B185712463B32400B579AD /* CDSnippetPopoperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetPopoperViewController.swift; sourceTree = "<group>"; };
+		18B185712463B32400B579AD /* CDSnippetPopoperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetPopoperViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		18B185722463B32400B579AD /* CDSnippetPopoperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDSnippetPopoperViewController.xib; sourceTree = "<group>"; };
 		18B1857E2465AB2E00B579AD /* CDCompletionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompletionResult.swift; sourceTree = "<group>"; };
 		18B185902469608B00B579AD /* CDProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDProjectDocument.swift; sourceTree = "<group>"; };

@@ -58,7 +58,7 @@ class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NS
         
         let vc = CDSnippetPopoperViewController()
         let current = CDSnippetController.shared.snippets[tableView.clickedRow]
-        vc.setup(title: current.title, image: current.image, code: current.code, isEditable: false)
+        vc.setup(title: current.title, image: current.image, code: current.code, completion: current.completion ?? "", isEditable: false, index: tableView.clickedRow)
         vc.openInPopover(relativeTo: tableView.view(atColumn: 0, row: tableView.clickedRow, makeIfNecessary: true)!.bounds, of: tableView.view(atColumn: 0, row: tableView.clickedRow, makeIfNecessary: true)!, preferredEdge: .maxX)
         
     }
@@ -84,7 +84,7 @@ class CDSnippetTableViewDataSource: NSObject, CDLeftSidebarTableViewDelegate, NS
     
     @objc func showAddSnippetPopover(_ sender: Any?) {
         let vc = CDSnippetPopoperViewController()
-        vc.setup(title: "Snippet Title", image: #imageLiteral(resourceName: "Code"), code: "Code\n", isEditable: true)
+        vc.setup(title: "Snippet Title", image: #imageLiteral(resourceName: "Code"), code: "Code\n", completion: "", isEditable: true, index: -1)
         vc.openInPopover(relativeTo: GlobalMainWindowController.mainViewController.leftSidebarTableView.bounds, of: GlobalMainWindowController.mainViewController.leftSidebarTableView, preferredEdge: .maxX)
         
     }

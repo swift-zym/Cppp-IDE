@@ -20,6 +20,7 @@ class CDSnippetController: NSObject {
                     self.completionItems.append(CDCompletionResult(snippet: item))
                 }
             }
+            GlobalMainWindowController.mainViewController.leftSidebarTableView.reloadData()
         }
     }
     
@@ -53,29 +54,49 @@ class CDSnippetController: NSObject {
     
     func add(snippet: CDSnippet) {
         self.snippets.append(snippet)
-        NSKeyedArchiver.archiveRootObject(self.snippets, toFile: CDSnippetController.archivePath.path)
-        GlobalMainWindowController.mainViewController.leftSidebarTableView.reloadData()
+        select(index: self.snippets.count - 1)
     }
     
     func remove(at index: Int) {
+        let sel = GlobalMainWindowController.mainViewController.leftSidebarTableView.selectedRow
         self.snippets.remove(at: index)
         NSKeyedArchiver.archiveRootObject(self.snippets, toFile: CDSnippetController.archivePath.path)
+        if sel - 1 >= 0 && sel - 1 < self.snippets.count {
+            select(index: sel - 1)
+        } else {
+            if self.snippets.count > 0 {
+                select(index: 1)
+            }
+        }
     }
     
     func moveSnippetUp(index: Int) {
         let newIndex = index == 0 ? 0 : index - 1
         snippets.swapAt(index, newIndex)
+        select(index: newIndex)
         NSKeyedArchiver.archiveRootObject(self.snippets, toFile: CDSnippetController.archivePath.path)
     }
     
     func moveSnippetDown(index: Int) {
         let newIndex = index == self.snippets.count - 1 ? self.snippets.count - 1 : index + 1
         snippets.swapAt(index, newIndex)
+        select(index: newIndex)
         NSKeyedArchiver.archiveRootObject(self.snippets, toFile: CDSnippetController.archivePath.path)
     }
     
+    func updateSnippet(index: Int, new: CDSnippet) {
+        self.snippets[index] = new
+        select(index: index)
+        NSKeyedArchiver.archiveRootObject(self.snippets, toFile: CDSnippetController.archivePath.path)
+    }
+    
+    
     class var shared: CDSnippetController {
         return _sharedController
+    }
+    
+    private func select(index: Int) {
+        GlobalMainWindowController.mainViewController.leftSidebarTableView.selectRowIndexes(IndexSet([index]), byExtendingSelection: false)
     }
     
 }

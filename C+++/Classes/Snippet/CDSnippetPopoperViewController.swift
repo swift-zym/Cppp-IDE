@@ -19,10 +19,13 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
     @IBOutlet weak var textView: SKSyntaxTextView!
     @IBOutlet weak var imageView: NSButton!
     @IBOutlet weak var addToCodeButton: NSButton!
+    @IBOutlet weak var editButton: NSButton!
+    @IBOutlet weak var completionTextField: NSTextField!
     
     public var imageNameIndex: Int = 0
+    private var snippetIndex: Int = 0
     private var popover: NSPopover!
-    var isEditable: Bool = false
+    private(set) var isEditable: Bool = false
     
     private lazy var theme = SKDefaultSourceCodeTheme()
     private lazy var lexer = CDCppLexer()
@@ -38,7 +41,7 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
     }
     
     @objc func addItem() {
-        CDSnippetController.shared.add(snippet: CDSnippet(title: self.titleLabel.stringValue, image: self.imageView.image, code: self.textView.text))
+        CDSnippetController.shared.add(snippet: CDSnippet(title: self.titleLabel.stringValue, image: self.imageView.image, code: self.textView.text, completion: self.completionTextField.stringValue))
         self.popover?.close()
     }
     
@@ -53,6 +56,32 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
         self.imageView.image = NSImage(named: imageNames[imageNameIndex])!
         
     }
+    
+    @IBAction func editOrDone(_ sender: NSButton) {
+        
+        if isEditable {
+            isEditable = false
+            self.titleLabel.isEditable = false
+            self.textView.textView.isEditable = false
+            self.completionTextField.isEditable = false
+            self.titleLabel.resignFirstResponder()
+            self.editButton.isBordered = false
+            self.editButton.imagePosition = .imageOnly
+            CDSnippetController.shared.updateSnippet(
+                index: self.snippetIndex,
+                new: CDSnippet(title: self.titleLabel.stringValue, image: self.imageView.image, code: self.textView.text, completion: self.completionTextField.stringValue)
+            )
+        } else {
+            isEditable = true
+            self.titleLabel.isEditable = true
+            self.textView.textView.isEditable = true
+            self.completionTextField.isEditable = true
+            self.titleLabel.becomeFirstResponder()
+            self.editButton.isBordered = true
+            self.editButton.imagePosition = .noImage
+        }
+        
+    }
 
     /** Setup the view controller.
     - parameter title: The title.
@@ -61,7 +90,7 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
     - parameter mode: Whether it is editable.
     - returns: none
     */
-    func setup(title: String, image: NSImage?, code: String, isEditable: Bool) {
+    func setup(title: String, image: NSImage?, code: String, completion: String, isEditable: Bool, index: Int) {
         
         self.loadView()
         self.titleLabel.stringValue = title
@@ -70,14 +99,17 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
         self.textView.text = code
         self.imageView.image = image
         self.isEditable = isEditable
+        self.snippetIndex = index
         
         self.textView.textView.isEditable = isEditable
         
-        if self.isEditable == true {
+        if isEditable {
             
+            self.editButton.isHidden = true
             self.titleLabel.isEditable = true
-            self.addToCodeButton.title = "Add Snippet"
-            self.addToCodeButton.action = #selector(addItem)
+            self.textView.textView.isEditable = true
+            self.completionTextField.isEditable = true
+            self.titleLabel.becomeFirstResponder()
             
         }
         

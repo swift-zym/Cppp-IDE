@@ -53,6 +53,9 @@ class CDSnippet: NSObject, NSCoding {
         self.title = title!
         self.code = code!
         self.image = image
+        if completion?.trimmingCharacters(in: .whitespacesAndNewlines) == nil {
+            self.completion = nil
+        }
         self.completion = completion
         
     }
