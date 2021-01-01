@@ -87,6 +87,9 @@ class CDCompletionResult: NSObject {
     }
     
     var completionString: String {
+        if self.type == .snippet {
+            return self.otherTexts.first!
+        }
         return self.typedText + self.otherTexts.joined(separator: "")
     }
     

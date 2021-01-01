@@ -87,12 +87,12 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E4R-d7-tFf">
-                    <rect key="frame" x="228" y="240" width="60" height="26"/>
+                    <rect key="frame" x="234" y="240" width="59" height="23"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="59.5" id="4Co-4c-4AL"/>
-                        <constraint firstAttribute="height" constant="20" id="mKk-yG-piw"/>
+                        <constraint firstAttribute="width" constant="57" id="4Co-4c-4AL"/>
+                        <constraint firstAttribute="height" constant="20" id="r0C-h7-Wdb"/>
                     </constraints>
-                    <buttonCell key="cell" type="bevel" title="Done" bezelStyle="rounded" image="NSTouchBarComposeTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="vtY-Ln-Ic5">
+                    <buttonCell key="cell" type="roundTextured" title="Done" bezelStyle="texturedRounded" image="NSTouchBarComposeTemplate" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vtY-Ln-Ic5">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -104,8 +104,8 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="74a-1V-x1L" secondAttribute="trailing" constant="11" id="0Mb-2V-D3u"/>
                 <constraint firstItem="74a-1V-x1L" firstAttribute="top" secondItem="heX-fl-BNu" secondAttribute="bottom" constant="9" id="33s-Ys-xsl"/>
-                <constraint firstAttribute="trailing" secondItem="E4R-d7-tFf" secondAttribute="trailing" constant="11" id="8Wu-wc-WHw"/>
-                <constraint firstItem="E4R-d7-tFf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="15.5" id="8pe-5m-uOC"/>
+                <constraint firstAttribute="trailing" secondItem="E4R-d7-tFf" secondAttribute="trailing" constant="6" id="8Wu-wc-WHw"/>
+                <constraint firstItem="E4R-d7-tFf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="8pe-5m-uOC"/>
                 <constraint firstItem="74a-1V-x1L" firstAttribute="leading" secondItem="10U-cR-1u1" secondAttribute="trailing" constant="10" id="AYt-ZN-bbv"/>
                 <constraint firstItem="heX-fl-BNu" firstAttribute="top" secondItem="nkU-dH-6NV" secondAttribute="bottom" constant="9" id="Alx-Rz-BZo"/>
                 <constraint firstItem="MlQ-AU-NIG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="199" id="Bp9-tI-PNH"/>

@@ -67,6 +67,7 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
             self.titleLabel.resignFirstResponder()
             self.editButton.isBordered = false
             self.editButton.imagePosition = .imageOnly
+            self.addToCodeButton.isHidden = false
             CDSnippetController.shared.updateSnippet(
                 index: self.snippetIndex,
                 new: CDSnippet(title: self.titleLabel.stringValue, image: self.imageView.image, code: self.textView.text, completion: self.completionTextField.stringValue)
@@ -78,6 +79,7 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
             self.completionTextField.isEditable = true
             self.titleLabel.becomeFirstResponder()
             self.editButton.isBordered = true
+            self.addToCodeButton.isHidden = true
             self.editButton.imagePosition = .noImage
         }
         
@@ -100,6 +102,8 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
         self.imageView.image = image
         self.isEditable = isEditable
         self.snippetIndex = index
+        self.editButton.imagePosition = .imageOnly
+        self.editButton.isBordered = false
         
         self.textView.textView.isEditable = isEditable
         
@@ -110,6 +114,8 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
             self.textView.textView.isEditable = true
             self.completionTextField.isEditable = true
             self.titleLabel.becomeFirstResponder()
+            self.addToCodeButton.title = "Done"
+            self.addToCodeButton.action = #selector(addItem)
             
         }
         
