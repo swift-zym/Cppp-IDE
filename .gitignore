@@ -4,3 +4,6 @@ C+++ Test.playground/Contents.swift
 C+++ Test.playground/contents.xcplayground
 C+++ Test.playground/timeline.xctimeline
 LLVM/*
+SwiftLSPClient.framework/*
+SwiftTermMac.framework/*
+clangd

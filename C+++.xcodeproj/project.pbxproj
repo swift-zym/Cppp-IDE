@@ -135,6 +135,9 @@
 		18CDFAE3251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */; };
 		18CDFAE5251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */; };
 		18DA027F258F9AEB001B2017 /* CDTestPointRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA027E258F9AEB001B2017 /* CDTestPointRunView.swift */; };
+		18DA029A25A15F08001B2017 /* SwiftLSPClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA029925A15F08001B2017 /* SwiftLSPClient.framework */; };
+		18DA029B25A15F08001B2017 /* SwiftLSPClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA029925A15F08001B2017 /* SwiftLSPClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		18DA029E25A15F4D001B2017 /* CDLanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA029D25A15F4D001B2017 /* CDLanguageServer.swift */; };
 		18E17EBB24A809D200392009 /* CDCodeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E17EB924A809D200392009 /* CDCodeCompletionViewController.swift */; };
 		18E17EBC24A809D200392009 /* CDCodeCompletionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E17EBA24A809D200392009 /* CDCodeCompletionViewController.xib */; };
 		18E17F0E24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E17F0D24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift */; };
@@ -165,6 +168,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				18DA029B25A15F08001B2017 /* SwiftLSPClient.framework in Embed Frameworks */,
 				18B4C3692552AE95003C6E3B /* SwiftTermMac.framework in Embed Frameworks */,
 				181F2B9B24AB558500C4B217 /* libclang.dylib in Embed Frameworks */,
 			);
@@ -320,6 +324,8 @@
 		18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+LeftSidebar.swift"; sourceTree = "<group>"; };
 		18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDRecentFilesTableViewDataSource.swift; sourceTree = "<group>"; };
 		18DA027E258F9AEB001B2017 /* CDTestPointRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDTestPointRunView.swift; sourceTree = "<group>"; };
+		18DA029925A15F08001B2017 /* SwiftLSPClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftLSPClient.framework; sourceTree = "<group>"; };
+		18DA029D25A15F4D001B2017 /* CDLanguageServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServer.swift; sourceTree = "<group>"; };
 		18E17EB924A809D200392009 /* CDCodeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeCompletionViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		18E17EBA24A809D200392009 /* CDCodeCompletionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDCodeCompletionViewController.xib; sourceTree = "<group>"; };
 		18E17F0D24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeCompletionViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DA029A25A15F08001B2017 /* SwiftLSPClient.framework in Frameworks */,
 				18B4C3682552AE94003C6E3B /* SwiftTermMac.framework in Frameworks */,
 				181F2B9A24AB557D00C4B217 /* libclang.dylib in Frameworks */,
 			);
@@ -386,6 +393,7 @@
 		181F2B9824AB557D00C4B217 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18DA029925A15F08001B2017 /* SwiftLSPClient.framework */,
 				18B4C3672552AE94003C6E3B /* SwiftTermMac.framework */,
 				181F2B9924AB557D00C4B217 /* libclang.dylib */,
 			);
@@ -526,6 +534,7 @@
 				18B185752464EE9200B579AD /* Snippet */,
 				18B185802466D9B100B579AD /* Completion */,
 				183BF3C824288043007AF6AC /* Edit */,
+				18DA029C25A15F2E001B2017 /* LSP */,
 				18FC02862490E5F2004551B1 /* Update */,
 			);
 			path = Classes;
@@ -741,6 +750,14 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		18DA029C25A15F2E001B2017 /* LSP */ = {
+			isa = PBXGroup;
+			children = (
+				18DA029D25A15F4D001B2017 /* CDLanguageServer.swift */,
+			);
+			path = LSP;
+			sourceTree = "<group>";
+		};
 		18E0B01C242C52650062049C /* Document */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,6 +954,7 @@
 				1887D239254E2D5E00CD0D7D /* CDFilesTableViewDataSource.swift in Sources */,
 				1868F16124E914C50077FD8D /* CDProjectNewFileChooseTypeViewController.swift in Sources */,
 				186E2A252580EB2C00B56961 /* CDProjectMainViewController+Appearance.swift in Sources */,
+				18DA029E25A15F4D001B2017 /* CDLanguageServer.swift in Sources */,
 				181F2BD324AC78C700C4B217 /* CKToken.m in Sources */,
 				181236A82557BE4C0058004D /* NSButton Extension.swift in Sources */,
 				182B3D742524A83500515375 /* SKInnerTextView.swift in Sources */,
