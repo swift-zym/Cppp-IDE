@@ -48,10 +48,10 @@ class CDLanguageServer: NSObject {
 
             self.server?.initialize(params: params, block: { (result) in
                 switch result {
-                case .failure(let error):
-                    NSLog("unable to initialize\n\(error)")
-                case .success(let value):
-                    NSLog("initialized")
+                    case .failure(let error):
+                        NSLog("unable to initialize\n\(error)")
+                    case .success(_):
+                        NSLog("initialized")
                 }
             })
             
@@ -60,8 +60,6 @@ class CDLanguageServer: NSObject {
     }
     
     func getCompletions(_ line: Int, _ character: Int, triggerString: String) {
-        
-        print("ok")
         
         if self.server != nil {
             
