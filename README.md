@@ -28,7 +28,7 @@ So if you want to use C+++, the best choice is to **wait** until the version 3.0
 
 - [x] Completely new user interface (*)
 - [ ] Use clangd as C++ language server (*)
-- [ ] Astyle
+- [x] Astyle
 - [x] Support running a test case after compiling instead of running in terminal
 - [x] Code minimap
 - [ ] Better debugging (*)
