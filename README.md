@@ -62,7 +62,18 @@ So if you want to use C+++, the best choice is to **wait** until the version 3.0
 - Of course, you can choose your compiler. You can choose between g++, gcc and clang. You can also set the compiler to "python", "swift" or other compilers, but that is not recommended. -->
 
 ## Update Log
-### 2020.8 Version 2.1.1 (208201)
+### 2021.? Version 3.0.0 (212300) **(Developing)**
+- [x] Completely new user interface (*)
+- [ ] Use clangd as C++ language server (*)
+- [ ] Astyle
+- [x] Support running a test case after compiling instead of running in terminal
+- [x] Code minimap
+- [ ] Better debugging (*)
+- [x] Search in C+++
+- [x] More settings
+- [ ] Speed up editing (*)
+- [ ] Support viewing and submitting questions on Online Judges like Luogu and Codeforces
+
 
 ### 2020.7 Version 2.1.0 (207210)
 - Adapt macOS 11.0 Big Sur
