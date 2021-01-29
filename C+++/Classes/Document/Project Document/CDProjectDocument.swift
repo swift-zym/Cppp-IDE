@@ -5,7 +5,9 @@
 //  Created by 23786 on 2020/5/11.
 //  Copyright © 2020 Zhu Yixuan. All rights reserved.
 //
+//  The project function is cancelled because OIers don't need to build projects.
 
+/*
 import Cocoa
 
 class CDProjectDocument: NSDocument {
@@ -130,3 +132,4 @@ class CDProjectDocument: NSDocument {
     }
     
 }
+*/

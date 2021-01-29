@@ -76,7 +76,7 @@
                                                             <action selector="newDocument:" target="Ady-hI-5gd" id="E7O-Tc-Ril"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="Project" keyEquivalent="N" id="bVd-hN-U9Y">
+                                                    <menuItem title="Project" hidden="YES" enabled="NO" keyEquivalent="N" id="bVd-hN-U9Y">
                                                         <connections>
                                                             <action selector="newProject:" target="Ady-hI-5gd" id="TT4-86-bTv"/>
                                                         </connections>

@@ -76,7 +76,7 @@
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).CDCodeDocument</string>
 		</dict>
-		<dict>
+		<!--<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>cpppproj</string>
@@ -95,7 +95,7 @@
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).CDProjectDocument</string>
-		</dict>
+		</dict>-->
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
