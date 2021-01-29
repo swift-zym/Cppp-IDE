@@ -12,24 +12,46 @@ extension CDMainViewController {
     
     @IBAction func changeSidebar(_ sender: NSButton) {
         
+        let menu = NSMenu(title: "Menu")
+        let a = menu.addItem(withTitle: "Open Files", action: #selector(showOpenFiles), keyEquivalent: "")
+        let b = menu.addItem(withTitle: "Snippets", action: #selector(showSnippets), keyEquivalent: "")
+        let c = menu.addItem(withTitle: "Diagnostics", action: #selector(showDiagnostics), keyEquivalent: "")
+        let d = menu.addItem(withTitle: "Recent Files", action: #selector(showRecentFiles), keyEquivalent: "")
+        
         switch self.leftSidebarMode {
             
             case .openFiles:
-                switchSidebarContentTo(mode: .snippets)
+                a.state = .on
             
             case .snippets:
-                switchSidebarContentTo(mode: .diagnostics)
+                b.state = .on
                 
             case .diagnostics:
-                switchSidebarContentTo(mode: .recentFiles)
+                c.state = .on
                 
             case .recentFiles:
-                switchSidebarContentTo(mode: .openFiles)
+                d.state = .on
             
         }
         
-        self.leftSidebarTableView.menu = (self.leftSidebarTableView.dataSource as? CDLeftSidebarTableViewDelegate)?.menu
+        menu.popUp(positioning: nil, at: sender.bounds.origin, in: sender)
         
+    }
+    
+    @objc func showOpenFiles() {
+        switchSidebarContentTo(mode: .openFiles)
+    }
+    
+    @objc func showSnippets() {
+        switchSidebarContentTo(mode: .snippets)
+    }
+    
+    @objc func showDiagnostics() {
+        switchSidebarContentTo(mode: .diagnostics)
+    }
+    
+    @objc func showRecentFiles() {
+        switchSidebarContentTo(mode: .recentFiles)
     }
     
     func switchSidebarContentTo(mode: LeftSidebarMode) {
