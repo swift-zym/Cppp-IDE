@@ -11,12 +11,13 @@ import Cocoa
 
 extension NSDocumentController {
     
+    /*
     @IBAction func newProject(_ sender: Any?) {
         
         let vc = CDCreateProjectViewController()
         NSApp.mainWindow?.contentViewController?.presentAsSheet(vc)
         
-    }
+    } */
     
     /*
     @IBAction func newGraphicalCodeDocument(_ sender: Any?) {

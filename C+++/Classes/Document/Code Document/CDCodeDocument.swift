@@ -160,6 +160,27 @@ class CDCodeDocument: NSDocument {
         }
     }
     
+    @IBAction func astyle(_ sender: Any?) {
+        
+        CDAstyleHelper.astyleFile(code: self.content.contentString) {
+            (res, success) in
+            
+            guard success else {
+                DispatchQueue.main.async {
+                    self.contentViewController.showAlert("Astyle Failed.", "");
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.contentViewController.mainTextView.textView.insertText(res!, replacementRange: NSMakeRange(0, self.contentViewController.mainTextView.text.count))
+                self.contentViewController.mainTextView.textView.selectAll(nil)
+            }
+            
+        }
+        
+    }
+    
     //override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
     //    return
     //}

@@ -121,6 +121,16 @@ class CDSettings: NSObject {
         }
     }
     
+    static var astyleOptions: String {
+        get {
+            return UserDefaults.standard.string(forKey: "astyleOptions") ?? "--style=java --attach-namespaces --attach-classes --attach-inlines --attach-extern-c --attach-closing-while --indent-col1-comments --break-blocks --pad-oper --pad-comma --pad-header --unpad-paren --align-pointer=name --break-one-line-headers --attach-return-type --attach-return-type-decl --convert-tabs --close-templates --max-code-length=110 --break-after-logical"
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "astyleOptions")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
+        }
+    }
+    
     class func setDefault() {
         
         UserDefaults.standard.setValue(true, forKey: "Initialized")
@@ -134,6 +144,7 @@ class CDSettings: NSObject {
         UserDefaults.standard.setValue("g++", forKey: "compiler")
         UserDefaults.standard.setValue("", forKey: "compileArguments")
         UserDefaults.standard.setValue("", forKey: "codeTooltip")
+        UserDefaults.standard.setValue("--style=java --attach-namespaces --attach-classes --attach-inlines --attach-extern-c --attach-closing-while --indent-col1-comments --break-blocks --pad-oper --pad-comma --pad-header --unpad-paren --align-pointer=name --break-one-line-headers --attach-return-type --attach-return-type-decl --convert-tabs --close-templates --max-code-length=110 --break-after-logical", forKey: "astyleOptions")
         
         UserDefaults.standard.setValue(CDCodeEditorTheme(isDarkMode: false).dictionaryData, forKey: "lightTheme")
         UserDefaults.standard.setValue(CDCodeEditorTheme(isDarkMode: true).dictionaryData, forKey: "darkTheme")

@@ -521,6 +521,25 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Astyle" id="weA-FS-D6N">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Astyle" systemMenu="window" id="qqQ-gh-Js2">
+                                    <items>
+                                        <menuItem title="Astyle Current File" keyEquivalent="/" id="57t-wh-pOA">
+                                            <connections>
+                                                <action selector="astyle:" target="Ady-hI-5gd" id="6A5-99-UTq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="rZc-Ni-uUF"/>
+                                        <menuItem title="Astyle Settings" id="zuY-ob-f3w">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="Fd6-Th-SJq"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
