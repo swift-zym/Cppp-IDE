@@ -2,24 +2,45 @@
 
 ----
 
-**C+++** is a simple C++ IDE for macOS. It's for **OI (Olympics in Informatics, 信息学奥赛)** learners to use. It's a little like _Dev-C++_ on Windows(which a lot of OIers use) but it is much easier to use.
+**C+++** is a simple C++ IDE for macOS. It's for **OI (Olympics in Informatics, 信息学奥赛) / Competitive Programming** learners to use. It's a little like _Dev-C++_ on Windows(which a lot of OIers use) but it is much easier to use.
 
 It is developed by a Grade-Seven student @23786.
 
 ![developing](https://img.shields.io/badge/C%2B%2B%2B%203.0-Developing-brightgreen.svg)![not recommended](https://img.shields.io/badge/C%2B%2B%2B%202.1.0-Not%20Recommended-orangered.svg)![language](https://img.shields.io/badge/Language-English-blue.svg)
 
+---
 
-## Note: Version 3.0 is being developed, but because it is a large update, so developing takes a lot of time. The new version will not be released until **macOS 11.0 Big Sur** is released. But **do not install version 2.1**, it is really unstable.
 
-## So if you want to use C+++, the best choice is to **wait** until the version 3.0 is released.
+**Note: Version 3.0 is being developed, but because it is a large update, so developing takes a lot of time. But **_do not install version 2.1_**, it is really unstable.**
 
-## Version 3.0 Screenshot Preview
+So if you want to use C+++, the best choice is to **wait** until the version 3.0 is released.
+
+----
+
+### Version 3.0 Screenshot Preview
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1gl60ssvjv0j30uc0lgwur.jpg)
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1gl60wqigcdj30z20u0qv5.jpg)
 
+----
 
-The website of this project is at [http://www.cpppide.ml](http://www.cpppide.ml).
+### Version 3.0 To-do
+
+- [x] Completely new user interface (*)
+- [ ] Use clangd as C++ language server (*)
+- [ ] Astyle
+- [x] Support running a test case after compiling instead of running in terminal
+- [x] Code minimap
+- [ ] Better debugging (*)
+- [x] Search in C+++
+- [x] More settings
+- [ ] Speed up editing (*)
+- [ ] Support viewing and submitting questions on Online Judges like Luogu and Codeforces
+
+----
+
+
+<!--The website of this project (version 2.1) is at [http://www.cpppide.ml](http://www.cpppide.ml).
 
 ----
 
@@ -38,7 +59,7 @@ The website of this project is at [http://www.cpppide.ml](http://www.cpppide.ml)
 
 ## Install g++
 - Open terminal, and type "g++", press enter, and there should be a dialog box "Install Xcode g++", install it, about 2~5 minutes later the installation process will be completed and then you can use C+++.
-- Of course, you can choose your compiler. You can choose between g++, gcc and clang. You can also set the compiler to "python", "swift" or other compilers, but that is not recommended.
+- Of course, you can choose your compiler. You can choose between g++, gcc and clang. You can also set the compiler to "python", "swift" or other compilers, but that is not recommended. -->
 
 ## Update Log
 ### 2020.8 Version 2.1.1 (208201)
