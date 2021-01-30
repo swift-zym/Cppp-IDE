@@ -8,41 +8,7 @@
 
 import Cocoa
 
-extension CDMainViewController/* : CDSettingsViewDelegate*/ {
-    
-    @IBAction func showSettingsView(_ sender: Any) {
-        
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        if let viewController =
-            storyboard.instantiateController(
-                withIdentifier: NSStoryboard.SceneIdentifier("CDSettingsViewController")) as? CDSettingsViewController {
-            // ViewController.delegate = self
-            self.presentAsSheet(viewController)
-        }
-        
-    }
-    
-    /*func settingsViewControllerDidSet() {
-        
-        // Theme
-        switch isDarkMode {
-            case false:
-                self.mainTextView.highlightr?.setTheme(to: CDSettings.darkThemeName)
-            case true:
-                self.mainTextView.highlightr?.setTheme(to: CDSettings.lightThemeName)
-        }
-        
-        // Font
-        self.mainTextView.highlightr?.theme.setCodeFont(CDSettings.font)
-        self.mainTextView.font = CDSettings.font
-        self.mainTextView.didChangeText()
-        
-        // In case of errors
-        changeAppearance(self)
-        changeAppearance(self)
-        
-    }*/
-    
+extension CDMainViewController {
     
     @objc func settingsDidChange(_ notification: NSNotification) {
         

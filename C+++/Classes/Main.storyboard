@@ -494,7 +494,7 @@
                             </menuItem>
                             <menuItem title="Run" id="v33-9z-u0i">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Run" id="nu4-Kq-FAj">
+                                <menu key="submenu" title="Run" autoenablesItems="NO" id="nu4-Kq-FAj">
                                     <items>
                                         <menuItem title="Compile and Run" keyEquivalent="C" id="wCv-IP-SA0">
                                             <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
@@ -521,21 +521,18 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Astyle" id="weA-FS-D6N">
+                            <menuItem title="Astyle" id="tlc-9N-LbD">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Astyle" systemMenu="window" id="qqQ-gh-Js2">
+                                <menu key="submenu" title="Astyle" id="7aI-f1-DHy">
                                     <items>
-                                        <menuItem title="Astyle Current File" keyEquivalent="/" id="57t-wh-pOA">
+                                        <menuItem title="Astyle Current File" keyEquivalent="/" id="ov9-X9-Jeb">
                                             <connections>
-                                                <action selector="astyle:" target="Ady-hI-5gd" id="6A5-99-UTq"/>
+                                                <action selector="astyle:" target="Ady-hI-5gd" id="QkA-af-Kn2"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="rZc-Ni-uUF"/>
-                                        <menuItem title="Astyle Settings" id="zuY-ob-f3w">
+                                        <menuItem isSeparatorItem="YES" id="1hc-oJ-VKJ"/>
+                                        <menuItem title="Astyle settings are in Preferences - Editor" enabled="NO" id="kde-5d-pis">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="Fd6-Th-SJq"/>
-                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>

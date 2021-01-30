@@ -8,12 +8,14 @@
 
 import Cocoa
 
-class CDEditorPreferencesViewController: NSViewController {
+class CDEditorPreferencesViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var showsCompletionList: NSButton!
     @IBOutlet weak var autoComplete: NSButton!
     @IBOutlet weak var displaysTooltip: NSButton!
     @IBOutlet weak var fontNameLabel: NSTextField!
+    @IBOutlet weak var astyleOptions: NSTextField!
+    @IBOutlet weak var astyleHelpLabel: NSTextField!
     
     @IBAction func chooseAnotherFont(_ sender: Any?) {
         
@@ -53,7 +55,22 @@ class CDEditorPreferencesViewController: NSViewController {
         self.autoComplete.setState(CDSettings.autoComplete)
         self.displaysTooltip.setState(CDSettings.displaysTooltipOfCode)
         self.fontNameLabel.stringValue = "Font: " + CDSettings.fontName + " Size: \(Int(CDSettings.fontSize))"
+        self.astyleOptions.stringValue = CDSettings.astyleOptions
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidAppear()
+        
+        let html = "View <a href=\"http://astyle.sourceforge.net/astyle.html\">Astyle documentation</a> for help."
+        let str = NSMutableAttributedString(html: html.data(using: .utf8)!, documentAttributes: nil)!
+        str.addAttributes([.font: NSFont.systemFont(ofSize: 13.0), .foregroundColor: NSColor.textColor], range: NSMakeRange(0, str.length))
+        self.astyleHelpLabel.attributedStringValue = str
+        
+    }
+    
+    func controlTextDidChange(_ obj: Notification) {
+        CDSettings.astyleOptions = self.astyleOptions.stringValue
     }
     
 }

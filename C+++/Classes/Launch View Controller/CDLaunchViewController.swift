@@ -44,15 +44,4 @@ class CDLaunchViewController: NSViewController {
         self.recentFilesTableView.dataSource = self.recentFilesDataSource
     }
     
-    @IBAction func showSettingsView(_ sender: Any?) {
-        
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        if let viewController =
-            storyboard.instantiateController(
-                 withIdentifier: NSStoryboard.SceneIdentifier("CDSettingsViewController")) as? CDSettingsViewController {
-            self.presentAsSheet(viewController)
-        }
-        
-    }
-    
 }
