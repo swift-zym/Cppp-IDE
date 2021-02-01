@@ -20,16 +20,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         
+        
+        CDSnippetController.shared.initialize()
+        if !CDSettings.isInitialized {
+            CDSettings.setDefault()
+        }
+        
         GlobalMainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "Document Window Controller") as? CDMainWindowController
         
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        CDSnippetController.shared.initialize()
-        if !CDSettings.isInitialized {
-            CDSettings.setDefault()
-        }
+        
         if CDSettings.checksUpdateAfterLaunching {
             NSApplication.shared.checkUpdate(alsoShowAlertWhenUpToDate: false)
         }

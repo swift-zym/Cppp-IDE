@@ -20,7 +20,7 @@ class CDSnippetController: NSObject {
                     self.completionItems.append(CDCompletionResult(snippet: item))
                 }
             }
-            GlobalMainWindowController.mainViewController.leftSidebarTableView.reloadData()
+            GlobalMainWindowController?.mainViewController.leftSidebarTableView.reloadData()
         }
     }
     

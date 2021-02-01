@@ -30,6 +30,9 @@ class CDThemePreferencesView: NSView, NSTableViewDataSource {
                 return NSAttributedString(string: "Preprocessor", attributes: [.font: CDSettings.font(ofSize: 14.0), .foregroundColor: self.theme.preprocessorColor])
             case 6:
                 return NSAttributedString(string: "String Literal", attributes: [.font: CDSettings.font(ofSize: 14.0), .foregroundColor: self.theme.stringColor])
+                
+            case 7:
+                return NSAttributedString(string: "Current Line Background", attributes: [.font: CDSettings.font(ofSize: 14.0), .backgroundColor: self.theme.currentLineColor])
             default: return nil
         }
     }
@@ -42,11 +45,11 @@ class CDThemePreferencesView: NSView, NSTableViewDataSource {
         // Member functions and variables
         // Preprocesscor
         // StringLiteral
-        return 7
+        // CurrentLineBackground
+        return 8
     }
     
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var backgroundColorWell: NSColorWell!
     private var clickedIndex = -1
     
     func setAppearance(isDarkMode mode: Bool) {
@@ -67,6 +70,7 @@ class CDThemePreferencesView: NSView, NSTableViewDataSource {
             case 4: NSColorPanel.shared.color = self.theme.identifierColor
             case 5: NSColorPanel.shared.color = self.theme.preprocessorColor
             case 6: NSColorPanel.shared.color = self.theme.stringColor
+            case 7: NSColorPanel.shared.color = self.theme.currentLineColor
             default: break
         }
         NSColorPanel.shared.makeKeyAndOrderFront(nil)
@@ -83,6 +87,7 @@ class CDThemePreferencesView: NSView, NSTableViewDataSource {
             case 4: self.theme.identifierColor = color
             case 5: self.theme.preprocessorColor = color
             case 6: self.theme.stringColor = color
+            case 7: self.theme.currentLineColor = color
             default: break
         }
         if self.mode {

@@ -14,9 +14,11 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
         if isDarkMode {
             self.codeColor = .white
             self.keywordColor = NSColor(red: 167/255, green: 210/255, blue: 1, alpha: 1.0)
+            self.currentLineColor = NSColor(red: 35/255, green: 37/255, blue: 43/255, alpha: 1.0)
         } else {
             self.codeColor = .black
             self.keywordColor = NSColor(red: 28/255, green: 171/255, blue: 1, alpha: 1.0)
+            self.currentLineColor = NSColor(red: 232/255, green: 242/255, blue: 1, alpha: 1.0)
         }
     }
     
@@ -33,6 +35,7 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
     var identifierColor = NSColor(red: 177/255, green: 111/255, blue: 253/255, alpha: 1.0)
     var keywordColor = NSColor(red: 100/255, green: 196/255, blue: 250/255, alpha: 1.0)
     var preprocessorColor = NSColor.orange
+    var currentLineColor = NSColor.controlHighlightColor
     
     public func color(for syntaxColorType: SKSourceCodeTokenType) -> Color {
         
@@ -72,7 +75,8 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
             "identifierColor": self.identifierColor.hexString,
             "keywordColor": self.keywordColor.hexString,
             "commentColor": self.commentColor.hexString,
-            "preprocessorColor": self.preprocessorColor.hexString
+            "preprocessorColor": self.preprocessorColor.hexString,
+            "currentLineColor": self.currentLineColor.hexString
         ]
     }
     
@@ -86,6 +90,7 @@ class CDCodeEditorTheme: NSObject, SKSourceCodeTheme {
         self.keywordColor = NSColor(hexString: dict["keywordColor"]!)
         self.commentColor = NSColor(hexString: dict["commentColor"]!)
         self.preprocessorColor = NSColor(hexString: dict["preprocessorColor"]!)
+        self.currentLineColor = NSColor(hexString: dict["currentLineColor"]!)
         
     }
     

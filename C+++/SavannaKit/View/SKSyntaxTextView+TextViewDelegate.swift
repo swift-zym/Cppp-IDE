@@ -9,13 +9,18 @@
 import Cocoa
 
 extension SKSyntaxTextView: SKInnerTextViewDelegate {
+    
+    var currentTheme: CDCodeEditorTheme {
+        return self.theme as! CDCodeEditorTheme
+    }
+    
 	
 	func didUpdateCursorFloatingState() {
 		
 		selectionDidChange()
 		
 	}
-	
+    
 }
 
 extension SKSyntaxTextView {
