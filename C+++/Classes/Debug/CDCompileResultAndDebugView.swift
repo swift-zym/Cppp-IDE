@@ -109,10 +109,23 @@ class CDCompileResultAndDebugView: NSView {
         
         let date = Date()
         runProcess?.terminationHandler = { (process) in
-            DispatchQueue.main.async {
+            
+            let string = String(format: "%.2lfs ", -date.timeIntervalSinceNow)
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                
+                if self.runView.stateLabel?.stringValue == "2.00s TLE" {
+                    return
+                }
+                
                 let data = self.outputPipe!.fileHandleForReading.readDataToEndOfFile()
                 self.runView.actualOutput?.string = String(data: data, encoding: .utf8) ?? "Error"
-                self.runView?.stateLabel?.stringValue = String(format: "%.2lfs ", -date.timeIntervalSinceNow)
+                self.runView.stateLabel?.stringValue = string
+                
+                if process.terminationStatus != 0 {
+                    self.runView.stateLabel?.stringValue += "RE"
+                    return
+                }
                 
                 if !(self.runView.expectedOutput?.isHidden ?? true) {
                     let linesA = self.runView.actualOutput!.string.components(separatedBy: "\n")
@@ -144,11 +157,12 @@ class CDCompileResultAndDebugView: NSView {
         }
         runProcess?.launch()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20.0) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
             if self.runProcess?.isRunning ?? false {
                 self.runProcess?.terminate()
+                self.runView.stateLabel?.stringValue = "2.00s TLE"
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
-                    self.runView?.actualOutput?.string += "----------\n>20s, automatically stopped running."
+                    self.runView?.actualOutput?.string += "----------\nAutomatically stopped running after 2 seconds."
                 }
             }
         }
