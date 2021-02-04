@@ -43,19 +43,58 @@ class SKInnerTextView: TextView {
         
         let paraRange = self.string.nsString.paragraphRange(for: self.selectedRange)
         let paraGlyphRange = self.layoutManager?.glyphRange(forCharacterRange: paraRange, actualCharacterRange: nil)
+        
         guard paraGlyphRange != nil && self.textContainer != nil else {
             return
         }
-        var paraRect = self.layoutManager?.boundingRect(forGlyphRange: paraGlyphRange!,
-                                                        in: self.textContainer!)
-        guard paraRect != nil else {
-            return
+        var paraRect = self.paragraphRect(inGlyphRange: paraGlyphRange!)
+        
+        if (hasExtraLine && self.string.count == selectedRange.location) {
+            paraRect = self.layoutManager?.extraLineFragmentRect ?? NSMakeRect(0, 0, 0, 0)
         }
         
-        paraRect?.size.width = self.frame.width
+        paraRect.size.width = self.frame.width
         self.innerDelegate?.currentTheme.currentLineColor.setFill()
-        paraRect?.fill()
+        paraRect.fill()
         self.needsDisplay = true
+        
+    }
+    
+    var hasExtraLine: Bool {
+        let str = self.string
+        let length = str.count
+        if length == 0 {
+            return true
+        }
+        let range = str.nsString.rangeOfComposedCharacterSequence(at: length - 1) // Unicode Line Separator (LSEP)
+        let end = str.nsString.substring(with: range)
+        let result = end.trimmingCharacters(in: .newlines)
+        return result.count == 0
+    }
+    
+    func paragraphRect(inGlyphRange paragraphGlyphRange: NSRange) -> NSRect {
+        
+        let layoutManager = self.layoutManager
+        let containerOrigin = textContainerOrigin
+        var lineGlyphRange = NSRange(location: 0, length: 0)
+        var paragraphRect = NSRect.zero
+        
+        // Iterate through the paragraph glyph range, line by line.
+        lineGlyphRange = NSRange(location: paragraphGlyphRange.location, length: 0)
+        while NSMaxRange(lineGlyphRange) < NSMaxRange(paragraphGlyphRange) {
+            // For each line, find the used rect and glyph range, and add the used rect to the paragraph rect.
+            let lineUsedRect = layoutManager?.lineFragmentUsedRect(forGlyphAt: lineGlyphRange.location, effectiveRange: &lineGlyphRange)
+            paragraphRect = NSUnionRect(paragraphRect, lineUsedRect ?? NSRect.zero)
+            lineGlyphRange = NSRange(location: NSMaxRange(lineGlyphRange), length: 0)
+        }
+
+        paragraphRect.size.width = self.bounds.size.width
+        
+        // Convert back from container to view coordinates, then draw the bubble.
+        paragraphRect.origin.x += containerOrigin.x
+        paragraphRect.origin.y += containerOrigin.y
+        
+        return paragraphRect
         
     }
     
