@@ -95,7 +95,7 @@ class CDCompileResultAndDebugView: NSView {
             (self.window?.windowController?.document as? CDCodeDocument)?.compileFile(nil)
         }
 
-        self.runProcess = processForShellCommand(command: name)
+        self.runProcess = processForShellCommand(command: name + " " + CDSettings.runArguments)
         inputPipe = Pipe()
         errorPipe = Pipe()
         outputPipe = Pipe()
@@ -114,7 +114,7 @@ class CDCompileResultAndDebugView: NSView {
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
                 
-                if self.runView.stateLabel?.stringValue == "2.00s TLE" {
+                if self.runView.stateLabel!.stringValue.contains("TLE") {
                     return
                 }
                 
@@ -157,12 +157,12 @@ class CDCompileResultAndDebugView: NSView {
         }
         runProcess?.launch()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + CDSettings.timeLimit) {
             if self.runProcess?.isRunning ?? false {
                 self.runProcess?.terminate()
-                self.runView.stateLabel?.stringValue = "2.00s TLE"
+                self.runView.stateLabel?.stringValue = String(format: "%.2lfs TLE", CDSettings.timeLimit)
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6) {
-                    self.runView?.actualOutput?.string += "----------\nAutomatically stopped running after 2 seconds."
+                    self.runView?.actualOutput?.string = "Time Limit Exceeded, automatically stopped running."
                 }
             }
         }
