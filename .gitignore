@@ -7,3 +7,4 @@ LLVM/*
 SwiftLSPClient.framework/*
 SwiftTermMac.framework/*
 clangd
+C+++Tests/*

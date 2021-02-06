@@ -37,11 +37,13 @@ class SKInnerTextView: TextView {
     override func drawBackground(in rect: NSRect) {
         super.drawBackground(in: rect)
         
-        guard self.selectedRange.length == 0 else {
+        let selectedRange = self.selectedRange
+        
+        guard selectedRange.length == 0 else {
             return
         }
         
-        let paraRange = self.string.nsString.paragraphRange(for: self.selectedRange)
+        let paraRange = self.string.nsString.paragraphRange(for: selectedRange)
         let paraGlyphRange = self.layoutManager?.glyphRange(forCharacterRange: paraRange, actualCharacterRange: nil)
         
         guard paraGlyphRange != nil && self.textContainer != nil else {
