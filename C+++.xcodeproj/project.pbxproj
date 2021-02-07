@@ -118,13 +118,17 @@
 		18CAC8D6252DA5E000B60F37 /* CDDebuggerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8D5252DA5E000B60F37 /* CDDebuggerDelegate.swift */; };
 		18CAC8D8252EDA7F00B60F37 /* CDDebugWatchVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8D7252EDA7F00B60F37 /* CDDebugWatchVar.swift */; };
 		18CAC8DC252F42B300B60F37 /* CDDebugger+NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CAC8DB252F42B300B60F37 /* CDDebugger+NSTableView.swift */; };
+		18CB5C7E25CE3ED900FC2E9D /* C___Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5C7D25CE3ED900FC2E9D /* C___Tests.swift */; };
+		18CB5CF725CF742000FC2E9D /* CDLanguageServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5CF625CF742000FC2E9D /* CDLanguageServerRequest.swift */; };
+		18CB5CFB25CF7DB900FC2E9D /* CDLanguageServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5CFA25CF7DB900FC2E9D /* CDLanguageServerResponse.swift */; };
+		18CB5CFE25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5CFD25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift */; };
 		18CDFAE1251780C900C3F05B /* CDSnippetTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */; };
 		18CDFAE3251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */; };
 		18CDFAE5251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */; };
 		18DA027F258F9AEB001B2017 /* CDTestPointRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA027E258F9AEB001B2017 /* CDTestPointRunView.swift */; };
 		18DA029A25A15F08001B2017 /* SwiftLSPClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA029925A15F08001B2017 /* SwiftLSPClient.framework */; };
 		18DA029B25A15F08001B2017 /* SwiftLSPClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA029925A15F08001B2017 /* SwiftLSPClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		18DA029E25A15F4D001B2017 /* CDLanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA029D25A15F4D001B2017 /* CDLanguageServer.swift */; };
+		18DA029E25A15F4D001B2017 /* CDLanguageServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA029D25A15F4D001B2017 /* CDLanguageServerClient.swift */; };
 		18E17EBB24A809D200392009 /* CDCodeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E17EB924A809D200392009 /* CDCodeCompletionViewController.swift */; };
 		18E17EBC24A809D200392009 /* CDCodeCompletionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E17EBA24A809D200392009 /* CDCodeCompletionViewController.xib */; };
 		18E17F0E24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E17F0D24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift */; };
@@ -137,6 +141,16 @@
 		18FC054B2487BA3600F33CE2 /* CDTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC05492487BA3600F33CE2 /* CDTestViewController.swift */; };
 		18FC054C2487BA3600F33CE2 /* CDTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FC054A2487BA3600F33CE2 /* CDTestViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18CB5C8025CE3ED900FC2E9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18B3C75C24272D9F00F4CA14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18B3C77C24282C1F00F4CA14;
+			remoteInfo = "C+++";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		186134A724A366F100AC9709 /* Embed App Extensions */ = {
@@ -294,12 +308,18 @@
 		18CAC8D5252DA5E000B60F37 /* CDDebuggerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDebuggerDelegate.swift; sourceTree = "<group>"; };
 		18CAC8D7252EDA7F00B60F37 /* CDDebugWatchVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDebugWatchVar.swift; sourceTree = "<group>"; };
 		18CAC8DB252F42B300B60F37 /* CDDebugger+NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDDebugger+NSTableView.swift"; sourceTree = "<group>"; };
+		18CB5C7B25CE3ED900FC2E9D /* C+++Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "C+++Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CB5C7D25CE3ED900FC2E9D /* C___Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "C___Tests.swift"; sourceTree = "<group>"; };
+		18CB5C7F25CE3ED900FC2E9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18CB5CF625CF742000FC2E9D /* CDLanguageServerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerRequest.swift; sourceTree = "<group>"; };
+		18CB5CFA25CF7DB900FC2E9D /* CDLanguageServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerResponse.swift; sourceTree = "<group>"; };
+		18CB5CFD25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerClientDelegate.swift; sourceTree = "<group>"; };
 		18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetTableViewDataSource.swift; sourceTree = "<group>"; };
 		18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+LeftSidebar.swift"; sourceTree = "<group>"; };
 		18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDRecentFilesTableViewDataSource.swift; sourceTree = "<group>"; };
 		18DA027E258F9AEB001B2017 /* CDTestPointRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDTestPointRunView.swift; sourceTree = "<group>"; };
 		18DA029925A15F08001B2017 /* SwiftLSPClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftLSPClient.framework; sourceTree = "<group>"; };
-		18DA029D25A15F4D001B2017 /* CDLanguageServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServer.swift; sourceTree = "<group>"; };
+		18DA029D25A15F4D001B2017 /* CDLanguageServerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerClient.swift; sourceTree = "<group>"; };
 		18E17EB924A809D200392009 /* CDCodeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeCompletionViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		18E17EBA24A809D200392009 /* CDCodeCompletionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDCodeCompletionViewController.xib; sourceTree = "<group>"; };
 		18E17F0D24A8D7AE00392009 /* CDCodeCompletionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCodeCompletionViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -321,6 +341,13 @@
 				1850533725A9B0D500CA6141 /* SwiftTermMac.framework in Frameworks */,
 				18DA029A25A15F08001B2017 /* SwiftLSPClient.framework in Frameworks */,
 				181F2B9A24AB557D00C4B217 /* libclang.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18CB5C7825CE3ED900FC2E9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +673,7 @@
 			children = (
 				180480A824474A0700CD0A4D /* README.md */,
 				18B3C77E24282C1F00F4CA14 /* C+++ */,
+				18CB5C7C25CE3ED900FC2E9D /* C+++Tests */,
 				18B3C76524272D9F00F4CA14 /* Products */,
 				181F2B9824AB557D00C4B217 /* Frameworks */,
 			);
@@ -655,6 +683,7 @@
 			isa = PBXGroup;
 			children = (
 				18B3C77D24282C1F00F4CA14 /* C+++.app */,
+				18CB5C7B25CE3ED900FC2E9D /* C+++Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -675,6 +704,15 @@
 			path = "C+++";
 			sourceTree = "<group>";
 		};
+		18CB5C7C25CE3ED900FC2E9D /* C+++Tests */ = {
+			isa = PBXGroup;
+			children = (
+				18CB5C7D25CE3ED900FC2E9D /* C___Tests.swift */,
+				18CB5C7F25CE3ED900FC2E9D /* Info.plist */,
+			);
+			path = "C+++Tests";
+			sourceTree = "<group>";
+		};
 		18CDFADF251780A400C3F05B /* Left Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,7 +728,10 @@
 		18DA029C25A15F2E001B2017 /* LSP */ = {
 			isa = PBXGroup;
 			children = (
-				18DA029D25A15F4D001B2017 /* CDLanguageServer.swift */,
+				18DA029D25A15F4D001B2017 /* CDLanguageServerClient.swift */,
+				18CB5CFD25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift */,
+				18CB5CF625CF742000FC2E9D /* CDLanguageServerRequest.swift */,
+				18CB5CFA25CF7DB900FC2E9D /* CDLanguageServerResponse.swift */,
 			);
 			path = LSP;
 			sourceTree = "<group>";
@@ -749,6 +790,24 @@
 			productReference = 18B3C77D24282C1F00F4CA14 /* C+++.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18CB5C7A25CE3ED900FC2E9D /* C+++Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18CB5C8425CE3ED900FC2E9D /* Build configuration list for PBXNativeTarget "C+++Tests" */;
+			buildPhases = (
+				18CB5C7725CE3ED900FC2E9D /* Sources */,
+				18CB5C7825CE3ED900FC2E9D /* Frameworks */,
+				18CB5C7925CE3ED900FC2E9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18CB5C8125CE3ED900FC2E9D /* PBXTargetDependency */,
+			);
+			name = "C+++Tests";
+			productName = "C+++Tests";
+			productReference = 18CB5C7B25CE3ED900FC2E9D /* C+++Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -756,13 +815,17 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CD;
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Zhu Yixuan";
 				TargetAttributes = {
 					18B3C77C24282C1F00F4CA14 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1140;
+					};
+					18CB5C7A25CE3ED900FC2E9D = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 18B3C77C24282C1F00F4CA14;
 					};
 				};
 			};
@@ -780,6 +843,7 @@
 			projectRoot = "";
 			targets = (
 				18B3C77C24282C1F00F4CA14 /* C+++ */,
+				18CB5C7A25CE3ED900FC2E9D /* C+++Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -804,6 +868,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18CB5C7925CE3ED900FC2E9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -817,6 +888,7 @@
 				181F2B9724AB490300C4B217 /* C+++-Bridging-Header.h in Sources */,
 				182B3D732524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift in Sources */,
 				184FE40324D5608F0093CC2B /* CDCodeDocument+Compile.swift in Sources */,
+				18CB5CFE25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift in Sources */,
 				182B3D722524A83500515375 /* SKSyntaxTextView.swift in Sources */,
 				1801DF6124D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift in Sources */,
 				181F2BD724AC78C700C4B217 /* CKTranslationUnit+Private.m in Sources */,
@@ -861,6 +933,7 @@
 				185CD64224CC639500A9511B /* CDSearchViewController.swift in Sources */,
 				181F2BD824AC78C700C4B217 /* CKDiagnostic.m in Sources */,
 				181B4F9024DE39F7000F3ED7 /* CDParser.swift in Sources */,
+				18CB5CF725CF742000FC2E9D /* CDLanguageServerRequest.swift in Sources */,
 				183BE91524AEBCC5000F60A0 /* CDMainViewController+SegmentedControl.swift in Sources */,
 				181B4F8B24DC392C000F3ED7 /* CDMinimapView.swift in Sources */,
 				188EE93A2539D56E00F9C628 /* CDCompileResultAndDebugView+SegmentedControl.swift in Sources */,
@@ -869,6 +942,7 @@
 				18C5C763255F7C9D00C78FC0 /* NSMenuItem Extension.swift in Sources */,
 				181F2BD124AC78C700C4B217 /* CKCursor+Private.m in Sources */,
 				18CAC8D8252EDA7F00B60F37 /* CDDebugWatchVar.swift in Sources */,
+				18CB5CFB25CF7DB900FC2E9D /* CDLanguageServerResponse.swift in Sources */,
 				182B3D772524A83500515375 /* SKSyntaxTextViewLayoutManager.swift in Sources */,
 				18CAC8D0252B052F00B60F37 /* CDCompileError.swift in Sources */,
 				18C5C75E255EB23300C78FC0 /* CDDiagnosticsTableViewDataSource.swift in Sources */,
@@ -882,7 +956,7 @@
 				181F2BD524AC78C700C4B217 /* CKIndex.m in Sources */,
 				1827400C24A6343000AF3613 /* CDToolbarStateButton.swift in Sources */,
 				1887D239254E2D5E00CD0D7D /* CDFilesTableViewDataSource.swift in Sources */,
-				18DA029E25A15F4D001B2017 /* CDLanguageServer.swift in Sources */,
+				18DA029E25A15F4D001B2017 /* CDLanguageServerClient.swift in Sources */,
 				181F2BD324AC78C700C4B217 /* CKToken.m in Sources */,
 				181236A82557BE4C0058004D /* NSButton Extension.swift in Sources */,
 				182B3D742524A83500515375 /* SKInnerTextView.swift in Sources */,
@@ -925,7 +999,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18CB5C7725CE3ED900FC2E9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18CB5C7E25CE3ED900FC2E9D /* C___Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18CB5C8125CE3ED900FC2E9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18B3C77C24282C1F00F4CA14 /* C+++ */;
+			targetProxy = 18CB5C8025CE3ED900FC2E9D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		18B3C77224272DA000F4CA14 /* Debug */ = {
@@ -1116,6 +1206,52 @@
 			};
 			name = Release;
 		};
+		18CB5C8225CE3ED900FC2E9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = XG7269D873;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "C+++Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "-3786.C---Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/C+++.app/Contents/MacOS/C+++";
+			};
+			name = Debug;
+		};
+		18CB5C8325CE3ED900FC2E9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = XG7269D873;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "C+++Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "-3786.C---Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/C+++.app/Contents/MacOS/C+++";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1133,6 +1269,15 @@
 			buildConfigurations = (
 				18B3C78D24282C2100F4CA14 /* Debug */,
 				18B3C78E24282C2100F4CA14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18CB5C8425CE3ED900FC2E9D /* Build configuration list for PBXNativeTarget "C+++Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18CB5C8225CE3ED900FC2E9D /* Debug */,
+				18CB5C8325CE3ED900FC2E9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
