@@ -49,21 +49,23 @@ class CDLanguageServerClient: NSObject {
         
         process.launch()
         
-        inputPipe.fileHandleForWriting.write(
-            """
-            Content-Length: 123
-            
-            {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"capabilities":{},"trace":"off","processId":\(Int(ProcessInfo.processInfo.processIdentifier)),"rootPath":"\\/"}}
-            """.data(using: .utf8)! )
+        id = 1
+        
+        let request = CDLanguageServerRequest(
+            method: "initialize",
+            id: id,
+            params: [ : ]
+        )
+        
+        self.writeRequest(request)
         
     }
     
     func openDocument(path: String, content: String) {
         
-        id += 1
-        let request = CDLanguageServerRequest(
+        let noti = CDLanguageServerNotification(
             method: "textDocument/didOpen",
-            id: id, params: [
+            params: [
                 "textDocument": [
                     "languageId": "cpp",
                     "text": content,
@@ -72,7 +74,7 @@ class CDLanguageServerClient: NSObject {
                 ]
             ]
         )
-        self.writeRequest(request)
+        self.writeNotification(noti)
         
     }
     
@@ -86,4 +88,17 @@ class CDLanguageServerClient: NSObject {
         
     }
     
+    
+    private func writeNotification(_ not: CDLanguageServerNotification) {
+        
+        let data = try? not.toData()
+        guard data != nil else {
+            return
+        }
+        self.inputPipe.fileHandleForWriting.write(data!)
+        
+    }
+
+    
 }
+ 

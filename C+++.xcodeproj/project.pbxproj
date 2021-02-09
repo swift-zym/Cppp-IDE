@@ -122,6 +122,7 @@
 		18CB5CF725CF742000FC2E9D /* CDLanguageServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5CF625CF742000FC2E9D /* CDLanguageServerRequest.swift */; };
 		18CB5CFB25CF7DB900FC2E9D /* CDLanguageServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5CFA25CF7DB900FC2E9D /* CDLanguageServerResponse.swift */; };
 		18CB5CFE25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5CFD25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift */; };
+		18CB5D0425D2B48800FC2E9D /* CDLanguageServerNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB5D0325D2B48800FC2E9D /* CDLanguageServerNotification.swift */; };
 		18CDFAE1251780C900C3F05B /* CDSnippetTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */; };
 		18CDFAE3251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */; };
 		18CDFAE5251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */; };
@@ -314,6 +315,7 @@
 		18CB5CF625CF742000FC2E9D /* CDLanguageServerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerRequest.swift; sourceTree = "<group>"; };
 		18CB5CFA25CF7DB900FC2E9D /* CDLanguageServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerResponse.swift; sourceTree = "<group>"; };
 		18CB5CFD25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerClientDelegate.swift; sourceTree = "<group>"; };
+		18CB5D0325D2B48800FC2E9D /* CDLanguageServerNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDLanguageServerNotification.swift; sourceTree = "<group>"; };
 		18CDFAE0251780C900C3F05B /* CDSnippetTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetTableViewDataSource.swift; sourceTree = "<group>"; };
 		18CDFAE2251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMainViewController+LeftSidebar.swift"; sourceTree = "<group>"; };
 		18CDFAE4251CA7F500C3F05B /* CDRecentFilesTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDRecentFilesTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				18CB5CFD25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift */,
 				18CB5CF625CF742000FC2E9D /* CDLanguageServerRequest.swift */,
 				18CB5CFA25CF7DB900FC2E9D /* CDLanguageServerResponse.swift */,
+				18CB5D0325D2B48800FC2E9D /* CDLanguageServerNotification.swift */,
 			);
 			path = LSP;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				181F2B9724AB490300C4B217 /* C+++-Bridging-Header.h in Sources */,
 				182B3D732524A83500515375 /* SKSyntaxTextView+TextViewDelegate.swift in Sources */,
 				184FE40324D5608F0093CC2B /* CDCodeDocument+Compile.swift in Sources */,
+				18CB5D0425D2B48800FC2E9D /* CDLanguageServerNotification.swift in Sources */,
 				18CB5CFE25CF834300FC2E9D /* CDLanguageServerClientDelegate.swift in Sources */,
 				182B3D722524A83500515375 /* SKSyntaxTextView.swift in Sources */,
 				1801DF6124D3B64B005CAD42 /* CDCodeEditorLineNumberViewButton.swift in Sources */,

@@ -46,8 +46,6 @@ extension CDLanguageServerClient {
             diagnosticsArray.append( CDDiagnostic(dict: item) )
         }
         
-        NSLog("收到了Diagnostics！!1 \(diagnosticsArray) \(url)")
-        
         self.delegate?.receivedDiagnostics(for: url, diagnostics: diagnosticsArray)
         
     }
@@ -62,6 +60,7 @@ class CDLanguageServerResponse: NSObject {
     
     private(set) var params: Dictionary<String, Any> = [ : ]
     private(set) var res: Dictionary<String, Any> = [ : ]
+    private(set) var error: Dictionary<String, Any> = [ : ]
     private(set) var id: Int = -1
     private(set) var method: String = ""
     
@@ -76,11 +75,16 @@ class CDLanguageServerResponse: NSObject {
         for component in components {
             do {
                 let dict = try JSONSerialization.jsonObject(with: component.data(using: .utf8)!) as? Dictionary<String, Any>
-                guard dict != nil && dict!.keys.contains("method") else {
+                guard dict != nil else {
+                    print("is nil")
                     continue
                 }
                 self.id = dict!["id"] as? Int ?? -1
-                self.method = dict!["method"] as! String
+                if dict!.keys.contains("error") {
+                    self.error = dict!["error"] as! Dictionary<String, Any>
+                    throw CDLanguageServerError(description: "Error from language server: \(error["message"] ?? "<Get Error Description Failed.>")")
+                }
+                self.method = dict!["method"] as? String ?? ""
                 if dict!.keys.contains("result") {
                     self.res = dict!["result"] as! Dictionary<String, Any>
                 } else if dict!.keys.contains("params") {
@@ -88,6 +92,9 @@ class CDLanguageServerResponse: NSObject {
                 }
                 return
             } catch {
+                if error is CDLanguageServerError {
+                    throw error
+                }
                 continue
             }
         }
