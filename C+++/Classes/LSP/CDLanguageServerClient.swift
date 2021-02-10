@@ -74,7 +74,20 @@ class CDLanguageServerClient: NSObject {
                 ]
             ]
         )
-        print(String(data: try! noti.toData(), encoding: .utf8)!)
+        self.writeNotification(noti)
+        
+    }
+    
+    func closeDocument(path: String) {
+        
+        let noti = CDLSPNotification(
+            method: "textDocument/didClose",
+            params: [
+                "textDocument" : [
+                    "uri": URL(fileURLWithPath: path).absoluteString
+                ]
+            ]
+        )
         self.writeNotification(noti)
         
     }

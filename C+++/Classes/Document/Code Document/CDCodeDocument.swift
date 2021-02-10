@@ -64,32 +64,7 @@ class CDCodeDocument: NSDocument {
         
         self.addWindowController(GlobalMainWindowController)
         self.contentViewController = GlobalMainWindowController.contentViewController as? CDMainViewController
-        /*
-        globalLaunchViewController.view.window?.close()
         
-        // Returns the storyboard that contains your document window.
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        if let windowController =
-            storyboard.instantiateController(
-                withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as? CDMainWindowController {
-            addWindowController(windowController)
-            
-            // Set the view controller's represented object as your document.
-            if let contentVC = windowController.contentViewController as? CDMainViewController {
-                
-                // contentVC.representedObject = self.content
-                contentVC.mainTextView.document = self
-                contentVC.documentFolder = self.fileURL?.deletingLastPathComponent()
-                self.contentViewController = contentVC
-                
-                if self.fileType == "Input File" || self.fileType == "Output File" {
-                    windowController.disableCompiling()
-                }
-                
-            }
-            
-        }
-        */
     }
     
     
@@ -101,6 +76,15 @@ class CDCodeDocument: NSDocument {
     
     override func data(ofType typeName: String) throws -> Data {
         return content.data()!
+    }
+    
+    override func close() {
+        super.close()
+        
+        if self.fileURL != nil {
+            GlobalLSPClient?.closeDocument(path: self.fileURL!.path)
+        }
+        
     }
     
     
@@ -180,9 +164,5 @@ class CDCodeDocument: NSDocument {
         }
         
     }
-    
-    //override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
-    //    return
-    //}
     
 }
