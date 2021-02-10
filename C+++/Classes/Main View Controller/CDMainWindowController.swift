@@ -131,4 +131,60 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         
     }
     
+    func displayDiagnosticsForCurrentFile(_ diagnostics: [CDDiagnostic]) {
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            
+            let editor = self.mainViewController.mainTextView.textView
+            
+            var maxLine = -1
+            
+            for diagnostic in diagnostics {
+                
+                if diagnostic.range != nil {
+                    maxLine = max(maxLine, diagnostic.range!.end.line + 1)
+                }
+                
+            }
+            
+            var lineIndices = [Int : Int]()
+            
+            let sep = editor.string.components(separatedBy: "\n")
+            
+            var index = -1, line = 0;
+            
+            for item in sep {
+                
+                line += 1
+                index += 1
+                lineIndices[line] = index
+                index += item.count
+                
+            }
+            
+            var rangeArray = [NSRange]()
+            
+            for diagnostic in diagnostics {
+                
+                if let range = diagnostic.range {
+                    
+                    let start = lineIndices[range.start.line + 1]! + range.start.character// - 1
+                    let end = lineIndices[range.end.line + 1]! + range.end.character - 1
+                    
+                    let nsRange = NSRange(location: start, length: end - start + 1)
+                    rangeArray.append(nsRange)
+                    
+                    editor.textStorage?.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: nsRange)
+                    editor.textStorage?.addAttribute(.underlineColor, value: NSColor.red, range: nsRange)
+                    
+                }
+                
+            }
+            
+            editor.errorLineRanges = rangeArray
+            
+        }
+        
+    }
+    
 }

@@ -28,6 +28,9 @@ class SKInnerTextView: TextView {
     var charRangeForCompletion: NSRange?
     var codeCompletionViewController: CDCodeCompletionViewController?
     var wantsCodeCompletion = false
+    
+    // Diagnostics
+    var errorLineRanges = [NSRange]()
 	
 	func invalidateCachedParagraphs() {
 		cachedParagraphs = nil
@@ -39,11 +42,19 @@ class SKInnerTextView: TextView {
         
         let selectedRange = self.selectedRange
         
-        guard selectedRange.length == 0 else {
-            return
+        if selectedRange.length == 0 {
+            drawLineBackground(forRange: selectedRange, color: self.innerDelegate!.currentTheme.currentLineColor)
         }
         
-        let paraRange = self.string.nsString.paragraphRange(for: selectedRange)
+        for line in self.errorLineRanges {
+            drawLineBackground(forRange: line, color: NSColor(red: 1, green: 0, blue: 0, alpha: 0.08))
+        }
+        
+    }
+    
+    func drawLineBackground(forRange range: NSRange, color: NSColor) {
+        
+        let paraRange = self.string.nsString.paragraphRange(for: range)
         let paraGlyphRange = self.layoutManager?.glyphRange(forCharacterRange: paraRange, actualCharacterRange: nil)
         
         guard paraGlyphRange != nil && self.textContainer != nil else {
@@ -51,12 +62,12 @@ class SKInnerTextView: TextView {
         }
         var paraRect = self.paragraphRect(inGlyphRange: paraGlyphRange!)
         
-        if (hasExtraLine && self.string.count == selectedRange.location) {
+        if (hasExtraLine && self.string.count == range.location) {
             paraRect = self.layoutManager?.extraLineFragmentRect ?? NSMakeRect(0, 0, 0, 0)
         }
         
         paraRect.size.width = self.frame.width
-        self.innerDelegate?.currentTheme.currentLineColor.setFill()
+        color.setFill()
         paraRect.fill()
         self.needsDisplay = true
         

@@ -15,7 +15,7 @@ var GlobalMainWindowController: CDMainWindowController!
 var GlobalLSPClient: CDLanguageServerClient?
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, CDLanguageServerClientDelegate {
     
     let documentController = CDDocumentController()
     
@@ -36,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         GlobalLSPClient = CDLanguageServerClient()
         GlobalLSPClient?.startServer()
+        GlobalLSPClient?.delegate = self
         
         if CDSettings.checksUpdateAfterLaunching {
             NSApplication.shared.checkUpdate(alsoShowAlertWhenUpToDate: false)
@@ -51,10 +52,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateNow
     }
     
-    /*
-    func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
-        return false
+    func receivedDiagnostics(for file: String, diagnostics: [CDDiagnostic]) {
+        
+        DispatchQueue.main.async {
+            
+            if file == GlobalMainWindowController.document?.fileURL?.path ?? "" {
+                GlobalMainWindowController.displayDiagnosticsForCurrentFile(diagnostics)
+            }
+            
+        }
     }
-    */
     
 }
