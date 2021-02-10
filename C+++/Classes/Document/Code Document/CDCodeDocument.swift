@@ -25,9 +25,16 @@ class CDCodeDocument: NSDocument {
     
     override var fileURL: URL? {
         didSet {
+            
+            if oldValue != nil {
+                GlobalLSPClient?.closeDocument(path: oldValue!.path)
+            }
+            GlobalLSPClient?.openDocument(path: fileURL!.path, content: self.content.contentString)
+            
             let selected = self.contentViewController?.leftSidebarTableView?.selectedRow ?? 0
             self.contentViewController?.leftSidebarTableView?.reloadData()
             self.contentViewController?.leftSidebarTableView?.selectRowIndexes(IndexSet([selected]), byExtendingSelection: false)
+            
         }
     }
     
