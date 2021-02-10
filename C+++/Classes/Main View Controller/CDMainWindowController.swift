@@ -28,6 +28,10 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
         self.mainViewController.mainTextView.setDocument(newDocument: document)
         self.document = document
         
+        if document.fileURL != nil {
+            GlobalLSPClient?.openDocument(path: document.fileURL!.path, content: document.content.contentString)
+        }
+        
         if self.mainViewController.leftSidebarMode == .openFiles {
             self.mainViewController.leftSidebarTableView.reloadData()
             self.mainViewController.leftSidebarTableView.selectRowIndexes([self.mainViewController.leftSidebarTableView.numberOfRows - 1], byExtendingSelection: false)

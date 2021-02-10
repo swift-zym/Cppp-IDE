@@ -35,6 +35,7 @@ class CDRunProcessViewController: NSViewController, LocalProcessTerminalViewDele
         self.terminalView.startProcess(args: ["-c", self.command])
         self.time = Date()
         self.terminalView.nativeForegroundColor = .textColor
+        self.terminalView.nativeBackgroundColor = .textBackgroundColor
         self.terminalView.processDelegate = self
         self.terminalView.font = CDSettings.font
         

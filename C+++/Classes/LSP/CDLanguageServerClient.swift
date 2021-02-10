@@ -1,5 +1,5 @@
 //
-//  CDLanguageServer.swift
+//  CDLanguageServerClient.swift
 //  C+++
 //
 //  Created by 23786 on 2021/1/3.
@@ -51,7 +51,7 @@ class CDLanguageServerClient: NSObject {
         
         id = 1
         
-        let request = CDLanguageServerRequest(
+        let request = CDLSPRequest(
             method: "initialize",
             id: id,
             params: [ : ]
@@ -63,7 +63,7 @@ class CDLanguageServerClient: NSObject {
     
     func openDocument(path: String, content: String) {
         
-        let noti = CDLanguageServerNotification(
+        let noti = CDLSPNotification(
             method: "textDocument/didOpen",
             params: [
                 "textDocument": [
@@ -74,11 +74,12 @@ class CDLanguageServerClient: NSObject {
                 ]
             ]
         )
+        print(String(data: try! noti.toData(), encoding: .utf8)!)
         self.writeNotification(noti)
         
     }
     
-    private func writeRequest(_ request: CDLanguageServerRequest) {
+    private func writeRequest(_ request: CDLSPRequest) {
         
         let data = try? request.toData()
         guard data != nil else {
@@ -89,7 +90,7 @@ class CDLanguageServerClient: NSObject {
     }
     
     
-    private func writeNotification(_ not: CDLanguageServerNotification) {
+    private func writeNotification(_ not: CDLSPNotification) {
         
         let data = try? not.toData()
         guard data != nil else {

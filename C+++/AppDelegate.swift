@@ -12,6 +12,7 @@ import Cocoa
 
 var GlobalLaunchViewController: CDLaunchViewController!
 var GlobalMainWindowController: CDMainWindowController!
+var GlobalLSPClient: CDLanguageServerClient?
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -32,6 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        GlobalLSPClient = CDLanguageServerClient()
+        GlobalLSPClient?.startServer()
         
         if CDSettings.checksUpdateAfterLaunching {
             NSApplication.shared.checkUpdate(alsoShowAlertWhenUpToDate: false)
