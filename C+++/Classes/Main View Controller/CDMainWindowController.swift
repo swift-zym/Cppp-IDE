@@ -137,12 +137,15 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
             
             let editor = self.mainViewController.mainTextView.textView
             
-            var maxLine = -1
+            var maxLine = -1, column = -1
             
             for diagnostic in diagnostics {
                 
                 if diagnostic.range != nil {
                     maxLine = max(maxLine, diagnostic.range!.end.line + 1)
+                    if maxLine == diagnostic.range!.end.line + 1 {
+                        column = max(column, diagnostic.range!.end.character)
+                    }
                 }
                 
             }
@@ -160,6 +163,12 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
                 lineIndices[line] = index
                 index += item.count
                 
+            }
+            
+            print(maxLine, column)
+            print((lineIndices[maxLine] ?? 10000000) + column)
+            if (lineIndices[maxLine] ?? 10000000) + column > editor.text.count {
+                return
             }
             
             var rangeArray = [NSRange]()

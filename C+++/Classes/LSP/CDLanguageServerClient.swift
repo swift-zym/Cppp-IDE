@@ -23,6 +23,7 @@ class CDLanguageServerClient: NSObject {
     private let outputPipe = Pipe()
     private let errorPipe = Pipe()
     private var id: Int = 1
+    private var documentVersions: [String : Int] = [ : ]
     var delegate: CDLanguageServerClientDelegate?
     
     func startServer(path: String = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clangd", arguments: [String] = []) {
@@ -63,6 +64,7 @@ class CDLanguageServerClient: NSObject {
     
     func openDocument(path: String, content: String) {
         
+        documentVersions[path] = 1
         let noti = CDLSPNotification(
             method: "textDocument/didOpen",
             params: [
@@ -85,6 +87,29 @@ class CDLanguageServerClient: NSObject {
             params: [
                 "textDocument" : [
                     "uri": URL(fileURLWithPath: path).absoluteString
+                ]
+            ]
+        )
+        self.writeNotification(noti)
+        
+    }
+    
+    func didChangeText(path: String, newText: String) {
+        
+        if documentVersions.keys.contains("path") {
+            documentVersions["path"]! += 1
+        } else {
+            documentVersions["path"] = 1
+        }
+        let noti = CDLSPNotification(
+            method: "textDocument/didChange",
+            params: [
+                "textDocument" : [
+                    "uri": URL(fileURLWithPath: path).absoluteString,
+                    "version": documentVersions["path"]!
+                ],
+                "contentChanges" : [
+                    "text": newText
                 ]
             ]
         )

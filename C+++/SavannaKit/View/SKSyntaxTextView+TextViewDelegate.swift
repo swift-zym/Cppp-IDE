@@ -177,6 +177,12 @@ extension SKSyntaxTextView: NSTextViewDelegate {
             self.lineNumberView?.draw()
         }
         
+        guard !isChangingDocument, let url = self.textView.document?.fileURL?.path else {
+            print("changing: \(isChangingDocument)")
+            return
+        }
+        GlobalLSPClient?.didChangeText(path: url, newText: self.text)
+        
     }
     
     open func textViewDidChangeSelection(_ notification: Notification) {

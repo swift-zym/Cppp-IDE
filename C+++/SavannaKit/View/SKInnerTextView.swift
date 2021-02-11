@@ -11,6 +11,7 @@ import Cocoa
 protocol SKInnerTextViewDelegate: class {
 	func didUpdateCursorFloatingState()
     var currentTheme: CDCodeEditorTheme { get }
+    var isChangingDocument: Bool { get }
 }
 
 class SKInnerTextView: TextView {
@@ -54,6 +55,9 @@ class SKInnerTextView: TextView {
     
     func drawLineBackground(forRange range: NSRange, color: NSColor) {
         
+        if range.upperBound > self.text.count {
+            return
+        }
         let paraRange = self.string.nsString.paragraphRange(for: range)
         let paraGlyphRange = self.layoutManager?.glyphRange(forCharacterRange: paraRange, actualCharacterRange: nil)
         

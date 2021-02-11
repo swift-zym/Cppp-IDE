@@ -72,6 +72,8 @@ class SKSyntaxTextView: View {
 	var ignoreSelectionChange = false
     
 	let wrapperView = SKTextViewWrapperView()
+    
+    var isChangingDocument = false
 	
 	public var tintColor: NSColor! {
 		set {

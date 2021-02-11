@@ -12,7 +12,9 @@ extension SKSyntaxTextView {
     
     func setDocument(newDocument: CDCodeDocument) {
         self.textView.document = newDocument
+        self.isChangingDocument = true
         self.text = newDocument.content.contentString
+        self.isChangingDocument = false
     }
     
 }
