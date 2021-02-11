@@ -10,7 +10,7 @@ import Cocoa
 
 protocol SKInnerTextViewDelegate: class {
 	func didUpdateCursorFloatingState()
-    var currentTheme: CDCodeEditorTheme { get }
+    var currentTheme: CDCodeEditorTheme? { get }
     var isChangingDocument: Bool { get }
 }
 
@@ -32,6 +32,8 @@ class SKInnerTextView: TextView {
     
     // Diagnostics
     var errorLineRanges = [NSRange]()
+    var warningLineRanges = [NSRange]()
+    var noteLineRanges = [NSRange]()
 	
 	func invalidateCachedParagraphs() {
 		cachedParagraphs = nil
@@ -41,14 +43,26 @@ class SKInnerTextView: TextView {
     override func drawBackground(in rect: NSRect) {
         super.drawBackground(in: rect)
         
+        guard self.innerDelegate?.currentTheme != nil else {
+            return
+        }
+        
         let selectedRange = self.selectedRange
         
         if selectedRange.length == 0 {
-            drawLineBackground(forRange: selectedRange, color: self.innerDelegate!.currentTheme.currentLineColor)
+            drawLineBackground(forRange: selectedRange, color: self.innerDelegate!.currentTheme!.currentLineColor)
         }
         
         for line in self.errorLineRanges {
-            drawLineBackground(forRange: line, color: NSColor(red: 1, green: 0, blue: 0, alpha: 0.08))
+            drawLineBackground(forRange: line, color: NSColor(red: 1, green: 239 / 255, blue: 237 / 255, alpha: 1))
+        }
+        
+        for line in self.warningLineRanges {
+            drawLineBackground(forRange: line, color: NSColor(red: 1, green: 248 / 255, blue: 200 / 255, alpha: 1))
+        }
+        
+        for line in self.noteLineRanges {
+            drawLineBackground(forRange: line, color: NSColor(red: 240 / 255, green: 240 / 255, blue: 240 / 255, alpha: 1))
         }
         
     }

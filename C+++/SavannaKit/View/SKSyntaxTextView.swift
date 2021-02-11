@@ -58,6 +58,8 @@ class SKSyntaxTextView: View {
 	let textView: SKInnerTextView
     
     var lineNumberView: CDCodeEditorLineNumberView?
+    
+    var isUsingLSP: Bool = true
 	
 	public var contentTextView: TextView {
 		return textView

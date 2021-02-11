@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate {
+class CDSnippetPopoverViewController: NSViewController, SKSyntaxTextViewDelegate {
     
     
     // MARK: - Properties
@@ -27,7 +27,7 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
     private var popover: NSPopover!
     private(set) var isEditable: Bool = false
     
-    private lazy var theme = SKDefaultSourceCodeTheme()
+    private var theme = CDSettings.darkTheme
     private lazy var lexer = CDCppLexer()
     
     func lexerForSource(_ source: String) -> SKLexer {
@@ -96,8 +96,23 @@ class CDSnippetPopoperViewController: NSViewController, SKSyntaxTextViewDelegate
         
         self.loadView()
         self.titleLabel.stringValue = title
+        
+        self.textView.isUsingLSP = false
+        if #available(OSX 10.14, *) {
+            switch self.view.effectiveAppearance.name {
+                case .aqua, .vibrantLight:
+                    self.theme = CDSettings.lightTheme
+                case .darkAqua, .vibrantDark:
+                    self.theme = CDSettings.darkTheme
+                default:
+                    self.theme = CDSettings.lightTheme
+            }
+        } else {
+            self.theme = CDSettings.lightTheme
+        }
         self.textView.theme = self.theme
         self.textView.delegate = self
+        
         self.textView.text = code
         self.imageView.image = image
         self.isEditable = isEditable

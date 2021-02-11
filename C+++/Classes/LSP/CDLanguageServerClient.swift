@@ -44,7 +44,7 @@ class CDLanguageServerClient: NSObject {
         
         errorPipe.fileHandleForReading.readabilityHandler = { (fileHandle) in
             
-            NSLog("stderr: \(String(data: fileHandle.availableData, encoding: .utf8) ?? "ERROR")")
+            // NSLog("stderr: \(String(data: fileHandle.availableData, encoding: .utf8) ?? "ERROR")")
             
         }
         

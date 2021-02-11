@@ -92,8 +92,8 @@
 		1899D9232525B8A200EE5780 /* SavannaKit+CodeCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */; };
 		1899D9252526B4EF00EE5780 /* CDMainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D9242526B4EF00EE5780 /* CDMainWindow.swift */; };
 		18B1857024638B2A00B579AD /* CDSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1856F24638B2A00B579AD /* CDSnippet.swift */; };
-		18B185732463B32400B579AD /* CDSnippetPopoperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B185712463B32400B579AD /* CDSnippetPopoperViewController.swift */; };
-		18B185742463B32400B579AD /* CDSnippetPopoperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B185722463B32400B579AD /* CDSnippetPopoperViewController.xib */; };
+		18B185732463B32400B579AD /* CDSnippetPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B185712463B32400B579AD /* CDSnippetPopoverViewController.swift */; };
+		18B185742463B32400B579AD /* CDSnippetPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B185722463B32400B579AD /* CDSnippetPopoverViewController.xib */; };
 		18B1857F2465AB2E00B579AD /* CDCompletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1857E2465AB2E00B579AD /* CDCompletionResult.swift */; };
 		18B185912469608B00B579AD /* CDProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B185902469608B00B579AD /* CDProjectDocument.swift */; };
 		18B1859924699A2800B579AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B1859824699A2800B579AD /* Main.storyboard */; };
@@ -280,8 +280,8 @@
 		1899D9222525B8A200EE5780 /* SavannaKit+CodeCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavannaKit+CodeCompletion.swift"; sourceTree = "<group>"; };
 		1899D9242526B4EF00EE5780 /* CDMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMainWindow.swift; sourceTree = "<group>"; };
 		18B1856F24638B2A00B579AD /* CDSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippet.swift; sourceTree = "<group>"; };
-		18B185712463B32400B579AD /* CDSnippetPopoperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetPopoperViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
-		18B185722463B32400B579AD /* CDSnippetPopoperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDSnippetPopoperViewController.xib; sourceTree = "<group>"; };
+		18B185712463B32400B579AD /* CDSnippetPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSnippetPopoverViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		18B185722463B32400B579AD /* CDSnippetPopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CDSnippetPopoverViewController.xib; sourceTree = "<group>"; };
 		18B1857E2465AB2E00B579AD /* CDCompletionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCompletionResult.swift; sourceTree = "<group>"; };
 		18B185902469608B00B579AD /* CDProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDProjectDocument.swift; sourceTree = "<group>"; };
 		18B1859824699A2800B579AD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -613,9 +613,9 @@
 			isa = PBXGroup;
 			children = (
 				18B1856F24638B2A00B579AD /* CDSnippet.swift */,
-				18B185712463B32400B579AD /* CDSnippetPopoperViewController.swift */,
+				18B185712463B32400B579AD /* CDSnippetPopoverViewController.swift */,
 				18C5C760255F535800C78FC0 /* CDSnippetController.swift */,
-				18B185722463B32400B579AD /* CDSnippetPopoperViewController.xib */,
+				18B185722463B32400B579AD /* CDSnippetPopoverViewController.xib */,
 			);
 			path = Snippet;
 			sourceTree = "<group>";
@@ -863,7 +863,7 @@
 				1881D5F324D139B40082F2C4 /* Update.storyboard in Resources */,
 				185CD64424CC642E00A9511B /* CDSearchViewController.xib in Resources */,
 				1872603524AF4FE8004C69B2 /* CDDiagnosticsViewController.xib in Resources */,
-				18B185742463B32400B579AD /* CDSnippetPopoperViewController.xib in Resources */,
+				18B185742463B32400B579AD /* CDSnippetPopoverViewController.xib in Resources */,
 				18C5C75B255D5EA200C78FC0 /* CDRunProcessViewController.xib in Resources */,
 				18B1859924699A2800B579AD /* Main.storyboard in Resources */,
 				18E17EBC24A809D200392009 /* CDCodeCompletionViewController.xib in Resources */,
@@ -935,7 +935,7 @@
 				180480AE2448602700CD0A4D /* CDSettings.swift in Sources */,
 				18CDFAE3251B88F000C3F05B /* CDMainViewController+LeftSidebar.swift in Sources */,
 				18E72920244E756E000317D7 /* CDScrollView.swift in Sources */,
-				18B185732463B32400B579AD /* CDSnippetPopoperViewController.swift in Sources */,
+				18B185732463B32400B579AD /* CDSnippetPopoverViewController.swift in Sources */,
 				1815A0DB24E15BEA00D1B23C /* CDProject.swift in Sources */,
 				182B3D6D2524A83500515375 /* SKRegexLexer.swift in Sources */,
 				185CD64224CC639500A9511B /* CDSearchViewController.swift in Sources */,

@@ -171,7 +171,9 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
                 return
             }
             
-            var rangeArray = [NSRange]()
+            var errorRangeArray = [NSRange]()
+            var warningRangeArray = [NSRange]()
+            var noteRangeArray = [NSRange]()
             
             for diagnostic in diagnostics {
                 
@@ -181,7 +183,16 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
                     let end = lineIndices[range.end.line + 1]! + range.end.character - 1
                     
                     let nsRange = NSRange(location: start, length: end - start + 1)
-                    rangeArray.append(nsRange)
+                    
+                    switch diagnostic.severity {
+                        case .error,.none:
+                            errorRangeArray.append(nsRange)
+                        case .hint, .information:
+                            noteRangeArray.append(nsRange)
+                        case .warning:
+                            warningRangeArray.append(nsRange)
+                    }
+                    
                     
                     editor.textStorage?.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: nsRange)
                     editor.textStorage?.addAttribute(.underlineColor, value: NSColor.red, range: nsRange)
@@ -190,7 +201,9 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
                 
             }
             
-            editor.errorLineRanges = rangeArray
+            editor.errorLineRanges = errorRangeArray
+            editor.warningLineRanges = warningRangeArray
+            editor.noteLineRanges = noteRangeArray
             
         }
         
