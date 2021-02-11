@@ -26,7 +26,7 @@ class CDLanguageServerClient: NSObject {
     private var documentVersions: [String : Int] = [ : ]
     var delegate: CDLanguageServerClientDelegate?
     
-    func startServer(path: String = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clangd", arguments: [String] = []) {
+    func startServer(path: String = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clangd", arguments: [String] = ["--log=verbose"]) {
         
         let process = Process()
         process.launchPath = path
@@ -109,7 +109,7 @@ class CDLanguageServerClient: NSObject {
                     "version": documentVersions["path"]!
                 ],
                 "contentChanges" : [
-                    "text": newText
+                    ["text": newText]
                 ]
             ]
         )

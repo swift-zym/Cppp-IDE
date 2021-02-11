@@ -26,6 +26,10 @@ class CDCodeDocument: NSDocument {
     override var fileURL: URL? {
         didSet {
             
+            guard oldValue != fileURL else {
+                return
+            }
+            
             if oldValue != nil {
                 GlobalLSPClient?.closeDocument(path: oldValue!.path)
             }
