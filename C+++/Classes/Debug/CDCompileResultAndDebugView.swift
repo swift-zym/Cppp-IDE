@@ -121,7 +121,7 @@ class CDCompileResultAndDebugView: NSView {
                 let data = self.outputPipe!.fileHandleForReading.readDataToEndOfFile()
                 self.runView.actualOutput?.string = String(data: data, encoding: .utf8) ?? "Error"
                 self.runView.stateLabel?.stringValue = string
-                NSLog("\(process.terminationStatus)")
+                
                 if process.terminationStatus != 0 {
                     self.runView.stateLabel?.stringValue += "RE"
                     return
