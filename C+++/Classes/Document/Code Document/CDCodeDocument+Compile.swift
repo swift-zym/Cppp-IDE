@@ -82,7 +82,7 @@ extension CDCodeDocument {
             self.contentViewController?.showAlert("Error", "The executable file doesn't exist. Please compile the program again.")
             return
         }
-        CDRunProcessViewController.run(command: "cd \"\(path.deletingLastPathComponent().path)\"\n" + "./\(out)", name: fileURL!.deletingPathExtension().lastPathComponent)
+        CDRunProcessViewController.run(command: "cd \"\(path.deletingLastPathComponent().path)\"\n" + "./\"\(out)\"", name: fileURL!.deletingPathExtension().lastPathComponent)
         
     }
     
@@ -151,7 +151,6 @@ extension CDCodeDocument {
         let vc = CDTestViewController()
         vc.fileURL = fileURL?.path ?? ""
         self.contentViewController.presentAsSheet(vc)
-        
     }
     
     
