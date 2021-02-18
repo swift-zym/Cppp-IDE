@@ -12,7 +12,7 @@ class CDAstyleHelper: NSObject {
     
     class func astyleFile(code: String, options: String = CDSettings.astyleOptions, handler: @escaping ( (String?, Bool) -> Void) ) {
         
-        let filePath = "/Users/apple/Library/C+++/AstyleTemp.cpp".nsString.expandingTildeInPath
+        let filePath = "~/Library/C+++/AstyleTemp.cpp".nsString.expandingTildeInPath
         
         FileManager.default.createFile(atPath: filePath, contents: code.data(using: .utf8))
         
