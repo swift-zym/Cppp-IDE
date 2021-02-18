@@ -589,9 +589,9 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAi-Jt-dPS">
-                                            <rect key="frame" x="7" y="37" width="175" height="18"/>
+                                            <rect key="frame" x="8" y="29" width="202" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Highlight line when error" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MMb-KI-l0z" userLabel="Auto Complete">
+                                            <buttonCell key="cell" type="check" title="Highlight line when find error" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MMb-KI-l0z" userLabel="Auto Complete">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
