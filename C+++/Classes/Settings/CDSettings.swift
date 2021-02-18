@@ -162,6 +162,7 @@ class CDSettings: NSObject {
         UserDefaults.standard.setValue(true, forKey: "codeCompletion")
         UserDefaults.standard.setValue(true, forKey: "liveIssues")
         UserDefaults.standard.setValue(true, forKey: "checksUpdate")
+        UserDefaults.standard.setValue(true, forKey: "highlightLine")
         UserDefaults.standard.setValue("g++", forKey: "compiler")
         UserDefaults.standard.setValue("", forKey: "compileArguments")
         UserDefaults.standard.setValue("", forKey: "codeTooltip")
@@ -188,4 +189,13 @@ class CDSettings: NSObject {
     
     static var settingsDidChangeNotificationName = NSNotification.Name("CDSettingsDidChange")
     
+    static var highlightLineWhenError: Bool {
+        get{
+            return UserDefaults.standard.bool(forKey: "highlightLine")
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "highlightLine")
+            NotificationCenter.default.post(name: CDSettings.settingsDidChangeNotificationName, object: nil)
+        }
+    }
 }

@@ -13,6 +13,7 @@ class CDEditorPreferencesViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var showsCompletionList: NSButton!
     @IBOutlet weak var autoComplete: NSButton!
     @IBOutlet weak var displaysTooltip: NSButton!
+    @IBOutlet weak var highlightLineWhenError: NSButton!
     @IBOutlet weak var fontNameLabel: NSTextField!
     @IBOutlet weak var astyleOptions: NSTextField!
     @IBOutlet weak var astyleHelpLabel: NSTextField!
@@ -48,12 +49,17 @@ class CDEditorPreferencesViewController: NSViewController, NSTextFieldDelegate {
         CDSettings.displaysTooltipOfCode = sender.state == .on
     }
     
+    @IBAction func highlightButtonClicked(_ sender: NSButton) {
+        CDSettings.highlightLineWhenError = sender.state == .on
+    }
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         
         self.showsCompletionList.setState(CDSettings.codeCompletion)
         self.autoComplete.setState(CDSettings.autoComplete)
         self.displaysTooltip.setState(CDSettings.displaysTooltipOfCode)
+        self.highlightLineWhenError.setState(CDSettings.highlightLineWhenError)
         self.fontNameLabel.stringValue = "Font: " + CDSettings.fontName + " Size: \(Int(CDSettings.fontSize))"
         self.astyleOptions.stringValue = CDSettings.astyleOptions
         

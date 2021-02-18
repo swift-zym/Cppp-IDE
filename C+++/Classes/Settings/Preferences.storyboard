@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -508,17 +508,17 @@
             <objects>
                 <viewController title="Editor" id="tfD-Ol-1eX" customClass="CDEditorPreferencesViewController" customModule="C___" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="KWj-vr-i0p">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="379"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="464"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Code Editing Options" translatesAutoresizingMaskIntoConstraints="NO" id="gd9-p0-irw">
-                                <rect key="frame" x="35" y="96" width="381" height="183"/>
+                                <rect key="frame" x="35" y="109" width="381" height="227"/>
                                 <view key="contentView" id="hZO-8F-2FX">
-                                    <rect key="frame" x="3" y="3" width="375" height="165"/>
+                                    <rect key="frame" x="3" y="3" width="375" height="209"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stZ-hI-2GH">
-                                            <rect key="frame" x="8" y="93" width="116" height="17"/>
+                                            <rect key="frame" x="8" y="137" width="116" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Auto Complete " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="siH-dG-fzd">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -529,7 +529,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-td-BbA">
-                                            <rect key="frame" x="8" y="136" width="121" height="17"/>
+                                            <rect key="frame" x="8" y="180" width="121" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Completion List" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tiI-Hw-BGP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -540,7 +540,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmP-ZD-sfR">
-                                            <rect key="frame" x="27" y="74" width="196" height="16"/>
+                                            <rect key="frame" x="27" y="118" width="196" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Auto complete (), [], {}, &quot;&quot; and ''" id="C02-eY-2cf">
                                                 <font key="font" metaFont="system"/>
@@ -549,7 +549,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-2G-LVm">
-                                            <rect key="frame" x="29" y="117" width="226" height="16"/>
+                                            <rect key="frame" x="29" y="161" width="226" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Show suggestions when typing code" id="zoo-7J-1pG">
                                                 <font key="font" metaFont="system"/>
@@ -558,7 +558,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y02-SS-QE4">
-                                            <rect key="frame" x="7" y="49" width="184" height="18"/>
+                                            <rect key="frame" x="7" y="93" width="184" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Show Information of Code" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="TWo-le-d24">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -569,7 +569,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cxC-an-fnp">
-                                            <rect key="frame" x="26" y="1" width="342" height="43"/>
+                                            <rect key="frame" x="26" y="45" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" title="Display information when the mouse is over a part of code" id="M3w-kS-5HB">
                                                 <font key="font" metaFont="system"/>
@@ -577,48 +577,26 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="VJD-EL-jps"/>
-                                    <constraint firstAttribute="height" constant="179" id="jPe-2X-kqw"/>
-                                </constraints>
-                            </box>
-                            <box title="Font Options" translatesAutoresizingMaskIntoConstraints="NO" id="dv4-pH-LIZ">
-                                <rect key="frame" x="35" y="285" width="381" height="74"/>
-                                <view key="contentView" id="K3U-H7-B77">
-                                    <rect key="frame" x="3" y="3" width="375" height="56"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MmC-WZ-W3n">
-                                            <rect key="frame" x="8" y="33" width="359" height="16"/>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAi-Jt-dPS">
+                                            <rect key="frame" x="7" y="37" width="175" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Font: Font Name" id="fA1-Mz-Xma">
-                                                <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXD-k6-1ni">
-                                            <rect key="frame" x="3" y="1" width="129" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="Choose font..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zeu-r0-LtZ">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <buttonCell key="cell" type="check" title="Highlight line when error" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MMb-KI-l0z" userLabel="Auto Complete">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="chooseAnotherFont:" target="tfD-Ol-1eX" id="04X-ue-ngu"/>
+                                                <action selector="highlightButtonClicked:" target="tfD-Ol-1eX" id="vKT-zI-iYk"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="BOy-5Q-wJf"/>
-                                    <constraint firstAttribute="width" constant="375" id="oMU-7G-pde"/>
+                                    <constraint firstAttribute="width" constant="375" id="VJD-EL-jps"/>
+                                    <constraint firstAttribute="height" constant="223" id="jPe-2X-kqw"/>
                                 </constraints>
                             </box>
                             <box title="Astyle Options" translatesAutoresizingMaskIntoConstraints="NO" id="b5g-cb-zmn">
-                                <rect key="frame" x="35" y="16" width="381" height="74"/>
+                                <rect key="frame" x="35" y="22" width="381" height="74"/>
                                 <view key="contentView" id="QiI-1F-UZs">
                                     <rect key="frame" x="3" y="3" width="375" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,17 +651,50 @@
                                     <constraint firstAttribute="height" constant="70" id="x2V-GX-5rW"/>
                                 </constraints>
                             </box>
+                            <box title="Font Options" translatesAutoresizingMaskIntoConstraints="NO" id="dv4-pH-LIZ">
+                                <rect key="frame" x="35" y="355" width="381" height="74"/>
+                                <view key="contentView" id="K3U-H7-B77">
+                                    <rect key="frame" x="3" y="3" width="375" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MmC-WZ-W3n">
+                                            <rect key="frame" x="8" y="33" width="359" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Font: Font Name" id="fA1-Mz-Xma">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXD-k6-1ni">
+                                            <rect key="frame" x="3" y="1" width="129" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Choose font..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zeu-r0-LtZ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="chooseAnotherFont:" target="tfD-Ol-1eX" id="04X-ue-ngu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="BOy-5Q-wJf"/>
+                                    <constraint firstAttribute="width" constant="375" id="oMU-7G-pde"/>
+                                </constraints>
+                            </box>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gd9-p0-irw" firstAttribute="leading" secondItem="KWj-vr-i0p" secondAttribute="leading" constant="38" id="30H-no-IYf"/>
-                            <constraint firstItem="gd9-p0-irw" firstAttribute="top" secondItem="dv4-pH-LIZ" secondAttribute="bottom" constant="10" id="5Iw-ny-DXc"/>
-                            <constraint firstItem="b5g-cb-zmn" firstAttribute="top" secondItem="gd9-p0-irw" secondAttribute="bottom" constant="10" id="ANs-qW-vXK"/>
+                            <constraint firstItem="gd9-p0-irw" firstAttribute="top" secondItem="dv4-pH-LIZ" secondAttribute="bottom" constant="23" id="5Iw-ny-DXc"/>
+                            <constraint firstItem="b5g-cb-zmn" firstAttribute="top" secondItem="gd9-p0-irw" secondAttribute="bottom" constant="17" id="ANs-qW-vXK"/>
                             <constraint firstItem="b5g-cb-zmn" firstAttribute="leading" secondItem="KWj-vr-i0p" secondAttribute="leading" constant="38" id="Wvl-wr-KgE"/>
                             <constraint firstItem="dv4-pH-LIZ" firstAttribute="leading" secondItem="KWj-vr-i0p" secondAttribute="leading" constant="38" id="aKO-VC-SRK"/>
-                            <constraint firstItem="dv4-pH-LIZ" firstAttribute="top" secondItem="KWj-vr-i0p" secondAttribute="top" constant="20" symbolic="YES" id="cVg-eV-AuF"/>
+                            <constraint firstItem="dv4-pH-LIZ" firstAttribute="top" secondItem="KWj-vr-i0p" secondAttribute="top" constant="35" id="cVg-eV-AuF"/>
                             <constraint firstAttribute="trailing" secondItem="gd9-p0-irw" secondAttribute="trailing" constant="37" id="ioD-Ye-Uy3"/>
                             <constraint firstAttribute="trailing" secondItem="dv4-pH-LIZ" secondAttribute="trailing" constant="37" id="o6P-0Q-z82"/>
-                            <constraint firstAttribute="bottom" secondItem="b5g-cb-zmn" secondAttribute="bottom" constant="20" id="wyd-US-CgD"/>
+                            <constraint firstAttribute="bottom" secondItem="b5g-cb-zmn" secondAttribute="bottom" constant="26" id="wyd-US-CgD"/>
                         </constraints>
                     </view>
                     <connections>
@@ -692,12 +703,13 @@
                         <outlet property="autoComplete" destination="stZ-hI-2GH" id="juu-be-fXQ"/>
                         <outlet property="displaysTooltip" destination="Y02-SS-QE4" id="wkN-Kj-dYK"/>
                         <outlet property="fontNameLabel" destination="MmC-WZ-W3n" id="SMa-CD-PhH"/>
+                        <outlet property="highlightLineWhenError" destination="tAi-Jt-dPS" id="Any-Yf-dci"/>
                         <outlet property="showsCompletionList" destination="Yox-td-BbA" id="zOv-2u-7CS"/>
                     </connections>
                 </viewController>
                 <customObject id="Ate-nw-Psy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="923"/>
+            <point key="canvasLocation" x="504" y="965"/>
         </scene>
     </scenes>
     <resources>

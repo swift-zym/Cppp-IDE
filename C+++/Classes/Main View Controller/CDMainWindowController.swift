@@ -132,7 +132,9 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func displayDiagnosticsForCurrentFile(_ diagnostics: [CDDiagnostic]) {
-        
+        if !CDSettings.highlightLineWhenError{
+            return
+        }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             
             let editor = self.mainViewController.mainTextView.textView
