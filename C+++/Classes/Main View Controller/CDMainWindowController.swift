@@ -132,9 +132,6 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func displayDiagnosticsForCurrentFile(_ diagnostics: [CDDiagnostic]) {
-        if !CDSettings.highlightLineWhenError{
-            return
-        }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             
             let editor = self.mainViewController.mainTextView.textView
@@ -203,6 +200,13 @@ class CDMainWindowController: NSWindowController, NSWindowDelegate {
                 
             }
             
+            
+            if !CDSettings.highlightLineWhenError{
+                editor.errorLineRanges.removeAll()
+                editor.warningLineRanges.removeAll()
+                editor.noteLineRanges.removeAll()
+                return
+            }
             editor.errorLineRanges = errorRangeArray
             editor.warningLineRanges = warningRangeArray
             editor.noteLineRanges = noteRangeArray

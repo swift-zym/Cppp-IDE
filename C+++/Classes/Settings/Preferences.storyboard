@@ -430,11 +430,11 @@
             <objects>
                 <viewController title="General" id="jdV-ms-DJR" customClass="CDGeneralPreferencesViewController" customModule="C___" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kca-dm-akY">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="149"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="172"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="General" translatesAutoresizingMaskIntoConstraints="NO" id="NRk-hL-hKL">
-                                <rect key="frame" x="35" y="16" width="381" height="113"/>
+                                <rect key="frame" x="35" y="39" width="381" height="113"/>
                                 <view key="contentView" id="TKe-U9-PNA">
                                     <rect key="frame" x="3" y="3" width="375" height="95"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -486,9 +486,20 @@
                                     <constraint firstAttribute="height" constant="109" id="9WN-q5-6Uc"/>
                                 </constraints>
                             </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XdI-QU-pDh">
+                                <rect key="frame" x="31" y="2" width="129" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Reset settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iaQ-3C-Wky">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetSettings:" target="jdV-ms-DJR" id="CNS-vR-784"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="NRk-hL-hKL" secondAttribute="bottom" constant="20" symbolic="YES" id="5cK-hL-vEt"/>
+                            <constraint firstAttribute="bottom" secondItem="NRk-hL-hKL" secondAttribute="bottom" constant="43" id="5cK-hL-vEt"/>
                             <constraint firstItem="NRk-hL-hKL" firstAttribute="top" secondItem="kca-dm-akY" secondAttribute="top" constant="20" symbolic="YES" id="JhB-R2-9cr"/>
                             <constraint firstAttribute="trailing" secondItem="NRk-hL-hKL" secondAttribute="trailing" constant="37" id="amn-5k-NDy"/>
                             <constraint firstItem="NRk-hL-hKL" firstAttribute="leading" secondItem="kca-dm-akY" secondAttribute="leading" constant="38" id="zTk-Rn-xeo"/>
@@ -501,7 +512,7 @@
                 </viewController>
                 <customObject id="B3c-gI-xm0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="-178"/>
+            <point key="canvasLocation" x="504" y="-167"/>
         </scene>
         <!--Editor-->
         <scene sceneID="8hx-VO-74K">
